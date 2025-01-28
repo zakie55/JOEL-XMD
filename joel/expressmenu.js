@@ -47,6 +47,19 @@ ${menu.convert}
 ${menu.search}
 
 
+${menu.random}
+
+${menu.converter}
+
+${menu.ai}
+
+${menu.wallpaper}
+
+${menu.info}
+
+${menu.other}
+
+
 `
 
 await conn.sendMessage(from,{image:{url:config.ALIVE_IMG},caption:madeMenu},{quoted:mek})
