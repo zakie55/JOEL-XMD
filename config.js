@@ -17,7 +17,7 @@ ALIVE_MSG: process.env.ALIVE_MSG || "*ᴀᴍ ᴀʟɪᴠᴇ ᴍᴏᴛʜᴇʀғᴜ
 ANTI_LINK: process.env.ANTI_LINK || "true",
 ANTI_BAD: process.env.ANTI_BAD || "true",
 PREFIX: process.env.PREFIX || ".",
-FAKE_RECORDING: process.env.FAKE_RECORDING || "true",
+AUTO_RECORDING: process.env.AUTO_RECORDING || "true",
 ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "",
 AUTO_TYPING: process.env.AUTO_TYPING || "",
 AUTO_REACT: process.env.AUTO_REACT || "",
