@@ -14,6 +14,16 @@ async (conn, mek, m, { from, body, isOwner }) => {
     }
 });
 
+// Recording (Auto Recording)
+cmd({
+    on: "body"
+},    
+async (conn, mek, m, { from, body, isOwner }) => {
+    if (config.AUTO_RECORDING === 'true') {
+        await conn.sendPresenceUpdate('recording', from); // send recordig 
+    }
+});
+
 //  Always Online / Available
 cmd({
     on: "body"
