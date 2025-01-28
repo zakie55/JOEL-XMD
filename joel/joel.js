@@ -26,4 +26,375 @@ dont waste ur time to empress me
 
 
 
-const _0x2c2629=_0x5ad2;(function(_0x5dfdcd,_0x48092c){const _0x24e978=_0x5ad2,_0x4f554e=_0x5dfdcd();while(!![]){try{const _0xbf6dc2=-parseInt(_0x24e978(0x115))/0x1*(parseInt(_0x24e978(0x12c))/0x2)+parseInt(_0x24e978(0x12e))/0x3+parseInt(_0x24e978(0x114))/0x4*(parseInt(_0x24e978(0x119))/0x5)+-parseInt(_0x24e978(0x123))/0x6+-parseInt(_0x24e978(0x124))/0x7+-parseInt(_0x24e978(0x116))/0x8*(-parseInt(_0x24e978(0x125))/0x9)+parseInt(_0x24e978(0x10b))/0xa*(parseInt(_0x24e978(0x128))/0xb);if(_0xbf6dc2===_0x48092c)break;else _0x4f554e['push'](_0x4f554e['shift']());}catch(_0x1538e8){_0x4f554e['push'](_0x4f554e['shift']());}}}(_0x3b9f,0xaa821));function _0x3b9f(){const _0x2c0d72=['\x0a\x0a*GROUP-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ʀᴇᴍᴏᴠᴇ*\x0a\x0a*┋*\x20*.ᴅᴇʟᴇᴛᴇ*\x0a\x0a*┋*\x20*.ᴀᴅᴅ*\x0a\x0a*┋*\x20*.ᴋɪᴄᴋ*\x0a\x0a*┋*\x20*.ᴋɪᴄᴋᴀʟʟ*\x0a\x0a*┋*\x20*.sᴇᴛɢᴏᴏᴅʙʏᴇ*\x0a\x0a*┋*\x20*.sᴇᴛᴡᴇʟᴄᴏᴍᴇ*\x0a\x0a*┋*\x20*.ᴘʀᴏᴍᴏᴛᴇ*\x0a\x0a*┋*\x20*.ᴅᴇᴍᴏᴛᴇ*\x0a\x0a*┋*\x20*.ᴛᴀɢᴀʟʟ*\x0a\x0a*┋*\x20*.ɢᴇᴛᴘɪᴄ*\x0a\x0a*┋*\x20*.ɪɴᴠɪᴛᴇ*\x0a\x0a*┋*\x20*.ʀᴇᴠᴏᴋᴇ*\x0a\x0a*┋*\x20*.ᴊᴏɪɴʀᴇǫᴜᴇsᴛs*\x0a\x0a*┋*\x20*.ᴀʟʟʀᴇǫ*\x0a\x0a*┋*\x20*.ᴍᴜᴛᴇ*\x0a\x0a*┋*\x20*.ᴜɴᴍᴜᴛᴇ*\x0a\x0a*┋*\x20*.ʟᴏᴄᴋɢᴄ*\x0a\x0a*┋*\x20*.ᴜɴʟᴏᴄᴋɢᴄ*\x0a\x0a*┋*\x20*.ʟᴇᴀᴠᴇ*\x0a\x0a*┋*\x20*.ᴜᴘᴅᴀᴛᴇɢɴᴀᴍᴇ*\x0a\x0a*┋*\x20*.ᴜᴘᴅᴀᴛᴇɢᴅᴇsᴄ*\x0a\x0a*┋*\x20*.ᴊᴏɪɴ*\x0a\x0a*┋*\x20*.ʜɪᴅᴇᴛᴀɢ*\x0a\x0a*┋*\x20*.ɢɪɴғᴏ*\x0a\x0a*┋*\x20*.ᴅɪsᴀᴘᴘᴇᴀʀ\x20ᴏɴ*\x0a\x0a*┋*\x20*.ᴅɪsᴀᴘᴘᴇᴀʀ\x20ᴏғғ*\x0a\x0a*┋*\x20*.ᴅɪsᴀᴘᴘᴇᴀʀ\x207ᴅ\x2024ʜ\x2090ᴅ*\x0a\x0a*┋*\x20*.sᴇɴᴅᴅᴍ*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*','9229xwDfPw','key','message','sendMessage','470CaikCN','*ʀᴇᴘᴏʀᴛ\x20ᴀɴʏ\x20ᴇʀʀᴏʀ\x20ᴛᴏ\x20ᴍʏ\x20ᴏᴡɴᴇʀ\x20wa.me\x20255714595078*','2703645dDAoaC','\x0a\x0a*INFO-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ᴍᴇɴᴜ*\x0a\x0a*┋*\x20*.ᴍᴇɴᴜ2*\x0a\x0a*┋*\x20*.ᴍᴇɴᴜ3*\x0a\x0a*┋*\x20*.ᴀʙᴏᴜᴛ*\x0a\x0a*┋*\x20*.sᴄʀɪᴘᴛ*\x0a\x0a*┋*\x20*.ʀᴇᴘᴏ*\x0a\x0a*┋*\x20*.ᴀʟɪᴠᴇ*\x0a\x0a*┋*\x20*.ʙᴏᴛɪɴꜰᴏ*\x0a\x0a*┋*\x20*.ꜱᴛᴀᴛᴜꜱ*\x0a\x0a*┋*\x20*.ꜱᴜᴘᴘᴏʀᴛ*\x0a\x0a*┋*\x20*.ᴘɪɴɢ*\x0a\x0a*┋*\x20*.ᴘɪɴɢ2*\x0a\x0a*┋*\x20*.ꜱʏꜱᴛᴇᴍ*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*','menu\x20the\x20bot','messages','contextInfo','\x20ᴡᴇʟᴄᴏᴍᴇ\x20ᴛᴏ\x0a\x0a┏❒\x20ᴊᴏᴇʟ\x20ᴍᴅ\x20ᴍᴇɴᴜ\x20❏\x0a\x0a┃ʀᴜɴᴛɪᴍᴇ\x20:\x20\x20\x20','ALIVE_IMG','../lib/functions','2600EcLndi','main','https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K','extendedTextMessage','MODE','trim','\x0a\x0a*RANDOM-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ᴋɪɴɢ*\x0a\x0a*┋*\x20*.ᴅᴏɢ*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇ*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇɢɪʀʟ*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇɢɪʀʟ1*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇɢɪʀʟ2*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇɢɪʀʟ3*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇɢɪʀʟ4*\x0a\x0a*┋*\x20*.ᴀɴɪᴍᴇɢɪʀʟ5*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*','log','PHOTO','68xEzitv','1853NWtYRG','56EPLlnE','\x0a\x0a┃ʀᴀᴍ\x20ᴜꜱᴀɢᴇ\x20:\x2021/128\x20ɢʙ\x0a\x0a┃ᴍᴏᴅᴇ\x20:\x20','\x0a\x0a*AI-CMD\x20*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ɢᴘᴛ\x20<ᴛᴇxᴛ>*\x0a\x0a*┋*\x20*.ᴀɪ\x20<ᴛᴇxᴛ>*\x0a\x0a*┋*\x20*.ʙᴏᴛ\x20<ᴛᴇxᴛ>*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*','113890ALwqqC','Hello\x20World!','ʜᴇʟʟᴏ\x20','\x0a\x0a*WALLPAPERS-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ɪᴍɢ*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*','panel','stanzaId','\x0a\x0a*OTHER-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ᴛʀᴛ*\x0a\x0a*┋*\x20*.ᴊᴏᴋᴇ*\x0a\x0a*┋*\x20*.ꜰᴀᴄᴛ*\x0a\x0a*┋*\x20*.ɢɪᴛʜᴜʙꜱᴛᴀʟᴋ*\x0a\x0a*┋*\x20*.ɢᴘᴀꜱꜱ*\x0a\x0a*┋*\x20*.ʜᴀᴄᴋ*\x0a\x0a*┋*\x20*.ǫᴜᴏᴛᴇ*\x0a\x0a*┋*\x20*.ꜱʀᴇᴘᴏ*\x0a\x0a*┋*\x20*.ᴅᴇꜰɪɴᴇ*\x0a\x0a*╰┈───────────────•*','\x0a\x0a*OWNER-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ᴜᴘᴅᴀᴛᴇᴄᴍᴅ*\x0a\x0a*┋*\x20*.sᴇᴛᴛɪɴɢs*\x0a\x0a*┋*\x20*.ᴏᴡɴᴇʀ*\x0a\x0a*┋*\x20*.ʀᴇᴘᴏ*\x0a\x0a*┋*\x20*.ꜱʏꜱᴛᴇᴍ*\x0a\x0a*┋*\x20*.ꜱᴛᴀᴛᴜꜱ*\x0a\x0a*┋*\x20*.ʙʟᴏᴄᴋ*\x0a\x0a*┋*\x20*.ᴜɴʙʟᴏᴄᴋ*\x0a\x0a*┋*\x20*.sʜᴜᴛᴅᴏᴡɴ*\x0a\x0a*┋*\x20*.ᴄʟᴇᴀʀᴄʜᴀᴛs*\x0a\x0a*┋*\x20*.sᴇᴛᴘᴘ*\x0a\x0a*┋*\x20*.ʙʀᴏᴀᴅᴄᴀsᴛ*\x0a\x0a*┋*\x20*.ᴊɪᴅ*\x0a\x0a*┋*\x20*.ɢᴊɪᴅ*\x0a\x0a*┋*\x20*.ʀᴇꜱᴛᴀʀᴛ*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*','ʟᴏʀᴅ\x20ᴊᴏᴇʟ','An\x20error\x20occurred\x20while\x20processing\x20your\x20request.','6828090jdFeBt','193739HooLbM','1019529orwWzs','error'];_0x3b9f=function(){return _0x2c0d72;};return _0x3b9f();}function hi(){const _0x51a3f1=_0x5ad2;console[_0x51a3f1(0x112)](_0x51a3f1(0x11a));}hi();const config=require('../config'),{cmd,commands}=require('../command'),os=require('os'),{runtime}=require(_0x2c2629(0x10a)),axios=require('axios');function _0x5ad2(_0x197756,_0x1e473a){const _0x3b9fa6=_0x3b9f();return _0x5ad2=function(_0x5ad2d4,_0x1cbf6d){_0x5ad2d4=_0x5ad2d4-0x104;let _0x4e9e4f=_0x3b9fa6[_0x5ad2d4];return _0x4e9e4f;},_0x5ad2(_0x197756,_0x1e473a);}cmd({'pattern':'menu','react':'ᰔ','alias':[_0x2c2629(0x11d),'commands'],'desc':_0x2c2629(0x105),'category':_0x2c2629(0x10c)},async(_0x72829f,_0x4558ba,_0x51b94c,{from:_0x4cac37,quoted:_0x266b98,body:_0x36be7e,isCmd:_0x29ac6b,command:_0x50acde,args:_0x346868,q:_0x515023,isGroup:_0x4e2c70,sender:_0x41a003,senderNumber:_0x39f4b6,botNumber2:_0x24992d,botNumber:_0x44ea67,pushname:_0x18e7e4,isMe:_0x455e25,isOwner:_0x246611,groupMetadata:_0x45d51d,groupName:_0x4846b8,participants:_0x5c3a19,groupAdmins:_0x57b21b,isBotAdmins:_0x3afd72,isAdmins:_0x34e0b1,reply:_0x40643c})=>{const _0xa2f9d9=_0x2c2629;try{let _0x2127bd=_0xa2f9d9(0x11b)+_0x18e7e4+_0xa2f9d9(0x108)+runtime(process['uptime']())+_0xa2f9d9(0x117)+config[_0xa2f9d9(0x10f)]+'\x0a\x0a┃ᴘʀᴇғɪx\x20:\x20'+config['PREFIX']+'\x0a\x0a┗❑\x0a\x0a┏❒ᴏᴡɴᴇʀ\x20ᴄᴏᴍᴍᴀɴᴅs❑\x0a\x0a┃ᴊᴏᴇʟ\x0a\x0a┃ᴜᴘᴅᴀᴛᴇᴄᴍs\x0a\x0a┃sᴇᴛᴛɪɴɢs\x0a\x0a┃ᴏᴡɴᴇʀ\x0a\x0a┃ʀᴇᴘᴏ\x0a\x0a┃sʏꜱᴛᴇᴍ\x0a\x0a╽ꜱᴛᴀᴛᴜꜱ\x0a\x0a┃ʙʟᴏᴄᴋ\x0a\x0a┃ᴜɴʙʟᴏᴄᴋ\x0a\x0a┃sʜᴜᴛᴅᴏᴡɴ\x0a\x0a┃ᴄʟᴇᴀʀᴄʜᴀᴛs\x0a\x0a┃sᴇᴛᴘᴘ\x0a\x0a┃ʙʀᴏᴀᴅᴄᴀsᴛ\x0a\x0a┃ᴊɪᴅ\x0a\x0a┃ɢᴊɪᴅ\x0a\x0a┃ʀᴇꜱᴛᴀʀᴛ\x0a\x0a┗❑\x0a\x0a┏❒ᴅᴏᴡɴʟᴏᴀᴅᴇʀ-ᴄᴍᴅ❑\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x0a┃ғʙ\x0a\x0a┃ɪɴꜱᴛᴀ\x0a\x0a┃ᴠɪᴅᴇᴏ\x0a\x0a┃ɢᴅʀɪᴠᴇ\x0a\x0a┃ᴛᴡɪᴛᴛᴇʀ\x0a\x0a┃ᴛᴛ\x0a\x0a┃ᴍᴇᴅɪᴀғɪʀᴇ\x0a\x0a┃sᴏɴɢ\x0a\x0a┃ᴘʟᴀʏ\x0a\x0a╽ᴠɪᴅᴇᴏ\x0a\x0a┃ᴠɪᴅᴇᴏ2\x0a\x0a┃ɪᴍɢ\x0a\x0a┃ᴀᴘᴋ\x0a\x0a┃ᴅᴀʀᴀᴍᴀ\x0a\x0a┃ᴘʟᴀʏ2\x0a\x0a┃ʙᴀɪsᴄᴏᴘᴇ\x0a\x0a┃ɢɪɴɪsɪsɪʟᴀ\x0a\x0a┗❒\x0a\x0a┏❒ɢʀᴏᴜᴘ\x20ᴄᴏᴍᴍᴀɴᴅs❑\x0a\x0a┃ʀᴇᴍᴏᴠᴇ\x0a\x0a┃ᴅᴇʟᴇᴛᴇ\x0a\x0a╽ᴀᴅᴅ\x0a\x0a┃ᴋɪᴄᴋ\x0a\x0a┃ᴋɪᴄᴋᴀʟʟ\x0a\x0a┃sᴇᴛɢᴏᴏᴅʙʏᴇ\x0a\x0a┃sᴇᴛᴡᴇʟᴄᴏᴍᴇ\x0a\x0a┃ᴘʀᴏᴍᴏᴛᴇ\x0a\x0a╽ᴅᴇᴍᴏᴛᴇ\x0a\x0a╽ᴛᴀɢᴀʟʟ\x0a\x0a┃ɢᴇᴛᴘɪᴄ\x0a\x0a┃ɪɴᴠɪᴛᴇ\x0a\x0a┃ʀᴇᴠᴏᴋᴇ\x0a\x0a┃ᴊᴏɪɴʀᴇᴏ̨ᴜᴇsᴛs\x0a\x0a┃ᴀʟʟʀᴇᴏ̨\x0a\x0a┃ᴍᴜᴛᴇ\x0a\x0a┃ᴜɴᴍᴜᴛᴇ\x0a\x0a┃ʟᴏᴄᴋɢᴄ\x0a\x0a┃ᴜɴʟᴏᴄᴋɢᴄ\x0a\x0a┃ʟᴇᴀᴠᴇ\x0a\x0a┃ᴜᴘᴅᴀᴛᴇɢɴᴀᴍᴇ\x0a\x0a╽ᴜᴘᴅᴀᴛᴇɢᴅᴇsᴄ\x0a\x0a┃ᴊᴏɪɴ\x0a\x0a┃ʜɪᴅᴇᴛᴀɢ\x0a\x0a┃ɢɪɴғᴏ\x0a\x0a┃ᴅɪsᴀᴘᴘᴇᴀʀ\x20ᴏɴ\x0a\x0a┃ᴅɪsᴀᴘᴘᴇᴀʀ\x20ᴏғғ\x0a\x0a┃ᴅɪsᴀᴘᴘᴇᴀʀ\x207ᴅ\x2024ʜ\x2090ᴅ\x0a\x0a┃sᴇɴᴅᴅᴍ\x0a\x0a┗❑\x0a\x0a┏❒ɪɴғᴏ\x20ᴄᴏᴍᴍᴀɴᴅs❑\x0a\x0a┃sᴄʀɪᴘᴛ\x0a\x0a┃ʀᴇᴘᴏ\x0a\x0a┃ᴀʟɪᴠᴇ\x0a\x0a┃ʙᴏᴛɪɴꜰᴏ\x0a\x0a┃ꜱᴛᴀᴛᴜꜱ\x0a\x0a┃ꜱᴜᴘᴘᴏʀᴛ\x0a\x0a┃ᴘɪɴɢ\x0a\x0a┃ꜱʏꜱᴛᴇᴍ\x0a\x0a┃ᴊᴏᴇʟ\x0a\x0a┗❑\x0a\x0a┏❒ʀᴀɴᴅᴏᴍ-ᴄᴏᴍᴍᴀɴᴅs❑\x0a\x0a┃ᴋɪɴɢ\x0a\x0a┃ᴅᴏɢ\x0a\x0a┃ᴀɴɪᴍᴇ\x0a\x0a┃ᴀɴɪᴍᴇɢɪʀʟ\x0a\x0a┃ᴀɴɪᴍᴇɢɪʀʟ1\x0a\x0a┃ᴀɴɪᴍᴇɢɪʀʟ2\x0a\x0a┃ᴀɴɪᴍᴇɢɪʀʟ3\x0a\x0a┃ᴀɴɪᴍᴇɢɪʀʟ4\x0a\x0a┃ᴀɴɪᴍᴇɢɪʀʟ5\x0a\x0a┗❑\x0a\x0a┏❒ᴄᴏɴᴠᴇᴛᴏʀ\x20ᴄᴏᴍᴍᴀᴅs❑\x0a\x0a┃sᴛɪᴄᴋᴇʀ\x0a\x0a┃ᴛʀᴛ\x20<ᴛᴇxᴛ>\x0a\x0a┃ᴛᴛs\x20<ᴛᴇxᴛ>\x0a\x0a┗❒\x0a\x0a┏❒ᴀɪ\x20ᴄᴏᴍᴍᴀɴᴅs❑\x0a\x0a┃ɢᴘᴛ\x20<ᴛᴇxᴛ>\x0a\x0a┃ᴀɪ\x20<ᴛᴇxᴛ>\x0a\x0a┃ʙᴏᴛ\x20<ᴛᴇxᴛ>\x0a\x0a┗❑\x0a\x0a┏❒ᴏᴛʜᴇʀ\x20ᴄᴏᴍᴍᴀɴᴅs❒\x0a\x0a┃ᴛʀᴛ\x0a\x0a┃ᴊᴏᴋᴇ\x0a\x0a┃ғᴀᴄᴛ\x0a\x0a┃ɢɪᴛʜᴜʙꜱᴛᴀʟᴋ\x0a\x0a┃ɢᴘᴀꜱꜱ\x0a\x0a┃ʜᴀᴄᴋ\x0a\x0a┃ǫᴜᴏᴛᴇ\x0a\x0a┃ꜱʀᴇᴘᴏ\x0a\x0a┃ᴅᴇꜰɪɴᴇ\x0a\x0a┗❑\x0a\x0a\x20*ᴍᴀᴅᴇ\x20ʙʏ\x20ʟᴏʀᴅ\x20ᴊᴏᴇʟ*';const _0x3e404f=await _0x72829f[_0xa2f9d9(0x12b)](_0x4cac37,{'image':{'url':config[_0xa2f9d9(0x109)]},'caption':_0x2127bd,'contextInfo':{'mentionedJid':[''],'groupMentions':[],'forwardingScore':0x3e7,'isForwarded':!![],'forwardedNewsletterMessageInfo':{'newsletterJid':'12036329902932622@newsletter','newsletterName':_0xa2f9d9(0x121),'serverMessageId':0x3e7},'externalAdReply':{'title':'ʟᴏʀᴅ\x20ᴊᴏᴇʟ','body':''+_0x18e7e4,'mediaType':0x1,'sourceUrl':_0xa2f9d9(0x10d),'thumbnailUrl':_0xa2f9d9(0x10d),'previewType':_0xa2f9d9(0x113),'renderLargerThumbnail':!![],'showAdAttribution':!![]}}},{'quoted':_0x4558ba});_0x72829f['ev']['on']('messages.upsert',async _0x9dfce7=>{const _0x144839=_0xa2f9d9,_0x557e6a=_0x9dfce7[_0x144839(0x106)][0x0];if(!_0x557e6a['message']||!_0x557e6a[_0x144839(0x12a)][_0x144839(0x10e)])return;const _0x579ccd=_0x557e6a[_0x144839(0x12a)][_0x144839(0x10e)]['text'][_0x144839(0x110)]();if(_0x557e6a[_0x144839(0x12a)][_0x144839(0x10e)][_0x144839(0x107)]&&_0x557e6a[_0x144839(0x12a)]['extendedTextMessage']['contextInfo'][_0x144839(0x11e)]===_0x3e404f[_0x144839(0x129)]['id'])switch(_0x579ccd){case'1':let _0x9488e9=_0x144839(0x120);await _0x72829f[_0x144839(0x12b)](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x9488e9},{'quoted':_0x4558ba});break;case'2':let _0x1db069='\x0a\x0a*DOWNLOADER-CMD*\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.ғʙ*\x0a\x0a*┋*\x20*.ɪɴꜱᴛᴀ*\x0a\x0a*┋*\x20*.ᴠɪᴅᴇᴏ*\x0a\x0a*┋*\x20*.ɢᴅʀɪᴠᴇ*\x0a\x0a*┋*\x20*.ᴛᴡɪᴛᴛᴇʀ*\x0a\x0a*┋*\x20*.ᴛᴛ*\x0a\x0a*┋*\x20*.ᴍᴇᴅɪᴀғɪʀᴇ*\x0a\x0a*┋*\x20*.ꜱᴏɴɢ*\x0a\x0a*┋*\x20*.ᴘʟᴀʏ*\x0a\x0a*┋*\x20*.ᴠɪᴅᴇᴏ*\x0a\x0a*┋*\x20*.ᴠɪᴅᴇᴏ2*\x0a\x0a*┋*\x20*.ɪᴍɢ*\x0a\x0a*┋*\x20*.ᴀᴘᴋ*\x0a\x0a*┋*\x20*.ᴅᴀʀᴀᴍᴀ*\x0a\x0a*┋*\x20*.ᴘʟᴀʏ2*\x0a\x0a*┋*\x20*.ʙᴀɪsᴄᴏᴘᴇ*\x0a\x0a*┋*\x20*.ɢɪɴɪsɪsɪʟᴀ*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*';await _0x72829f['sendMessage'](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x1db069},{'quoted':_0x4558ba});break;case'3':let _0x57b47c=_0x144839(0x127);await _0x72829f[_0x144839(0x12b)](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x57b47c},{'quoted':_0x4558ba});break;case'4':let _0x9cf89a=_0x144839(0x104);await _0x72829f[_0x144839(0x12b)](_0x4cac37,{'image':{'url':config['ALIVE_IMG']},'caption':_0x9cf89a},{'quoted':_0x4558ba});break;case'5':let _0x747482=_0x144839(0x111);await _0x72829f['sendMessage'](_0x4cac37,{'image':{'url':config['ALIVE_IMG']},'caption':_0x747482},{'quoted':_0x4558ba});break;case'6':let _0x2dbc4d='\x0a\x0a*CONVERTER-CMD*\x0a\x0a*╭┈───────────────•*\x0a\x0a*┋*\x20*.sᴛɪᴄᴋᴇʀ*\x0a\x0a*┋*\x20*.ᴛʀᴛ\x20<ᴛᴇxᴛ>*\x0a\x0a*┋*\x20*.ᴛᴛs\x20<ᴛᴇxᴛ>*\x0a\x0a*╰┈───────────────•*\x0a\x0a>\x20*BUGATTI\x20BY\x20MARISEL*';await _0x72829f[_0x144839(0x12b)](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x2dbc4d},{'quoted':_0x4558ba});break;case'7':let _0x315732=_0x144839(0x118);await _0x72829f['sendMessage'](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x315732},{'quoted':_0x4558ba});break;case'8':let _0x289577=_0x144839(0x11c);await _0x72829f[_0x144839(0x12b)](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x289577},{'quoted':_0x4558ba});break;case'9':let _0x2ab3ae=_0x144839(0x11f);await _0x72829f[_0x144839(0x12b)](_0x4cac37,{'image':{'url':config[_0x144839(0x109)]},'caption':_0x2ab3ae},{'quoted':_0x4558ba});break;default:_0x40643c(_0x144839(0x12d));}});}catch(_0x37f9e9){console[_0xa2f9d9(0x126)](_0x37f9e9),await _0x72829f['sendMessage'](_0x4cac37,{'react':{'text':'❌','key':_0x4558ba[_0xa2f9d9(0x129)]}}),_0x40643c(_0xa2f9d9(0x122));}});
+
+
+const config = require('../config')
+const {cmd , commands} = require('../command')
+const os = require("os")
+const {runtime} = require('../lib/functions')
+const axios = require('axios')
+
+cmd({
+    pattern: "menu",
+    react: "ᰔ",
+    alias: ["panel","commands"],
+    desc: "menu the bot",
+    category: "main"
+},
+async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
+try{
+let desc = `ʜᴇʟʟᴏ ${pushname} ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ
+┏❒ ᴊᴏᴇʟ ᴍᴅ ᴍᴇɴᴜ ❏
+┃ʀᴜɴᴛɪᴍᴇ :   ${runtime(process.uptime())}
+┃ʀᴀᴍ ᴜꜱᴀɢᴇ : 21/128 ɢʙ
+┃ᴍᴏᴅᴇ : ${config.MODE}
+┃ᴘʀᴇғɪx : ${config.PREFIX}
+┗❑
+┏❒ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅs❑
+┃ᴊᴏᴇʟ
+┃ᴜᴘᴅᴀᴛᴇᴄᴍs
+┃sᴇᴛᴛɪɴɢs
+┃ᴏᴡɴᴇʀ
+┃ʀᴇᴘᴏ
+┃sʏꜱᴛᴇᴍ
+╽ꜱᴛᴀᴛᴜꜱ
+┃ʙʟᴏᴄᴋ
+┃ᴜɴʙʟᴏᴄᴋ
+┃sʜᴜᴛᴅᴏᴡɴ
+┃ᴄʟᴇᴀʀᴄʜᴀᴛs
+┃sᴇᴛᴘᴘ
+┃ʙʀᴏᴀᴅᴄᴀsᴛ
+┃ᴊɪᴅ
+┃ɢᴊɪᴅ
+┃ʀᴇꜱᴛᴀʀᴛ
+┗❑
+┏❒ᴅᴏᴡɴʟᴏᴀᴅᴇʀ-ᴄᴍᴅ❑                
+┃ғʙ
+┃ɪɴꜱᴛᴀ
+┃ᴠɪᴅᴇᴏ
+┃ɢᴅʀɪᴠᴇ
+┃ᴛᴡɪᴛᴛᴇʀ
+┃ᴛᴛ
+┃ᴍᴇᴅɪᴀғɪʀᴇ
+┃sᴏɴɢ
+┃ᴘʟᴀʏ
+╽ᴠɪᴅᴇᴏ
+┃ᴠɪᴅᴇᴏ2
+┃ɪᴍɢ
+┃ᴀᴘᴋ
+┃ᴅᴀʀᴀᴍᴀ
+┃ᴘʟᴀʏ2
+┃ʙᴀɪsᴄᴏᴘᴇ
+┃ɢɪɴɪsɪsɪʟᴀ
+┗❒
+┏❒ɢʀᴏᴜᴘ ᴄᴏᴍᴍᴀɴᴅs❑
+┃ʀᴇᴍᴏᴠᴇ
+┃ᴅᴇʟᴇᴛᴇ
+╽ᴀᴅᴅ
+┃ᴋɪᴄᴋ
+┃ᴋɪᴄᴋᴀʟʟ
+┃sᴇᴛɢᴏᴏᴅʙʏᴇ
+┃sᴇᴛᴡᴇʟᴄᴏᴍᴇ
+┃ᴘʀᴏᴍᴏᴛᴇ
+╽ᴅᴇᴍᴏᴛᴇ
+╽ᴛᴀɢᴀʟʟ
+┃ɢᴇᴛᴘɪᴄ
+┃ɪɴᴠɪᴛᴇ
+┃ʀᴇᴠᴏᴋᴇ
+┃ᴊᴏɪɴʀᴇᴏ̨ᴜᴇsᴛs
+┃ᴀʟʟʀᴇᴏ̨
+┃ᴍᴜᴛᴇ
+┃ᴜɴᴍᴜᴛᴇ
+┃ʟᴏᴄᴋɢᴄ
+┃ᴜɴʟᴏᴄᴋɢᴄ
+┃ʟᴇᴀᴠᴇ
+┃ᴜᴘᴅᴀᴛᴇɢɴᴀᴍᴇ
+╽ᴜᴘᴅᴀᴛᴇɢᴅᴇsᴄ
+┃ᴊᴏɪɴ
+┃ʜɪᴅᴇᴛᴀɢ
+┃ɢɪɴғᴏ
+┃ᴅɪsᴀᴘᴘᴇᴀʀ ᴏɴ
+┃ᴅɪsᴀᴘᴘᴇᴀʀ ᴏғғ
+┃ᴅɪsᴀᴘᴘᴇᴀʀ 7ᴅ 24ʜ 90ᴅ
+┃sᴇɴᴅᴅᴍ
+┗❑
+┏❒ɪɴғᴏ ᴄᴏᴍᴍᴀɴᴅs❑
+┃sᴄʀɪᴘᴛ
+┃ʀᴇᴘᴏ
+┃ᴀʟɪᴠᴇ
+┃ʙᴏᴛɪɴꜰᴏ
+┃ꜱᴛᴀᴛᴜꜱ
+┃ꜱᴜᴘᴘᴏʀᴛ
+┃ᴘɪɴɢ
+┃ꜱʏꜱᴛᴇᴍ
+┃ᴊᴏᴇʟ
+┗❑
+┏❒ʀᴀɴᴅᴏᴍ-ᴄᴏᴍᴍᴀɴᴅs❑
+┃ᴋɪɴɢ
+┃ᴅᴏɢ
+┃ᴀɴɪᴍᴇ
+┃ᴀɴɪᴍᴇɢɪʀʟ
+┃ᴀɴɪᴍᴇɢɪʀʟ1
+┃ᴀɴɪᴍᴇɢɪʀʟ2
+┃ᴀɴɪᴍᴇɢɪʀʟ3
+┃ᴀɴɪᴍᴇɢɪʀʟ4
+┃ᴀɴɪᴍᴇɢɪʀʟ5
+┃ᴀɴɪᴍᴇʙᴏʏ
+┃ᴀɴɪᴍᴇʙᴏʏ1
+┃ᴀɴɪᴍᴇʙᴏʏ2
+┃ᴀɴɪᴍᴇʙᴏʏ3
+┃ᴀɴɪᴍᴇʙᴏʏ4
+┃ᴀɴɪᴍᴇʙᴏʏ5
+┗❑
+┏❒ᴄᴏɴᴠᴇᴛᴏʀ ᴄᴏᴍᴍᴀᴅs❑
+┃sᴛɪᴄᴋᴇʀ
+┃ᴛʀᴛ <ᴛᴇxᴛ>
+┃ᴛᴛs <ᴛᴇxᴛ>
+┗❒
+
+┏❒ᴀɪ ᴄᴏᴍᴍᴀɴᴅs❑
+┃ɢᴘᴛ <ᴛᴇxᴛ>
+┃ᴀɪ <ᴛᴇxᴛ>
+┃ʙᴏᴛ <ᴛᴇxᴛ>
+┗❑
+┏❒ᴏᴛʜᴇʀ ᴄᴏᴍᴍᴀɴᴅs❒
+┃ᴛʀᴛ
+┃ᴊᴏᴋᴇ
+┃ғᴀᴄᴛ
+┃ɢɪᴛʜᴜʙꜱᴛᴀʟᴋ
+┃ɢᴘᴀꜱꜱ
+┃ʜᴀᴄᴋ
+┃ǫᴜᴏᴛᴇ
+┃ꜱʀᴇᴘᴏ
+┃ᴅᴇꜰɪɴᴇ
+┗❑
+ *ᴍᴀᴅᴇ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`;
+
+const vv = await conn.sendMessage(from, { 
+  image: { url: config.ALIVE_IMG }, 
+  caption: desc, 
+  contextInfo: {
+    mentionedJid: [''], 
+    groupMentions: [],
+    forwardingScore: 999, // برای فوروارد شدن
+    isForwarded: true, // پیام به صورت فوروارد شده نشان داده می‌شود
+    forwardedNewsletterMessageInfo: {
+      newsletterJid: '12036329902932622@newsletter', 
+      newsletterName: "ʟᴏʀᴅ ᴊᴏᴇʟ", 
+      serverMessageId: 999
+    },
+    externalAdReply: { 
+      title: 'ʟᴏʀᴅ ᴊᴏᴇʟ', 
+      body: `${pushname}`, 
+      mediaType: 1, 
+      sourceUrl: "https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K", 
+      thumbnailUrl: "https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K" ,
+      previewType: 'PHOTO',
+      renderLargerThumbnail: true,
+      showAdAttribution: true
+    }
+  }
+}, { quoted: mek });
+        conn.ev.on('messages.upsert', async (msgUpdate) => {
+            const msg = msgUpdate.messages[0];
+            if (!msg.message || !msg.message.extendedTextMessage) return;
+
+            const selectedOption = msg.message.extendedTextMessage.text.trim();
+
+            if (msg.message.extendedTextMessage.contextInfo && msg.message.extendedTextMessage.contextInfo.stanzaId === vv.key.id) {
+                switch (selectedOption) {
+                    case '1':
+                        let owner = `
+*OWNER-CMD*
+*╭┈───────────────•*
+*┋* *.ᴜᴘᴅᴀᴛᴇᴄᴍᴅ*
+*┋* *.sᴇᴛᴛɪɴɢs*
+*┋* *.ᴏᴡɴᴇʀ*
+*┋* *.ʀᴇᴘᴏ*
+*┋* *.ꜱʏꜱᴛᴇᴍ*
+*┋* *.ꜱᴛᴀᴛᴜꜱ*
+*┋* *.ʙʟᴏᴄᴋ*
+*┋* *.ᴜɴʙʟᴏᴄᴋ*
+*┋* *.sʜᴜᴛᴅᴏᴡɴ*
+*┋* *.ᴄʟᴇᴀʀᴄʜᴀᴛs*
+*┋* *.sᴇᴛᴘᴘ*
+*┋* *.ʙʀᴏᴀᴅᴄᴀsᴛ*
+*┋* *.ᴊɪᴅ*
+*┋* *.ɢᴊɪᴅ*
+*┋* *.ʀᴇꜱᴛᴀʀᴛ*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner }, { quoted: mek });                     
+                        break;
+                    case '2':               
+                        let owner1 = `
+*DOWNLOADER-CMD*                        
+*╭┈───────────────•*
+*┋* *.ғʙ*
+*┋* *.ɪɴꜱᴛᴀ*
+*┋* *.ᴠɪᴅᴇᴏ*
+*┋* *.ɢᴅʀɪᴠᴇ*
+*┋* *.ᴛᴡɪᴛᴛᴇʀ*
+*┋* *.ᴛᴛ*
+*┋* *.ᴍᴇᴅɪᴀғɪʀᴇ*
+*┋* *.ꜱᴏɴɢ*
+*┋* *.ᴘʟᴀʏ*
+*┋* *.ᴠɪᴅᴇᴏ*
+*┋* *.ᴠɪᴅᴇᴏ2*
+*┋* *.ɪᴍɢ*
+*┋* *.ᴀᴘᴋ*
+*┋* *.ᴅᴀʀᴀᴍᴀ*
+*┋* *.ᴘʟᴀʏ2*
+*┋* *.ʙᴀɪsᴄᴏᴘᴇ*
+*┋* *.ɢɪɴɪsɪsɪʟᴀ*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+                        
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner1 }, { quoted: mek });                     
+                        break;
+                    case '3':               
+                        let owner2 = `
+*GROUP-CMD*
+*╭┈───────────────•*
+*┋* *.ʀᴇᴍᴏᴠᴇ*
+*┋* *.ᴅᴇʟᴇᴛᴇ*
+*┋* *.ᴀᴅᴅ*
+*┋* *.ᴋɪᴄᴋ*
+*┋* *.ᴋɪᴄᴋᴀʟʟ*
+*┋* *.sᴇᴛɢᴏᴏᴅʙʏᴇ*
+*┋* *.sᴇᴛᴡᴇʟᴄᴏᴍᴇ*
+*┋* *.ᴘʀᴏᴍᴏᴛᴇ*
+*┋* *.ᴅᴇᴍᴏᴛᴇ*
+*┋* *.ᴛᴀɢᴀʟʟ*
+*┋* *.ɢᴇᴛᴘɪᴄ*
+*┋* *.ɪɴᴠɪᴛᴇ*
+*┋* *.ʀᴇᴠᴏᴋᴇ*
+*┋* *.ᴊᴏɪɴʀᴇǫᴜᴇsᴛs*
+*┋* *.ᴀʟʟʀᴇǫ*
+*┋* *.ᴍᴜᴛᴇ*
+*┋* *.ᴜɴᴍᴜᴛᴇ*
+*┋* *.ʟᴏᴄᴋɢᴄ*
+*┋* *.ᴜɴʟᴏᴄᴋɢᴄ*
+*┋* *.ʟᴇᴀᴠᴇ*
+*┋* *.ᴜᴘᴅᴀᴛᴇɢɴᴀᴍᴇ*
+*┋* *.ᴜᴘᴅᴀᴛᴇɢᴅᴇsᴄ*
+*┋* *.ᴊᴏɪɴ*
+*┋* *.ʜɪᴅᴇᴛᴀɢ*
+*┋* *.ɢɪɴғᴏ*
+*┋* *.ᴅɪsᴀᴘᴘᴇᴀʀ ᴏɴ*
+*┋* *.ᴅɪsᴀᴘᴘᴇᴀʀ ᴏғғ*
+*┋* *.ᴅɪsᴀᴘᴘᴇᴀʀ 7ᴅ 24ʜ 90ᴅ*
+*┋* *.sᴇɴᴅᴅᴍ*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner2 }, { quoted: mek });                     
+                        break;
+                    case '4':               
+                        let owner3 = `
+*INFO-CMD*
+*╭┈───────────────•*
+*┋* *.ᴍᴇɴᴜ*
+*┋* *.ᴍᴇɴᴜ2*
+*┋* *.ᴍᴇɴᴜ3*
+*┋* *.ᴀʙᴏᴜᴛ*
+*┋* *.sᴄʀɪᴘᴛ*
+*┋* *.ʀᴇᴘᴏ*
+*┋* *.ᴀʟɪᴠᴇ*
+*┋* *.ʙᴏᴛɪɴꜰᴏ*
+*┋* *.ꜱᴛᴀᴛᴜꜱ*
+*┋* *.ꜱᴜᴘᴘᴏʀᴛ*
+*┋* *.ᴘɪɴɢ*
+*┋* *.ᴘɪɴɢ2*
+*┋* *.ꜱʏꜱᴛᴇᴍ*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner3 }, { quoted: mek });                     
+                        break;
+                    case '5':               
+                        let owner4 = `
+*RANDOM-CMD*
+*╭┈───────────────•*
+*┋* *.ᴋɪɴɢ*
+*┋* *.ᴅᴏɢ*
+*┋* *.ᴀɴɪᴍᴇ*
+*┋* *.ᴀɴɪᴍᴇɢɪʀʟ*
+*┋* *.ᴀɴɪᴍᴇɢɪʀʟ1*
+*┋* *.ᴀɴɪᴍᴇɢɪʀʟ2*
+*┋* *.ᴀɴɪᴍᴇɢɪʀʟ3*
+*┋* *.ᴀɴɪᴍᴇɢɪʀʟ4*
+*┋* *.ᴀɴɪᴍᴇɢɪʀʟ5*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner4 }, { quoted: mek });                     
+                        break;
+                    case '6':               
+                        let owner5 = `
+*CONVERTER-CMD*
+*╭┈───────────────•*
+*┋* *.sᴛɪᴄᴋᴇʀ*
+*┋* *.ᴛʀᴛ <ᴛᴇxᴛ>*
+*┋* *.ᴛᴛs <ᴛᴇxᴛ>*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner5 }, { quoted: mek });                     
+                        break;
+                    case '7':               
+                        let owner6 = `
+*AI-CMD *
+*╭┈───────────────•*
+*┋* *.ɢᴘᴛ <ᴛᴇxᴛ>*
+*┋* *.ᴀɪ <ᴛᴇxᴛ>*
+*┋* *.ʙᴏᴛ <ᴛᴇxᴛ>*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner6 }, { quoted: mek });                     
+                        break;
+                    case '8':               
+                        let owner7 = `
+*WALLPAPERS-CMD*
+*╭┈───────────────•*
+*┋* *.ɪᴍɢ*
+*╰┈───────────────•*
+
+> *BUGATTI BY MARISEL*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner7 }, { quoted: mek });                     
+                        break;
+                    case '9':               
+                        let owner8 = `
+*OTHER-CMD*
+*╭┈───────────────•*
+*┋* *.ᴛʀᴛ*
+*┋* *.ᴊᴏᴋᴇ*
+*┋* *.ꜰᴀᴄᴛ*
+*┋* *.ɢɪᴛʜᴜʙꜱᴛᴀʟᴋ*
+*┋* *.ɢᴘᴀꜱꜱ*
+*┋* *.ʜᴀᴄᴋ*
+*┋* *.ǫᴜᴏᴛᴇ*
+*┋* *.ꜱʀᴇᴘᴏ*
+*┋* *.ᴅᴇꜰɪɴᴇ*
+*╰┈───────────────•*`;
+await conn.sendMessage(from, { image: { url:config.ALIVE_IMG}, caption: owner8 }, { quoted: mek });                     
+                        break;
+                    default:
+                        reply("*ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴇʀʀᴏʀ ᴛᴏ ᴍʏ ᴏᴡɴᴇʀ wa.me 255714595078*");
+                }
+
+            }
+        });
+
+    } catch (e) {
+        console.error(e);
+        await conn.sendMessage(from, { react: { text: '❌', key: mek.key } })
+        reply('An error occurred while processing your request.');
+    }
+})
+
+
