@@ -56,7 +56,7 @@
       "description": "make it true  to auto delete links in groups",
       "required": true,
       "value": "true"
-    }, 
+    }
     
 
 },
