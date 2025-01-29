@@ -26,8 +26,8 @@
     }, 
    
       
-    "AUTO_VOICE": {
-      "description": "make it true to enable auto voice",
+    "AUTO_TYPING": {
+      "description": "make it true to enable auto typing",
       "required": false,
       "value": "false"
     }, 
@@ -47,8 +47,8 @@
     }, 
 
       
-    "FAKE_RECORDING": {
-      "description": "make it true  to change your wapresence into recording...",
+    "ALWAYS_ONLINE": {
+      "description": "make it true  to change your wapresence into available...",
       "required": false,
       "value": "false"
     }, 
