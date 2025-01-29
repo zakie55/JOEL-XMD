@@ -45,6 +45,24 @@
       "value": "true"
     }, 
 
+    "READ_MESSAGE": {
+      "description": "make it true  to read mwssages",
+      "required": false,
+      "value": "true"
+    }, 
+
+    "ANTI_VV": {
+      "description": "make it true  to activate ant view once",
+      "required": false,
+      "value": "true"
+    },
+
+    "AUTO_REACT": {
+      "description": "make it true  to react on messages",
+      "required": false,
+      "value": "false"
+    }, 
+
     "PREFIX": {
       "description": " set your bot prefix",
       "required": true,
