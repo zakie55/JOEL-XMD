@@ -137,7 +137,7 @@ const {
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp ✅')
   
-  let up = `bado inareply status ama`;
+  let up = `┏━❐ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ/n/n┃❏ʏᴏᴜᴛᴜʙᴇ ᴛᴜʀᴛᴜʟɪᴏʀs/n/n┃❏*https://joeljamestech.netlify.app/*/n/n┃❏*ᴘʀᴇғɪx: [${prefix}]*/n/n┃❏ᴏᴡɴᴇʀ:ʟᴏʀᴅ ᴊᴏᴇʟ/n/n┗❒`;
   conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/yvf7h8.png` }, caption: up })
   }
   })
