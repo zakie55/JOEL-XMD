@@ -10,7 +10,7 @@ module.exports = {
     CAPTION: process.env.CAPTION || "кєєρ υѕιηg ʝσєℓ χм∂ вσт",
     ALWAYS_ONLINE: process.env.ALWAYS_ONLINE || "true",
     AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
-    READ_MESSAGE: process.env.READ_MESSAGE || "true", // Added auto-read configuration
+    READ_MESSAGE: process.env.READ_MESSAGE || " false", // Added auto-read configuration
     AUTO_TYPING: process.env.AUTO_TYPING || "true",
     CURRENT_STATUS: process.env.CURRENT_STATUS || "false",
     MODE: process.env.MODE || "public",
@@ -27,7 +27,7 @@ module.exports = {
     AUTO_REACT: process.env.AUTO_REACT || "false",
     HEART_REACT: process.env.HEART_REACT || "false",
     OWNER_REACT: process.env.OWNER_REACT || "false",
-    BOT_NAME: process.env.BOT_NAME || "Mercedes",
+    BOT_NAME: process.env.BOT_NAME || "ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ",
     AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || "false",
     AUTO_STATUS__MSG: process.env.AUTO_STATUS__MSG || "αм ʝσєℓ м∂ вσт",
     OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39", // omdbapi.com
