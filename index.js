@@ -137,7 +137,17 @@ const {
   console.log('Plugins installed successful ✅')
   console.log('Bot connected to whatsapp ✅')
   
-  let up = `┏━❐ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ/n/n┃❏ʏᴏᴜᴛᴜʙᴇ ᴛᴜʀᴛᴜʟɪᴏʀs/n/n┃❏*https://joeljamestech.netlify.app/*/n/n┃❏*ᴘʀᴇғɪx: [${prefix}]*/n/n┃❏ᴏᴡɴᴇʀ:ʟᴏʀᴅ ᴊᴏᴇʟ/n┗❒`;
+  let up = `┏━❐ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ
+  ┃❏ʏᴏᴜᴛᴜʙᴇ ᴛᴜʀᴛᴜʟɪᴏʀs
+  ┃❏*https://joeljamestech.netlify.app/*
+  ┃❏*ᴘʀᴇғɪx: [${prefix}]*
+  ┃❏ᴏᴡɴᴇʀ:ʟᴏʀᴅ ᴊᴏᴇʟ
+  ┗❒ 
+    *ᴍᴀᴅᴇ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*
+  _αм 17 уяѕ σℓ∂ кєєρ ¢αℓℓιηg мє вяσ
+  αм ωαт¢нιηg αηιмє тσ ƒєєℓ вєттєя_
+  
+    *ησтє: αℓℓ αяяσяѕ αяє ƒιχє∂ ¢σηтα¢т σωηєя ƒσя мσяє ιηƒσ*`;
   conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/yvf7h8.png` }, caption: up })
   }
   })
