@@ -1,7 +1,7 @@
 {
   "name": "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
   "description": "ᴡʜᴀᴛsᴀᴘᴘ ʙᴏᴛ ʙʏ ʟᴏʀ ᴊᴏᴇʟ",
-  "logo": "https://files.catbox.moe/5a2euh.jpg",
+  "logo": "https://files.catbox.moe/sgld88.jpg",
   "keywords": ["bot"],
   "success_url": "/",
 
@@ -46,9 +46,9 @@
     }, 
 
     "READ_MESSAGE": {
-      "description": "make it true  to read mwssages",
+      "description": "make it true  to read messages",
       "required": false,
-      "value": "true"
+      "value": "false"
     }, 
 
     "ANTI_VV": {
