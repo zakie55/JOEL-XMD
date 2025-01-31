@@ -27,38 +27,7 @@ menu[commands[i].category] += `*┋* ${commands[i].pattern}\n`;
 
 let madeMenu = ` ʜᴇʟʟᴏ ${pushname} ʜᴀᴠᴇ ᴀ ɴɪᴄᴇ ᴅᴀʏ
 
-${menu.download}
-
-
-
-${menu.main}
-
-
-${menu.group}
-
-${menu.owner}
-
-
-
-${menu.convert}
-
-
-
-${menu.search}
-
-
-${menu.random}
-
-${menu.converter}
-
-${menu.ai}
-
-${menu.wallpaper}
-
-${menu.info}
-
-${menu.other}
-
+${cmd}
 
 `
 
