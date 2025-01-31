@@ -18,7 +18,7 @@ module.exports = {
     AUTO_STICKER: process.env.AUTO_STICKER || "true",
     AUTO_REPLY: process.env.AUTO_REPLY || "true",
     OWNER_IMG: process.env.OWNER_IMG || "https://files.catbox.moe/yvf7h8.png",
-    ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/yvf7h8.png",
+    ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/sgld88.jpg",
     ALIVE_MSG: process.env.ALIVE_MSG || "*ɪ'ᴍ ᴀʟᴡᴀʏs ᴏɴʟɪɴᴇ ᴍᴏᴛʜᴇʀғᴜᴄᴋᴇʀ*",
     ANTI_LINK: process.env.ANTI_LINK || "true",
     ANTI_BAD: process.env.ANTI_BAD || "true",
