@@ -7,3 +7,4 @@ function convertToBool(text, fault = 'true') {
 
 module.exports = {
     OWNER_IMG: process.env.OWNER_IMG || "https://files.catbox.moe/yvf7h8.png",
+    
