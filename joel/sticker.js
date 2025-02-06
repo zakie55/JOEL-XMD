@@ -31,7 +31,7 @@ cmd({
 
             let sticker = new Sticker(nameJpg, {
                 pack: pushname, // The pack name
-                author: '', // The author name
+                author: 'joel xmd', // The author name
                 type: q.includes('--crop') || q.includes('-c') ? StickerTypes.CROPPED : StickerTypes.FULL,
                 categories: ['🤩', '🎉'], // The sticker category
                 id: '12345', // The sticker id
