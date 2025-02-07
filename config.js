@@ -17,6 +17,7 @@ module.exports = {
     AUTO_VOICE: process.env.AUTO_VOICE || "true",
     AUTO_STICKER: process.env.AUTO_STICKER || "true",
     AUTO_REPLY: process.env.AUTO_REPLY || "true",
+    OWNER_NAME: process.env.OWNER_NAME || "yoel tech",
     OWNER_IMG: process.env.OWNER_IMG || "https://files.catbox.moe/yvf7h8.png",
     ALIVE_IMG: process.env.ALIVE_IMG || "https://files.catbox.moe/sgld88.jpg",
     ALIVE_MSG: process.env.ALIVE_MSG || "*ɪ'ᴍ ᴀʟᴡᴀʏs ᴏɴʟɪɴᴇ ᴍᴏᴛʜᴇʀғᴜᴄᴋᴇʀ*",
