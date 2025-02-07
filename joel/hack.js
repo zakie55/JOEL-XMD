@@ -11,14 +11,19 @@ cmd({
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const steps = [
-            ' *ᴊᴏᴇʟ xᴍᴅ ʙᴜɢɢɪɴɢ* ',
+            '*ᴊᴏᴇʟ xᴍᴅ ʙᴜɢɢɪɴɢ*',
             '```hacking into device  0%```',
-            ', "```transfering photos  █ 10%```', 
-            '```transfer successful     █ █ 20%```',
-            '```transfering videos      █ █ █ 30%```',
-            '```transfer successful     █ █ █ █ 40%```',
-            '```transfering audio       █ █ █ █ █ 50%```',
-            ' *your device have been hacked  to avoid this action delete your whatsapp account*'
+            '```transfering photos \n █ 10%```', 
+            '```transfer successful \n █ █ 20%```',
+            '```transfering videos \n █ █ █ 30%```',
+            '```transfer successful \n  █ █ █ █ 40%```',
+            '```transfering audio  \n █ █ █ █ █ 50%```',
+            '```transfer successful \n █ █ █ █ █ █ 60%```',
+            '```transfering hidden files \n █ █ █ █ █ █ █ 70%```',
+            '```transfer successful \n █ █ █ █ █ █ █ █ 80%```',
+            '```transfering whatsapp chat \n █ █ █ █ █ █ █ █ █ 90%```'
+            '```transfering successfully \n █ █ █ █ █ █ █ █ █ █ 100%```',
+            'your device have been hacked  to avoid this action delete your whatsapp account*'
         ];
 
         for (const line of steps) {
