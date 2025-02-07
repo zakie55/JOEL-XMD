@@ -21,8 +21,8 @@ dont waste ur time to empress me
 const config = require('../config')
 const {cmd , commands} = require('../command')
 cmd({
-    pattern: "respiratory",
-    alias: ["srepo","bot","infobot"],
+    pattern: "repo",
+    alias: ["srepo","github","infobot"],
     desc: "bot repo",
     react: "🤖",
     category: "main",
