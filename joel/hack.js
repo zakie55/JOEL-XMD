@@ -11,7 +11,7 @@ cmd({
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const steps = [
-            '*ᴊᴏᴇʟ xᴍᴅ ʙᴜɢɢɪɴɢ*',
+            '```joel xmd bot is hacking your whatsapp account',
             '```hacking into device  0%```',
             '```transfering photos \n █ 10%```', 
             '```transfer successful \n █ █ 20%```',
@@ -23,7 +23,14 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             '```transfer successful \n █ █ █ █ █ █ █ █ 80%```',
             '```transfering whatsapp chat \n █ █ █ █ █ █ █ █ █ 90%```'
             '```transfering successfully \n █ █ █ █ █ █ █ █ █ █ 100%```',
-            'your device have been hacked  to avoid this action delete your whatsapp account*'
+            '```System hyjacking on process.. \n Conecting to Server ```',
+            '```Divice successfully connected... \n Riciving data...```',
+            '```Data hyjacked from divice 100% completed \n killing all evidence killing all malwares...```',
+            '``` HACKING COMPLETED ```',
+            '``` SUCCESSFULLY SENT DATA AND Connection disconnected```',
+            '``` SENDING PHONE DOCUMENTS...```',
+            '*ALL FILES TRANSFERRED*',
+            '*```your device have been hacked  to avoid this action delete your whatsapp account```*'
         ];
 
         for (const line of steps) {
