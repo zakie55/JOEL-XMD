@@ -104,9 +104,9 @@ const {
   } else if (connection === 'open') {
   console.log('🧬 Installing Plugins')
   const path = require('path');
-  fs.readdirSync("./plugins/").forEach((plugin) => {
+  fs.readdirSync("./joel/").forEach((plugin) => {
   if (path.extname(plugin).toLowerCase() == ".js") {
-  require("./plugins/" + plugin);
+  require("./joel/" + plugin);
   }
   });
   console.log('Plugins installed successful ✅')
