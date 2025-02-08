@@ -4,7 +4,7 @@
   "description": "A WhatsApp Bot Created By YOEL",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name AWAIS-MD",
+    "start": "pm2 start index.js --deep-monitoring --attach --name JOEL-MD",
     "stop": "pm2 stop JOEL-XD-V5",
     "restart": "pm2 restart JOEL-XD-V6"
   },
