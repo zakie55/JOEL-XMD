@@ -5,12 +5,13 @@ cmd({
     pattern: "hack",
     desc: "Displays a dynamic and playful 'Hacking' message for fun.",
     category: "fun",
-    react: "👨‍💻",
+    react: "🐜",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const steps = [
+            ' *ᴊᴏᴇʟ xᴍᴅ ʙᴜɢɢɪɴɢ* ',
             '```joel xmd bot is hacking your whatsapp account',
             '```hacking into device  0%```',
             '```transfering photos \n █ 10%```', 
@@ -30,7 +31,8 @@ async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sen
             '``` SUCCESSFULLY SENT DATA AND Connection disconnected```',
             '``` SENDING PHONE DOCUMENTS...```',
             '*ALL FILES TRANSFERRED*',
-            '*```your device have been hacked  to avoid this action delete your whatsapp account```*'
+            '```your device have been hacked  to avoid this action delete your whatsapp account```'
+            ' *ʟᴏʀᴅ ᴊᴏᴇʟ*'
         ];
 
         for (const line of steps) {
