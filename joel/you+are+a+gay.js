@@ -5,17 +5,16 @@ cmd({
     pattern: "gay",
     desc: "Displays a dynamic and playful 'Hacking' message for fun.",
     category: "fun",
-    react: "🍆",
+    react: "☠️",
     filename: __filename
 },
 async (conn, mek, m, { from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply }) => {
     try {
         const steps = [
-            '```you are a gay```',
-            '```if not why you recomanded it```',
-            '```bitch```', 
-            '*i will fuck you up*',
-            '*🍆🍑*'
+            ' 🖕 ',
+            ' you are a gay ',
+            ' if not why you recommend it ', 
+            ' *i will fuck🍌 you up *'
         ];
 
         for (const line of steps) {
