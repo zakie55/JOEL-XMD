@@ -1,7 +1,7 @@
 import setEnvCommand from '../setvar.js';
 import config from '../../config.cjs';
-const sudoContact = async (m, gss) => {
-    const sudonumber = config.SUDO_NUMBER;
+const ownerContact = async (m, gss) => {
+    const ownernumber = config.SUDO_NUMBER;
     const prefixMatch = m.body.match(/^[\\/!#.]/);
     const prefix = prefixMatch ? prefixMatch[0] : '/';
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
@@ -9,7 +9,7 @@ const sudoContact = async (m, gss) => {
 
     if (cmd === 'sudo') {
         try {
-            await gss.sendContact(m.from, [sudonumber], m);
+            await gss.sendContact(m.from, [ownernumber], m);
             await m.React("😁");
         } catch (error) {
             console.error('Error sending owner contact:', error);
