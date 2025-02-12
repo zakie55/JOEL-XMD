@@ -40013,7 +40013,10 @@ export default async function GroupParticipants(sock, { id, participants, action
                     const joinDate = moment.tz('Asia/Tanzania').format('DD/MM/YYYY');
                     const membersCount = metadata.participants.length;
             sock.sendMessage(id, {
-               text: `> Hello @${userName}! Welcome to *${metadata.subject}*.\n> You are the ${membersCount}th member.\n> Joined at: ${joinTime} on ${joinDate}
+               text: `╭───────────────━⊷
+║ ᴊᴏᴇʟ xᴍᴅ ᴡᴇʟᴄᴏᴍᴇ ᴍᴇɴᴜ ᴍᴇɴᴜ
+╰───────────────━⊷
+> Hello @${userName}! Welcome to *${metadata.subject}*.\n> You are the ${membersCount}th member.\n> Joined at: ${joinTime} on ${joinDate}
 "`, contextInfo: {
                   mentionedJid: [jid],
                   externalAdReply: {
@@ -40022,7 +40025,7 @@ export default async function GroupParticipants(sock, { id, participants, action
                      previewType: 0,
                      renderLargerThumbnail: true,
                      thumbnailUrl: metadata.subject,
-                     sourceUrl: 'https://files.catbox.moe/5a2euh.jpg'
+                     sourceUrl: 'github.com/joeljamestech2/joel-xmd'
                   }
                }
             })
@@ -40043,7 +40046,7 @@ export default async function GroupParticipants(sock, { id, participants, action
                      previewType: 0,
                      renderLargerThumbnail: true,
                      thumbnailUrl: profile,
-                     sourceUrl: 'https://files.catbox.moe/5a2euh.jpg'
+                     sourceUrl: 'https://github.com/joeljamestech2/JOEL-XMD'
                   }
                }
             })
