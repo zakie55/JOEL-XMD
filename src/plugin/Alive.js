@@ -1,110 +1,88 @@
-import fs from 'fs';
+import ytdl from 'ytdl-core';
+import yts from 'yt-search';
 
-// Function to get the uptime in a human-readable format
-const getUptime = () => {
-  const uptimeSeconds = process.uptime();
-  const days = Math.floor(uptimeSeconds / (24 * 3600));
-  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
-  const minutes = Math.floor((uptimeSeconds % 3600) / 60);
-  const seconds = Math.floor(uptimeSeconds % 60);
-
-  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
-};
-
-// Helper function to get the platform name
-const getPlatformName = () => {
-  const platform = process.platform;
-  if (platform === 'darwin') return 'macOS';
-  if (platform === 'win32') return 'Windows';
-  if (platform === 'linux') {
-    // Check for specific Linux distros
-    if (fs.existsSync('/etc/heroku-release')) return 'Heroku';
-    if (fs.existsSync('/etc/koyeb-release')) return 'Koyeb';
-    if (fs.existsSync('/etc/render-release')) return 'Render';
-    return 'Linux';
-  }
-  return 'Unknown';
-};
-
-
-// Letter-by-letter typewriter effect function
-const typeWriterEffect = async (m, Matrix, key, message) => {
-  const typingSpeed = 100; // Speed in milliseconds
-  let i = 0;
-
-  const typewriterInterval = setInterval(async () => {
-    if (i < message.length) {
-      const typedText = message.slice(0, i + 1);
-      await Matrix.relayMessage(m.from, {
-        protocolMessage: {
-          key: key,
-          type: 14,
-          editedMessage: {
-            conversation: typedText,
-          },
-        },
-      }, {});
-      i++;
-    } else {
-      clearInterval(typewriterInterval);
-    }
-  }, typingSpeed);
-};
-
-// Main command function
-const serverStatusCommand = async (m, Matrix) => {
+const video = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (['aliv', 'uptim', 'runtim'].includes(cmd)) {
-    const uptime = getUptime();
-    const platform = getPlatformName();
+  const validCommands = ['video', 'ytmp4', 'vid'];
+
+   if (validCommands.includes(cmd)) {
+    if (!text) return m.reply('Give a YouTube URL or search query.');
 
     try {
-      const loadingMessages = [
-        "*「▰▰▰▱▱▱▱▱▱▱」*",
-        "*「▰▰▰▰▱▱▱▱▱▱」*",
-        "*「▰▰▰▰▰▱▱▱▱▱」*",
-        "*「▰▰▰▰▰▰▱▱▱▱」*",
-        "*「▰▰▰▰▰▰▰▱▱▱」*",
-        "*「▰▰▰▰▰▰▰▰▱▱」*",
-        "*「▰▰▰▰▰▰▰▰▰▱」*",
-        "*「▰▰▰▰▰▰▰▰▰▰」*",
-      ];
+      await m.React("🎊");
 
-      const loadingMessageCount = loadingMessages.length;
-      let currentMessageIndex = 0;
+      // Check if the input is a valid YouTube URL
+      const isUrl = ytdl.validateURL(text);
+      await m.React("👻");
+      
+      if (isUrl) {
+        // If it's a URL, directly use ytdl-core for audio and video
+        const videoStream = ytdl(text, { filter: 'audioandvideo', quality: 'highest' });
 
-      const { key } = await Matrix.sendMessage(m.from, { text: loadingMessages[currentMessageIndex] }, { quoted: m });
+        const videoBuffer = [];
 
-      const loadingInterval = setInterval(() => {
-        currentMessageIndex = (currentMessageIndex + 1) % loadingMessageCount;
-        Matrix.relayMessage(m.from, {
-          protocolMessage: {
-            key: key,
-            type: 14,
-            editedMessage: {
-              conversation: loadingMessages[currentMessageIndex],
-            },
-          },
-        }, {});
-      }, 500);
+        videoStream.on('data', (chunk) => {
+          videoBuffer.push(chunk);
+        });
 
+        videoStream.on('end', async () => {
+          try {
+            const finalVideoBuffer = Buffer.concat(videoBuffer);
 
-      await new Promise(resolve => setTimeout(resolve, 4000));
+            const videoInfo = await yts({ videoId: ytdl.getURLVideoID(text) });
+    
+            await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: 'powered by joel' }, { quoted: m });
+            await m.React("🇮🇳");
+          } catch (err) {
+            console.error('Error sending video:', err);
+            m.reply('Error sending video.');
+            await m.React("🙆‍♂️");
+          }
+        });
+      } else {
+        // If it's a search query, use yt-search for video
+        const searchResult = await yts(text);
+        const firstVideo = searchResult.videos[0];
+        await m.React("🎊");
 
-      clearInterval(loadingInterval);
+        if (!firstVideo) {
+          m.reply('Video not found.');
+          await m.React("🙆‍♂️");
+          return;
+        }
 
-      // Create the status message
-      const statusMessage = `_MASTER-MIND-V3_\n\n📅 Uptime: ${uptime}\n🖥 Platform: ${platform}\n\n> © Powered by 𓄂𐎓🐼мαѕтєя мιη∂ 𒐕꯭꯭𒐕꯭꯭ν3•┼⃖🐬`;
+        const videoStream = ytdl(firstVideo.url, { filter: 'audioandvideo', quality: 'highest' });
 
-      await typeWriterEffect(m, Matrix, key, statusMessage);
+        const videoBuffer = [];
+
+        videoStream.on('data', (chunk) => {
+          videoBuffer.push(chunk);
+        });
+
+        videoStream.on('end', async () => {
+          try {
+            const finalVideoBuffer = Buffer.concat(videoBuffer);
+          
+            await Matrix.sendMessage(m.from, { video: finalVideoBuffer, mimetype: 'video/mp4', caption: '*powered by  Joel*' }, { quoted: m });
+            await m.React("🇮🇳");
+          } catch (err) {
+            console.error('Error sending video:', err);
+            m.reply('Error sending video.');
+            await m.React("🙆‍♂️");
+          }
+        });
+      }
     } catch (error) {
-      console.error("Error processing your request:", error);
-      await Matrix.sendMessage(m.from, { text: 'Error processing your request.' }, { quoted: m });
+      console.error("Error generating response:", error);
+      m.reply('An error occurred while processing your request.');
+      await m.React("❌");
     }
   }
 };
 
-export default serverStatusCommand;
+export default video;
+    
