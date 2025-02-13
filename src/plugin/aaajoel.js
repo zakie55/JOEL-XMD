@@ -184,30 +184,6 @@ if (time2 < "05:00:00") {
 
 *❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
    await conn.sendMessage(from,{image:{url: `https://i.ibb.co/d4GxTgKf/temp-image.jpg`},caption:dec},{quoted:mek});
-
-    await m.React('✅'); // React with a success icon
-
-    sock.sendMessage(
-      m.from,
-      {
-        text: aliveMessage,
-        contextInfo: {
-          isForwarded: false,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            thumbnailUrl: 'https://files.catbox.moe/s1q8so.jpeg', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
       },
       { quoted: m }
     );
