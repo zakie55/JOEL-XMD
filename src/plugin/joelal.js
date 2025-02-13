@@ -98,8 +98,8 @@ const serverStatusCommand = async (m, Matrix) => {
       clearInterval(loadingInterval);
 
       // Create the status message
-      const statusMessage = `╭───────────────━⊷\n║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ\n╰───────────────━⊷\n╭───────────────━⊷\n║*ɴᴀᴍᴇ:* ᴊᴏᴇʟ-xᴍᴅ\n║*ᴛᴏᴛᴀʟ sᴛᴀʀs:*  ${uptime}\n║*ᴛᴏᴛᴀʟ ғᴏʀᴋs:* ${platform}\n║ *ᴏᴡɴᴇʀ:* ʟᴏʀᴅ ᴊᴏᴇʟ
-╰───────────────━⊷\n╭───────────────━⊷\n║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ\n║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C\n╰───────────────━⊷`;
+      const statusMessage = `╭───────────────━⊷\n║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ\n╰───────────────━⊷\n╭───────────────━⊷\n║*ɴᴀᴍᴇ:* ᴊᴏᴇʟ-xᴍᴅ\n║*ᴜᴘᴛɪᴍᴇ:*  ${uptime}\n║*ᴄʜʀᴏᴍᴇ:* ${platform}\n║ *ᴏᴡɴᴇʀ:* ʟᴏʀᴅ ᴊᴏᴇʟ
+╰───────────────━⊷\n╭───────────────━⊷\n║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ\n║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C\n╰───────────────━⊷\n\nρσωєяє∂ ву ℓσя∂ ʝσєℓ`;
 
       await typeWriterEffect(m, Matrix, key, statusMessage);
     } catch (error) {
