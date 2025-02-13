@@ -20010,7 +20010,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
     const end = new Date().getTime();
     const responseTime = (end - start) / 1000;
 
-    const text = `*Pong ${responseTime.toFixed(2)} ms* 🎈`;
+    const text = `*Pong 0.${responseTime.toFixed(2)} ms*📍`;
     sock.sendMessage(m.from, { text }, { quoted: m });
   }
 }
