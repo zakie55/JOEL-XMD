@@ -35,23 +35,6 @@ const alive = async (m, Matrix) => {
 ╰❑
 `;
     
-    const buttons = [
-      {
-        "name": "quick_reply",
-        "buttonParamsJson": JSON.stringify({
-          display_text: "MENU",
-          id: `${prefix}menu`
-        })
-      },
-      {
-        "name": "quick_reply",
-        "buttonParamsJson": JSON.stringify({
-          display_text: "PING",
-          id: `${prefix}ping`
-        })
-      }
-    ];
-
     const msg = generateWAMessageFromContent(m.from, {
       viewOnceMessage: {
         message: {
