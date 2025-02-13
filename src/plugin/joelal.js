@@ -1,83 +1,112 @@
-import config from '../../config.cjs';
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-import Jimp from 'jimp';
-const { generateWAMessageFromContent, proto } = pkg;
+import fs from 'fs';
 
-const alive = async (m, Matrix) => {
+// Function to get the uptime in a human-readable format
+const getUptime = () => {
   const uptimeSeconds = process.uptime();
-  const days = Math.floor(uptimeSeconds / (3600 * 24));
-  const hours = Math.floor((uptimeSeconds % (3600 * 24)) / 3600);
+  const days = Math.floor(uptimeSeconds / (24 * 3600));
+  const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
   const minutes = Math.floor((uptimeSeconds % 3600) / 60);
   const seconds = Math.floor(uptimeSeconds % 60);
-  const timeString = `${String(days).padStart(2, '0')}-${String(hours).padStart(2, '0')}-${String(minutes).padStart(2, '0')}-${String(seconds).padStart(2, '0')}`;
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (['alive', 'uptime', 'runtime'].includes(cmd)) {
-    const width = 800;
-    const height = 500;
-    const image = new Jimp(width, height, 'yellow');
-    const font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
-    const textMetrics = Jimp.measureText(font, timeString);
-    const textHeight = Jimp.measureTextHeight(font, timeString, width);
-    const x = (width / 2) - (textMetrics / 2);
-    const y = (height / 2) - (textHeight / 2);
-    image.print(font, x, y, timeString, width, Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE);
-    const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
-    
-    const uptimeMessage = `*𝙹𝙾𝚎𝚕 𝙼𝙳 𝙸𝚂 𝙾𝙽𝙻𝙸𝙽𝙴*
-╭❐
-┇ *${days} Day(s)*
-┇ *${hours} Hour(s)*
-┇ *${minutes} Minute(s)*
-┇ *${seconds} Second(s)*
-╰❑
-`;
-    
-    const msg = generateWAMessageFromContent(m.from, {
-      viewOnceMessage: {
-        message: {
-          messageContextInfo: {
-            deviceListMetadata: {},
-            deviceListMetadataVersion: 2
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+};
+
+// Helper function to get the platform name
+const getPlatformName = () => {
+  const platform = process.platform;
+  if (platform === 'darwin') return 'macOS';
+  if (platform === 'win32') return 'Windows';
+  if (platform === 'linux') {
+    // Check for specific Linux distros
+    if (fs.existsSync('/etc/heroku-release')) return 'Heroku';
+    if (fs.existsSync('/etc/koyeb-release')) return 'Koyeb';
+    if (fs.existsSync('/etc/render-release')) return 'Render';
+    return 'Linux';
+  }
+  return 'Unknown';
+};
+
+
+// Letter-by-letter typewriter effect function
+const typeWriterEffect = async (m, Matrix, key, message) => {
+  const typingSpeed = 100; // Speed in milliseconds
+  let i = 0;
+
+  const typewriterInterval = setInterval(async () => {
+    if (i < message.length) {
+      const typedText = message.slice(0, i + 1);
+      await Matrix.relayMessage(m.from, {
+        protocolMessage: {
+          key: key,
+          type: 14,
+          editedMessage: {
+            conversation: typedText,
           },
-          interactiveMessage: proto.Message.InteractiveMessage.create({
-            body: proto.Message.InteractiveMessage.Body.create({
-              text: uptimeMessage
-            }),
-            footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝙹𝙾𝚎𝚕 𝚔𝚊𝚗𝚐'𝚘𝚖𝚊"
-            }),
-            header: proto.Message.InteractiveMessage.Header.create({
-              ...(await prepareWAMessageMedia({ image: buffer }, { upload: Matrix.waUploadToServer })),
-              title: ``,
-              gifPlayback: false,
-              subtitle: "",
-              hasMediaAttachment: false
-            }),
-            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-              buttons
-            }),
-            contextInfo: {
-              quotedMessage: m.message,
-              forwardingScore: 999,
-              isForwarded: true,
-              forwardedNewsletterMessageInfo: {
-                newsletterJid: '255714595078@s.whatsapp.net',
-                newsletterName: "JOel",
-                serverMessageId: 143
-              }
-            }
-          }),
         },
-      },
-    }, {});
+      }, {});
+      i++;
+    } else {
+      clearInterval(typewriterInterval);
+    }
+  }, typingSpeed);
+};
 
-    await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-      messageId: msg.key.id
-    });
+// Main command function
+const serverStatusCommand = async (m, Matrix) => {
+  const prefixMatch = m.body.match(/^[\\/!#.]/);
+  const prefix = prefixMatch ? prefixMatch[0] : '/';
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+
+  if (['aliv', 'uptim', 'runtim'].includes(cmd)) {
+    const uptime = getUptime();
+    const platform = getPlatformName();
+
+    try {
+      const loadingMessages = [
+        "*「▰▰▰▱▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▰」*",
+        "*「 joel  xd  v3 by joel」*",
+      ];
+
+      const loadingMessageCount = loadingMessages.length;
+      let currentMessageIndex = 0;
+
+      const { key } = await Matrix.sendMessage(m.from, { text: loadingMessages[currentMessageIndex] }, { quoted: m });
+
+      const loadingInterval = setInterval(() => {
+        currentMessageIndex = (currentMessageIndex + 1) % loadingMessageCount;
+        Matrix.relayMessage(m.from, {
+          protocolMessage: {
+            key: key,
+            type: 14,
+            editedMessage: {
+              conversation: loadingMessages[currentMessageIndex],
+            },
+          },
+        }, {});
+      }, 500);
+
+
+      await new Promise(resolve => setTimeout(resolve, 4000));
+
+      clearInterval(loadingInterval);
+
+      // Create the status message
+      const statusMessage = `╭───────────────━⊷\nn║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ\n\n╰───────────────━⊷\n╭───────────────━⊷\n║*ɴᴀᴍᴇ:* ᴊᴏᴇʟ-xᴍᴅ\n\n║*ᴛᴏᴛᴀʟ sᴛᴀʀs:*  ${uptime}\n║*ᴛᴏᴛᴀʟ ғᴏʀᴋs:* ${platform}\n\n║ *ᴏᴡɴᴇʀ:* ʟᴏʀᴅ ᴊᴏᴇʟ
+╰───────────────━⊷\n╭───────────────━⊷\n║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ\n\n║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C\n\n╰───────────────━⊷`;
+
+      await typeWriterEffect(m, Matrix, key, statusMessage);
+    } catch (error) {
+      console.error("Error processing your request:", error);
+      await Matrix.sendMessage(m.from, { text: 'Error processing your request.' }, { quoted: m });
+    }
   }
 };
 
-export default alive;
+export default serverStatusCommand;
