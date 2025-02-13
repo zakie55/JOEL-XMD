@@ -9,7 +9,7 @@ const imageCommand = async (m, sock) => {
 const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 const query = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['ranime', 'anime', 'imganime'];
+  const validCommands = ['animegirl', 'animegirl1', 'animegirl2'];
 
   if (validCommands.includes(cmd)) {
   
@@ -29,7 +29,7 @@ const query = m.body.slice(prefix.length + cmd.length).trim();
       const images = [];
 
       for (let i = 0; i < numberOfImages; i++) {
-        const endpoint = `https://api.jikan.moe/v4/random/anime`;
+        const endpoint = `https://api.waifu.pics/sfw/waifu`;
         const response = await axios.get(endpoint, { responseType: 'arraybuffer' });
 
         if (response.status === 200) {
@@ -42,7 +42,7 @@ const query = m.body.slice(prefix.length + cmd.length).trim();
 
       for (let i = 0; i < images.length; i++) {
         await sleep(500);
-        await sock.sendMessage(m.from, { image: images[i], caption: '' }, { quoted: m });
+        await sock.sendMessage(m.from, { image: images[i], caption: '```random animegirl images by lord joel```' }, { quoted: m });
       }
       await m.React("✅");
     } catch (error) {
