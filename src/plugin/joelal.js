@@ -57,7 +57,7 @@ const serverStatusCommand = async (m, Matrix) => {
   const prefix = prefixMatch ? prefixMatch[0] : '/';
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  if (['aliv', 'uptim', 'runtim'].includes(cmd)) {
+  if (['alive', 'uptime', 'runtime'].includes(cmd)) {
     const uptime = getUptime();
     const platform = getPlatformName();
 
@@ -98,8 +98,8 @@ const serverStatusCommand = async (m, Matrix) => {
       clearInterval(loadingInterval);
 
       // Create the status message
-      const statusMessage = `╭───────────────━⊷\nn║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ\n\n╰───────────────━⊷\n╭───────────────━⊷\n║*ɴᴀᴍᴇ:* ᴊᴏᴇʟ-xᴍᴅ\n\n║*ᴛᴏᴛᴀʟ sᴛᴀʀs:*  ${uptime}\n║*ᴛᴏᴛᴀʟ ғᴏʀᴋs:* ${platform}\n\n║ *ᴏᴡɴᴇʀ:* ʟᴏʀᴅ ᴊᴏᴇʟ
-╰───────────────━⊷\n╭───────────────━⊷\n║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ\n\n║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C\n\n╰───────────────━⊷`;
+      const statusMessage = `╭───────────────━⊷\n║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ\n╰───────────────━⊷\n╭───────────────━⊷\n║*ɴᴀᴍᴇ:* ᴊᴏᴇʟ-xᴍᴅ\n║*ᴛᴏᴛᴀʟ sᴛᴀʀs:*  ${uptime}\n║*ᴛᴏᴛᴀʟ ғᴏʀᴋs:* ${platform}\n║ *ᴏᴡɴᴇʀ:* ʟᴏʀᴅ ᴊᴏᴇʟ
+╰───────────────━⊷\n╭───────────────━⊷\n║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ\n║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C\n╰───────────────━⊷`;
 
       await typeWriterEffect(m, Matrix, key, statusMessage);
     } catch (error) {
