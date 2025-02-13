@@ -26,10 +26,10 @@ const alive = async (m, sock) => {
 
     
     // Get real time
-    const realTime = moment().tz("Africa/Tanzania").format("HH:mm:ss");
-    const xtime = moment.tz("Africa/Tanzania").format("HH:mm:ss");
-    const xdate = moment.tz("Africa/Tanzania").format("DD/MM/YYYY");
-    const time2 = moment().tz("Africa/Tanzania").format("HH:mm:ss");
+    const realTime = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xtime = moment.tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xdate = moment.tz("Tanzania/Dodoma").format("DD/MM/YYYY");
+    const time2 = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
 let pushwish = "";
 
 if (time2 < "05:00:00") {
@@ -184,7 +184,7 @@ if (time2 < "05:00:00") {
 
 *❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
 
-    await m.React('✅'); // React with a success icon
+    await m.React('☄️'); // React with a success icon
 
     sock.sendMessage(
       m.from,
