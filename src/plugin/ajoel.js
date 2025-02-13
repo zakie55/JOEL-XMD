@@ -26,10 +26,10 @@ const alive = async (m, sock) => {
 
     
     // Get real time
-    const realTime = moment().tz("Asia/Karachi").format("HH:mm:ss");
-    const xtime = moment.tz("Asia/Karachi").format("HH:mm:ss");
-    const xdate = moment.tz("Asia/Karachi").format("DD/MM/YYYY");
-    const time2 = moment().tz("Asia/Karachi").format("HH:mm:ss");
+    const realTime = moment().tz("Africa/Tanzania").format("HH:mm:ss");
+    const xtime = moment.tz("Africa/Tanzania").format("HH:mm:ss");
+    const xdate = moment.tz("Africa/Tanzania").format("DD/MM/YYYY");
+    const time2 = moment().tz("Africa/Tanzania").format("HH:mm:ss");
 let pushwish = "";
 
 if (time2 < "05:00:00") {
@@ -52,15 +52,14 @@ if (time2 < "05:00:00") {
 ║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ  ᴍᴇɴᴜ
 ╰───────────────━⊷
 ╭───────────────━⊷
-║ *ηαмє:* ʝσєℓ χ∂ v³ вσт
+║ *ηαмє:* *ʝσєℓ χ∂ v³ вσт*
 ║ *ρяєƒιχ:*  *${prefix}*
 ║ *мσ∂є:*  *${mode}*
 ║ *тιмє:*  *${realTime}*
 ║ *σωηєя:*  *ℓσя∂ ʝσєℓ*
 ╰───────────────━⊷
 ╭───────────────━⊷
-║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ
-║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C
+║   *ʝσєℓ χ∂ ν тняєє*
 ╰───────────────━⊷
 *❑━❒ʝσєℓ χ∂ ν тняєє❑━❒*
 
