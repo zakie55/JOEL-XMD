@@ -17,7 +17,7 @@ const whatsappApkSearchCommand = async (m, gss) => {
     if (!searchQuery) {
       await gss.sendMessage(
         m.from,
-        { text: "❌ Please provide a search query after the command." },
+        { text: "Please provide a search query after the command." },
         { quoted: m }
       );
       return;
@@ -31,7 +31,7 @@ const whatsappApkSearchCommand = async (m, gss) => {
       const apiData = response.data;
 
       if (apiData.status && apiData.result.data.length > 0) {
-        let message = `*🔍 Search Results for WhatsApp APKs:* ${searchQuery}\n\n`;
+        let message = `*Search Results for WhatsApp APKs:* ${searchQuery}\n\n`;
 
         // Loop through the results and format them
         apiData.result.data.forEach((item, index) => {
@@ -45,7 +45,7 @@ const whatsappApkSearchCommand = async (m, gss) => {
       } else {
         await gss.sendMessage(
           m.from,
-          { text: "❌ No APK results found for your search query." },
+          { text: "No APK results found for your search query." },
           { quoted: m }
         );
       }
@@ -53,7 +53,7 @@ const whatsappApkSearchCommand = async (m, gss) => {
       console.error("WhatsApp APK Search Command Error:", error);
       await gss.sendMessage(
         m.from,
-        { text: "❌ An error occurred while processing the WhatsApp APK search command. Please try again later." },
+        { text: "An error occurred while processing the WhatsApp APK search command. Please try again later." },
         { quoted: m }
       );
     }
@@ -62,5 +62,5 @@ const whatsappApkSearchCommand = async (m, gss) => {
 
 export default whatsappApkSearchCommand;
 
-// POWERED BY BANDAHEALI
+// stop copping my codes mother fucker
   
