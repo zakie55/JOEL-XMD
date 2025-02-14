@@ -38,7 +38,7 @@ const apkDownloadCommand = async (m, gss) => {
           m.from,
           {
             text: `*📱 App Name*: ${app.name}\n*📅 Last Update*: ${app.lastUpdate}\n*📦 Package ID*: ${app.package}\n*📏 Size*: ${app.size}\n\n🔗 [Download APK Here](${app.dl_link})\n\n🕹️ Enjoy!`,
-            caption: app.image,
+            caption: app.name,
           },
           { quoted: m }
         );
@@ -54,7 +54,7 @@ const apkDownloadCommand = async (m, gss) => {
       console.error("APK Download Command Error:", error);
       await gss.sendMessage(
         m.from,
-        { text: "An error occurred while processing the APK download command. Please try again later." },
+        { text: "please select apk by lord joel." },
         { quoted: m }
       );
     }
