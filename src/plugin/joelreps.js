@@ -26,9 +26,33 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 ║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ
 ║ ʀᴇᴘᴏ ʟɪɴᴋ: https://shorturl.at/MV98C
 ╰───────────────━⊷
- *ᴍᴀᴅᴇ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`;
-    sock.sendMessage(m.from, { text }, { quoted: m });
-  }
-}
+ *ᴍᴀᴅᴇ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`,
 
+             contextInfo: {
+
+              externalAdReply: {
+
+              title: "ᴊᴏᴇʟ xᴅ ᴠ⁷",
+
+              body: "ωнαтѕαρρ ¢нαηηєℓ ѕтαℓкєя",
+
+              sourceUrl: "https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l",
+
+              mediaType: 1,
+
+            },
+
+          },
+
+        },
+
+        { quoted: m }
+
+      );
+
+    }
+
+  }
+
+};
 export default ping;
