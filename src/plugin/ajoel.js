@@ -218,9 +218,9 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            thumbnailUrl: 'metadata.subject', // Add thumbnail URL if required
+            thumbnailUrl: 'profile', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
-            mediaType: 0,
+            mediaType: 1,
             renderLargerThumbnail: true,
           },
         },
