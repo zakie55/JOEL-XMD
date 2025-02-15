@@ -7,13 +7,13 @@ const quranVideo = async (m, gss) => {
   const validCommands = ['waifu', 'wf', 'waifupic'];
 
   if (validCommands.includes(cmd)) {
-    const videoUrl = `https://api.waifu.pics/sfw/waifu`;
+    const videoUrl = `https://api.davidcyriltech.my.id/download/ytmp3?url=${videoUrl}`;
 await m.React('⏳'); // React with a loading icon
     await gss.sendMessage(
       m.from,
       {
         video: { url: videoUrl },
-        caption: `📖 *ᴊᴏᴇʟ xᴅ v⁷* 📖\n\n¢яєαтє∂ ву ℓσя∂ ʝσєℓ`,
+        caption: `*ᴊᴏᴇʟ xᴅ v⁷*\n\n¢яєαтє∂ ву ℓσя∂ ʝσєℓ`,
       },
       { quoted: m }
     );
