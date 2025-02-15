@@ -11,7 +11,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   const validCommands = ['lyrics', 'lyric'];
 
   if (validCommands.includes(cmd)) {
-    if (!text) return m.reply(`Hello *_${m.pushName}_,*\n Here's Example Usage: _.lyrics Spectre|Alan Walker._`);
+    if (!text) return m.reply(`Hello *_${m.pushName}_,*\n Here's Example Usage: _.lyrics Spectule|alan walker._`);
 
     try {
       await m.React('🕘');
@@ -37,7 +37,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
         let buttons = [{
             name: "cta_copy",
             buttonParamsJson: JSON.stringify({
-              display_text: "📋 ᴄᴏᴘʏ ʟʏʀɪᴄs",
+              display_text: "¢σρу ℓуяι¢ѕ",
               id: "copy_code",
               copy_code: lyrics
             })
@@ -45,14 +45,14 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
           {
             name: "cta_url",
             buttonParamsJson: JSON.stringify({
-              display_text: "Support",
-              url: `https://whatsapp.com/channel/0029Vajvy2kEwEjwAKP4SI0x`
+              display_text: "ƒσℓℓσω υѕ",
+              url: `https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K`
             })
           },
           {
             name: "quick_reply",
             buttonParamsJson: JSON.stringify({
-              display_text: "ᴍᴀɪɴ ᴍᴇɴᴜ",
+              display_text: "νιєω мєηυ",
               id: ".menu"
             })
           }
@@ -70,11 +70,11 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
                   text: lyrics
                 }),
                 footer: proto.Message.InteractiveMessage.Footer.create({
-                  text: "> *© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴊᴏᴇʟ*"
+                  text: "> *ρσωєяє∂ ву ℓσя∂ χ ʝσєℓ*"
                 }),
                 header: proto.Message.InteractiveMessage.Header.create({
-                  title: "",
-                  subtitle: "",
+                  title: "ʝσєℓ χ∂ ν⁷",
+                  subtitle: "ℓуяι¢ѕ ƒιη∂єя",
                   hasMediaAttachment: false
                 }),
                 nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
