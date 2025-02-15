@@ -1,4 +1,4 @@
-import config from '../../config.cjs';
+import config from '../../ᴍᴅonfig.cjs';
 
 const ping = async (m, sock) => {
   const prefix = config.PREFIX;
@@ -7,7 +7,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 
   if (cmd === "repo") {
     const start = new Date().getTime();
-    await m.React('📌');
+    await m.React('⚡');
     const end = new Date().getTime();
     const responseTime = (end - start) / 1000;
 
@@ -28,9 +28,9 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 ╰───────────────━⊷
  *ᴍᴀᴅᴇ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`,
 
-             contextInfo: {
+            contextInfo: {
 
-              externalAdReply: {
+            externalAdReply: {
 
               title: "ᴊᴏᴇʟ xᴅ ᴠ⁷",
 
@@ -55,4 +55,9 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   }
 
 };
+    sock.sendMessage(m.from, { text }, { quoted: m });
+  }
+}
+
 export default ping;
+  
