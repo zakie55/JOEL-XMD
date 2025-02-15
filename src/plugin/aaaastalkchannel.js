@@ -22,7 +22,7 @@ const wachannel = async (m, sock) => {
 
         m.from,
 
-        { text: "❌ Please provide a WhatsApp channel URL. Example: *!wachannel https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l*" },
+        { text: "Please provide a WhatsApp channel URL. Example: *!wachannel https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K*" },
 
         { quoted: m }
 
