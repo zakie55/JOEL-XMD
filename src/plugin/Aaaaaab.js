@@ -14,10 +14,10 @@ const alive = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (['alive', 'uptim', 'runtim'].includes(cmd)) {
+  if (['aliv', 'uptim', 'runtim'].includes(cmd)) {
     const width = 800;
     const height = 500;
-    const image = new Jimp(width, height, 'yellow');
+    const image = new Jimp(width, height, 'black');
     const font = await Jimp.loadFont(Jimp.FONT_SANS_128_WHITE);
     const textMetrics = Jimp.measureText(font, timeString);
     const textHeight = Jimp.measureTextHeight(font, timeString, width);
@@ -26,27 +26,27 @@ const alive = async (m, Matrix) => {
     image.print(font, x, y, timeString, width, Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE);
     const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
     
-    const uptimeMessage = `*𝙹𝙾𝚎𝚕 𝙼𝙳 𝙸𝚂 𝙾𝙽𝙻𝙸𝙽𝙴*
-╭❐
-┇ *${days} Day(s)*
-┇ *${hours} Hour(s)*
-┇ *${minutes} Minute(s)*
-┇ *${seconds} Second(s)*
-╰❑
+    const uptimeMessage = `*ʝσєℓ χ∂ ν⁷ вσт*
+,,,,,,
+- *${days} Day(s)*
+- *${hours} Hour(s)*
+- *${minutes} Minute(s)*
+- *${seconds} Second(s)*
+,,,,,
 `;
     
     const buttons = [
       {
         "name": "quick_reply",
         "buttonParamsJson": JSON.stringify({
-          display_text: "MENU",
+          display_text: "ʝσєℓ χ∂ мєηυ",
           id: `${prefix}menu`
         })
       },
       {
         "name": "quick_reply",
         "buttonParamsJson": JSON.stringify({
-          display_text: "PING",
+          display_text: "ʝσєℓ χ∂ ριηg",
           id: `${prefix}ping`
         })
       }
@@ -64,13 +64,13 @@ const alive = async (m, Matrix) => {
               text: uptimeMessage
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "𝚙𝚘𝚠𝚎𝚛𝚎𝚍 𝚋𝚢 𝙹𝙾𝚎𝚕 𝚔𝚊𝚗𝚐'𝚘𝚖𝚊"
+              text: "ʝσєℓ χ∂ ν⁷ ву ℓσя∂ ʝσєℓ"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               ...(await prepareWAMessageMedia({ image: buffer }, { upload: Matrix.waUploadToServer })),
-              title: `joel`,
+              title: `ʝσєℓ χ∂ ν⁷`,
               gifPlayback: false,
-              subtitle: "tech",
+              subtitle: "мα∂є ву ℓσя∂ ʝσ",
               hasMediaAttachment: false
             }),
             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
@@ -81,8 +81,8 @@ const alive = async (m, Matrix) => {
               forwardingScore: 999,
               isForwarded: true,
               forwardedNewsletterMessageInfo: {
-                newsletterJid: 'joel',
-                newsletterName: "JOel",
+                newsletterJid: '120363317462952356@newsletter',
+                newsletterName: "ʟᴏʀᴅ ᴊᴏᴇʟ",
                 serverMessageId: 143
               }
             }
