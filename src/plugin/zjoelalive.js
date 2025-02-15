@@ -14,7 +14,7 @@ const alive = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (['aliv', 'uptim', 'runtim'].includes(cmd)) {
+  if (['alive', 'uptime', 'runtime'].includes(cmd)) {
     const width = 800;
     const height = 500;
     const image = new Jimp(width, height, 'black');
@@ -69,11 +69,11 @@ const alive = async (m, Matrix) => {
               text: uptimeMessage
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "ʝσєℓ χ∂ ν⁷ ву ℓσя∂ ʝσєℓ"
+              text: "ᴊᴏᴇʟ xᴅ ᴠ⁷ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               ...(await prepareWAMessageMedia({ image: buffer }, { upload: Matrix.waUploadToServer })),
-              title: `¹²³⁴⁵⁶⁷`,
+              title: `¹²³⁴⁵⁶⁷⁸⁹`,
               gifPlayback: false,
               subtitle: "мα∂є ву ℓσя∂ ʝσ",
               hasMediaAttachment: false
