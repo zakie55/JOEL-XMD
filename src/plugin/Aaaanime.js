@@ -7,7 +7,7 @@ const quranVideo = async (m, gss) => {
   const validCommands = ['waifu', 'wf', 'waifupic'];
 
   if (validCommands.includes(cmd)) {
-    const videoUrl = `https://api.davidcyriltech.my.id/download/ytmp3?url=${videoUrl}`;
+    const videoUrl = `https://api.davidcyriltech.my.id/download/ytmp4`;
 await m.React('⏳'); // React with a loading icon
     await gss.sendMessage(
       m.from,
