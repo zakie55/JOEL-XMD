@@ -11,7 +11,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
   const validCommands = ['lyrics', 'lyric'];
 
   if (validCommands.includes(cmd)) {
-    if (!text) return m.reply(`Hello *_${m.pushName}_,*\n Here's Example Usage: _.lyrics Spectule|alan walker._`);
+    if (!text) return m.reply(`Hello *_${m.pushName}_,*\n Here's Example Usage: _.lyrics Spectule|Alan walker._`);
 
     try {
       await m.React('🕘');
