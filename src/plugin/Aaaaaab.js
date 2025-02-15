@@ -26,14 +26,19 @@ const alive = async (m, Matrix) => {
     image.print(font, x, y, timeString, width, Jimp.HORIZONTAL_ALIGN_CENTER | Jimp.VERTICAL_ALIGN_MIDDLE);
     const buffer = await image.getBufferAsync(Jimp.MIME_PNG);
     
-    const uptimeMessage = `*ʝσєℓ χ∂ ν⁷ вσт*
-,,,,,,
-- *${days} Day(s)*
-- *${hours} Hour(s)*
-- *${minutes} Minute(s)*
-- *${seconds} Second(s)*
-,,,,,
-`;
+    const uptimeMessage = `╭───────────────━⊷
+║ ᴊᴏᴇʟ xᴅ ᴠ⁷ ᴜᴘᴛɪᴍᴇ
+╰───────────────━⊷
+╭───────────────━⊷
+║- *${days} Day(s)*
+║- *${hours} Hour(s)*
+║- *${minutes} Minute(s)*
+║- *${seconds} Second(s)*
+╰───────────────━⊷
+╭───────────────━⊷
+║ sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ
+║ ʀᴇᴘᴏ: https://shorturl.at/MV98C
+╰───────────────━⊷`;
     
     const buttons = [
       {
@@ -68,7 +73,7 @@ const alive = async (m, Matrix) => {
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               ...(await prepareWAMessageMedia({ image: buffer }, { upload: Matrix.waUploadToServer })),
-              title: `ʝσєℓ χ∂ ν⁷`,
+              title: `¹²³⁴⁵⁶⁷`,
               gifPlayback: false,
               subtitle: "мα∂є ву ℓσя∂ ʝσ",
               hasMediaAttachment: false
@@ -83,7 +88,7 @@ const alive = async (m, Matrix) => {
               forwardedNewsletterMessageInfo: {
                 newsletterJid: '120363317462952356@newsletter',
                 newsletterName: "ʟᴏʀᴅ ᴊᴏᴇʟ",
-                serverMessageId: 143
+                serverMessageId: 1
               }
             }
           }),
