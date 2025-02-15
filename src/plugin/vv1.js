@@ -1,3 +1,5 @@
+// lord joel
+
 import fs from 'fs/promises';
 import config from '../../config.cjs';
 
