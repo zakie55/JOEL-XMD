@@ -108,7 +108,7 @@ if (time2 < "05:00:00") {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "ρяєηιυм υѕєя ¢σммαη∂ѕ",
             thumbnailUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add thumbnail URL if required
-            sourceUrl: 'https://i.ibb.co/wyYKzMY/68747470733a2f2f74656c656772612e70682f66696c652f6530376133643933336662346361643062333739312e6a7067.jpg', // Add source URL if necessary
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
           },
