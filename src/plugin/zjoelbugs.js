@@ -51,7 +51,6 @@ if (time2 < "05:00:00") {
 ╭───────────────━⊷
 ║ ᴊᴏᴇʟ-xᴍᴅ ʙᴜɢ  ᴍᴇɴᴜ
 ╰───────────────━⊷
-----
 
 - docbug
 - loccrash
@@ -69,10 +68,26 @@ if (time2 < "05:00:00") {
 - labbug <grouplink>
 - bomgcbug <grouplink>
 - unlimitedgcbug <grouplink>
-- docugcbug <grouplink>
--------
+- docugcbug <grouplink>- ∂σ¢вυg
+- ℓσ¢¢яαѕн
+- αмσυηтвυg <αмσυηт>
+- ρмвυg <ηυмвєя>
+- ∂єℓαувυg <ηυмвєя>
+- тяσℓℓувυg <ηυмвєя>
+- ∂σ¢υвυg <ηυмвєя>
+- υηℓιмιтє∂вυg <ηυмвєя>
+- вσмвυg <ηυмвєя>
+- ℓαgвυg <ηυмвєя>
+- g¢вυg <gяσυρℓιηк>
+- ∂єℓαуg¢вυg <gяσυρℓιηк>
+- тяσℓℓуg¢вυg <gяσυρℓιηк>
+- ℓαввυg <gяσυρℓιηк>
+- вσмg¢вυg <gяσυρℓιηк>
+- υηℓιмιтє∂g¢вυg <gяσυρℓιηк>
+- ∂σ¢υg¢вυg <gяσυρℓιηк>
+
 ╭───────────────━⊷
-║🄹🄾🄴🄻 🄿🅁🄾🄹🄴🄲🅃🅂
+║ℓσя∂ ʝσєℓ ρяσʝє¢тѕ
 ╰───────────────━⊷`;
 
     await m.React('☄️'); // React with a success icon
@@ -92,8 +107,8 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "ρяєηιυм υѕєя ¢σммαη∂ѕ",
-            thumbnailUrl: 'https://i.ibb.co/wyYKzMY/68747470733a2f2f74656c656772612e70682f66696c652f6530376133643933336662346361643062333739312e6a7067.jpg', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+            thumbnailUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add thumbnail URL if required
+            sourceUrl: 'https://i.ibb.co/wyYKzMY/68747470733a2f2f74656c656772612e70682f66696c652f6530376133643933336662346361643062333739312e6a7067.jpg', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
           },
