@@ -52,23 +52,7 @@ if (time2 < "05:00:00") {
 ║ ᴊᴏᴇʟ-xᴍᴅ ʙᴜɢ  ᴍᴇɴᴜ
 ╰───────────────━⊷
 
-- docbug
-- loccrash
-- amountbug <amount>
-- pmbug <number>
-- delaybug <number>
-- trollybug <number>
-- docubug <number>
-- unlimitedbug <number>
-- bombug <number>
-- lagbug <number>
-- gcbug <grouplink>
-- delaygcbug <grouplink>
-- trollygcbug <grouplink>
-- labbug <grouplink>
-- bomgcbug <grouplink>
-- unlimitedgcbug <grouplink>
-- docugcbug <grouplink>- ∂σ¢вυg
+- ∂σ¢вυg
 - ℓσ¢¢яαѕн
 - αмσυηтвυg <αмσυηт>
 - ρмвυg <ηυмвєя>
