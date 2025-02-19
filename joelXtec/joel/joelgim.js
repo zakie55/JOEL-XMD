@@ -29,7 +29,7 @@ const query = m.body.slice(prefix.length + cmd.length).trim();
       const images = [];
 
       for (let i = 0; i < numberOfImages; i++) {
-        const endpoint = `https://api.guruapi.tech/api/googleimage?text=${encodeURIComponent(query)}`;
+        const endpoint = `https://api.diioffc.web.id/api/search/pinterest?query=${encodeURIComponent(query)}`;
         const response = await axios.get(endpoint, { responseType: 'arraybuffer' });
 
         if (response.status === 200) {
