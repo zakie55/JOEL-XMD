@@ -96,7 +96,7 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-    const aliveMessage = `*pong! response speed ${responseTime} ms🏓*`;
+    const aliveMessage = `*pong 🏓 am alive*`;
 
     await m.React('☄️'); // React with a success icon
 
