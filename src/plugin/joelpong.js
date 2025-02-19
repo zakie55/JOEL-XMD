@@ -64,7 +64,7 @@ const alive = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "docugcbug") {
+  if (cmd === "ping") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
