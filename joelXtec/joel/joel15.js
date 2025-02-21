@@ -115,8 +115,8 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷ ρяєηιυм ¢σммαη∂ѕ",
             body: "¢ℓι¢к нєяє тσ υρgяα∂є уσυя ѕтαтυѕ",
-            thumbnailUrl: 'https://u.bk9.fun/s/Kc99jR', // Add thumbnail URL if required
-            sourceUrl: 'https://u.bk9.fun/s/Kc99jR', // Add source URL if necessary
+            thumbnailUrl: 'https://avatars.githubusercontent.com/u/200203225?v=4', // Add thumbnail URL if required
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
           },
