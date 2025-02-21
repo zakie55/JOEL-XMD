@@ -102,7 +102,7 @@ if (time2 < "05:00:00") {
   TIME WISHE: *${pushwish}*
   SUDO_NUMBER: *${config.SUDO_NUMBER}*
   OWNER_NUMBER: *${config.OWNER_NUMBER}*
-  OWNER_NAME : *${config.OWNER_NAME}*
+  OWNER_NAME : *LORD JOEL*
   AUTO_REACT: *${config.AUTO_REACT}*
   ALWAYS_ONLINE: *${config.ALWAYS_ONLINE}*
   AUTO_RECORDING: *${config.AUTO_RECORDING}*
@@ -130,8 +130,8 @@ if (time2 < "05:00:00") {
           forwardingScore: 999, // Score to indicate it has been forwarded
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "```joel xmd bot settings```",
-            thumbnailUrl: '', // Add thumbnail URL if required
+            body: "joel xmd bot settings",
+            thumbnailUrl: 'https://imgur.com/a/rB6DydA', // Add thumbnail URL if required
             sourceUrl: 'https://github.com/joeljamestech2/JOEL-XMD', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
