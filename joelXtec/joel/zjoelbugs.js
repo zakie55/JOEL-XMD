@@ -69,10 +69,7 @@ if (time2 < "05:00:00") {
 - вσмg¢вυg <gяσυρℓιηк>
 - υηℓιмιтє∂g¢вυg <gяσυρℓιηк>
 - ∂σ¢υg¢вυg <gяσυρℓιηк>
-
-╭───────────────━⊷
-║ℓσя∂ ʝσєℓ ρяσʝє¢тѕ
-╰───────────────━⊷`;
+- *ɴᴏᴛᴇ:ʙᴜɢ ᴄᴏᴍᴍᴀɴᴅs ғᴏʀ ᴘʀᴇᴍɪᴜᴍ ᴜsᴇʀs ᴏɴʟʏ*`;
 
     await m.React('☄️'); // React with a success icon
 
@@ -91,7 +88,7 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "ρяєηιυм υѕєя ¢σммαη∂ѕ",
-            thumbnailUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add thumbnail URL if required
+            thumbnailUrl: 'https://avatars.githubusercontent.com/u/200203225?v=4', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
