@@ -83,7 +83,7 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "sᴛᴀʀ ᴛʜᴇɴ ғᴏʀᴋ ᴍʏ ʀᴇᴘᴏ",
-            thumbnailUrl: 'https://files.catbox.moe/s1q8so.jpeg', // Add thumbnail URL if required
+            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4', // Add thumbnail URL if required
             sourceUrl: 'https://github.com/joeljamestech2/JOEL-XMD', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: true,
