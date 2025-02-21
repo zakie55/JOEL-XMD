@@ -64,7 +64,7 @@ const alive = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "delaybug") {
+  if (cmd === "settings") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
@@ -97,10 +97,9 @@ if (time2 < "05:00:00") {
 }
 
     const aliveMessage = `
-  SUDO_NUMBER
-  WELCOME
-  OWNER_NUMBER
-  OWNER_NAME
+  SUDO_NUMBER: ${config.SUDO_NUMBERS}
+  OWNER_NUMBER: ${config.OWNER_NUMBER}
+  OWNER_NAME 
   NOT_ALLOW
   AUTO_REACT
   ALWAYS_ONLINE
@@ -114,8 +113,8 @@ if (time2 < "05:00:00") {
   AUTOLIKE_EMOJI
   AUTO_STATUS_SEEN
   SESSION_ID
-  PREFIX  
-    
+  PREFIX: *${prefix}*
+  MODE: *${mode}*
     
     
     
