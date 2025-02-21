@@ -131,7 +131,7 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "joel xmd bot settings",
-            thumbnailUrl: 'https://imgur.com/a/rB6DydA', // Add thumbnail URL if required
+            thumbnailUrl: 'https://avatars.githubusercontent.com/u/175513132?v=4', // Add thumbnail URL if required
             sourceUrl: 'https://github.com/joeljamestech2/JOEL-XMD', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
