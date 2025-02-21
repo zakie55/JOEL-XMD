@@ -97,7 +97,7 @@ if (time2 < "05:00:00") {
 }
 
     const aliveMessage = `
-  YOUR NAME: *${pushname}*
+  YOUR NAME: *
   SUDO_NUMBER: *${config.SUDO_NUMBER}*
   OWNER_NUMBER: *${config.OWNER_NUMBER}*
   OWNER_NAME : *${config.OWNER_NAME}*
@@ -108,12 +108,9 @@ if (time2 < "05:00:00") {
   AUTO_TYPING: *${config.AUTO_TYPING}*
   AUTO_REPLY_STATUS: *${config.AUTO_REPLY_STATUS}*
   AUTOLIKE_STATUS: *${config.AUTOLIKE_STATUS}*
-  AUTOLIKE_EMOJI: *${config.AUTOLIKE_EMOJI}*
   AUTO_STATUS_SEEN: *${config.AUTO_STATUS_SEEN}*
-  SESSION_ID: *${config.SESSION_ID}*
   PREFIX: *${prefix}*
-  MODE: *${mode}*
-  `;
+  MODE: *${mode}*`;
 
     await m.React('☄️'); // React with a success icon
 
