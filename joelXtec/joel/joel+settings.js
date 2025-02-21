@@ -97,29 +97,23 @@ if (time2 < "05:00:00") {
 }
 
     const aliveMessage = `
-  SUDO_NUMBER: ${config.SUDO_NUMBERS}
-  OWNER_NUMBER: ${config.OWNER_NUMBER}
-  OWNER_NAME 
-  NOT_ALLOW
-  AUTO_REACT
-  ALWAYS_ONLINE
-  AUTO_RECORDING
-  AUTO_READ
-  AUTO_TYPING
-  AUTO_DL
-  AUTO_REPLY_STATUS
-  STATUS_READ_MSG
-  AUTOLIKE_STATUS
-  AUTOLIKE_EMOJI
-  AUTO_STATUS_SEEN
-  SESSION_ID
+  YOUR NAME: *${pushname}*
+  SUDO_NUMBER: *${config.SUDO_NUMBER}*
+  OWNER_NUMBER: *${config.OWNER_NUMBER}*
+  OWNER_NAME : *${config.OWNER_NAME}*
+  AUTO_REACT: *${config.AUTO_REACT}*
+  ALWAYS_ONLINE: *${config.ALWAYS_ONLINE}*
+  AUTO_RECORDING: *${config.AUTO_RECORDING}*
+  AUTO_READ: *${config.AUTO_READ}*
+  AUTO_TYPING: *${config.AUTO_TYPING}*
+  AUTO_REPLY_STATUS: *${config.AUTO_REPLY_STATUS}*
+  AUTOLIKE_STATUS: *${config.AUTOLIKE_STATUS}*
+  AUTOLIKE_EMOJI: *${config.AUTOLIKE_EMOJI}*
+  AUTO_STATUS_SEEN: *${config.AUTO_STATUS_SEEN}*
+  SESSION_ID: *${config.SESSION_ID}*
   PREFIX: *${prefix}*
   MODE: *${mode}*
-    
-    
-    
-    
-    `;
+  `;
 
     await m.React('☄️'); // React with a success icon
 
@@ -136,10 +130,10 @@ if (time2 < "05:00:00") {
           },
           forwardingScore: 999, // Score to indicate it has been forwarded
           externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷ ρяєηιυм ¢σммαη∂ѕ",
-            body: "¢ℓι¢к нєяє тσ υρgяα∂є уσυя ѕтαтυѕ",
-            thumbnailUrl: 'https://u.bk9.fun/s/Kc99jR', // Add thumbnail URL if required
-            sourceUrl: 'https://u.bk9.fun/s/Kc99jR', // Add source URL if necessary
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            body: "```joel xmd bot settings```",
+            thumbnailUrl: '', // Add thumbnail URL if required
+            sourceUrl: 'https://github.com/joeljamestech2/JOEL-XMD', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: false,
           },
