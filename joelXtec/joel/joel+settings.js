@@ -97,7 +97,9 @@ if (time2 < "05:00:00") {
 }
 
     const aliveMessage = `
-  YOUR NAME: *
+  YOUR NAME: *${pushName}*
+  TIME: *${realTime}*
+  TIME WISHE: *${pushwish}*
   SUDO_NUMBER: *${config.SUDO_NUMBER}*
   OWNER_NUMBER: *${config.OWNER_NUMBER}*
   OWNER_NAME : *${config.OWNER_NAME}*
