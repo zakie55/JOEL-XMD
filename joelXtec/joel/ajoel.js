@@ -258,7 +258,7 @@ if (time2 < "05:00:00") {
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
             body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            thumbnailUrl: 'profile', // Add thumbnail URL if required
+            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
             renderLargerThumbnail: true,
