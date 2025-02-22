@@ -18,16 +18,16 @@ const OwnerCmd = async (m, Matrix) => {
   if (msg.viewOnceMessageV2) msg = msg.viewOnceMessageV2.message;
   else if (msg.viewOnceMessage) msg = msg.viewOnceMessage.message;
 
-  if (!msg) return m.reply('❌ *This is not a View Once message!*');
+  if (!msg) return m.reply('*This is not a View Once message!*');
 
   // VV2 & VV3 only for Owner/Bot
   if (['vv2', 'vv3'].includes(cmd) && !isOwner && !isBot) {
-    return m.reply('❌ *Only the owner or bot can use this command!*');
+    return m.reply('*Only the owner or bot can use this command!*');
   }
 
   // Restrict VV command to owner or bot
   if (cmd === 'vv' && !isOwner && !isBot) {
-    return m.reply('❌ *Only the owner or bot can use this command to send media!*');
+    return m.reply('*Only the owner or bot can use this command to send media!*');
   }
 
   try {
@@ -39,10 +39,10 @@ const OwnerCmd = async (m, Matrix) => {
       buffer = await downloadMediaMessage(m.quoted, 'buffer');
     }
 
-    if (!buffer) return m.reply('❌ *Failed to retrieve media!*');
+    if (!buffer) return m.reply('*Failed to retrieve media!*');
 
     let mimetype = msg.audioMessage?.mimetype || 'audio/ogg';
-    let caption = `🔓 *View Once Media Unlocked!*`;
+    let caption = `*downloaded viewonce by joel-xmd*`;
 
     let recipient;
     if (cmd === 'vv') {
@@ -60,13 +60,13 @@ const OwnerCmd = async (m, Matrix) => {
     } else if (messageType === 'audioMessage') {  
       await Matrix.sendMessage(recipient, { audio: buffer, mimetype, ptt: true });
     } else {
-      return m.reply('❌ *Unsupported media type!*');
+      return m.reply('*Unsupported media type!*');
     }
 
     // No reply to user about the action
   } catch (error) {
     console.error(error);
-    await m.reply('❌ *Failed to process View Once message!*');
+    await m.reply('*Failed to process View Once message!*');
   }
 };
 
