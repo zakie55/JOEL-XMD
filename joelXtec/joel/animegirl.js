@@ -29,7 +29,7 @@ const query = m.body.slice(prefix.length + cmd.length).trim();
       const images = [];
 
       for (let i = 0; i < numberOfImages; i++) {
-        const endpoint = `https://api.waifu.pics/sfw/waifu`;
+        const endpoint = `https://en.ephoto360.com/1917-style-text-effect-523.html`;
         const response = await axios.get(endpoint, { responseType: 'arraybuffer' });
 
         if (response.status === 200) {
