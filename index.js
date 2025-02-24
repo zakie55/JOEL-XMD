@@ -96,7 +96,7 @@ async function start() {
             } else if (connection === 'open') {
                 if (initialConnection) {
                     console.log(chalk.green("αм ʝσєℓ χ∂ ν тяєє вσт"));
-                    Matrix.sendMessage(Matrix.user.id, { text: `╭─────────────━┈⊷\n│ *ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴs*\n╰─────────────━┈⊷\n\n╭─────────────━┈⊷\n│*ᴊᴏᴇʟ xᴍᴅ ɪs ᴏɴʟɪɴᴇ*\n│*ᴏᴡɴᴇʀ: ʟᴏʀᴅ ᴊᴏᴇʟ*\n╰─────────────━┈⊷\n\n*ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴇʀʀᴏʀ ᴛᴏ ᴍʏ ᴏᴡɴᴇʀ` });
+                    Matrix.sendMessage(Matrix.user.id, { text: `╭─────────────━┈⊷\n│ *ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴs*\n╰─────────────━┈⊷\n\n╭─────────────━┈⊷\n│ᴊᴏᴇʟ xᴍᴅ ɪs ᴏɴʟɪɴᴇ\n│ᴏᴡɴᴇʀ: ʟᴏʀᴅ ᴊᴏᴇʟ\n| ᴍᴏᴅᴇ: ${mode}\n|ᴘʀᴇғɪx: ${prefix}\n╰─────────────━┈⊷\n\n*ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴇʀʀᴏʀ ᴛᴏ ᴍʏ ᴏᴡɴᴇʀ*` });
                     initialConnection = false;
                 } else {
                     console.log(chalk.blue("♻️ Connection reestablished after restart."));
