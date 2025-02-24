@@ -50,17 +50,17 @@ if (time2 < "05:00:00") {
     const aliveMessage = `нєℓℓσ
  *${pushName}* ${pushwish}
 ╭───────────────━⊷
-║ ᴊᴏᴇʟ-xᴍᴅ ʜᴇʟᴘ  ᴍᴇɴᴜ
+| ᴊᴏᴇʟ-xᴍᴅ ʜᴇʟᴘ  ᴍᴇɴᴜ
 ╰───────────────━⊷
 ╭───────────────━⊷
-║ *ηαмє:* *ʝσєℓ χ∂ v³ вσт*
-║ *ρяєƒιχ:*  *${prefix}*
-║ *мσ∂є:*  *${mode}*
-║ *тιмє:*  *${realTime}*
-║ *σωηєя:*  *ℓσя∂ ʝσєℓ*
+|*ηαмє:* *ʝσєℓ χ∂ v³ вσт*
+| *ρяєƒιχ:*  *${prefix}*
+| *мσ∂є:*  *${mode}*
+| *тιмє:*  *${realTime}*
+| *σωηєя:*  *ℓσя∂ ʝσєℓ*
 ╰───────────────━⊷
 ╭───────────────━⊷
-║   *ʝσєℓ χ∂ ν тняєє*
+|   *ʝσєℓ χ∂ ν тняєє*
 ╰───────────────━⊷
 Absolutely! Let’s go through each section of the commands you’ve posted, and I’ll break_down each command’s purpose as clearly as I can.
 
