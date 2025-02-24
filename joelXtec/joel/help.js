@@ -1,3 +1,4 @@
+
 import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
@@ -5,41 +6,31 @@ import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 const { generateWAMessageFromContent, proto } = pkg;
 import config from '../../config.cjs';
 
-// Get total memory and free memory in bytes
-const totalMemoryBytes = os.totalmem();
-const freeMemoryBytes = os.freemem();
+const alive = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const mode = config.MODE;
+  const pushName = m.pushName || 'User';
 
-// Define unit conversions
-const byteToKB = 1 / 1024;
-const byteToMB = byteToKB / 1024;
-const byteToGB = byteToMB / 1024;
+  const cmd = m.body.startsWith(prefix)
+    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
+    : '';
 
-// Function to format bytes to a human-readable format
-function formatBytes(bytes) {
-  if (bytes >= Math.pow(1024, 3)) {
-    return (bytes * byteToGB).toFixed(2) + ' GB';
-  } else if (bytes >= Math.pow(1024, 2)) {
-    return (bytes * byteToMB).toFixed(2) + ' MB';
-  } else if (bytes >= 1024) {
-    return (bytes * byteToKB).toFixed(2) + ' KB';
-  } else {
-    return bytes.toFixed(2) + ' bytes';
-  }
-}
-// Bot Process Time
-const uptime = process.uptime();
-const day = Math.floor(uptime / (24 * 3600)); // Calculate days
-const hours = Math.floor((uptime % (24 * 3600)) / 3600); // Calculate hours
-const minutes = Math.floor((uptime % 3600) / 60); // Calculate minutes
-const seconds = Math.floor(uptime % 60); // Calculate seconds
+  if (cmd === "help") {
+    await m.React('💮'); // React with a loading icon
+    // Calculate uptime
 
-// Uptime
-const uptimeMessage = `*I am alive now since ${day}d ${hours}h ${minutes}m ${seconds}s*`;
-const runMessage = `*☀️ ${day} Day*\n*🕐 ${hours} Hour*\n*⏰ ${minutes} Minutes*\n*⏱️ ${seconds} Seconds*\n`;
+    const uptimeSeconds = process.uptime();
+    const days = Math.floor(uptimeSeconds / (24 * 3600));
+    const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+    const seconds = Math.floor(uptimeSeconds % 60);
 
-const xtime = moment.tz("Asia/Colombo").format("HH:mm:ss");
-const xdate = moment.tz("Asia/Colombo").format("DD/MM/YYYY");
-const time2 = moment().tz("Asia/Colombo").format("HH:mm:ss");
+    
+    // Get real time
+    const realTime = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xtime = moment.tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xdate = moment.tz("Tanzania/Dodoma").format("DD/MM/YYYY");
+    const time2 = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
 let pushwish = "";
 
 if (time2 < "05:00:00") {
@@ -56,616 +47,198 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-const test = async (m, Matrix) => {
-  let selectedListId;
-  const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
-  const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
-  if (interactiveResponseMessage) {
-    const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
-    if (paramsJson) {
-      const params = JSON.parse(paramsJson);
-      selectedListId = params.id;
-     // console.log(selectedListId);
-    }
-  }
-  const selectedId = selectedListId || selectedButtonId;
-  
-  const prefix = config.PREFIX;
-const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-       
-       const mode = config.MODE === 'public' ? 'public' : 'private';
-       const pref = config.PREFIX;
-           
-        const validCommands = ['lis', 'hel', 'menu5'];
+    const aliveMessage = `нєℓℓσ
+ *${pushName}* ${pushwish}
+╭───────────────━⊷
+║ ᴊᴏᴇʟ-xᴍᴅ ʜᴇʟᴘ  ᴍᴇɴᴜ
+╰───────────────━⊷
+╭───────────────━⊷
+║ *ηαмє:* *ʝσєℓ χ∂ v³ вσт*
+║ *ρяєƒιχ:*  *${prefix}*
+║ *мσ∂є:*  *${mode}*
+║ *тιмє:*  *${realTime}*
+║ *σωηєя:*  *ℓσя∂ ʝσєℓ*
+╰───────────────━⊷
+╭───────────────━⊷
+║   *ʝσєℓ χ∂ ν тняєє*
+╰───────────────━⊷
+Absolutely! Let’s go through each section of the commands you’ve posted, and I’ll break_down each command’s purpose as clearly as I can.
 
-  if (validCommands.includes(cmd)) {
-    let msg = generateWAMessageFromContent(m.from, {
-      viewOnceMessage: {
-        message: {
-          "messageContextInfo": {
-            "deviceListMetadata": {},
-            "deviceListMetadataVersion": 2
+---
+
+*General Commands*  
+These are typical commands you might use in a bot, chat, or script system:
+
+*Say Commands:*
+- *Say*: This command probably triggers a bot to say or display text, often using text-to-speech.
+- *Bass*: Likely modifies the sound to boost bass frequencies, often used for_music-related outputs.
+- *Blown*: Likely makes the sound louder or distorted, like “blowing” out the volume.
+- *Deep*: Changes the sound to a deeper tone, like making a voice sound lower and more resonant.
+- *Earrape*: A command to distort and increase the sound to an unbearable, loud level, often used humorously.
+- *Fast*: Speeds up the speech or sound, making it sound faster.
+- *Fat*: May add a deeper, more exaggerated tone to the sound or voice.
+- *Nightcore*: Increases the speed and pitch of the audio, making it sound like a nightcore remix (often high-pitched and fast).
+- *Reverse*: Reverses the playback of the sound or message, making it play backward.
+- *Robot*: Alters the voice or text to sound robotic, simulating a mechanical voice.
+- *Slow*: Slows down the speech or sound, making it sound slower.
+- *Smooth*: Applies a smoother or more relaxed tone to the sound.
+- *Tupai*: This could refer to a playful or fast-paced sound, possibly mimicking a fast-paced or quirky style.
+
+---
+
+*Converter Commands*  
+Commands related to converting or encoding/decoding files or messages:
+
+- *αттρ, αттρ2, αттρ3*: These could be variations of the *.attr* file or attributes, typically used for_ file conversions (like API or app related).
+- *ебιηαяу*: Likely refers to converting text or data to binary or performing encoding/decoding operations.
+- *∂вιηαяу*: Similar to the previous one, likely refers to a conversion or encoding in a binary format.
+- *ємσʝιмιχ*: Possibly a command that converts text or messages into emojis or mixes emojis with_ text.
+- *мρ3*: Converts audio or files into the MP3 format.
+
+---
+
+*AI Commands*  
+Commands related to artificial intelligence or bots:
+
+- *αι*: Likely refers to invoking an AI response or interaction.
+- *вυg*: This could be related to generating a response, output, or bug-related function_.
+- *яєρσят*: Could be a command that generates a report or feedback.
+- *gρт*: Likely refers to a *GPT*-based command, probably for_ generating responses via GPT *like GPT_3
+- *∂αℓℓє*: Could be a command related to generating a call to the AI or producing a response.
+- *яємιηι, gємιηι*: Likely commands related to generating specific AI-driven interactions or outputs.
+
+---
+
+*Tool Commands*  
+These commands are related to tools or utilities:
+
+- *¢αℓ¢υℓαтσя*: Likely a calculator tool for_performing mathematical operations.
+- *тємρмαιℓ*: Could be used to send a temporary email or check email configurations.
+- *¢нє¢кмαιℓ*: Likely checks or verifies email addresses.
+- *тят*: This could refer to a tool for_status checks or server checks, like a diagnostic tool.
+- *ттѕ*: Could be related to *TTS* (Text-to-Speech) systems, converting text into spoken audio.
+
+---
+
+*Group Commands*  
+These commands manage groups or interactions in a group setting (like in a chat or social platform):
+
+- *ℓιηкgяσυρ*: Links a user to a specific group or channel.
+- *ѕєтρρg¢*: Sets up permissions or settings for_a group.
+- *ѕєтηαмє*: Sets the name of the group.
+- *ѕєт∂єѕ¢*: Sets the description of the group.
+- *gяσυρ*: General command for_managing a group.
+- *g¢ѕєттιηg*: Configures group settings.
+- *ωєℓ¢σмє*: Welcomes a new_user to the group.
+- *α∂∂*: Adds a new_ member to the group.
+- *кι¢к*: Kicks a member from the group.
+- *нι∂єтαg*: Hides a member’s tag or identity within the group.
+- *тαgαℓℓ*: Tags all members in the group at once.
+- *αηтιℓιηк*: Prevents the sharing of external links in the group.
+- *αηтιтσχι¢*: Blocks specific actions or functions, like blocking certain interactions.
+- *ρяσмσтє*: Promotes a user to a higher rank or role in the group.
+- *∂ємσтє*: Demotes a user to a lower rank.
+- *gєтвισ*: Likely retrieves group stats or information.
+
+---
+
+*Download Commands*  
+These commands download different types of content:
+
+- *αρк*: Downloads APK files, typically for_android apps.
+- *ƒα¢євσσк*: Downloads content from Facebook (like media or data).
+- *мє∂ιαƒιяє*: Downloads from a media platform (possibly like Facebook or Instagram).
+- *ριητєяєѕт∂ℓ*: Downloads from Pinterest.
+- *gιт¢ℓονє*: Downloads from GitHub or a related repository.
+- *g∂яινє*: Downloads from Google Drive.
+- *ιηѕтα*: Downloads from Instagram.
+- *утмρ3*: Downloads MP3 audio files.
+- *утмρ4*: Downloads MP4 video files.
+- *ρℓαу*: Likely downloads a song or plays it.
+- *ѕονg*: Downloads a song.
+- *νι∂єο*: Downloads a video.
+
+---
+
+*Premium Commands*  
+These are advanced commands, typically available to users with_ premium access:
+
+- *вυgмєηυ*: Likely related to advanced bug-fixing or generation tools.
+- *∂σ¢вυg*: Debugging or troubleshooting commands.
+- *ℓσ¢¢яαѕн*: Logs or caches data.
+- *αмσυηтвυg*: Manage premium content or tools.
+- *ρмвυg*: Possibly a command to boost or improve functionality.
+- *∂єℓαувυg*: Deletes or resolves bugs.
+- *тяσℓℓувυg*: Rolls back previous changes or bug fixes.
+- *σ¢υвυg*: Debugging-related functions.
+- *υηℓιмιтє∂вυg*: Removes limitations on debugging or error handling.
+- *вσмвυg*: Advanced error-tracking or resolution.
+- *ℓαgвυg*: Logs errors or group activity.
+
+---
+
+*Search Commands*  
+Commands for_searching content from various sources:
+
+- *ρℓαу*: Search for_ songs/music.
+- *ут*: Search YouTube.
+- *ιм∂в*: Search IMDb (movie, TV shows, actors, etc.).
+- *gσσgℓє*: Search on Google.
+- *gιмαgє*: Search for_images (like using Google Images).
+- *ριηтєяєѕт*: Search Pinterest.
+- *ωαℓℓραρєя*: Possibly search for_wallpapers or images for_ a device’s background.
+
+---
+
+*Main Commands*  
+These commands are related to basic bot or system actions:
+
+- *ριηg*: Typically checks if_the bot or system is online and responsive.
+- *αℓινє*: Indicates whether the system or bot is currently online/active.
+- *σωηєя*: Likely gives information about the system or bot owner.
+- *мєηυ*: Displays the main menu or options.
+- *ιηƒσвσт*: Provides information about the bot/system.
+---
+
+*Owner Commands*  
+Commands for_the system or bot owner:
+
+- *ʝσιη*: Allows a new_ user to join the system or chat.
+- *νν, νν2, νν3*: Variations for_ different _version_commands, perhaps for_ testing or updating.
+- *ℓєавє*: Command to remove or disconnect from a group.
+- *вℓσ¢к*: Block a user from interacting with_ the system.
+- *υηвℓσ¢к*: Unblock a previously blocked user.
+- *ѕєтρρвσт*: Set up specific bot configurations or status.
+- *αηтι¢αℓℓ*: Prevents certain actions or commands from being executed.
+- *ѕєтѕтαтυѕ*`;
+
+    await m.React('☄️'); // React with a success icon
+
+    sock.sendMessage(
+      m.from,
+      {
+        text: aliveMessage,
+        contextInfo: {
+          isForwarded: false,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363317462952356@newsletter',
+            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            serverMessageId: -1,
           },
-          interactiveMessage: proto.Message.InteractiveMessage.create({
-            body: proto.Message.InteractiveMessage.Body.create({
-              text: `╭─────────────━┈⊷
-│🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
-│📍 ᴠᴇʀꜱɪᴏɴ: 2.1.0
-│👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
-│👤 ɴᴜᴍʙᴇʀ: 919142294671
-│📡 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
-│🛡 ᴍᴏᴅᴇ: *${mode}*
-│💫 ᴘʀᴇғɪx: [${pref}]
-╰─────────────━┈⊷ `
-            }),
-            footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "© ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴇᴛʜɪx-ᴍᴅ"
-            }),
-            header: proto.Message.InteractiveMessage.Header.create({
-                ...(await prepareWAMessageMedia({ image : fs.readFileSync('./src/ethix.jpg')}, { upload: Matrix.waUploadToServer})), 
-                  title: ``,
-                  gifPlayback: true,
-                  subtitle: "",
-                  hasMediaAttachment: false  
-                }),
-            nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-              buttons: [
-                {
-          "name": "quick_reply",
-          "buttonParamsJson": JSON.stringify({
-            display_text: "ALIVE",
-            id: `${prefix}alive`
-          })
-        },
-        {
-          "name": "quick_reply",
-          "buttonParamsJson": JSON.stringify({
-            display_text: "PING",
-            id: `${prefix}ping`
-          })
-        },
-                {
-                  "name": "single_select",
-                  "buttonParamsJson": `{"title":"🔖𝚻𝚫𝚸 𝐅𝚯𝚪 𝚯𝚸𝚵𝚴 𝚳𝚵𝚴𝐔",
-                 "sections":
-                   [{
-                    "title":"😎 𝛯𝑇𝛨𝛪𝛸-𝛭𝐷 𝛥𝐿𝐿𝛭𝛯𝛮𝑈",
-                    "highlight_label":"🤩 𝛥𝐿𝐿𝛭𝛯𝛮𝑈",
-                    "rows":[
-                      {
-                       "header":"",
-                       "title":"🔰 ᴀʟʟ ᴍᴇɴᴜ",
-                       "description":"🎨𝛯𝑇𝛨𝛪𝛸-𝛭𝐷 𝛥𝐿𝐿𝛭𝛯𝛮𝑈🎨",
-                       "id":"View All Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"⬇️ ᴅᴏᴡɴʟᴀᴏᴅᴇʀ ᴍᴇɴᴜ",
-                        "description":"📂𝐒𝚮𝚯𝐖 𝚫𝐋𝐋 𝐃𝚯𝐖𝚴𝐋𝚯𝚫𝐃 𝐅𝚵𝚫𝚻𝐔𝚪𝚵𝐒🗂",
-                        "id":"Downloader Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"👨‍👨‍👧‍👧ɢʀᴏᴜᴘ ᴍᴇɴᴜ",
-                        "description":"🥵𝐅𝚵𝚫𝚻𝐔𝚪𝚵 𝚻𝚮𝚫𝚻 𝚫𝚪𝚵 𝚯𝚴𝐋𝐘 𝚫𝛁𝚰𝐋𝚫𝚩𝐋𝚵 𝐅𝚯𝚪 𝐆𝚪𝚯𝐔𝚸🥵",
-                        "id":"Group Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"👨‍🔧 ᴛᴏᴏʟ ᴍᴇɴᴜ",
-                        "description":"🛠 𝐒𝚮𝚯𝐖 𝚳𝚵 𝚻𝚯𝚯𝐋 𝚳𝚵𝚴𝐔",
-                        "id":"Tool Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"🗿 ᴍᴀɪɴ ᴍᴇɴᴜ",
-                        "description":"📪 𝚩𝚯𝚻 𝚳𝚫𝚰𝚴 𝐂𝚯𝚳𝚳𝚫𝚴𝐃𝐒🗳",
-                        "id":"Main Menu"
-                      },
-                     {
-                        "header":"",
-                        "title":"👨‍💻 ᴏᴡɴᴇʀ ᴍᴇɴᴜ",
-                        "description":"😎𝐅𝚵𝚫𝚻𝐔𝚪𝚵 𝚻𝚮𝚫𝚻 𝚫𝚪𝚵 𝚯𝚴𝐋𝐘 𝐅𝚯𝚪 𝚳𝐘 𝚮𝚫𝚴𝐃𝐒𝚯𝚳𝚵 𝚯𝐖𝚴𝚵𝚪👨‍💼",
-                        "id":"Owner Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"✨ ᴀɪ ᴍᴇɴᴜ",
-                        "description":"💫 𝐒𝚮𝚯𝐖 𝚳𝚵 𝚫𝚰 𝚳𝚵𝚴𝐔 🎇",
-                        "id":"Ai Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"🔍sᴇᴀʀᴄʜ ᴍᴇɴᴜ🔎",
-                        "description":"♂️ 𝐒𝚮𝚯𝐖 𝚳𝚵 𝐒𝚵𝚫𝚪𝐂𝚮 𝚳𝚵𝚴𝐔",
-                        "id":"Search Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"🧚‍♂️ sᴛᴀʟᴋ ᴍᴇɴᴜ",
-                        "description":"👨‍💼 𝐒𝚮𝚯𝐖 𝚳𝚵 𝐒𝚻𝚫𝐋𝐊 𝚳𝚵𝚴𝐔🪆",
-                        "id":"Stalk Menu"
-                      },
-                      {
-                        "header":"",
-                        "title":"🥏 𝚌𝚘𝚗𝚟𝚎𝚛𝚝𝚎𝚛 𝚖𝚎𝚗𝚞",
-                        "description":"🛷 𝐒𝚮𝚯𝐖 𝚳𝚵 𝐂𝚯𝚴𝛁𝚵𝚪𝚻𝚵𝚪 𝚳𝚵𝚴𝐔",
-                        "id":"Converter Menu"
-                      }
-                    ]}
-                  ]}`
-                },
-              ],
-            }),
-            contextInfo: {
-                  quotedMessage: m.message,
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-          }),
+          forwardingScore: 999, // Score to indicate it has been forwarded
+          externalAdReply: {
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            thumbnailUrl: 'profile', // Add thumbnail URL if required
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+            mediaType: 1,
+            renderLargerThumbnail: true,
+          },
         },
       },
-    }, {});
-
-    await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-      messageId: msg.key.id
-    });
+      { quoted: m }
+    );
   }
-      if (selectedId == "View All Menu") {
-        const str = `hey ${m.pushName} ${pushwish}
-╭─────────────━┈⊷
-│🤖 ʙᴏᴛ ɴᴀᴍᴇ: *ᴇᴛʜɪx-ᴍᴅ*
-│📍 ᴠᴇʀꜱɪᴏɴ: 2.0.3
-│👨‍💻 ᴏᴡɴᴇʀ : *ᴇᴛʜɪx xsɪᴅ*      
-│👤 ɴᴜᴍʙᴇʀ: 919142294671
-│💻 ᴘʟᴀᴛғᴏʀᴍ: *${os.platform()}*
-│🛡 ᴍᴏᴅᴇ: *${config.MODE}*
-│💫 ᴘʀᴇғɪx: [${pref}]
-╰─────────────━┈⊷ 
-╭━❮ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 ❯━╮
-┃✰ ${prefix}𝙰𝚃𝚃𝙿
-┃✰ ${prefix}𝙰𝚃𝚃𝙿2
-┃✰ ${prefix}𝙰𝚃𝚃𝙿3
-┃✰ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
-┃✰ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
-┃✰ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
-┃✰ ${prefix}𝙼𝙿3
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝙰𝙸 ❯━╮
-┃✰ ${prefix}𝙰𝚒
-┃✰ ${prefix}𝙱𝚞𝚐
-┃✰ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
-┃✰ ${prefix}𝙶𝚙𝚝
-┃✰ ${prefix}𝙳𝚊𝚕𝚕𝚎
-┃✰ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
-┃✰ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝚃𝙾𝙾𝙻 ❯━╮
-┃✰ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
-┃✰ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
-┃✰ ${prefix}𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕
-┃✰ ${prefix}𝚃𝚛𝚝
-┃✰ ${prefix}𝚃𝚝𝚜
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝙶𝚁𝙾𝚄𝙿 ❯━╮
-┃✰ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
-┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
-┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎
-┃✰ ${prefix}𝚂𝚎𝚝𝚍𝚎𝚜𝚌
-┃✰ ${prefix}𝙶𝚛𝚘𝚞𝚙
-┃✰ ${prefix}𝙶𝚌𝚜𝚎𝚝𝚝𝚒𝚗𝚐
-┃✰ ${prefix}𝚆𝚎𝚕𝚌𝚘𝚖𝚎
-┃✰ ${prefix}𝙰𝚍𝚍
-┃✰ ${prefix}𝙺𝚒𝚌𝚔
-┃✰ ${prefix}𝙷𝚒𝚍𝚎𝚃𝚊𝚐
-┃✰ ${prefix}𝚃𝚊𝚐𝚊𝚕𝚕
-┃✰ ${prefix}𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔
-┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌
-┃✰ ${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎
-┃✰ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
-┃✰ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 ❯━╮
-┃✰ ${prefix}𝙰𝚙𝚔
-┃✰ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
-┃✰ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
-┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕
-┃✰ ${prefix}𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎
-┃✰ ${prefix}𝙶𝚍𝚛𝚒𝚟𝚎
-┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊
-┃✰ ${prefix}𝚈𝚝𝚖𝚙3
-┃✰ ${prefix}𝚈𝚝𝚖𝚙4
-┃✰ ${prefix}𝙿𝚕𝚊𝚢
-┃✰ ${prefix}𝚂𝚘𝚗𝚐
-┃✰ ${prefix}𝚅𝚒𝚍𝚎𝚘
-┃✰ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
-┃✰ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
-┃✰ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝚂𝙴𝙰𝚁𝙲𝙷 ❯━╮
-┃✰ ${prefix}𝙿𝚕𝚊𝚢
-┃✰ ${prefix}𝚈𝚝𝚜
-┃✰ ${prefix}𝙸𝚖𝚍𝚋
-┃✰ ${prefix}𝙶𝚘𝚘𝚐𝚕𝚎
-┃✰ ${prefix}𝙶𝚒𝚖𝚊𝚐𝚎
-┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝
-┃✰ ${prefix}𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛
-┃✰ ${prefix}𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊
-┃✰ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
-┃✰ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
-┃✰ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝙼𝙰𝙸𝙽 ❯━╮
-┃✰ ${prefix}𝙿𝚒𝚗𝚐
-┃✰ ${prefix}𝙰𝚕𝚒𝚟𝚎
-┃✰ ${prefix}𝙾𝚠𝚗𝚎𝚛
-┃✰ ${prefix}𝙼𝚎𝚗𝚞
-┃✰ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝙾𝚆𝙽𝙴𝚁 ❯━╮
-┃✰ ${prefix}𝙹𝚘𝚒𝚗
-┃✰ ${prefix}𝙻𝚎𝚊𝚟𝚎
-┃✰ ${prefix}𝙱𝚕𝚘𝚌𝚔
-┃✰ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
-┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
-┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕
-┃✰ ${prefix}𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜
-┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝
-┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐
-┃✰ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
-┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
-┃✰ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
-╰━━━━━━━━━━━━━━━⪼
-╭━❮ 𝚂𝚃𝙰𝙻𝙺 ❯━╮
-┃✰ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
-┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
-┃✰ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
-╰━━━━━━━━━━━━━━━⪼
-   `;
-        let fgg = {
-            key: {
-                fromMe: false,
-                participant: `0@s.whatsapp.net`,
-                remoteJid: "status@broadcast"
-            },
-            message: {
-                contactMessage: {
-                    displayName: `Ethix-MD`,
-                    vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:'Ethix-MD'\nitem1.TEL;waid=${
-                        m.sender.split("@")[0]
-                    }:${
-                        m.sender.split("@")[0]
-                    }\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
-                }
-            }
-        };
-       let { key } = await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: { 
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: fgg
-});
-}
-   if ( selectedId == "Downloader Menu") {
-     const str = `╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝙳𝙾𝚆𝙽𝙻𝙾𝙰𝙳 ❯━╮
-┃✰ ${prefix}𝙰𝚙𝚔
-┃✰ ${prefix}𝙵𝚊𝚌𝚎𝚋𝚘𝚘𝚔
-┃✰ ${prefix}𝙼𝚎𝚍𝚒𝚊𝚏𝚒𝚛𝚎
-┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝𝚍𝚕
-┃✰ ${prefix}𝙶𝚒𝚝𝚌𝚕𝚘𝚗𝚎
-┃✰ ${prefix}𝙶𝚍𝚛𝚒𝚟𝚎
-┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊
-┃✰ ${prefix}𝚈𝚝𝚖𝚙3
-┃✰ ${prefix}𝚈𝚝𝚖𝚙4
-┃✰ ${prefix}𝙿𝚕𝚊𝚢
-┃✰ ${prefix}𝚂𝚘𝚗𝚐
-┃✰ ${prefix}𝚅𝚒𝚍𝚎𝚘
-┃✰ ${prefix}𝚈𝚝𝚖𝚙3𝚍𝚘𝚌
-┃✰ ${prefix}𝚈𝚝𝚖𝚙4𝚍𝚘𝚌
-┃✰ ${prefix}𝚃𝚒𝚔𝚝𝚘𝚔
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   
-   if ( selectedId == "Group Menu") {
-     const str = `╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝙶𝚁𝙾𝚄𝙿 ❯━╮
-┃✰ ${prefix}𝙻𝚒𝚗𝚔𝙶𝚛𝚘𝚞𝚙
-┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚐𝚌
-┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎
-┃✰ ${prefix}𝚂𝚎𝚝𝚍𝚎𝚜𝚌
-┃✰ ${prefix}𝙶𝚛𝚘𝚞𝚙
-┃✰ ${prefix}𝚆𝚎𝚕𝚌𝚘𝚖𝚎
-┃✰ ${prefix}𝙰𝚍𝚍
-┃✰ ${prefix}𝙺𝚒𝚌𝚔
-┃✰ ${prefix}𝙷𝚒𝚍𝚎𝚃𝚊𝚐
-┃✰ ${prefix}𝚃𝚊𝚐𝚊𝚕𝚕
-┃✰ ${prefix}𝙰𝚗𝚝𝚒𝙻𝚒𝚗𝚔
-┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚃𝚘𝚡𝚒𝚌
-┃✰ ${prefix}𝙿𝚛𝚘𝚖𝚘𝚝𝚎
-┃✰ ${prefix}𝙳𝚎𝚖𝚘𝚝𝚎
-┃✰ ${prefix}𝙶𝚎𝚝𝚋𝚒𝚘
-╰━━━━━━━━━━━━━━━⪼
-     `
-     await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-    mentionedJid: [m.sender], 
-    forwardingScore: 9999,
-    isForwarded: true,
-  }
-}, {
-  quoted: m
-});
-}
-   
-   if (selectedId == "Main Menu") {
-     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝙼𝙰𝙸𝙽 ❯━╮
-┃✰ ${prefix}𝙿𝚒𝚗𝚐
-┃✰ ${prefix}𝙰𝚕𝚒𝚟𝚎
-┃✰ ${prefix}𝙾𝚠𝚗𝚎𝚛
-┃✰ ${prefix}𝙼𝚎𝚗𝚞
-┃✰ ${prefix}𝙸𝚗𝚏𝚘𝚋𝚘𝚝
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   
-   if (selectedId == "Owner Menu") {
-     const str = `╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝙾𝚆𝙽𝙴𝚁 ❯━╮
-┃✰ ${prefix}𝙹𝚘𝚒𝚗
-┃✰ ${prefix}𝙻𝚎𝚊𝚟𝚎
-┃✰ ${prefix}𝙱𝚕𝚘𝚌𝚔
-┃✰ ${prefix}𝚄𝚗𝚋𝚕𝚘𝚌𝚔
-┃✰ ${prefix}𝙱𝚌𝚐𝚛𝚘𝚞𝚙
-┃✰ ${prefix}𝙱𝚌𝚊𝚕𝚕
-┃✰ ${prefix}𝚂𝚎𝚝𝚙𝚙𝚋𝚘𝚝
-┃✰ ${prefix}𝙰𝚗𝚝𝚒𝚌𝚊𝚕𝚕
-┃✰ ${prefix}𝚂𝚎𝚝𝚜𝚝𝚊𝚝𝚞𝚜
-┃✰ ${prefix}𝚂𝚎𝚝𝚗𝚊𝚖𝚎𝚋𝚘𝚝
-┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚃𝚢𝚙𝚒𝚗𝚐
-┃✰ ${prefix}𝙰𝚕𝚠𝚊𝚢𝚜𝙾𝚗𝚕𝚒𝚗𝚎
-┃✰ ${prefix}𝙰𝚞𝚝𝚘𝚁𝚎𝚊𝚍
-┃✰ ${prefix}𝚊𝚞𝚝𝚘𝚜𝚟𝚒𝚎𝚠
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   
-   if (selectedId == "Search Menu") {
-     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝚂𝙴𝙰𝚁𝙲𝙷 ❯━╮
-┃✰ ${prefix}𝙿𝚕𝚊𝚢
-┃✰ ${prefix}𝚈𝚝𝚜
-┃✰ ${prefix}𝙸𝚖𝚍𝚋
-┃✰ ${prefix}𝙶𝚘𝚘𝚐𝚕𝚎
-┃✰ ${prefix}𝙶𝚒𝚖𝚊𝚐𝚎
-┃✰ ${prefix}𝙿𝚒𝚗𝚝𝚎𝚛𝚎𝚜𝚝
-┃✰ ${prefix}𝚆𝚊𝚕𝚕𝚙𝚊𝚙𝚎𝚛
-┃✰ ${prefix}𝚆𝚒𝚔𝚒𝚖𝚎𝚍𝚒𝚊
-┃✰ ${prefix}𝚈𝚝𝚜𝚎𝚊𝚛𝚌𝚑
-┃✰ ${prefix}𝚁𝚒𝚗𝚐𝚝𝚘𝚗𝚎
-┃✰ ${prefix}𝙻𝚢𝚛𝚒𝚌𝚜
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   if (selectedId == "Stalk Menu") {
-     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝚂𝚃𝙰𝙻𝙺 ❯━╮
-┃✰ ${prefix}𝙽𝚘𝚠𝚊
-┃✰ ${prefix}𝚃𝚛𝚞𝚎𝚌𝚊𝚕𝚕𝚎𝚛
-┃✰ ${prefix}𝙸𝚗𝚜𝚝𝚊𝚂𝚝𝚊𝚕𝚔
-┃✰ ${prefix}𝙶𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   
-   if (selectedId == "Tool Menu") {
-     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝚃𝙾𝙾𝙻 ❯━╮
-┃✰ ${prefix}𝙲𝚊𝚕𝚌𝚞𝚕𝚊𝚝𝚘𝚛
-┃✰ ${prefix}𝚃𝚎𝚖𝚙𝚖𝚊𝚒𝚕
-┃✰ ${prefix}𝙲𝚑𝚎𝚌𝚔𝚖𝚊𝚒𝚕
-┃✰ ${prefix}𝙸𝚗𝚏𝚘
-┃✰ ${prefix}𝚃𝚛𝚝
-┃✰ ${prefix}𝚃𝚝𝚜
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   
-   if (selectedId == "Ai Menu") {
-     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝙰𝙸 ❯━╮
-┃✰ ${prefix}𝙰𝚒
-┃✰ ${prefix}𝙱𝚞𝚐
-┃✰ ${prefix}𝚁𝚎𝚙𝚘𝚛𝚝
-┃✰ ${prefix}𝙶𝚙𝚝
-┃✰ ${prefix}𝙳𝚊𝚕𝚕𝚎
-┃✰ ${prefix}𝚁𝚎𝚖𝚒𝚗𝚒
-┃✰ ${prefix}𝙶𝚎𝚖𝚒𝚗𝚒
-╰━━━━━━━━━━━━━━━⪼`
-await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
-   
-   if (selectedId == "Converter Menu") {
-     const str =`╭───❮ *s ᴇ ʀ ᴠ ᴇ ʀ* ❯
-│➥ 𝚃𝙾𝚃𝙰𝙻 𝚁𝙰𝙼: ${formatBytes(totalMemoryBytes)}
-│➥ 𝙵𝚁𝙴𝙴 𝚁𝙰𝙼: ${formatBytes(freeMemoryBytes)}
-╰━━━━━━━━━━━━━━━➥
-╭━❮ 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙴𝚁 ❯━╮
-┃✰ ${prefix}𝙰𝚃𝚃𝙿
-┃✰ ${prefix}𝙰𝚃𝚃𝙿2
-┃✰ ${prefix}𝙰𝚃𝚃𝙿3
-┃✰ ${prefix}𝙴𝙱𝙸𝙽𝙰𝚁𝚈
-┃✰ ${prefix}𝙳𝙱𝙸𝙽𝙰𝚁𝚈
-┃✰ ${prefix}𝙴𝙼𝙾𝙹𝙸𝙼𝙸𝚇
-┃✰ ${prefix}𝙼𝙿3
-╰━━━━━━━━━━━━━━━⪼
-     `
-     await Matrix.sendMessage(m.from, {
-  image: fs.readFileSync('./src/ethix.jpg'), 
-  caption: str, 
-  contextInfo: {
-                  mentionedJid: [m.sender], 
-                  forwardingScore: 999,
-                  isForwarded: true,
-                forwardedNewsletterMessageInfo: {
-                  newsletterJid: '120363249960769123@newsletter',
-                  newsletterName: "Ethix-MD",
-                  serverMessageId: 143
-                }
-              }
-}, {
-  quoted: m
-});
-}
 };
 
-export default test;
+export default alive;
