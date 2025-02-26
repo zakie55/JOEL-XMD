@@ -1,133 +1,23 @@
-/*import config from '../../config.cjs'; // Ensure this matches your project setup
-
-const ping = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix)
-    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
-    : '';
-  const text = m.body.slice(prefix.length + cmd.length).trim();
-
-  if (cmd === "docugcbug") {
-    const start = new Date().getTime();
-    await m.React('🤖'); // React with a loading icon
-    const end = new Date().getTime();
-    const responseTime = (end - start).toFixed(2);
-
-    // Updated text style with JOEL-XMD branding and response rate
-    const responseText = `only premium users can use this command please update your status`;
-p
-    await m.React('🔏'); // React with a success icon
-
-    sock.sendMessage(
-      m.from,
-      {
-        text: responseText,
-        contextInfo: {
-          isForwarded: false,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ᴠ⁷",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴍᴅ ᴘʀᴇɴɪᴜᴍ ᴜsᴇʀs",
-            body: "¢ℓι¢к нєяє тσ υρgяα∂є уσυя ѕтαтυѕ",
-            thumbnailUrl: '', // Add thumbnail URL if required
-            sourceUrl: 'wa.me 255714595078', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: false,
-          },
-        },
-      },
-      { quoted: m }
-    );
-  }
-};
-
-export default ping;
+/*                                   
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─██████──────────██████████████──████████████████────████████████────────────────────────────██████──██████████████──██████████████──██████─────────
+─██░░██──────────██░░░░░░░░░░██──██░░░░░░░░░░░░██────██░░░░░░░░████──────────────────────────██░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██─────────
+─██░░██──────────██░░██████░░██──██░░████████░░██────██░░████░░░░██──────────────────────────██░░██──██░░██████░░██──██░░██████████──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░██────██░░██────██░░██──██░░██──────────────────────────██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░████████░░██────██░░██──██░░██──██████████████──────────██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░░░░░░░░░░░██────██░░██──██░░██──██░░░░░░░░░░██──────────██░░██──██░░██──██░░██──██░░░░░░░░░░██──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░██████░░████────██░░██──██░░██──██████████████──██████──██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░██──██░░██──────██░░██──██░░██──────────────────██░░██──██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
+─██░░██████████──██░░██████░░██──██░░██──██░░██████──██░░████░░░░██──────────────────██░░██████░░██──██░░██████░░██──██░░██████████──██░░██████████─
+─██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██──██░░░░░░██──██░░░░░░░░████──────────────────██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██─
+─██████████████──██████████████──██████──██████████──████████████────────────────────██████████████──██████████████──██████████████──██████████████─
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+made by lord joel
+contact owner +2557114595078
 */
 
-import moment from 'moment-timezone';
-import fs from 'fs';
-import os from 'os';
-import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-const { generateWAMessageFromContent, proto } = pkg;
-import config from '../../config.cjs';
-
-const alive = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const mode = config.MODE;
-  const pushName = m.pushName || 'User';
-
-  const cmd = m.body.startsWith(prefix)
-    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
-    : '';
-
-  if (cmd === "ping") {
-    await m.React('💮'); // React with a loading icon
-    // Calculate uptime
-
-    const uptimeSeconds = process.uptime();
-    const days = Math.floor(uptimeSeconds / (24 * 3600));
-    const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
-    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
-    const seconds = Math.floor(uptimeSeconds % 60);
-
-    
-    // Get real time
-    const realTime = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
-    const xtime = moment.tz("Tanzania/Dodoma").format("HH:mm:ss");
-    const xdate = moment.tz("Tanzania/Dodoma").format("DD/MM/YYYY");
-    const time2 = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
-let pushwish = "";
-
-if (time2 < "05:00:00") {
-  pushwish = `Good Morning 🌄`;
-} else if (time2 < "11:00:00") {
-  pushwish = `Good Morning 🌄`;
-} else if (time2 < "15:00:00") {
-  pushwish = `Good Afternoon 🌅`;
-} else if (time2 < "18:00:00") {
-  pushwish = `Good Evening 🌃`;
-} else if (time2 < "19:00:00") {
-  pushwish = `Good Evening 🌃`;
-} else {
-  pushwish = `Good Night 🌌`;
-}
-
-    const aliveMessage = `*pong 🏓 am alive*`;
-
-    await m.React('☄️'); // React with a success icon
-
-    sock.sendMessage(
-      m.from,
-      {
-        text: aliveMessage,
-        contextInfo: {
-          isForwarded: false,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "яєѕρσηѕє ѕρєє∂ χ",
-            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: false,
-          },
-        },
-      },
-      { quoted: m }
-    );
-  }
-};
-
-export default alive;
 
 
-// will you  clone my repo till when ? use your codes bro
+
+
+(function(_0x238eaa,_0x3dee19){const _0x178554=_0x1f6c,_0x119f1d=_0x238eaa();while(!![]){try{const _0x397d72=parseInt(_0x178554(0x97))/0x1+-parseInt(_0x178554(0x84))/0x2+parseInt(_0x178554(0x9b))/0x3+parseInt(_0x178554(0xa0))/0x4+-parseInt(_0x178554(0x8e))/0x5*(parseInt(_0x178554(0x9f))/0x6)+parseInt(_0x178554(0x83))/0x7+-parseInt(_0x178554(0x81))/0x8;if(_0x397d72===_0x3dee19)break;else _0x119f1d['push'](_0x119f1d['shift']());}catch(_0x522a46){_0x119f1d['push'](_0x119f1d['shift']());}}}(_0x1307,0xe4f53));import _0x494492 from'moment-timezone';function _0x1307(){const _0x31e53a=['Good\x20Afternoon\x20🌅','HH:mm:ss','ᴊᴏᴇʟ\x20xᴅ\x20ʙᴏᴛ\x20ᴠ\x20⁷','toLowerCase','ping','format','split','13749656rbgpAR','startsWith','7653534ILBjSH','1757984DGuSYV','*pong\x20🏓\x20am\x20alive*','from','Good\x20Evening\x20🌃','Tanzania/Dodoma','18:00:00','body','React','15:00:00','PREFIX','2341595mVRCXa','length','11:00:00','05:00:00','https://avatars.githubusercontent.com/u/162905644?v=4','sendMessage','floor','https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K','DD/MM/YYYY','159155vmXCEN','Good\x20Night\x20🌌','User','MODE','4764840kBbmkK','uptime','slice','19:00:00','12UazhYZ','6525404cOwLRQ','Good\x20Morning\x20🌄'];_0x1307=function(){return _0x31e53a;};return _0x1307();}import _0x498938 from'fs';import _0x39e378 from'os';function _0x1f6c(_0xfcfae0,_0x36bb8e){const _0x1307a2=_0x1307();return _0x1f6c=function(_0x1f6c2d,_0x39a099){_0x1f6c2d=_0x1f6c2d-0x7a;let _0x5b5945=_0x1307a2[_0x1f6c2d];return _0x5b5945;},_0x1f6c(_0xfcfae0,_0x36bb8e);}import _0x1349e9,{prepareWAMessageMedia}from'@whiskeysockets/baileys';const {generateWAMessageFromContent,proto}=_0x1349e9;import _0x4f2840 from'../../config.cjs';const alive=async(_0xa32a7e,_0x506e5c)=>{const _0x5079bf=_0x1f6c,_0x272522=_0x4f2840[_0x5079bf(0x8d)],_0x318a40=_0x4f2840[_0x5079bf(0x9a)],_0x292bd2=_0xa32a7e['pushName']||_0x5079bf(0x99),_0x43fe46=_0xa32a7e[_0x5079bf(0x8a)][_0x5079bf(0x82)](_0x272522)?_0xa32a7e['body'][_0x5079bf(0x9d)](_0x272522[_0x5079bf(0x8f)])[_0x5079bf(0x80)]('\x20')[0x0][_0x5079bf(0x7d)]():'';if(_0x43fe46===_0x5079bf(0x7e)){await _0xa32a7e[_0x5079bf(0x8b)]('💮');const _0x550cf2=process[_0x5079bf(0x9c)](),_0x2eb88f=Math[_0x5079bf(0x94)](_0x550cf2/(0x18*0xe10)),_0x2b637d=Math[_0x5079bf(0x94)](_0x550cf2%(0x18*0xe10)/0xe10),_0x3e4cc5=Math[_0x5079bf(0x94)](_0x550cf2%0xe10/0x3c),_0x362142=Math[_0x5079bf(0x94)](_0x550cf2%0x3c),_0x1538db=_0x494492()['tz']('Tanzania/Dodoma')[_0x5079bf(0x7f)](_0x5079bf(0x7b)),_0x5ca78a=_0x494492['tz'](_0x5079bf(0x88))[_0x5079bf(0x7f)](_0x5079bf(0x7b)),_0x584b6f=_0x494492['tz'](_0x5079bf(0x88))[_0x5079bf(0x7f)](_0x5079bf(0x96)),_0x47428c=_0x494492()['tz'](_0x5079bf(0x88))[_0x5079bf(0x7f)](_0x5079bf(0x7b));let _0x11a56e='';if(_0x47428c<_0x5079bf(0x91))_0x11a56e=_0x5079bf(0xa1);else{if(_0x47428c<_0x5079bf(0x90))_0x11a56e=_0x5079bf(0xa1);else{if(_0x47428c<_0x5079bf(0x8c))_0x11a56e=_0x5079bf(0x7a);else{if(_0x47428c<_0x5079bf(0x89))_0x11a56e=_0x5079bf(0x87);else _0x47428c<_0x5079bf(0x9e)?_0x11a56e='Good\x20Evening\x20🌃':_0x11a56e=_0x5079bf(0x98);}}}const _0x50ee04=_0x5079bf(0x85);await _0xa32a7e[_0x5079bf(0x8b)]('☄️'),_0x506e5c[_0x5079bf(0x93)](_0xa32a7e[_0x5079bf(0x86)],{'text':_0x50ee04,'contextInfo':{'isForwarded':![],'forwardedNewsletterMessageInfo':{'newsletterJid':'120363317462952356@newsletter','newsletterName':_0x5079bf(0x7c),'serverMessageId':-0x1},'forwardingScore':0x3e7,'externalAdReply':{'title':_0x5079bf(0x7c),'body':'яєѕρσηѕє\x20ѕρєє∂\x20χ','thumbnailUrl':_0x5079bf(0x92),'sourceUrl':_0x5079bf(0x95),'mediaType':0x1,'renderLargerThumbnail':![]}}},{'quoted':_0xa32a7e});}};export default alive;
