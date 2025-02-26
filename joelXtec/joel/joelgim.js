@@ -1,48 +1,23 @@
-import axios from 'axios';
-import config from '../../config.cjs';
-global.nex_key = 'https://api.nexoracle.com';
-global.nex_api = 'free_key@maher_apis';
+/*                                   
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+─██████──────────██████████████──████████████████────████████████────────────────────────────██████──██████████████──██████████████──██████─────────
+─██░░██──────────██░░░░░░░░░░██──██░░░░░░░░░░░░██────██░░░░░░░░████──────────────────────────██░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██─────────
+─██░░██──────────██░░██████░░██──██░░████████░░██────██░░████░░░░██──────────────────────────██░░██──██░░██████░░██──██░░██████████──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░██────██░░██────██░░██──██░░██──────────────────────────██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░████████░░██────██░░██──██░░██──██████████████──────────██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░░░░░░░░░░░██────██░░██──██░░██──██░░░░░░░░░░██──────────██░░██──██░░██──██░░██──██░░░░░░░░░░██──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░██████░░████────██░░██──██░░██──██████████████──██████──██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
+─██░░██──────────██░░██──██░░██──██░░██──██░░██──────██░░██──██░░██──────────────────██░░██──██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
+─██░░██████████──██░░██████░░██──██░░██──██░░██████──██░░████░░░░██──────────────────██░░██████░░██──██░░██████░░██──██░░██████████──██░░██████████─
+─██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██──██░░░░░░██──██░░░░░░░░████──────────────────██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██─
+─██████████████──██████████████──██████──██████████──████████████────────────────────██████████████──██████████████──██████████████──██████████████─
+───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+made by lord joel
+contact owner +2557114595078
+*/
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const imageCommand = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  let query = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['image', 'img', 'gimage'];
 
-  if (validCommands.includes(cmd)) {
-    if (!query && !(m.quoted && m.quoted.text)) {
-      return sock.sendMessage(m.from, { text: `Please provide some text, Example usage: ${prefix + cmd} black cats` });
-    }
 
-    if (!query && m.quoted && m.quoted.text) {
-      query = m.quoted.text;
-    }
-
-    try {
-      await sock.sendMessage(m.from, { text: '*Please wait*' });
-
-      const endpoint = `${global.nex_key}/search/google-image?apikey=${global.nex_api}&q=${encodeURIComponent(query)}`;
-      const response = await axios.get(endpoint);
-
-      if (response.status === 200 && response.data.result && response.data.result.length > 0) {
-        const images = response.data.result.slice(0, 5); // Limit to 5 images
-
-        for (let i = 0; i < images.length; i++) {
-          await sleep(500);
-          await sock.sendMessage(m.from, { image: { url: images[i] }, caption: '' }, { quoted: m });
-        }
-        await m.React("✅");
-      } else {
-        throw new Error('No images found');
-      }
-    } catch (error) {
-      console.error("Error fetching images:", error);
-      await sock.sendMessage(m.from, { text: `*Oops! Something went wrong while generating images. Please try again later.*\n\nError: ${error}` });
-    }
-  }
-};
-
-export default imageCommand;
+(function(_0x570dfb,_0xd8f81d){const _0x43b7ac=_0x1ab8,_0x3e19a5=_0x570dfb();while(!![]){try{const _0x30930a=-parseInt(_0x43b7ac(0xe1))/0x1*(parseInt(_0x43b7ac(0xf9))/0x2)+parseInt(_0x43b7ac(0xf3))/0x3+parseInt(_0x43b7ac(0xfd))/0x4+parseInt(_0x43b7ac(0xe3))/0x5+-parseInt(_0x43b7ac(0xfe))/0x6*(parseInt(_0x43b7ac(0xe8))/0x7)+-parseInt(_0x43b7ac(0xef))/0x8*(-parseInt(_0x43b7ac(0xde))/0x9)+parseInt(_0x43b7ac(0xff))/0xa*(-parseInt(_0x43b7ac(0xf4))/0xb);if(_0x30930a===_0xd8f81d)break;else _0x3e19a5['push'](_0x3e19a5['shift']());}catch(_0x288b91){_0x3e19a5['push'](_0x3e19a5['shift']());}}}(_0x5f80,0x88854));function _0x5f80(){const _0x5de7a3=['from','562264CfINXN','543174xRPmxy','750590jSgqXc','error','trim','6948VZzKKE','startsWith','gimage','611566xcGbRK','data','985605WqdlxP','PREFIX','push','*Please\x20wait*','binary','21DwQtCy','status','quoted','toLowerCase','Image\x20generation\x20failed','text','body','9176mYcpGf','*Oops!\x20Something\x20went\x20wrong\x20while\x20generating\x20images.\x20Please\x20try\x20again\x20later.*','get','https://api.diioffc.web.id/api/search/pinterest?query=','882687OVtprw','11fGOvuM','length','img','React','Error\x20fetching\x20images:','2QEqZcp','slice','sendMessage'];_0x5f80=function(){return _0x5de7a3;};return _0x5f80();}import _0x4dddf4 from'axios';import _0x1adf1a from'../../config.cjs';const sleep=_0x3a3f20=>new Promise(_0x148716=>setTimeout(_0x148716,_0x3a3f20)),imageCommand=async(_0x12f5f8,_0x2d4528)=>{const _0x40a286=_0x1ab8,_0x34e538=_0x1adf1a[_0x40a286(0xe4)],_0x439783=_0x12f5f8[_0x40a286(0xee)][_0x40a286(0xdf)](_0x34e538)?_0x12f5f8[_0x40a286(0xee)][_0x40a286(0xfa)](_0x34e538[_0x40a286(0xf5)])['split']('\x20')[0x0][_0x40a286(0xeb)]():'',_0x5b13bb=_0x12f5f8[_0x40a286(0xee)]['slice'](_0x34e538[_0x40a286(0xf5)]+_0x439783[_0x40a286(0xf5)])[_0x40a286(0xdd)](),_0x277981=['image',_0x40a286(0xf6),_0x40a286(0xe0)];if(_0x277981['includes'](_0x439783)){if(!_0x5b13bb&&!(_0x12f5f8['quoted']&&_0x12f5f8[_0x40a286(0xea)][_0x40a286(0xed)]))return _0x2d4528['sendMessage'](_0x12f5f8[_0x40a286(0xfc)],{'text':'Please\x20provide\x20some\x20text,\x20Example\x20usage:\x20'+(_0x34e538+_0x439783)+'\x20black\x20cats'});!_0x5b13bb&&_0x12f5f8[_0x40a286(0xea)]&&_0x12f5f8[_0x40a286(0xea)][_0x40a286(0xed)]&&(_0x5b13bb=_0x12f5f8[_0x40a286(0xea)][_0x40a286(0xed)]);const _0x3e4df1=0x5;try{await _0x2d4528[_0x40a286(0xfb)](_0x12f5f8[_0x40a286(0xfc)],{'text':_0x40a286(0xe6)});const _0x498da8=[];for(let _0x4dd3b3=0x0;_0x4dd3b3<_0x3e4df1;_0x4dd3b3++){const _0x49ffe2=_0x40a286(0xf2)+encodeURIComponent(_0x5b13bb),_0xa2a669=await _0x4dddf4[_0x40a286(0xf1)](_0x49ffe2,{'responseType':'arraybuffer'});if(_0xa2a669[_0x40a286(0xe9)]===0xc8){const _0x2ffb8a=Buffer[_0x40a286(0xfc)](_0xa2a669[_0x40a286(0xe2)],_0x40a286(0xe7));_0x498da8[_0x40a286(0xe5)](_0x2ffb8a);}else throw new Error(_0x40a286(0xec));}for(let _0x2f1fe9=0x0;_0x2f1fe9<_0x498da8[_0x40a286(0xf5)];_0x2f1fe9++){await sleep(0x1f4),await _0x2d4528[_0x40a286(0xfb)](_0x12f5f8[_0x40a286(0xfc)],{'image':_0x498da8[_0x2f1fe9],'caption':''},{'quoted':_0x12f5f8});}await _0x12f5f8[_0x40a286(0xf7)]('✅');}catch(_0x2d0126){console[_0x40a286(0xdc)](_0x40a286(0xf8),_0x2d0126),await _0x2d4528[_0x40a286(0xfb)](_0x12f5f8[_0x40a286(0xfc)],{'text':_0x40a286(0xf0)});}}};function _0x1ab8(_0x55a4c1,_0x6b3b9){const _0x5f80b5=_0x5f80();return _0x1ab8=function(_0x1ab844,_0x4f0993){_0x1ab844=_0x1ab844-0xdc;let _0x1da867=_0x5f80b5[_0x1ab844];return _0x1da867;},_0x1ab8(_0x55a4c1,_0x6b3b9);}export default imageCommand;
