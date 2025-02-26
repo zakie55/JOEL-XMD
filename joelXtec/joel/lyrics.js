@@ -1,24 +1,104 @@
+import axios from 'axios';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+import config from '../../config.cjs';
 
-/*                                   
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-─██████──────────██████████████──████████████████────████████████────────────────────────────██████──██████████████──██████████████──██████─────────
-─██░░██──────────██░░░░░░░░░░██──██░░░░░░░░░░░░██────██░░░░░░░░████──────────────────────────██░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██─────────
-─██░░██──────────██░░██████░░██──██░░████████░░██────██░░████░░░░██──────────────────────────██░░██──██░░██████░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██────██░░██────██░░██──██░░██──────────────────────────██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░████████░░██────██░░██──██░░██──██████████████──────────██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░░░░░░░░░░░██────██░░██──██░░██──██░░░░░░░░░░██──────────██░░██──██░░██──██░░██──██░░░░░░░░░░██──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██████░░████────██░░██──██░░██──██████████████──██████──██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██──██░░██──────██░░██──██░░██──────────────────██░░██──██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
-─██░░██████████──██░░██████░░██──██░░██──██░░██████──██░░████░░░░██──────────────────██░░██████░░██──██░░██████░░██──██░░██████████──██░░██████████─
-─██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██──██░░░░░░██──██░░░░░░░░████──────────────────██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██─
-─██████████████──██████████████──██████──██████████──████████████────────────────────██████████████──██████████████──██████████████──██████████████─
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-made by lord joel
-contact owner +2557114595078
-*/
+const Lyrics = async (m, Matrix) => {
+  const prefix = config.PREFIX;
+const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+const text = m.body.slice(prefix.length + cmd.length).trim();
 
+  const validCommands = ['lyrics', 'lyric'];
 
+  if (validCommands.includes(cmd)) {
+    if (!text) return m.reply(`Hello *_${m.pushName}_,*\n Here's Example Usage: _.lyrics Spectule|Alan walker._`);
 
+    try {
+      await m.React('🕘');
+      await m.reply('A moment, *ᴊᴏᴇʟ ᴍᴅ* is generating your lyrics request...');
 
+      if (!text.includes('|')) {
+        return m.reply('Please provide the song name and artist name separated by a "|", for example: Spectre|Alan Walker.');
+      }
 
-function _0x3492(_0x2fb84d,_0x5ee595){const _0x583177=_0x5831();return _0x3492=function(_0x349239,_0x5281b6){_0x349239=_0x349239-0x131;let _0x1d3ab6=_0x583177[_0x349239];return _0x1d3ab6;},_0x3492(_0x2fb84d,_0x5ee595);}(function(_0x227af7,_0x1f3c37){const _0x6c13b0=_0x3492,_0x536bdf=_0x227af7();while(!![]){try{const _0x5ad33d=-parseInt(_0x6c13b0(0x15c))/0x1*(-parseInt(_0x6c13b0(0x15b))/0x2)+parseInt(_0x6c13b0(0x164))/0x3+parseInt(_0x6c13b0(0x131))/0x4*(-parseInt(_0x6c13b0(0x153))/0x5)+-parseInt(_0x6c13b0(0x13a))/0x6+-parseInt(_0x6c13b0(0x147))/0x7*(-parseInt(_0x6c13b0(0x168))/0x8)+-parseInt(_0x6c13b0(0x14c))/0x9*(-parseInt(_0x6c13b0(0x145))/0xa)+parseInt(_0x6c13b0(0x157))/0xb*(-parseInt(_0x6c13b0(0x154))/0xc);if(_0x5ad33d===_0x1f3c37)break;else _0x536bdf['push'](_0x536bdf['shift']());}catch(_0x420539){_0x536bdf['push'](_0x536bdf['shift']());}}}(_0x5831,0x8ddb6));import _0x6b4c7 from'axios';import _0x5f1b7f,{prepareWAMessageMedia}from'@whiskeysockets/baileys';const {generateWAMessageFromContent,proto}=_0x5f1b7f;function _0x5831(){const _0x56ace2=['quick_reply','Please\x20provide\x20the\x20song\x20name\x20and\x20artist\x20name\x20separated\x20by\x20a\x20\x22|\x22,\x20for\x20example:\x20Spectre|Alan\x20Walker.','2644845DOYIQB','toLowerCase','split','¢σρу\x20ℓуяι¢ѕ','8pykEeG','647916xaqOCo','ƒσℓℓσω\x20υѕ','.menu','PREFIX','lyric','νιєω\x20мєηυ','trim','stringify','Error\x20getting\x20lyrics.','1462926aBXmQJ','map','Header','Body','body','create','key','from','startsWith','slice','Hello\x20*_','24810aqnOEx','cta_copy','3880247LYbNgT','https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K','Message','NativeFlowMessage','https://api.lyrics.ovh/v1/','63oWsqUU','Both\x20song\x20name\x20and\x20artist\x20name\x20are\x20required.\x20Please\x20provide\x20them\x20in\x20the\x20format:\x20song\x20name|artist\x20name.','lyrics','reply','InteractiveMessage','error','includes','5zjWiYT','5316NowtaA','Error\x20getting\x20lyrics:','data','37136bQshvJ','get','>\x20*ρσωєяє∂\x20ву\x20ℓσя∂\x20χ\x20ʝσєℓ*','copy_code','686074cCmxAL','3kyYqCX','message','React','ℓуяι¢ѕ\x20ƒιη∂єя','_,*\x0a\x20Here\x27s\x20Example\x20Usage:\x20_.lyrics\x20Spectule|Alan\x20walker._','length'];_0x5831=function(){return _0x56ace2;};return _0x5831();}import _0x498a48 from'../../config.cjs';const Lyrics=async(_0x409199,_0x5197db)=>{const _0x4275b5=_0x3492,_0x49c08=_0x498a48[_0x4275b5(0x134)],_0x3a9a94=_0x409199[_0x4275b5(0x13e)][_0x4275b5(0x142)](_0x49c08)?_0x409199['body']['slice'](_0x49c08[_0x4275b5(0x161)])['split']('\x20')[0x0][_0x4275b5(0x165)]():'',_0x15d72f=_0x409199[_0x4275b5(0x13e)][_0x4275b5(0x143)](_0x49c08[_0x4275b5(0x161)]+_0x3a9a94[_0x4275b5(0x161)])[_0x4275b5(0x137)](),_0x244170=[_0x4275b5(0x14e),_0x4275b5(0x135)];if(_0x244170[_0x4275b5(0x152)](_0x3a9a94)){if(!_0x15d72f)return _0x409199['reply'](_0x4275b5(0x144)+_0x409199['pushName']+_0x4275b5(0x160));try{await _0x409199[_0x4275b5(0x15e)]('🕘'),await _0x409199['reply']('A\x20moment,\x20*ᴊᴏᴇʟ\x20ᴍᴅ*\x20is\x20generating\x20your\x20lyrics\x20request...');if(!_0x15d72f[_0x4275b5(0x152)]('|'))return _0x409199['reply'](_0x4275b5(0x163));const [_0x4cf559,_0x182e49]=_0x15d72f[_0x4275b5(0x166)]('|')[_0x4275b5(0x13b)](_0x3f0bab=>_0x3f0bab[_0x4275b5(0x137)]());if(!_0x4cf559||!_0x182e49)return _0x409199[_0x4275b5(0x14f)](_0x4275b5(0x14d));const _0x249f2b=_0x4275b5(0x14b)+encodeURIComponent(_0x182e49)+'/'+encodeURIComponent(_0x4cf559),_0x377905=await _0x6b4c7[_0x4275b5(0x158)](_0x249f2b),_0x587c63=_0x377905[_0x4275b5(0x156)];if(_0x587c63&&_0x587c63[_0x4275b5(0x14e)]){const _0x106ada=_0x587c63[_0x4275b5(0x14e)];let _0xa00caf=[{'name':_0x4275b5(0x146),'buttonParamsJson':JSON[_0x4275b5(0x138)]({'display_text':_0x4275b5(0x167),'id':_0x4275b5(0x15a),'copy_code':_0x106ada})},{'name':'cta_url','buttonParamsJson':JSON[_0x4275b5(0x138)]({'display_text':_0x4275b5(0x132),'url':_0x4275b5(0x148)})},{'name':_0x4275b5(0x162),'buttonParamsJson':JSON[_0x4275b5(0x138)]({'display_text':_0x4275b5(0x136),'id':_0x4275b5(0x133)})}],_0x507b83=generateWAMessageFromContent(_0x409199[_0x4275b5(0x141)],{'viewOnceMessage':{'message':{'messageContextInfo':{'deviceListMetadata':{},'deviceListMetadataVersion':0x2},'interactiveMessage':proto[_0x4275b5(0x149)][_0x4275b5(0x150)][_0x4275b5(0x13f)]({'body':proto['Message']['InteractiveMessage'][_0x4275b5(0x13d)][_0x4275b5(0x13f)]({'text':_0x106ada}),'footer':proto['Message'][_0x4275b5(0x150)]['Footer'][_0x4275b5(0x13f)]({'text':_0x4275b5(0x159)}),'header':proto[_0x4275b5(0x149)][_0x4275b5(0x150)][_0x4275b5(0x13c)][_0x4275b5(0x13f)]({'title':'ʝσєℓ\x20χ∂\x20ν⁷','subtitle':_0x4275b5(0x15f),'hasMediaAttachment':![]}),'nativeFlowMessage':proto['Message'][_0x4275b5(0x150)][_0x4275b5(0x14a)][_0x4275b5(0x13f)]({'buttons':_0xa00caf})})}}},{});await _0x5197db['relayMessage'](_0x507b83['key']['remoteJid'],_0x507b83['message'],{'messageId':_0x507b83[_0x4275b5(0x140)]['id']}),await _0x409199['React']('✅');}else throw new Error('Invalid\x20response\x20from\x20the\x20Lyrics\x20API.');}catch(_0x947fdc){console[_0x4275b5(0x151)](_0x4275b5(0x155),_0x947fdc[_0x4275b5(0x15d)]),_0x409199[_0x4275b5(0x14f)](_0x4275b5(0x139)),await _0x409199[_0x4275b5(0x15e)]('❌');}}};export default Lyrics;
+      const [title, artist] = text.split('|').map(part => part.trim());
+
+      if (!title || !artist) {
+        return m.reply('Both song name and artist name are required. Please provide them in the format: song name|artist name.');
+      }
+
+      const apiUrl = `https://api.lyrics.ovh/v1/${encodeURIComponent(artist)}/${encodeURIComponent(title)}`;
+      const response = await axios.get(apiUrl);
+      const result = response.data;
+
+      if (result && result.lyrics) {
+        const lyrics = result.lyrics;
+
+        let buttons = [{
+            name: "cta_copy",
+            buttonParamsJson: JSON.stringify({
+              display_text: "¢σρу ℓуяι¢ѕ",
+              id: "copy_code",
+              copy_code: lyrics
+            })
+          },
+          {
+            name: "cta_url",
+            buttonParamsJson: JSON.stringify({
+              display_text: "ƒσℓℓσω υѕ",
+              url: `https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K`
+            })
+          },
+          {
+            name: "quick_reply",
+            buttonParamsJson: JSON.stringify({
+              display_text: "νιєω мєηυ",
+              id: ".menu"
+            })
+          }
+        ];
+
+        let msg = generateWAMessageFromContent(m.from, {
+          viewOnceMessage: {
+            message: {
+              messageContextInfo: {
+                deviceListMetadata: {},
+                deviceListMetadataVersion: 2
+              },
+              interactiveMessage: proto.Message.InteractiveMessage.create({
+                body: proto.Message.InteractiveMessage.Body.create({
+                  text: lyrics
+                }),
+                footer: proto.Message.InteractiveMessage.Footer.create({
+                  text: "> *ρσωєяє∂ ву ℓσя∂ χ ʝσєℓ*"
+                }),
+                header: proto.Message.InteractiveMessage.Header.create({
+                  title: "ʝσєℓ χ∂ ν⁷",
+                  subtitle: "ℓуяι¢ѕ ƒιη∂єя",
+                  hasMediaAttachment: false
+                }),
+                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                  buttons: buttons
+                })
+              })
+            }
+          }
+        }, {});
+
+        await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+          messageId: msg.key.id
+        });
+
+        await m.React('✅');
+      } else {
+        throw new Error('Invalid response from the Lyrics API.');
+      }
+    } catch (error) {
+      console.error('Error getting lyrics:', error.message);
+      m.reply('Error getting lyrics.');
+      await m.React('❌');
+    }
+  }
+};
+
+export default Lyrics;
