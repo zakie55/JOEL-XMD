@@ -1,1 +1,117 @@
-const _0x25d38a=_0x2f85;(function(_0x4190af,_0x1a1c91){const _0x36854b=_0x2f85,_0x29d5c7=_0x4190af();while(!![]){try{const _0x15e79d=parseInt(_0x36854b(0x101))/0x1+parseInt(_0x36854b(0xf8))/0x2+-parseInt(_0x36854b(0x10b))/0x3*(-parseInt(_0x36854b(0x109))/0x4)+parseInt(_0x36854b(0xfa))/0x5*(-parseInt(_0x36854b(0x103))/0x6)+-parseInt(_0x36854b(0x106))/0x7+parseInt(_0x36854b(0x105))/0x8+-parseInt(_0x36854b(0xfb))/0x9;if(_0x15e79d===_0x1a1c91)break;else _0x29d5c7['push'](_0x29d5c7['shift']());}catch(_0xc21d5f){_0x29d5c7['push'](_0x29d5c7['shift']());}}}(_0x40f4,0xb8845));import _0x2aa3fe from'fs';function _0x40f4(){const _0x3de514=['now','463116eXSKvs','Don\x27t\x20watch\x20the\x20clock;\x20do\x20what\x20it\x20does.\x20Keep\x20going.','5681216TIsqIB','1041782JcFJWL','The\x20only\x20limit\x20to\x20our\x20realization\x20of\x20tomorrow\x20is\x20our\x20doubts\x20of\x20today.','Auto-Bio\x20updates\x20disabled.','20VDorZX','Success\x20usually\x20comes\x20to\x20those\x20who\x20are\x20too\x20busy\x20to\x20be\x20looking\x20for\x20it.','357711usbGvE','autobio','Hardships\x20often\x20prepare\x20ordinary\x20people\x20for\x20an\x20extraordinary\x20destiny.','Success\x20is\x20not\x20final,\x20failure\x20is\x20not\x20fatal:\x20It\x20is\x20the\x20courage\x20to\x20continue\x20that\x20counts.','floor','Your\x20time\x20is\x20limited,\x20don\x27t\x20waste\x20it\x20living\x20someone\x20else\x27s\x20life.','1574122auPHhB','It\x20always\x20seems\x20impossible\x20until\x20it\x27s\x20done.','5hBNqSg','22664916gzAzlA','log','Auto-Bio\x20updates\x20enabled.','Failed\x20to\x20update\x20bio:','random','Bio\x20updated\x20successfully:','1406719GoFfQS'];_0x40f4=function(){return _0x3de514;};return _0x40f4();}import _0x49f9d9 from'../../config.cjs';const intervals={},startTime=Date[_0x25d38a(0x102)](),getUptime=()=>{const _0x5b27ff=_0x25d38a,_0x4a3961=Math[_0x5b27ff(0xf6)]((Date[_0x5b27ff(0x102)]()-startTime)/0x3e8),_0xa1d177=Math[_0x5b27ff(0xf6)](_0x4a3961/0x15180),_0x547000=Math[_0x5b27ff(0xf6)](_0x4a3961%0x15180/0xe10),_0x526af1=Math['floor'](_0x4a3961%0xe10/0x3c),_0x31b28e=_0x4a3961%0x3c;return _0xa1d177+'d\x20'+_0x547000+'h\x20'+_0x526af1+'m\x20'+_0x31b28e+'s';},getRandomQuote=()=>{const _0xe339c1=_0x25d38a,_0x7479ef=['The\x20best\x20way\x20to\x20predict\x20the\x20future\x20is\x20to\x20create\x20it.',_0xe339c1(0x10e),'Believe\x20you\x20can\x20and\x20you\x27re\x20halfway\x20there.',_0xe339c1(0x104),_0xe339c1(0x10d),_0xe339c1(0xf7),'The\x20only\x20way\x20to\x20do\x20great\x20work\x20is\x20to\x20love\x20what\x20you\x20do.',_0xe339c1(0x10a),_0xe339c1(0x107),_0xe339c1(0xf9)];return _0x7479ef[Math[_0xe339c1(0xf6)](Math[_0xe339c1(0xff)]()*_0x7479ef['length'])];},updateBio=async _0x3fe97a=>{const _0x34ec13=_0x25d38a,_0x51c091=getUptime(),_0x4bce88=getRandomQuote(),_0x6344d9='ʝσєℓ\x20χ∂\x20ν⁷\x20ιѕ\x20αℓινє\x20ƒяσм\x20'+_0x51c091+'\x20|\x20qυσтє:\x20\x22'+_0x4bce88+'\x22';try{await _0x3fe97a['updateProfileStatus'](_0x6344d9),console[_0x34ec13(0xfc)](_0x34ec13(0x100),_0x6344d9);}catch(_0x677b28){console['error'](_0x34ec13(0xfe),_0x677b28);}},autobioCommand=async(_0x275e91,_0x109ad4)=>{const _0x4af630=_0x25d38a;_0x49f9d9['AUTO_BIO']?!intervals['autobio']&&(intervals['autobio']=setInterval(()=>updateBio(_0x109ad4),0xea60),console[_0x4af630(0xfc)](_0x4af630(0xfd))):intervals[_0x4af630(0x10c)]&&(clearInterval(intervals[_0x4af630(0x10c)]),delete intervals[_0x4af630(0x10c)],console[_0x4af630(0xfc)](_0x4af630(0x108)));};function _0x2f85(_0x574ae5,_0xb62304){const _0x40f46a=_0x40f4();return _0x2f85=function(_0x2f852f,_0x29c783){_0x2f852f=_0x2f852f-0xf6;let _0x52d7c7=_0x40f46a[_0x2f852f];return _0x52d7c7;},_0x2f85(_0x574ae5,_0xb62304);}export default autobioCommand;
+import fs from 'fs';
+
+import config from '../../config.cjs';
+
+// For global intervals tracking
+
+const intervals = {}; 
+
+const startTime = Date.now(); // Store bot start time
+
+// Helper function to format uptime into "days, hours, minutes, seconds"
+
+const getUptime = () => {
+
+  const totalSeconds = Math.floor((Date.now() - startTime) / 1000);
+
+  const days = Math.floor(totalSeconds / 86400);
+
+  const hours = Math.floor((totalSeconds % 86400) / 3600);
+
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+
+  const seconds = totalSeconds % 60;
+
+  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+};
+
+// Helper function to get a random quote
+
+const getRandomQuote = () => {
+
+  const randomQuotes = [
+
+    "The best way to predict the future is to create it.",
+
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+
+    "Believe you can and you're halfway there.",
+
+    "Don't watch the clock; do what it does. Keep going.",
+
+    "Hardships often prepare ordinary people for an extraordinary destiny.",
+
+    "Your time is limited, don't waste it living someone else's life.",
+
+    "The only way to do great work is to love what you do.",
+
+    "Success usually comes to those who are too busy to be looking for it.",
+
+    "The only limit to our realization of tomorrow is our doubts of today.",
+
+    "It always seems impossible until it's done."
+
+  ];
+
+  return randomQuotes[Math.floor(Math.random() * randomQuotes.length)];
+
+};
+
+// Function to update Bio with custom uptime and random quote
+
+const updateBio = async (Matrix) => {
+
+  const uptime = getUptime(); // Calculate uptime using custom function
+
+  const randomQuote = getRandomQuote();
+
+  const newBio = `ʝσєℓ χ∂ ν⁷ ιѕ αℓινє ƒяσм ${uptime} | qυσтє: "${randomQuote}"`;
+
+  try {
+
+    await Matrix.updateProfileStatus(newBio);
+
+    console.log("Bio updated successfully:", newBio);
+
+  } catch (error) {
+
+    console.error("Failed to update bio:", error);
+
+  }
+
+};
+
+const autobioCommand = async (m, Matrix) => {
+
+  // Check if AUTO_BIO is enabled in the config
+
+  if (config.AUTO_BIO) {
+
+    if (!intervals['autobio']) {
+
+      intervals['autobio'] = setInterval(() => updateBio(Matrix), 60000); // Update every minute
+
+      console.log("Auto-Bio updates enabled.");
+
+    }
+
+  } else {
+
+    // If AUTO_BIO is false, clear the interval
+
+    if (intervals['autobio']) {
+
+      clearInterval(intervals['autobio']);
+
+      delete intervals['autobio'];
+
+      console.log("Auto-Bio updates disabled.");
+
+    }
+
+  }
+
+};
+
+export default autobioCommand;
