@@ -15,8 +15,8 @@ const allCmdsCommand = async (m, sock) => {
     : '';
   
   if (cmd === "allcmds") {
-    const folderPath = path.resolve(process.cwd(), '../JOEL-XMD/joelXtec/joel');
-
+    const folderPath = path.resolve(process.cwd(), '../joelXtec/joel');
+// 
     // Ensure the folder exists
   // Check if the sender is an owner
   if (!ownerNumbers.includes(m.sender)) {
