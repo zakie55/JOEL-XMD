@@ -1,25 +1,162 @@
-/*                                   
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-─██████──────────██████████████──████████████████────████████████────────────────────────────██████──██████████████──██████████████──██████─────────
-─██░░██──────────██░░░░░░░░░░██──██░░░░░░░░░░░░██────██░░░░░░░░████──────────────────────────██░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██─────────
-─██░░██──────────██░░██████░░██──██░░████████░░██────██░░████░░░░██──────────────────────────██░░██──██░░██████░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██────██░░██────██░░██──██░░██──────────────────────────██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░████████░░██────██░░██──██░░██──██████████████──────────██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░░░░░░░░░░░██────██░░██──██░░██──██░░░░░░░░░░██──────────██░░██──██░░██──██░░██──██░░░░░░░░░░██──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██████░░████────██░░██──██░░██──██████████████──██████──██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██──██░░██──────██░░██──██░░██──────────────────██░░██──██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
-─██░░██████████──██░░██████░░██──██░░██──██░░██████──██░░████░░░░██──────────────────██░░██████░░██──██░░██████░░██──██░░██████████──██░░██████████─
-─██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██──██░░░░░░██──██░░░░░░░░████──────────────────██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██─
-─██████████████──██████████████──██████──██████████──████████████────────────────────██████████████──██████████████──██████████████──██████████████─
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-made by lord joel
-contact owner +2557114595078
-*/
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+import pkgg from 'nayan-media-downloader';
+const { tikdown } = pkgg;
+import config from '../../config.cjs';
 
 
+const searchResultsMap = new Map();
+let searchIndex = 1;
+
+const tiktokCommand = async (m, Matrix) => {
+  let selectedListId;
+  const selectedButtonId = m?.message?.templateButtonReplyMessage?.selectedId;
+  const interactiveResponseMessage = m?.message?.interactiveResponseMessage;
+
+  if (interactiveResponseMessage) {
+    const paramsJson = interactiveResponseMessage.nativeFlowResponseMessage?.paramsJson;
+    if (paramsJson) {
+      const params = JSON.parse(paramsJson);
+      selectedListId = params.id;
+    }
+  }
+
+  const selectedId = selectedListId || selectedButtonId;
+
+  const prefix = config.PREFIX;
+const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+const text = m.body.slice(prefix.length + cmd.length).trim();
+
+  const validCommands = ['tiktok', 'tt', 'ttdl'];
+
+  if (validCommands.includes(cmd)) {
+    if (!text) {
+      return m.reply('Please provide a TikTok URL.');
+    }
+
+    try {
+      await m.React("🕘");
 
 
+      const tikTokData = await tikdown(text);
+      if (!tikTokData.status) {
+        await m.reply('No results found.');
+        await m.React("❌");
+        return;
+      }
 
 
+      searchResultsMap.set(searchIndex, tikTokData);
 
-(function(_0x3e6a3b,_0x2f75ca){const _0x5357ce=_0x1093,_0x1590fc=_0x3e6a3b();while(!![]){try{const _0x5a65f4=-parseInt(_0x5357ce(0x113))/0x1+-parseInt(_0x5357ce(0x118))/0x2+parseInt(_0x5357ce(0x119))/0x3*(-parseInt(_0x5357ce(0x10d))/0x4)+-parseInt(_0x5357ce(0xe1))/0x5+parseInt(_0x5357ce(0xf7))/0x6+parseInt(_0x5357ce(0xfa))/0x7*(parseInt(_0x5357ce(0xf6))/0x8)+parseInt(_0x5357ce(0xdd))/0x9*(parseInt(_0x5357ce(0x10b))/0xa);if(_0x5a65f4===_0x2f75ca)break;else _0x1590fc['push'](_0x1590fc['shift']());}catch(_0x3046ae){_0x1590fc['push'](_0x1590fc['shift']());}}}(_0x2c6a,0x96e63));import _0x3429ba,{prepareWAMessageMedia}from'@whiskeysockets/baileys';const {generateWAMessageFromContent,proto}=_0x3429ba;import _0x3bec99 from'nayan-media-downloader';function _0x1093(_0x9c8517,_0x1a64c5){const _0x2c6a52=_0x2c6a();return _0x1093=function(_0x1093b0,_0x17ed38){_0x1093b0=_0x1093b0-0xd8;let _0x4a6256=_0x2c6a52[_0x1093b0];return _0x4a6256;},_0x1093(_0x9c8517,_0x1a64c5);}const {tikdown}=_0x3bec99;import _0x2f7e77 from'../../config.cjs';function _0x2c6a(){const _0x243742=['video','𝙻𝚘𝚛𝚍\x20𝚓𝚘𝚎𝚕\x20TikTok\x20Download\x0a\x0aTitle:\x20','410AnLjsL','PREFIX','2388108BrZYpD','length','Footer','audio/mpeg','ttmedia_video_','NativeFlowMessage','612103suAmeX','https://telegra.ph/file/fbbe1744668b44637c21a.jpg','tiktok','author','toLowerCase','2380860UPvUNI','3lxykkX','arrayBuffer','selectedId','quick_reply','view','InteractiveMessage','message','510921mnbmGu','sendMessage','create','waUploadToServer','5342985oTsQHp','\x0aViews:\x20','startsWith','React','>\x20𝙻𝚘𝚛𝚍\x20𝚓𝚘𝚎𝚕','data','🎵\x20Audio','Body','sender','©\x20𝙻𝚘𝚛𝚍\x20𝚓𝚘𝚎𝚕','duration','paramsJson','key','templateButtonReplyMessage','split','\x0aAuthor:\x20','get','ttmedia_','Message','ttmedia_audio_','stringify','160iyMyzW','4481106DeltFn','Error\x20processing\x20your\x20request:','audio','354151fpqMBu','set','video/mp4','trim','from','reply','slice','\x0aDuration:\x20','No\x20results\x20found.','error','body','Error\x20processing\x20your\x20request.','Header','status','includes'];_0x2c6a=function(){return _0x243742;};return _0x2c6a();}const searchResultsMap=new Map();let searchIndex=0x1;const tiktokCommand=async(_0x54416e,_0x53515f)=>{const _0x2d7213=_0x1093;let _0x3b0906;const _0x514d82=_0x54416e?.[_0x2d7213(0xdc)]?.[_0x2d7213(0xee)]?.[_0x2d7213(0xd8)],_0x3a6ee8=_0x54416e?.['message']?.['interactiveResponseMessage'];if(_0x3a6ee8){const _0x53dd13=_0x3a6ee8['nativeFlowResponseMessage']?.[_0x2d7213(0xec)];if(_0x53dd13){const _0x16e5ea=JSON['parse'](_0x53dd13);_0x3b0906=_0x16e5ea['id'];}}const _0x3ecad6=_0x3b0906||_0x514d82,_0x181ef5=_0x2f7e77[_0x2d7213(0x10c)],_0x4c3387=_0x54416e['body'][_0x2d7213(0xe3)](_0x181ef5)?_0x54416e[_0x2d7213(0x104)][_0x2d7213(0x100)](_0x181ef5[_0x2d7213(0x10e)])[_0x2d7213(0xef)]('\x20')[0x0][_0x2d7213(0x117)]():'',_0x1d31b0=_0x54416e['body'][_0x2d7213(0x100)](_0x181ef5[_0x2d7213(0x10e)]+_0x4c3387[_0x2d7213(0x10e)])[_0x2d7213(0xfd)](),_0x40ff74=[_0x2d7213(0x115),'tt','ttdl'];if(_0x40ff74[_0x2d7213(0x108)](_0x4c3387)){if(!_0x1d31b0)return _0x54416e[_0x2d7213(0xff)]('Please\x20provide\x20a\x20TikTok\x20URL.');try{await _0x54416e['React']('🕘');const _0x3908e9=await tikdown(_0x1d31b0);if(!_0x3908e9[_0x2d7213(0x107)]){await _0x54416e['reply'](_0x2d7213(0x102)),await _0x54416e[_0x2d7213(0xe4)]('❌');return;}searchResultsMap[_0x2d7213(0xfb)](searchIndex,_0x3908e9);const _0x504d5c=searchResultsMap[_0x2d7213(0xf1)](searchIndex),_0x59c95c=[{'name':'quick_reply','buttonParamsJson':JSON[_0x2d7213(0xf5)]({'display_text':'🎦\x20Video','id':_0x2d7213(0x111)+searchIndex})},{'name':_0x2d7213(0xd9),'buttonParamsJson':JSON[_0x2d7213(0xf5)]({'display_text':_0x2d7213(0xe7),'id':_0x2d7213(0xf4)+searchIndex})}],_0x1e9e31=generateWAMessageFromContent(_0x54416e[_0x2d7213(0xfe)],{'viewOnceMessage':{'message':{'messageContextInfo':{'deviceListMetadata':{},'deviceListMetadataVersion':0x2},'interactiveMessage':proto[_0x2d7213(0xf3)][_0x2d7213(0xdb)][_0x2d7213(0xdf)]({'body':proto[_0x2d7213(0xf3)][_0x2d7213(0xdb)][_0x2d7213(0xe8)]['create']({'text':_0x2d7213(0x10a)+_0x504d5c['data']['title']+_0x2d7213(0xf0)+_0x504d5c[_0x2d7213(0xe6)][_0x2d7213(0x116)]['nickname']+_0x2d7213(0xe2)+_0x504d5c[_0x2d7213(0xe6)][_0x2d7213(0xda)]+_0x2d7213(0x101)+_0x504d5c[_0x2d7213(0xe6)][_0x2d7213(0xeb)]+'s\x0a'}),'footer':proto[_0x2d7213(0xf3)][_0x2d7213(0xdb)][_0x2d7213(0x10f)][_0x2d7213(0xdf)]({'text':_0x2d7213(0xea)}),'header':proto[_0x2d7213(0xf3)][_0x2d7213(0xdb)][_0x2d7213(0x106)][_0x2d7213(0xdf)]({...await prepareWAMessageMedia({'image':{'url':_0x2d7213(0x114)}},{'upload':_0x53515f[_0x2d7213(0xe0)]}),'title':'','gifPlayback':!![],'subtitle':'','hasMediaAttachment':![]}),'nativeFlowMessage':proto[_0x2d7213(0xf3)]['InteractiveMessage'][_0x2d7213(0x112)][_0x2d7213(0xdf)]({'buttons':_0x59c95c}),'contextInfo':{'quotedMessage':_0x54416e['message'],'mentionedJid':[_0x54416e[_0x2d7213(0xe9)]],'forwardingScore':0x270f,'isForwarded':!![]}})}}},{});await _0x53515f['relayMessage'](_0x1e9e31[_0x2d7213(0xed)]['remoteJid'],_0x1e9e31[_0x2d7213(0xdc)],{'messageId':_0x1e9e31['key']['id']}),await _0x54416e[_0x2d7213(0xe4)]('✅'),searchIndex+=0x1;}catch(_0x3923f0){console[_0x2d7213(0x103)](_0x2d7213(0xf8),_0x3923f0),await _0x54416e['reply'](_0x2d7213(0x105)),await _0x54416e[_0x2d7213(0xe4)]('❌');}}else{if(_0x3ecad6){if(_0x3ecad6[_0x2d7213(0xe3)](_0x2d7213(0xf2))){const _0x348b59=_0x3ecad6['split']('_'),_0x3562e5=_0x348b59[0x1],_0xea8911=parseInt(_0x348b59[0x2]),_0xd40af7=searchResultsMap[_0x2d7213(0xf1)](_0xea8911);if(_0xd40af7)try{const _0x4300a4=_0xd40af7[_0x2d7213(0xe6)][_0x2d7213(0x109)],_0xf2c2fa=_0xd40af7[_0x2d7213(0xe6)][_0x2d7213(0xf9)];let _0x3c5aad,_0x5a3483,_0x2a957a;if(_0x3562e5===_0x2d7213(0x109))_0x3c5aad=await getStreamBuffer(_0x4300a4),_0x5a3483='video/mp4';else _0x3562e5===_0x2d7213(0xf9)&&(_0x3c5aad=await getStreamBuffer(_0xf2c2fa),_0x5a3483=_0x2d7213(0x110));const _0xe8412d=_0x3c5aad['length']/(0x400*0x400);if(_0x3562e5===_0x2d7213(0x109)&&_0xe8412d<=0x12c)_0x2a957a={'video':_0x3c5aad,'mimetype':_0x2d7213(0xfc),'caption':'>\x20𝙻𝚘𝚛𝚍\x20𝚓𝚘𝚎𝚕'};else _0x3562e5==='audio'&&_0xe8412d<=0x12c&&(_0x2a957a={'audio':_0x3c5aad,'mimetype':_0x2d7213(0x110),'caption':_0x2d7213(0xe5)});await _0x53515f[_0x2d7213(0xde)](_0x54416e['from'],_0x2a957a,{'quoted':_0x54416e});}catch(_0x553082){console[_0x2d7213(0x103)]('Error\x20processing\x20your\x20request:',_0x553082),await _0x54416e['reply'](_0x2d7213(0x105)),await _0x54416e[_0x2d7213(0xe4)]('❌');}}}}},getStreamBuffer=async _0x1a5aa4=>{const _0x1a237c=_0x1093,_0x482766=await fetch(_0x1a5aa4),_0x4666ae=await _0x482766[_0x1a237c(0x11a)]();return Buffer[_0x1a237c(0xfe)](_0x4666ae);};export default tiktokCommand;
+
+      const currentResult = searchResultsMap.get(searchIndex);
+      const buttons = [
+        {
+          "name": "quick_reply",
+          "buttonParamsJson": JSON.stringify({
+            display_text: "🎦 Video",
+            id: `ttmedia_video_${searchIndex}`
+          })
+        },
+        {
+          "name": "quick_reply",
+          "buttonParamsJson": JSON.stringify({
+            display_text: "🎵 Audio",
+            id: `ttmedia_audio_${searchIndex}`
+          })
+        }
+      ];
+
+      const msg = generateWAMessageFromContent(m.from, {
+        viewOnceMessage: {
+          message: {
+            messageContextInfo: {
+              deviceListMetadata: {},
+              deviceListMetadataVersion: 2
+            },
+            interactiveMessage: proto.Message.InteractiveMessage.create({
+              body: proto.Message.InteractiveMessage.Body.create({
+                text: `𝙻𝚘𝚛𝚍 𝚓𝚘𝚎𝚕 TikTok Download\n\nTitle: ${currentResult.data.title}\nAuthor: ${currentResult.data.author.nickname}\nViews: ${currentResult.data.view}\nDuration: ${currentResult.data.duration}s\n`
+              }),
+              footer: proto.Message.InteractiveMessage.Footer.create({
+                text: "© 𝙻𝚘𝚛𝚍 𝚓𝚘𝚎𝚕"
+              }),
+              header: proto.Message.InteractiveMessage.Header.create({
+                 ...(await prepareWAMessageMedia({ image: { url: `https://telegra.ph/file/fbbe1744668b44637c21a.jpg` } }, { upload: Matrix.waUploadToServer })),
+                title: "",
+                gifPlayback: true,
+                subtitle: "",
+                hasMediaAttachment: false 
+              }),
+              nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
+                buttons
+              }),
+              contextInfo: {
+                quotedMessage: m.message,
+                mentionedJid: [m.sender],
+                forwardingScore: 9999,
+                isForwarded: true,
+              }
+            }),
+          },
+        },
+      }, {});
+
+      await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
+        messageId: msg.key.id
+      });
+      await m.React("✅");
+
+      searchIndex += 1; 
+    } catch (error) {
+      console.error("Error processing your request:", error);
+      await m.reply('Error processing your request.');
+      await m.React("❌");
+    }
+  } else if (selectedId) { 
+    if (selectedId.startsWith('ttmedia_')) {
+      const parts = selectedId.split('_');
+      const type = parts[1];
+      const key = parseInt(parts[2]);
+      const selectedMedia = searchResultsMap.get(key);
+
+      if (selectedMedia) {
+        try {
+          const videoUrl = selectedMedia.data.video;
+          const audioUrl = selectedMedia.data.audio;
+          let finalMediaBuffer, mimeType, content;
+
+          if (type === 'video') {
+            finalMediaBuffer = await getStreamBuffer(videoUrl);
+            mimeType = 'video/mp4';
+          } else if (type === 'audio') {
+            finalMediaBuffer = await getStreamBuffer(audioUrl);
+            mimeType = 'audio/mpeg';
+          }
+
+          const fileSizeInMB = finalMediaBuffer.length / (1024 * 1024);
+
+          if (type === 'video' && fileSizeInMB <= 300) {
+            content = { video: finalMediaBuffer, mimetype: 'video/mp4', caption: '> 𝙻𝚘𝚛𝚍 𝚓𝚘𝚎𝚕' };
+          } else if (type === 'audio' && fileSizeInMB <= 300) {
+            content = { audio: finalMediaBuffer, mimetype: 'audio/mpeg', caption: '> 𝙻𝚘𝚛𝚍 𝚓𝚘𝚎𝚕' };
+          }
+
+          await Matrix.sendMessage(m.from, content, { quoted: m });
+        } catch (error) {
+          console.error("Error processing your request:", error);
+          await m.reply('Error processing your request.');
+          await m.React("❌");
+        }
+      }
+    }
+  }
+};
+
+const getStreamBuffer = async (url) => {
+  const response = await fetch(url);
+  const buffer = await response.arrayBuffer();
+  return Buffer.from(buffer);
+};
+
+export default tiktokCommand;

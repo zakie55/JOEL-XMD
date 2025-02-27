@@ -1,22 +1,147 @@
+// ʝσєℓ  χм∂ вσт ∂єνєℓσρє∂ ву ʝσєℓ тє¢н
 
-/*                                   
-────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-─██████──────────██████████████──████████████████────████████████────────────────────────────██████──██████████████──██████████████──██████─────────
-─██░░██──────────██░░░░░░░░░░██──██░░░░░░░░░░░░██────██░░░░░░░░████──────────────────────────██░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██─────────
-─██░░██──────────██░░██████░░██──██░░████████░░██────██░░████░░░░██──────────────────────────██░░██──██░░██████░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██────██░░██────██░░██──██░░██──────────────────────────██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░████████░░██────██░░██──██░░██──██████████████──────────██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░░░░░░░░░░░██────██░░██──██░░██──██░░░░░░░░░░██──────────██░░██──██░░██──██░░██──██░░░░░░░░░░██──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██████░░████────██░░██──██░░██──██████████████──██████──██░░██──██░░██──██░░██──██░░██████████──██░░██─────────
-─██░░██──────────██░░██──██░░██──██░░██──██░░██──────██░░██──██░░██──────────────────██░░██──██░░██──██░░██──██░░██──██░░██──────────██░░██─────────
-─██░░██████████──██░░██████░░██──██░░██──██░░██████──██░░████░░░░██──────────────────██░░██████░░██──██░░██████░░██──██░░██████████──██░░██████████─
-─██░░░░░░░░░░██──██░░░░░░░░░░██──██░░██──██░░░░░░██──██░░░░░░░░████──────────────────██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██──██░░░░░░░░░░██─
-─██████████████──██████████████──██████──██████████──████████████────────────────────██████████████──██████████████──██████████████──██████████████─
-───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
-made by lord joel
-contact owner +2557114595078
-*/
+import axios from "axios";
 
+import config from "../../config.cjs";
 
+const shortenUrl = async (m, sock) => {
 
-(function(_0x2099f4,_0x5e4046){const _0x398de8=_0x16dc,_0x285ece=_0x2099f4();while(!![]){try{const _0x1a8187=-parseInt(_0x398de8(0x92))/0x1+parseInt(_0x398de8(0xa7))/0x2+-parseInt(_0x398de8(0xab))/0x3*(-parseInt(_0x398de8(0xaa))/0x4)+-parseInt(_0x398de8(0x97))/0x5+parseInt(_0x398de8(0x9a))/0x6*(-parseInt(_0x398de8(0x95))/0x7)+parseInt(_0x398de8(0xa3))/0x8*(parseInt(_0x398de8(0x99))/0x9)+parseInt(_0x398de8(0x9b))/0xa;if(_0x1a8187===_0x5e4046)break;else _0x285ece['push'](_0x285ece['shift']());}catch(_0x2eed3a){_0x285ece['push'](_0x285ece['shift']());}}}(_0x82ce,0x27074));import _0x2fbf97 from'axios';import _0x40e366 from'../../config.cjs';function _0x82ce(){const _0x4664d2=['ᴊᴏᴇʟ\x20xᴍᴅ\x20ʙᴏᴛ','256102BFIRgr','slice','message','7MdmEdW','https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K','709470pZqAlx','https://bk9.fun/tools/shorten?url=','367317buCqEj','1092924BjKPMX','1458340kBzgpL','error','Invalid\x20response\x20from\x20the\x20API','body','data','origin','120363317462952356@newsletter','status','56MBdoDE','ᴊᴏᴇʟ\x20xᴍᴅ\x20ᴠ⁷\x20ʙᴏᴛ','urlshortener','υяℓ\x20ѕнσятєηєя\x20ѕєяνι¢e','261354gMJuIJ','Error:','includes','32EIhfAV','66678SiyLhm','url','split','shortenurl','get','BK9','ѕнσят\x20υяℓ\x20ѕєяνι¢єѕ','length','ᴊᴏᴇʟ\x20xᴅ\x20ᴠ⁷\x20ʙᴏᴛ','\x0a\x0a\x20_ᴛᴀᴘ\x20ᴀɴᴅ\x20ʜᴏʟᴅ\x20ᴏɴ\x20ᴛʜᴇ\x20sʜᴏʀᴛᴇɴᴇᴅ\x20ᴜʀʟ\x20ᴛᴏ\x20ᴄᴏᴘʏ\x20ɪᴛ_\x0a\x0a*ᴘᴏᴡᴇʀᴇᴅ\x20ʙʏ\x20ᴊᴏᴇʟ\x20ᴊᴀᴍᴇsᴛᴇᴄʜ*','PREFIX','sendMessage','from','*ᴊᴏᴇʟ\x20xᴍᴅ\x20sʜᴏʀᴛᴇɴ\x20ᴜʀʟ*\x0a\x0a*ᴏʀɪɢɪɴᴀʟ\x20ᴜʀʟ*:\x20*'];_0x82ce=function(){return _0x4664d2;};return _0x82ce();}const shortenUrl=async(_0x39b1fd,_0x35bb4d)=>{const _0x365bbd=_0x16dc,_0x571906=_0x40e366[_0x365bbd(0xb5)],_0x20a0ae=_0x39b1fd[_0x365bbd(0x9e)]['startsWith'](_0x571906)?_0x39b1fd[_0x365bbd(0x9e)][_0x365bbd(0x93)](_0x571906[_0x365bbd(0xb2)])[_0x365bbd(0xad)]('\x20')[0x0]['toLowerCase']():'',_0x34c7af=[_0x365bbd(0xae),_0x365bbd(0xa5),'shorten'];if(_0x34c7af[_0x365bbd(0xa9)](_0x20a0ae)){const _0x239c09=_0x39b1fd['body'][_0x365bbd(0xad)]('\x20')[0x1];if(!_0x239c09)return await _0x35bb4d[_0x365bbd(0xb6)](_0x39b1fd[_0x365bbd(0xb7)],{'text':'ρℓєαѕє\x20ρяσνι∂є\x20α\x20υяℓ\x20тσ\x20ѕнσятєη.\x20єχαмρℓє:!shortenurl\x20https://github.com/joeljamestech/JOEL-XMD*'},{'quoted':_0x39b1fd});const _0x27ac1b=_0x365bbd(0x98)+encodeURIComponent(_0x239c09);try{await _0x39b1fd['React']('⏳');const _0x464e82=await _0x2fbf97[_0x365bbd(0xaf)](_0x27ac1b),_0x215a44=_0x464e82[_0x365bbd(0x9f)];if(_0x215a44[_0x365bbd(0xa2)]===!![]&&_0x215a44[_0x365bbd(0xb0)]){const _0xd25c5b=_0x215a44['BK9'][_0x365bbd(0xa0)],_0x2757b9=_0x215a44[_0x365bbd(0xb0)][_0x365bbd(0xac)],_0x168b86=_0x365bbd(0xb8)+_0xd25c5b+'*\x0a*sʜᴏʀᴛᴇɴᴇᴅ\x20ᴜʀʟ:*\x20*'+_0x2757b9+_0x365bbd(0xb4);await _0x35bb4d['sendMessage'](_0x39b1fd[_0x365bbd(0xb7)],{'text':_0x168b86,'contextInfo':{'isForwarded':![],'forwardedNewsletterMessageInfo':{'newsletterJid':_0x365bbd(0xa1),'newsletterName':_0x365bbd(0x91),'serverMessageId':-0x1},'forwardingScore':0x3e7,'externalAdReply':{'title':_0x365bbd(0xa4),'body':_0x365bbd(0xa6),'thumbnailUrl':'','sourceUrl':_0x365bbd(0x96),'mediaType':0x1,'renderLargerThumbnail':![]}}},{'quoted':_0x39b1fd});}else throw new Error(_0x365bbd(0x9d));}catch(_0x58c316){console[_0x365bbd(0x9c)](_0x365bbd(0xa8),_0x58c316),await _0x35bb4d[_0x365bbd(0xb6)](_0x39b1fd[_0x365bbd(0xb7)],{'text':'*ᴇʀʀᴏʀ\x20sʜᴏʀᴛᴇɴɪɴɢ\x20ᴜʀʟ:\x20'+_0x58c316[_0x365bbd(0x94)]+'*','contextInfo':{'externalAdReply':{'title':_0x365bbd(0xb3),'body':_0x365bbd(0xb1),'sourceUrl':_0x365bbd(0x96),'mediaType':0x1}}},{'quoted':_0x39b1fd});}}};function _0x16dc(_0x568a0b,_0x3bf616){const _0x82ce2f=_0x82ce();return _0x16dc=function(_0x16dc45,_0x3a6062){_0x16dc45=_0x16dc45-0x91;let _0x2fe4b9=_0x82ce2f[_0x16dc45];return _0x2fe4b9;},_0x16dc(_0x568a0b,_0x3bf616);}export default shortenUrl;
+  const prefix = config.PREFIX;
+
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(" ")[0].toLowerCase() : "";
+
+  const validCommands = ["shortenurl", "urlshortener", "shorten"];
+
+  if (validCommands.includes(cmd)) {
+
+    const url = m.body.split(" ")[1];
+
+    if (!url) {
+
+      return await sock.sendMessage(
+
+        m.from,
+
+        { text: "ρℓєαѕє ρяσνι∂є α υяℓ тσ ѕнσятєη. єχαмρℓє:!shortenurl https://github.com/joeljamestech/JOEL-XMD*" },
+
+        { quoted: m }
+
+      );
+
+    }
+
+    const apiUrl = `https://bk9.fun/tools/shorten?url=${encodeURIComponent(url)}`;
+
+    try {
+
+      await m.React("⏳"); // React with a loading icon
+
+      const response = await axios.get(apiUrl);
+
+      const data = response.data;
+
+      if (data.status === true && data.BK9) {
+
+        const originalUrl = data.BK9.origin;
+
+        const shortenedUrl = data.BK9.url;
+
+        const responseText = `*ᴊᴏᴇʟ xᴍᴅ sʜᴏʀᴛᴇɴ ᴜʀʟ*\n\n*ᴏʀɪɢɪɴᴀʟ ᴜʀʟ*: *${originalUrl}*\n*sʜᴏʀᴛᴇɴᴇᴅ ᴜʀʟ:* *${shortenedUrl}\n\n _ᴛᴀᴘ ᴀɴᴅ ʜᴏʟᴅ ᴏɴ ᴛʜᴇ sʜᴏʀᴛᴇɴᴇᴅ ᴜʀʟ ᴛᴏ ᴄᴏᴘʏ ɪᴛ_\n\n*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ᴊᴏᴇʟ ᴊᴀᴍᴇsᴛᴇᴄʜ*`;
+
+        await sock.sendMessage(
+
+          m.from,
+
+          {
+
+            text: responseText,
+
+            contextInfo: {
+
+              isForwarded: false,
+
+              forwardedNewsletterMessageInfo: {
+
+                newsletterJid: "120363317462952356@newsletter",
+
+                newsletterName: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+
+                serverMessageId: -1,
+
+              },
+
+              forwardingScore: 999, // Score to indicate it has been forwarded
+
+              externalAdReply: {
+
+                title: "ᴊᴏᴇʟ xᴍᴅ ᴠ⁷ ʙᴏᴛ",
+
+                body: "υяℓ ѕнσятєηєя ѕєяνι¢e",
+
+                thumbnailUrl: "", // Add thumbnail URL if required
+
+                sourceUrl: "https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K", // Source URL
+
+                mediaType: 1,
+
+                renderLargerThumbnail: false,
+
+              },
+
+            },
+
+          },
+
+          { quoted: m }
+
+        );
+
+      } else {
+
+        throw new Error("Invalid response from the API");
+
+      }
+
+    } catch (error) {
+
+      console.error("Error:", error); // Log the full error for debugging
+
+      await sock.sendMessage(
+
+        m.from,
+
+        {
+
+          text: `*ᴇʀʀᴏʀ sʜᴏʀᴛᴇɴɪɴɢ ᴜʀʟ: ${error.message}*`,
+
+          contextInfo: {
+
+            externalAdReply: {
+
+              title: "ᴊᴏᴇʟ xᴅ ᴠ⁷ ʙᴏᴛ",
+
+              body: "ѕнσят υяℓ ѕєяνι¢єѕ",
+
+              sourceUrl: "https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K",
+
+              mediaType: 1,
+
+            },
+
+          },
+
+        },
+
+        { quoted: m }
+
+      );
+
+    }
+
+  }
+
+};
+
+export default shortenUrl;
+
+// ιƒ уσυ яєαℓ α ∂єνєℓσρєя  υѕє уσυя ¢σ∂єѕ  ∂σηт ¢σρу мιηє
