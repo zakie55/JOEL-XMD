@@ -1,3 +1,5 @@
+//joel xmd
+
 
 import axios from 'axios';
 import config from '../../config.cjs';
@@ -53,3 +55,4 @@ const query = m.body.slice(prefix.length + cmd.length).trim();
 };
 
 export default imageCommand;
+  
