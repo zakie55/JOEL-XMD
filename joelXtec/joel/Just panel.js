@@ -1,12 +1,12 @@
-//📂 *File Content of sarkarallcmdcheck.js*:
-
+// those codes where created by joel james tech
+// main repo: https://github.com/joeljamestech
 
 
 import fs from 'fs';
 import path from 'path';
 import config from '../../config.cjs'; // Ensure this matches your project setup
 
-const ownerNumbers = ['923253617422@s.whatsapp.net', '923143200187@s.whatsapp.net'];
+const ownerNumbers = ['255781144539@s.whatsapp.net', '255714595078@s.whatsapp.net'];
 
 const allCmdsCommand = async (m, sock) => {
   const prefix = config.PREFIX;
@@ -15,7 +15,7 @@ const allCmdsCommand = async (m, sock) => {
     : '';
   
   if (cmd === "allcmds") {
-    const folderPath = path.resolve(process.cwd(), '../Sarkar-MD/king/Sarkarorder');
+    const folderPath = path.resolve(process.cwd(), '../JOEL-XMD/joelXtec/joel');
 
     // Ensure the folder exists
   // Check if the sender is an owner
@@ -65,7 +65,7 @@ const allCmdsCommand = async (m, sock) => {
       sock.sendMessage(
         m.from,
         {
-          text: `📂 *Files in Sarkar-MD/king/Sarkarorder/*:\n\n${fileList}`,
+          text: `📂 *Files in JOEL-XMD/joelXtec/joel/*:\n\n${fileList}`,
         },
         { quoted: m }
       );
@@ -84,3 +84,5 @@ const allCmdsCommand = async (m, sock) => {
 };
 
 export default allCmdsCommand;
+
+// after using mah codes go suck your mouth 👄 
