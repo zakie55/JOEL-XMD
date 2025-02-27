@@ -13,11 +13,11 @@ const PinterestCmd = async (m, Matrix) => {
   const isBot = m.sender === botNumber;
   const isAllowed = isOwner || isBot; // ✅ Sirf Owner & Bot use kar sakte hain
 
-  if (cmd === 'img' || cmd === 'pinterest' || cmd === 'image' || cmd === 'searchpin') {
+  if (cmd === 'img' || cmd === 'gimg' || cmd === 'image' || cmd === 'i') {
     if (!query) return m.reply("*Please provide a search query.*");
 
     try {
-      await m.reply(`🔎 *Searching images for:* ${query}...`);
+      await m.reply(`*Searching images for: ${query}...*`);
 
       const url = `https://api.diioffc.web.id/api/search/pinterest?query=${encodeURIComponent(query)}`;
       const response = await axios.get(url);
@@ -29,7 +29,7 @@ const PinterestCmd = async (m, Matrix) => {
       for (let i = 0; i < results.length; i++) {
         await Matrix.sendMessage(m.from, {
           image: { url: results[i].src },
-          caption: `📸 *Search Result for:* ${query}\n\n> *powered by lord joel *`
+          caption: `*Search Result for:* *${query}*\n\n> *ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ*`
         }, { quoted: m });
       }
     } catch (error) {
