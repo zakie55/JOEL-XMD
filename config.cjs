@@ -28,7 +28,7 @@ const config = {
   OWNER_NUMBER: process.env.OWNER_NUMBER || "255714595078",
   SUDO_NUMBER: process.env.SUDO_NUMBER || "255781144539",
   GEMINI_KEY: process.env.GEMINI_KEY || "AIzaSyCUPaxfIdZawsKZKqCqJcC-GWiQPCXKTDc",
-  WELCOME: process.env.WELCOME !== undefined ? process.env.WELCOME === 'true' : false, 
+  WELCOME: process.env.WELCOME !== undefined ? process.env.WELCOME === 'true' : true, 
 };
 
 
