@@ -98,7 +98,16 @@ async function start() {
                     console.log(chalk.green("DEMON-SLAYER-XMD IS CONNECTED SUCCESSFULLY "));
             Matrix.sendMessage(Matrix.user.id, { 
                 video: { url: "https://files.catbox.moe/0hixso.mp4" }, 
-                caption: `*made by lord joel*`
+                caption: `╭─────────────━┈⊷
+│ *ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴs*
+╰─────────────━┈⊷
+
+╭─────────────━┈⊷
+│ᴊᴏᴇʟ xᴍᴅ ɪs ᴏɴʟɪɴᴇ
+│ᴏᴡɴᴇʀ: ʟᴏʀᴅ ᴊᴏᴇʟ
+╰─────────────━┈⊷
+
+*ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴇʀʀᴏʀ ᴛᴏ ᴍʏ ᴏᴡɴᴇʀ*`
             });
                     initialConnection = false;
                 } else {
