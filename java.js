@@ -97,7 +97,7 @@ async function start() {
                 if (initialConnection) {
                     console.log(chalk.green("DEMON-SLAYER-XMD IS CONNECTED SUCCESSFULLY "));
             Matrix.sendMessage(Matrix.user.id, { 
-                video: { url: "https://files.catbox.moe/0hixso.mp4" }, 
+                image: { url: "https://files.catbox.moe/lqxlmj.jpg" }, 
                 caption: `╭─────────────━┈⊷
 │ *ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴs*
 ╰─────────────━┈⊷
