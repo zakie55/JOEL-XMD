@@ -95,7 +95,7 @@ async function start() {
                 }
             } else if (connection === 'open') {
                 if (initialConnection) {
-                    console.log(chalk.green("DEMON-SLAYER-XMD IS CONNECTED SUCCESSFULLY "));
+                    console.log(chalk.green("JOEL-XMD IS CONNECTED SUCCESSFULLY "));
             Matrix.sendMessage(Matrix.user.id, { 
                 image: { url: "https://files.catbox.moe/lqxlmj.jpg" }, 
                 caption: `╭─────────────━┈⊷
