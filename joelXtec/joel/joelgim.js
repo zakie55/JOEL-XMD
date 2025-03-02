@@ -1,43 +1,48 @@
-// fuck u
-import config from '../../config.cjs';
 import axios from 'axios';
+import config from '../../config.cjs';
+global.nex_key = 'https://api.nexoracle.com';
+global.nex_api = 'free_key@maher_apis';
 
-const PinterestCmd = async (m, Matrix) => {
-  const botNumber = await Matrix.decodeJid(Matrix.user.id);
-  const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+const imageCommand = async (m, sock) => {
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const args = m.body.slice(prefix.length + cmd.length).trim().split(' ');
-  const query = args.join(" ");
-  const isOwner = m.sender === ownerNumber;
-  const isBot = m.sender === botNumber;
-  const isAllowed = isOwner || isBot; // ✅ Sirf Owner & Bot use kar sakte hain
+  let query = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd === 'img' || cmd === 'gimg' || cmd === 'image' || cmd === 'i') {
-    if (!query) return m.reply("*Please provide a search query.*");
+  const validCommands = ['image', 'img', 'gimage'];
+
+  if (validCommands.includes(cmd)) {
+    if (!query && !(m.quoted && m.quoted.text)) {
+      return sock.sendMessage(m.from, { text: `Please provide some text, Example usage: ${prefix + cmd} black cats` });
+    }
+
+    if (!query && m.quoted && m.quoted.text) {
+      query = m.quoted.text;
+    }
 
     try {
-      await m.reply(`*Searching images for: ${query}...*`);
+      await sock.sendMessage(m.from, { text: '*Please wait*' });
 
-      const url = `https://api.diioffc.web.id/api/search/pinterest?query=${encodeURIComponent(query)}`;
-      const response = await axios.get(url);
+      const endpoint = `${global.nex_key}/search/google-image?apikey=${global.nex_api}&q=${encodeURIComponent(query)}`;
+      const response = await axios.get(endpoint);
 
-      if (!response.data?.result?.length) return m.reply("⚠️ *No results found. Try another keyword.*");
+      if (response.status === 200 && response.data.result && response.data.result.length > 0) {
+        const images = response.data.result.slice(0, 5); // Limit to 5 images
 
-      const results = response.data.result.sort(() => 0.5 - Math.random()).slice(0, 5);
-
-      for (let i = 0; i < results.length; i++) {
-        await Matrix.sendMessage(m.from, {
-          image: { url: results[i].src },
-          caption: `*Search Result for:* *${query}*\n\n> *ᴊᴏᴇʟ ᴍᴅ ʙᴏᴛ*`
-        }, { quoted: m });
+        for (let i = 0; i < images.length; i++) {
+          await sleep(500);
+          await sock.sendMessage(m.from, { image: { url: images[i] }, caption: '' }, { quoted: m });
+        }
+        await m.React("✅");
+      } else {
+        throw new Error('No images found');
       }
     } catch (error) {
-      console.error("Error in Pinterest command:", error);
-      m.reply("*An error occurred while fetching images. Please try again later.*");
+      console.error("Error fetching images:", error);
+      await sock.sendMessage(m.from, { text: `*Oops! Something went wrong while generating images. Please try again later.*\n\nError: ${error}` });
     }
   }
 };
 
-export default PinterestCmd;
-// coded by lord joel 
+export default imageCommand;
