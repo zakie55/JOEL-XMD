@@ -69,7 +69,7 @@ const tourl = async (m, sock) => {
       }
 
       const mediaUrl = response.data.data.link;
-      const responseText = `*ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ɪʀʟ ᴍᴇɴᴜ*\n\n*URL:* ${mediaUrl}\n\n*ᴜᴏʟᴏᴀᴅᴇᴅ ʙʏ ᴊᴏᴇʟ xᴍᴅ*`;
+      const responseText = `*ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ᴜʀʟ ᴍᴇɴᴜ*\n\n*URL:* ${mediaUrl}\n\n*ᴋᴇᴇᴘ ᴜsɪɴɢ  ᴊᴏᴇʟ xᴍᴅ*`;
 
       await sock.sendMessage(
         m.from,
@@ -77,7 +77,7 @@ const tourl = async (m, sock) => {
         { quoted: m }
       );
     } catch (error) {
-      await sock.sendMessage(m.from, { text: `❌ Error: ${error.message || error}` }, { quoted: m });
+      await sock.sendMessage(m.from, { text: `Error: ${error.message || error}` }, { quoted: m });
       console.log(error);
     }
   }
