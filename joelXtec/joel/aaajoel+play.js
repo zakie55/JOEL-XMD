@@ -3,7 +3,7 @@ import yts from 'yt-search';
 
 const fetchVideoDetails = async (url) => {
   try {
-    const response = await axios.get(`https://matrix-serverless-api.vercel.app/api/ytdl?url=${url}&type=video`);
+    const response = await axios.get(`https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(yts.url)`);
     return response.data;
   } catch (error) {
     throw new Error('Error fetching video details.');
