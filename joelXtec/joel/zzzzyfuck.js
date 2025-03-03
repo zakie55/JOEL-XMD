@@ -3,8 +3,7 @@ const { downloadMediaMessage } = pkg;
 import config from '../../config.cjs';
 
 const OwnerCmd = async (m, Matrix) => {
-  const botNumber = Matrix.user.id.split(':')[0] + '@s.whatsapp.net';
-  //const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
+  const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
   const botNumber = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
