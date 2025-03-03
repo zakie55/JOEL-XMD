@@ -21,4 +21,117 @@ contact owner +2557114595078
 
 
 
-(function(_0x191b13,_0x5d8c98){const _0x41b17d=_0x38a8,_0x38cdec=_0x191b13();while(!![]){try{const _0x1894a=parseInt(_0x41b17d(0x17c))/0x1*(-parseInt(_0x41b17d(0x165))/0x2)+-parseInt(_0x41b17d(0x175))/0x3+-parseInt(_0x41b17d(0x166))/0x4+parseInt(_0x41b17d(0x172))/0x5*(parseInt(_0x41b17d(0x163))/0x6)+-parseInt(_0x41b17d(0x176))/0x7*(parseInt(_0x41b17d(0x174))/0x8)+-parseInt(_0x41b17d(0x179))/0x9*(parseInt(_0x41b17d(0x167))/0xa)+-parseInt(_0x41b17d(0x171))/0xb*(-parseInt(_0x41b17d(0x15f))/0xc);if(_0x1894a===_0x5d8c98)break;else _0x38cdec['push'](_0x38cdec['shift']());}catch(_0x500005){_0x38cdec['push'](_0x38cdec['shift']());}}}(_0x4a64,0x22982));import _0x4950f2 from'../../config.cjs';const anticallCommand=async(_0x4721b4,_0x406420)=>{const _0x32efc8=_0x38a8,_0x32729c=await _0x406420['decodeJid'](_0x406420[_0x32efc8(0x162)]['id']),_0xe69ae=[_0x32729c,_0x4950f2[_0x32efc8(0x161)]+_0x32efc8(0x168)]['includes'](_0x4721b4['sender']),_0x3b9b4a=_0x4950f2['PREFIX'],_0x4ba431=_0x4721b4[_0x32efc8(0x16d)][_0x32efc8(0x164)](_0x3b9b4a)?_0x4721b4[_0x32efc8(0x16d)][_0x32efc8(0x16c)](_0x3b9b4a[_0x32efc8(0x16f)])[_0x32efc8(0x16a)]('\x20')[0x0][_0x32efc8(0x17b)]():'',_0x2062e2=_0x4721b4[_0x32efc8(0x16d)][_0x32efc8(0x16c)](_0x3b9b4a[_0x32efc8(0x16f)]+_0x4ba431[_0x32efc8(0x16f)])[_0x32efc8(0x17a)](),_0x493c8b=['autolike','autoslike',_0x32efc8(0x169)];if(_0x493c8b['includes'](_0x4ba431)){if(!_0xe69ae)return _0x4721b4[_0x32efc8(0x177)]('*THIS\x20IS\x20AN\x20OWNER\x20COMMAND*');let _0x16eeba;if(_0x2062e2==='on')_0x4950f2[_0x32efc8(0x170)]=!![],_0x16eeba='AUTO\x20LIKE\x20STATUS\x20has\x20been\x20enabled.';else _0x2062e2===_0x32efc8(0x16e)?(_0x4950f2[_0x32efc8(0x170)]=![],_0x16eeba=_0x32efc8(0x16b)):_0x16eeba=_0x32efc8(0x173)+(_0x3b9b4a+_0x4ba431)+_0x32efc8(0x178)+(_0x3b9b4a+_0x4ba431)+'\x20off:*\x20Disable\x20AUTO\x20LIKE\x20STATUS';try{await _0x406420[_0x32efc8(0x160)](_0x4721b4[_0x32efc8(0x15e)],{'text':_0x16eeba},{'quoted':_0x4721b4});}catch(_0x3e2213){console['error']('Error\x20processing\x20your\x20request:',_0x3e2213),await _0x406420[_0x32efc8(0x160)](_0x4721b4[_0x32efc8(0x15e)],{'text':'Error\x20processing\x20your\x20request.'},{'quoted':_0x4721b4});}}};function _0x38a8(_0x5d1261,_0x2a6bd8){const _0x4a649d=_0x4a64();return _0x38a8=function(_0x38a88c,_0x4e4e15){_0x38a88c=_0x38a88c-0x15e;let _0x802d85=_0x4a649d[_0x38a88c];return _0x802d85;},_0x38a8(_0x5d1261,_0x2a6bd8);}function _0x4a64(){const _0xe1312=['203LJvfnl','reply','\x20ON:*\x20Enable\x20AUTO\x20LIKE\x20STATUS\x0a-\x20*','9YYLpjA','trim','toLowerCase','93HmcVQK','from','812364ieeXOy','sendMessage','OWNER_NUMBER','user','1093344QquQXa','startsWith','3134PyTUeu','563624YpLIyf','1108460XTWzKg','@s.whatsapp.net','autostatuslike','split','AUTO\x20LIKE\x20STATUS\x20has\x20been\x20disabled.','slice','body','off','length','AUTOLIKE_STATUS','77UKWETo','5zvsjMl','Usage:\x0a-\x20*','15680KuAmqo','180246QmLITh'];_0x4a64=function(){return _0xe1312;};return _0x4a64();}export default anticallCommand;
+
+
+
+import fetch from 'node-fetch';
+import FormData from 'form-data';
+import { fileTypeFromBuffer } from 'file-type';
+import { writeFile, unlink } from 'fs/promises';
+
+const MAX_FILE_SIZE_MB = 200;
+async function uploadMedia(buffer) {
+  try {
+    const { ext } = await fileTypeFromBuffer(buffer);
+    const bodyForm = new FormData();
+    bodyForm.append("fileToUpload", buffer, "file." + ext);
+    bodyForm.append("reqtype", "fileupload");
+
+    const res = await fetch("https://catbox.moe/user/api.php", {
+      method: "POST",
+      body: bodyForm,
+    });
+
+    if (!res.ok) {
+      throw new Error(`Upload failed with status ${res.status}: ${res.statusText}`);
+    }
+
+    const data = await res.text();
+    return data;
+  } catch (error) {
+    console.error("Error during media upload:", error);
+    throw new Error('Failed to upload media');
+  }
+}
+
+const tourl = async (m, bot) => {
+  const prefixMatch = m.body.match(/^[\\/!#.]/);
+  const prefix = prefixMatch ? prefixMatch[0] : '/';
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const validCommands = ['url', 'geturl', 'upload', 'u'];
+
+  if (validCommands.includes(cmd)) {
+    if (!m.quoted || !['imageMessage', 'videoMessage', 'audioMessage'].includes(m.quoted.mtype)) {
+      return m.reply(`Send/Reply/Quote an image, video, or audio to upload \n*${prefix + cmd}*`);
+    }
+
+    try {
+      const loadingMessages = [
+        "*「▰▰▰▱▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▱▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▱▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▱▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▱▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▱▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▱」*",
+        "*「▰▰▰▰▰▰▰▰▰▰」*",
+      ];
+
+      const loadingMessageCount = loadingMessages.length;
+      let currentMessageIndex = 0;
+
+      const { key } = await bot.sendMessage(m.from, { text: loadingMessages[currentMessageIndex] }, { quoted: m });
+
+      const loadingInterval = setInterval(() => {
+        currentMessageIndex = (currentMessageIndex + 1) % loadingMessageCount;
+        bot.sendMessage(m.from, { text: loadingMessages[currentMessageIndex] }, { quoted: m, messageId: key });
+      }, 500);
+
+      const media = await m.quoted.download();
+      if (!media) throw new Error('Failed to download media.');
+
+      const fileSizeMB = media.length / (1024 * 1024);
+      if (fileSizeMB > MAX_FILE_SIZE_MB) {
+        clearInterval(loadingInterval);
+        return m.reply(`File size exceeds the limit of ${MAX_FILE_SIZE_MB}MB.`);
+      }
+      const mediaUrl = await uploadMedia(media);
+
+      clearInterval(loadingInterval);
+      await bot.sendMessage(m.from, { text: '✅ Loading complete.' }, { quoted: m });
+
+      const mediaType = getMediaType(m.quoted.mtype);
+      if (mediaType === 'audio') {
+        const message = {
+          text: `*Hey ${m.pushName} Here Is Your Audio URL*\n*Url:* ${mediaUrl}`,
+        };
+        await bot.sendMessage(m.from, message, { quoted: m });
+      } else {
+        const message = {
+          [mediaType]: { url: mediaUrl },
+          caption: `*ᴜʀʟ:* * ${mediaUrl}*\n*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`,
+        };
+        await bot.sendMessage(m.from, message, { quoted: m });
+      }
+
+    } catch (error) {
+      console.error('Error processing media:', error);
+      m.reply('Error processing media.');
+    }
+  }
+};
+
+const getMediaType = (mtype) => {
+  switch (mtype) {
+    case 'imageMessage':
+      return 'image';
+    case 'videoMessage':
+      return 'video';
+    case 'audioMessage':
+      return 'audio';
+    default:
+      return null;
+  }
+};
+
+export default tourl;
