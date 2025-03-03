@@ -65,7 +65,7 @@ const allMenu = async (m, sock) => {
   };
 
   // Command: allmenu
-  if (cmd === "menu") {
+  if (cmd === "menu2") {
     await m.React('⏳'); // React with a loading icon
     const aliveMessage = `
  
