@@ -3,8 +3,8 @@ const { downloadMediaMessage } = pkg;
 import config from '../../config.cjs';
 
 const OwnerCmd = async (m, Matrix) => {
+  const botNumber = Matrix.user.id.split(':')[0] + '@s.whatsapp.net';
   const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
-  const botNumber = [botNumber, config.OWNER_NUMBER + '@s.whatsapp.net'].includes(m.sender);
   const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
@@ -27,7 +27,7 @@ const OwnerCmd = async (m, Matrix) => {
 
   // Restrict VV command to owner or bot
   if (cmd === 'vv' && !isOwner && !isBot) {
-    return m.reply('*Only the owner or bot can use this command to send media!*');
+    return m.reply(' *Only the owner or bot can use this command to send media!*');
   }
 
   try {
@@ -39,10 +39,10 @@ const OwnerCmd = async (m, Matrix) => {
       buffer = await downloadMediaMessage(m.quoted, 'buffer');
     }
 
-    if (!buffer) return m.reply('*Failed to retrieve media!*');
+    if (!buffer) return m.reply(' *Failed to retrieve media!*');
 
     let mimetype = msg.audioMessage?.mimetype || 'audio/ogg';
-    let caption = `*downloaded viewonce by joel-xmd*`;
+    let caption = ` *ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ ᴠɪᴇᴡ ᴏɴᴄᴇ ʙʏ ᴊᴏᴇʟ xᴍᴅ*`;
 
     let recipient;
     if (cmd === 'vv') {
@@ -70,6 +70,5 @@ const OwnerCmd = async (m, Matrix) => {
   }
 };
 
-// go suck your mouth.fuck you
+// coded by lord joel
 export default OwnerCmd;
-    
