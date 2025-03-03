@@ -12,10 +12,10 @@ const tourl = async (m, sock) => {
     ? m.body.slice(prefix.length).split(" ")[0].toLowerCase()
     : "";
 
-  if (cmd === "tou") {
+  if (cmd === "url2") {
     try {
       if (!m.quoted || !m.quoted.message) {
-        throw "*🌻 Please reply to an image or video!*";
+        throw "*Please reply to an image or video!*";
       }
 
       // Detect media type
@@ -35,13 +35,13 @@ const tourl = async (m, sock) => {
       }
 
       if (!mediaMessage) {
-        throw "*🌻 Please reply to a valid image or video!*";
+        throw "*Please reply to a valid image or video!*";
       }
 
       // Download media
       const fileBuffer = await m.quoted.download();
       if (!fileBuffer || fileBuffer.length === 0) {
-        throw "*❌ Media download failed!*";
+        throw "*Media download failed!*";
       }
 
       // Save media temporarily
@@ -65,11 +65,11 @@ const tourl = async (m, sock) => {
       fs.unlinkSync(tempFilePath);
 
       if (!response.data || !response.data.data || !response.data.data.link) {
-        throw "❌ Error uploading the media.";
+        throw "Error uploading the media.";
       }
 
       const mediaUrl = response.data.data.link;
-      const responseText = `*📸 Sarkar-MD MEDIA URL*\n\n🔗 *URL:* ${mediaUrl}\n\n*⚡ Uploaded By: Sarkar-MD*`;
+      const responseText = `*ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ɪʀʟ ᴍᴇɴᴜ*\n\n*URL:* ${mediaUrl}\n\n*ᴜᴏʟᴏᴀᴅᴇᴅ ʙʏ ᴊᴏᴇʟ xᴍᴅ*`;
 
       await sock.sendMessage(
         m.from,
