@@ -1,6 +1,6 @@
 {
-  "name": "𝙹𝙾𝚎𝚕 𝙱𝚘𝚝",
-  "description": " 𝚆𝚑𝚊𝚝𝚜𝙰𝚙𝚙 𝚋𝚘𝚝 𝚌𝚛𝚎𝚊𝚝𝚎𝚍 𝚋𝚢 𝙻𝙾𝚛𝚍 𝙹𝙾𝚎𝚕.",
+  "name": "ᴊᴋᴇʟ xᴍᴅ ᴠ¹⁰",
+  "description": "α ʝαναѕ¢яιρт ωнαтѕαρρ вσт ∂єνєℓσρє∂ ву ℓσя∂ ʝσєℓ.",
   "keywords": [
     "whatsapp bot"
   ],
@@ -82,6 +82,16 @@
       "description": "make it true if you want to reject call",
       "required": false,
       "value": ""
+     },
+    "WELCOME": {
+      "description": "make it true if you want to enable auto welcome",
+      "required": false,
+      "value": "" 
+      },
+    "ANTILINK": {
+      "description": "make it true if you want to enable auto delete links",
+      "required": false,
+      "value": ""  
     },
     "PREFIX": {
       "description": "Your Bot Prefix default (.)",
