@@ -18,16 +18,16 @@ const LogoCmd = async (m, sock) => {
         isForwarded: true,
         forwardingScore: 999,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '',
-          newsletterName: "",
+          newsletterJid: '120363317462952356@newsletter',
+          newsletterName: "ᴊᴏᴇʟ xᴅ ᴠ⁷",
           serverMessageId: -1,
         },
         externalAdReply: {
-          title: "",
+          title: "ᴊᴏᴇʟ xᴍᴅ ʟᴏɢᴏ ᴍᴇɴᴜ",
           body: pushName,
           thumbnailUrl:
-            '',
-          sourceUrl: '',
+            'https://avatars.githubusercontent.com/u/162905644?v=4',
+          sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
           mediaType: 1,
           renderLargerThumbnail: false,
         },
@@ -85,7 +85,7 @@ const LogoCmd = async (m, sock) => {
       // Check if the response is successful and contains a download_url
       if (result.status && result.result && result.result.download_url) {
         const logoUrl = result.result.download_url;
-        const caption = `Here is your logo for ${text}`;
+        const caption = `ᴅᴏᴡɴʟᴏᴀᴅᴇᴅ ʟᴏɢᴏ ʙʏ ᴊᴏᴇʟ xᴍᴅ ᴠ¹⁰`;
 
         // Create a message payload with the image and caption
         const messagePayload = {
@@ -95,16 +95,16 @@ const LogoCmd = async (m, sock) => {
             isForwarded: true,
             forwardingScore: 999,
             forwardedNewsletterMessageInfo: {
-              newsletterJid: '',
-              newsletterName: "",
+              newsletterJid: '120363317462952356@newsletter',
+              newsletterName: "ᴊᴏᴇʟ xᴅ ᴠ⁷",
               serverMessageId: -1,
             },
             externalAdReply: {
-              title: "",
+              title: "ᴊᴏᴇʟ xᴅ ᴠ⁷",
               body: pushName,
               thumbnailUrl:
-                '',
-              sourceUrl: '',
+                'https://avatars.githubusercontent.com/u/162905644?v=4',
+              sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
               mediaType: 1,
               renderLargerThumbnail: false,
             },
