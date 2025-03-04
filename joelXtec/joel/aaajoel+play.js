@@ -1,79 +1,110 @@
-import axios from 'axios';
+import config from '../../config.cjs';
 import yts from 'yt-search';
+import ytdl from 'ytdl-core';
+import fs from 'fs';
+import path from 'path';
 
-const fetchVideoDetails = async (url) => {
-  try {
-    const response = await axios.get(`https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(yts.url)`);
-    return response.data;
-  } catch (error) {
-    throw new Error('Error fetching video details.');
-  }
-};
+const play2 = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix)
+    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
+    : '';
+  const query = m.body.slice(prefix.length + cmd.length).trim();
 
-const video = async (m, Matrix) => {
-  const prefixMatch = m.body.match(/^[\\/!#.]/);
-  const prefix = prefixMatch ? prefixMatch[0] : '/';
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const text = m.body.slice(prefix.length + cmd.length).trim();
+  if (cmd === "play2") {
+    if (!query) return m.reply("❌ *Please provide a search query!*");
 
-  const validCommands = ['video', 'ytmp4', 'vid', 'ytmp4doc'];
-
-  if (validCommands.includes(cmd)) {
-    if (!text) return m.reply('Give a YouTube URL or search query.');
+    await m.react('⏳'); // React with loading icon
 
     try {
-      await m.React("🕘");
+      const searchResults = await yts(query);
+      if (!searchResults.videos.length) return m.reply("❌ *No results found!*");
 
-      const isUrl = text.includes('youtube.com') || text.includes('youtu.be');
-      await m.React("⬇️");
+      const video = searchResults.videos[0]; // First result
+      const captionMessage = `
+╭━━━〔 *Sarkar-MD YouTube Search* 〕━━━
+┃▸ *Title:* ${video.title}
+┃▸ *Duration:* ${video.timestamp}
+┃▸ *Views:* ${video.views}
+┃▸ *Channel:* ${video.author.name}
+╰━━━━━━━━━━━━━━━━━━
+📥 *Choose an option to download:*
+1️⃣ *Video*
+2️⃣ *Audio*
+3️⃣ *Video (Document)*
+4️⃣ *Audio (Document)*
+`;
 
-      const sendVideoMessage = async (videoInfo, videoURL) => {
-        const responseBuffer = await axios.get(videoURL, { responseType: 'arraybuffer' });
+      const sentMessage = await sock.sendMessage(m.from, {
+        image: { url: video.thumbnail },
+        caption: captionMessage
+      }, { quoted: m });
 
-        if (cmd === 'ytmp4doc') {
-          const docMessage = {
-            document: Buffer.from(responseBuffer.data),
-            mimetype: 'video/mp4',
-            fileName: `${videoInfo.title}.mp4`,
-            caption: `> ${videoInfo.title}\n> © Powered by joel tech`,
-          };
-          await Matrix.sendMessage(m.from, docMessage, { quoted: m });
-        } else {
-          const videoMessage = {
-            video: Buffer.from(responseBuffer.data),
-            mimetype: 'video/mp4',
-            caption: `> ${videoInfo.title}\n> © POWERED BY JOEL TECH`,
-          };
-          await Matrix.sendMessage(m.from, videoMessage, { quoted: m });
+      const messageID = sentMessage.key.id;
+      const videoUrl = video.url;
+
+      sock.ev.on("messages.upsert", async (message) => {
+        const receivedMessage = message.messages[0];
+        if (!receivedMessage.message) return;
+
+        const userResponse = receivedMessage.message.conversation || receivedMessage.message.extendedTextMessage?.text;
+        const chatID = receivedMessage.key.remoteJid;
+        const isReplyToBotMessage = receivedMessage.message.extendedTextMessage &&
+          receivedMessage.message.extendedTextMessage.contextInfo.stanzaId === messageID;
+
+        if (isReplyToBotMessage) {
+          await sock.sendMessage(chatID, { react: { text: '⬇️', key: receivedMessage.key } });
+
+          let format, caption, fileType, mimeType;
+          if (userResponse === '1') {
+            format = { quality: 'highest', filter: 'videoandaudio' };
+            fileType = 'video';
+            caption = "📥 *Downloaded in Video Format*";
+            mimeType = "video/mp4";
+          } else if (userResponse === '2') {
+            format = { quality: 'highestaudio', filter: 'audioonly' };
+            fileType = 'audio';
+            caption = "📥 *Downloaded in Audio Format*";
+            mimeType = "audio/mpeg";
+          } else if (userResponse === '3') {
+            format = { quality: 'highest', filter: 'videoandaudio' };
+            fileType = 'document';
+            caption = "📥 *Downloaded as Video Document*";
+            mimeType = "video/mp4";
+          } else if (userResponse === '4') {
+            format = { quality: 'highestaudio', filter: 'audioonly' };
+            fileType = 'document';
+            caption = "📥 *Downloaded as Audio Document*";
+            mimeType = "audio/mpeg";
+          } else {
+            return m.reply("❌ *Invalid selection! Please reply with 1, 2, 3, or 4.*");
+          }
+
+          const filePath = path.resolve(`./temp/${fileType}_${Date.now()}.${fileType === 'audio' ? 'mp3' : 'mp4'}`);
+          const stream = ytdl(videoUrl, format).pipe(fs.createWriteStream(filePath));
+
+          stream.on("finish", async () => {
+            const mediaMessage = fileType === 'document'
+              ? { document: fs.readFileSync(filePath), mimetype: mimeType, fileName: `Sarkar-MD_${fileType}.${fileType === 'audio' ? 'mp3' : 'mp4'}`, caption }
+              : { [fileType]: fs.readFileSync(filePath), mimetype: mimeType, caption };
+
+            await sock.sendMessage(chatID, mediaMessage, { quoted: receivedMessage });
+
+            fs.unlinkSync(filePath); // Delete file after sending
+          });
+
+          stream.on("error", async (err) => {
+            console.error("Download Error:", err);
+            m.reply("❌ *An error occurred while downloading the file.*");
+          });
         }
-        await m.React("✅");
-      };
+      });
 
-      if (isUrl) {
-        const { videoDetails, videoURL } = await fetchVideoDetails(text);
-        await sendVideoMessage(videoDetails, videoURL);
-      } else {
-        const searchResult = await yts(text);
-        const firstVideo = searchResult.videos[0];
-        await m.React("⬇️");
-
-        if (!firstVideo) {
-          m.reply('Video not found.');
-          await m.React("❌");
-          return;
-        }
-
-        const { videoDetails, videoURL } = await fetchVideoDetails(firstVideo.url);
-        await sendVideoMessage(videoDetails, videoURL);
-      }
     } catch (error) {
-      console.error("Error generating response:", error);
-      m.reply('An error occurred while processing your request.');
-      await m.React("❌");
+      console.error("Error:", error);
+      return m.reply("❌ *An error occurred while processing your request.*");
     }
   }
 };
 
-export default video;
-
-// coded by joel xmd inc
+export default play2;
