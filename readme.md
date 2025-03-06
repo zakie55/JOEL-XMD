@@ -3,7 +3,9 @@
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
-<img alt="lord joel" height=250 width=350 src="owner.jpg"/>
+<img alt="lord joel" height=250
+width=350
+src="https://avatars.githubusercontent.com/u/162905644?v=4"/>
 
 
 
