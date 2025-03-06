@@ -5,7 +5,7 @@
 
 <img alt="lord joel" height=250
 width=350
-src="https://avatars.githubusercontent.com/u/162905644?v=4"/>
+src="https://files.catbox.moe/oyefhv.png"/>
 
 
 
