@@ -1,38 +1,64 @@
-import config from '../../config.cjs';
+const axios = require("axios");
+const { cmd } = require("../command");
 
-const restartBot = async (m) => {
-  try {
-    const prefix = config.PREFIX;
-    const cmd = m.body.startsWith(prefix)
-      ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
-      : '';
+cmd({
+    pattern: "ai",
+    alias: "gpt",
+    desc: "Interact with ChatGPT using the Dreaded API.",
+    category: "ai",
+    react: "🤖",
+    use: "<your query>",
+    filename: __filename,
+}, async (conn, mek, m, { from, args, q, reply }) => {
+    try {
+        // Check user input
+        if (!q) return reply("⚠️ Please provide a query for ChatGPT.\n\nExample:\n.gpt What is AI?");
 
-    // Check if the command is 'restart'
-    if (cmd === 'restart') {
-      // Get the owner's number with the WhatsApp identifier (@s.whatsapp.net)
-      const ownerNumber = `${config.OWNER_NUMBER}@s.whatsapp.net`;
-      const botNumber = await Matrix.decodeJid(Matrix.user.id);
+        const text = encodeURIComponent(q); // Encode user query
 
-      // Check if the sender is the owner (either by phone number or WhatsApp identifier)
-      if (m.sender === config.OWNER_NUMBER || m.sender === ownerNumber || m.sender === botNumber) {
-        m.reply('⏳ Processing your request...');
+        const url = `https://api.dreaded.site/api/chatgpt?text=${text}`;
 
-        // Simulate a short delay before restarting for better user feedback
-        setTimeout(() => {
-          process.exit(0); // Use exit code 0 for a clean restart
-        }, 2000);
-      } else {
-        // If the sender is not the owner, deny the command and send custom message
-        return m.reply('📛 THIS IS AN OWNER COMMAND');
-      }
+        console.log('Requesting URL:', url); // Debug log
+
+        const response = await axios.get(url, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0',
+                'Accept': 'application/json',
+            }
+        });
+
+        console.log('Full API Response:', response.data); // Debug log
+
+        if (!response.data || response.data.status !== 200 || !response.data.success) {
+            return reply("❌ No valid response from the GPT API. Please try again later.");
+        }
+
+        const gptResponse = response.data.result.prompt; // Updated structure
+
+        if (!gptResponse) {
+            return reply("❌ The API returned an unexpected format. Please try again later.");
+        }
+
+        const formattedInfo = ` *ᴊᴏᴇʟ ᴍᴅ ᴀʟ:*\n\n${gptResponse}`;
+
+        await reply(formattedInfo); // Sending only text response
+
+    } catch (error) {
+        console.error("Error in GPT command:", error);
+
+        if (error.response) {
+            console.log("Error Response Data:", error.response.data);
+        } else {
+            console.log("Error Details:", error.message);
+        }
+
+        const errorMessage = `
+❌ An error occurred while processing the GPT command.
+🛠 *Error Details*:
+${error.message}
+
+Please report this issue or try again later.
+        `.trim();
+        return reply(errorMessage);
     }
-  } catch (error) {
-    console.error(error);
-
-    // React with ❌ if there's an error
-    await m.react("❌");
-    return m.reply(`⚠️ An error occurred while restarting the bot: ${error.message}`);
-  }
-};
-
-export default restartBot;
+});
