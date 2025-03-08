@@ -20,25 +20,24 @@ const AliveCmd = async (m, Matrix) => {
   const isAllowed = isOwner || isBot; // 🔥 Sirf Owner & Bot use kar sakte hain
 
   if (cmd === 'alive' || cmd === 'status' || cmd === 'runtime' || cmd === 'uptime') {
-    if (!isAllowed) return m.reply('❌ *You are not authorized to use this command!*');
+    if (!isAllowed) return m.reply('*You are not authorized to use this command!*');
 
     try {
       const status = `
-╭──❍「 *ᴊᴏᴇʟ xᴍᴅ ᴀʟɪᴠᴇ ᴍᴇɴᴜ* 」❍
-│
-│
-╰─┬────❍
-╭──❍
-│υρтιмє: *${runtime(process.uptime())}*
-│яαм υѕαgє: *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB*
-│нσѕт ηαмє: *${os.hostname()}
-│σωηєя : *ℓσя∂ ʝσєℓ*
-│тнємє: *ʝσєℓ тє¢н*
-│νєяѕιση: ν¹⁰ χм∂
-╰──────❍`;
+*╭──❍「 ᴊᴏᴇʟ xᴍᴅ ᴀʟɪᴠᴇ ᴍᴇɴᴜ 」❍*
+*│*
+*│*
+*╰─┬────❍*
+*╭──❍*
+*│υρтιмє: ${runtime(process.uptime())}*
+*│яαм υѕαgє: *${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)}MB / ${(os.totalmem() / 1024 / 1024).toFixed(2)}MB*
+*│σωηєя : ℓσя∂ ʝσєℓ*
+*│тнємє: ʝσєℓ тє¢н*
+*│νєяѕιση: ν¹⁰ χм∂*
+*╰──────❍*`;
 
       await Matrix.sendMessage(m.from, {
-        image: { url: `https://avatars.githubusercontent.com/u/162905644?v=4` }, // 🔥 Image URL
+        image: { url: `https://files.catbox.moe/jf706u.jpg` }, // 🔥 Image URL
         caption: status
       }, { quoted: m });
 
