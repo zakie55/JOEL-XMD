@@ -1,64 +1,37 @@
-const axios = require("axios");
-const { cmd } = require("../command");
+import config from '../../config.cjs';
 
-cmd({
-    pattern: "ai",
-    alias: "gpt",
-    desc: "Interact with ChatGPT using the Dreaded API.",
-    category: "ai",
-    react: "🤖",
-    use: "<your query>",
-    filename: __filename,
-}, async (conn, mek, m, { from, args, q, reply }) => {
+const DeleteCmd = async (m, Matrix) => {
+  const botNumber = await Matrix.decodeJid(Matrix.user.id);
+  const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const isOwner = m.sender === ownerNumber;
+  const isBot = m.sender === botNumber;
+  const isGroup = m.isGroup;
+  const isAdmins = m.isAdmins || isOwner; // ✅ Owner hamesha admin hoga
+  const isBotAdmins = m.isBotAdmins;
+
+  if (cmd === 'delete' || cmd === 'del') {
+    if (!isGroup) return m.reply('❌ *This command can only be used in groups!*');
+    if (!isAdmins) return m.reply('❌ *Only Admins & Owner can use this command!*');
+    if (!m.quoted) return m.reply('⚠️ *Reply to a message to delete it!*');
+
     try {
-        // Check user input
-        if (!q) return reply("⚠️ Please provide a query for ChatGPT.\n\nExample:\n.gpt What is AI?");
+      const key = {
+        remoteJid: m.chat,
+        fromMe: false,
+        id: m.quoted.id,
+        participant: m.quoted.sender
+      };
 
-        const text = encodeURIComponent(q); // Encode user query
-
-        const url = `https://api.dreaded.site/api/chatgpt?text=${text}`;
-
-        console.log('Requesting URL:', url); // Debug log
-
-        const response = await axios.get(url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0',
-                'Accept': 'application/json',
-            }
-        });
-
-        console.log('Full API Response:', response.data); // Debug log
-
-        if (!response.data || response.data.status !== 200 || !response.data.success) {
-            return reply("❌ No valid response from the GPT API. Please try again later.");
-        }
-
-        const gptResponse = response.data.result.prompt; // Updated structure
-
-        if (!gptResponse) {
-            return reply("❌ The API returned an unexpected format. Please try again later.");
-        }
-
-        const formattedInfo = ` *ᴊᴏᴇʟ ᴍᴅ ᴀʟ:*\n\n${gptResponse}`;
-
-        await reply(formattedInfo); // Sending only text response
-
-    } catch (error) {
-        console.error("Error in GPT command:", error);
-
-        if (error.response) {
-            console.log("Error Response Data:", error.response.data);
-        } else {
-            console.log("Error Details:", error.message);
-        }
-
-        const errorMessage = `
-❌ An error occurred while processing the GPT command.
-🛠 *Error Details*:
-${error.message}
-
-Please report this issue or try again later.
-        `.trim();
-        return reply(errorMessage);
+      await Matrix.sendMessage(m.chat, { delete: key });
+      m.reply('✅ *Message deleted successfully!*');
+    } catch (e) {
+      console.error("Error in delete command:", e);
+      m.reply('❌ *Failed to delete message!*');
     }
-});
+  }
+};
+
+// fuck you 
+export default DeleteCmd;
