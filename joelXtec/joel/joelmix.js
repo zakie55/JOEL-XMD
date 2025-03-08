@@ -1,38 +1,49 @@
-import fetch from 'node-fetch';
-import fs from 'fs';
+const { cmd } = require("../command");
+const { fetchEmix } = require("../lib/emix-utils");
+const { getBuffer } = require("../lib/functions");
+const { Sticker, StickerTypes } = require("wa-sticker-formatter");
 
-const emojimix = async (m, Matrix) => {
-  try {
-    const prefixMatch = m.body.match(/^[\\/!#.]/);
-    const prefix = prefixMatch ? prefixMatch[0] : '/';
-    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-    const text = m.body.slice(prefix.length + cmd.length).trim();
+cmd({
+    pattern: "emix",
+    desc: "Combine two emojis into a sticker.",
+    category: "fun",
+    react: "😃",
+    use: ".emix 😂,🙂",
+    filename: __filename,
+}, async (conn, mek, m, { args, q, reply }) => {
+    try {
+        if (!q.includes(",")) {
+            return reply("❌ *Usage:* .emix 😂,🙂\n_Send two emojis separated by a comma._");
+        }
 
-    const validCommands = ['emojimix', 'emix'];
-    if (!validCommands.includes(cmd)) return;
+        let [emoji1, emoji2] = q.split(",").map(e => e.trim());
 
-    let [emoji1, emoji2] = text.split('+');
-    if (!emoji1 || !emoji2) {
-      return m.reply(`Example: ${prefix + cmd} 😅+🤔`);
+        if (!emoji1 || !emoji2) {
+            return reply("❌ Please provide two emojis separated by a comma.");
+        }
+
+        let imageUrl = await fetchEmix(emoji1, emoji2);
+
+        if (!imageUrl) {
+            return reply("❌ Could not generate emoji mix. Try different emojis.");
+        }
+
+        let buffer = await getBuffer(imageUrl);
+        let sticker = new Sticker(buffer, {
+            pack: "ᴊᴏᴇʟ",
+            author: "xᴍᴅ",
+            type: StickerTypes.FULL,
+            categories: ["🤩", "🎉"],
+            quality: 75,
+            background: "transparent",
+        });
+
+        const stickerBuffer = await sticker.toBuffer();
+        await conn.sendMessage(mek.chat, { sticker: stickerBuffer }, { quoted: mek });
+
+    } catch (e) {
+        console.error("Error in .emix command:", e.message);
+        reply(`❌ Could not generate emoji mix: ${e.message}`);
     }
-
-    const url = `https://tenor.googleapis.com/v2/featured?key=AIzaSyAyimkuYQYF_FXVALexPuGQctUWRURdCYQ&contentfilter=high&media_filter=png_transparent&component=proactive&collection=emoji_kitchen_v5&q=${encodeURIComponent(emoji1)}_${encodeURIComponent(emoji2)}`;
-    const response = await fetch(url);
-    const anu = await response.json();
-
-    if (!anu.results || anu.results.length === 0) {
-      return m.reply('No emoji mix found for the provided emojis.');
-    }
-
-    for (let res of anu.results) {
-      const encmedia = await Matrix.sendImageAsSticker(m.from, res.url, m, { packname: "", author: "Ethix-MD", categories: res.tags });
-      await fs.unlinkSync(encmedia);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    m.reply('An error occurred while processing the command.');
-  }
-};
-
-export default emojimix;
-      
+});
+          
