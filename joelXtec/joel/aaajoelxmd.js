@@ -297,13 +297,15 @@ if (time2 < "05:00:00") {
         },
       },
       { quoted: m });
-    // Send audio after sending the menu
-    await Matrix.sendMessage(m.from, {
-      audio: { url: 'https://github.com/tharumin/Alexa_Voice/raw/refs/heads/main/hm.mp3' },
-      mimetype: 'audio/mp3',
-      ptt: true
-    }, { quoted: m });
-  }
-};
-export default alive;
-// ¢σ∂є∂ ву ʝσєℓ ʝαмєѕ
+    // Send audio
+        await conn.sendMessage(from, {
+            audio: { url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
+            mimetype: 'audio/mp4',
+            ptt: true
+        }, { quoted: mek });
+        
+    } catch (e) {
+        console.log(e);
+        reply(`${e}`);
+    }
+});
