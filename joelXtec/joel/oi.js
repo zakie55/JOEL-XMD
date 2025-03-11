@@ -1,50 +1,40 @@
-import axios from 'axios';
+import fs from 'fs-extra';
+import config from '../../config.cjs';
 
-const apiBaseUrl = 'https://decon-5974ccdd6885.herokuapp.com'; // Your API endpoint
-
-const getPairingCode = async (m, Matrix) => {
-  const prefixMatch = m.body.match(/^[\\/!#.]/);
-  const prefix = prefixMatch ? prefixMatch[0] : '/';
+const handleTakeCommand = async (m, gss) => {
+  const prefix = config.PREFIX;
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  const validCommands = ['pair', 'getsession', 'paircode', 'pairingcode'];
+  if (cmd !== 'take') return;
 
-  if (validCommands.includes(cmd)) {
-    if (!text) return m.reply('Please provide a phone number with country code.');
+  // Split text into packname and author
+  const args = text.split('|');
+  const [providedPackname, providedAuthor] = args;
 
-    const phoneNumberMatch = text.match(/^(\+\d{1,3})(\d+)$/);
-    if (!phoneNumberMatch) return m.reply('Please provide a valid phone number with country code.');
+  if (!providedPackname || !providedAuthor) {
+    return m.reply('Usage: /take pkgname|author');
+  }
 
-    const countryCode = phoneNumberMatch[1];
-    const phoneNumber = phoneNumberMatch[2];
+  global.packname = providedPackname;
+  global.author = providedAuthor;
 
-    try {
-      await m.React('🕘');
+  const quoted = m.quoted || {};
 
-      const response = await axios.post(apiBaseUrl, {
-        phoneNumber: countryCode + phoneNumber
-      }, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+  if (!['imageMessage', 'videoMessage', 'stickerMessage'].includes(quoted.mtype)) {
+    return m.reply(`Send/Reply with an image or video to use ${prefix + cmd}`);
+  }
 
-      const result = response.data;
+  try {
+    const mediaBuffer = await quoted.download();
+    if (!mediaBuffer) throw new Error('Failed to download media.');
 
-      if (result.pairingCode) {
-        const message = `Pairing Code: ${result.pairingCode}\nStatus: ${result.status}`;
-        await m.reply(message);
-        await m.React('✅');
-      } else {
-        throw new Error('Invalid response from the server.');
-      }
-    } catch (error) {
-      console.error('Error fetching pairing code:', error.message);
-      m.reply('Error fetching pairing code.');
-      await m.React('❌');
-    }
+    await gss.sendImageAsSticker(m.from, mediaBuffer, m, { packname: global.packname, author: global.author });
+    m.reply('Sticker created successfully!');
+  } catch (error) {
+    m.reply(`Error: ${error.message}`);
   }
 };
 
-export default getPairingCode;
+export default handleTakeCommand;
+    
