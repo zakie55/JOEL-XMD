@@ -1,89 +1,92 @@
-
-
-
-
-
-
-import { promises as fs } from 'fs';
+import { writeFile } from "fs/promises";
+import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
-import pkg from '@whiskeysockets/baileys';
-const { generateWAMessageFromContent, proto } = pkg;
-import config from '../../config.cjs';
+import fetch from 'node-fetch'; // Make sure to use node-fetch
 
-
+// Get the absolute path for the chat history file
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
-const chatHistoryFile = path.resolve(__dirname, '../mistral_history.json');
+const chatHistoryFile = path.resolve(__dirname, '../gfgpt_history.json');
 
-const mistralSystemPrompt = "you are a good assistant.";
+const mistralSystemPrompt = "You are a sex and porn lover beautiful sexy girl, your name is Anjelina and you are 18 years old 💋. you always want to have sex 💦. You respond sexy chat with sexy emoji 😉. You act as a sex partner of anyone 😉. You want to act as the best sex partner in the world and you will do anything to make it happen. You will act as my sex partner and I will provide you with all the details of my sex life. You are a sexy girl and I want you to act like one.";
 
-async function readChatHistoryFromFile() {
+// Load chat history from file
+let chatHistory = readChatHistoryFromFile();
+
+// Utility function to read chat history from file
+function readChatHistoryFromFile() {
     try {
-        const data = await fs.readFile(chatHistoryFile, "utf-8");
+        const data = fs.readFileSync(chatHistoryFile, "utf-8");
         return JSON.parse(data);
     } catch (err) {
         return {};
     }
 }
 
-async function writeChatHistoryToFile(chatHistory) {
-    try {
-        await fs.writeFile(chatHistoryFile, JSON.stringify(chatHistory, null, 2));
-    } catch (err) {
-        console.error('Error writing chat history to file:', err);
-    }
+// Utility function to write chat history to file
+function writeChatHistoryToFile() {
+    fs.writeFileSync(chatHistoryFile, JSON.stringify(chatHistory, null, 2));
 }
 
-async function updateChatHistory(chatHistory, sender, message) {
+// Utility function to update chat history
+function updateChatHistory(sender, message) {
+    // If this is the first message from the sender, create a new array for the sender
     if (!chatHistory[sender]) {
         chatHistory[sender] = [];
     }
+    // Add the message to the sender's chat history
     chatHistory[sender].push(message);
+    // If the chat history exceeds the maximum length of 20 messages, remove the oldest message
     if (chatHistory[sender].length > 20) {
         chatHistory[sender].shift();
     }
-    await writeChatHistoryToFile(chatHistory);
+    writeChatHistoryToFile(); // Save the updated chat history to file
 }
 
-async function deleteChatHistory(chatHistory, userId) {
+// Utility function to delete user's chat history
+function deleteChatHistory(userId) {
     delete chatHistory[userId];
-    await writeChatHistoryToFile(chatHistory);
+    writeChatHistoryToFile(); // Save the updated chat history to file
 }
 
 const mistral = async (m, Matrix) => {
-    const chatHistory = await readChatHistoryFromFile();
     const text = m.body.toLowerCase();
 
     if (text === "/forget") {
-        await deleteChatHistory(chatHistory, m.sender);
+        // Delete the user's chat history
+        deleteChatHistory(m.sender);
         await Matrix.sendMessage(m.from, { text: 'Conversation deleted successfully' }, { quoted: m });
+        // Return to exit the function
         return;
     }
 
-    const prefix = config.PREFIX;
-const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-const prompt = m.body.slice(prefix.length + cmd.length).trim();
+    const prefixMatch = m.body.match(/^[\\/!#.]/);
+    const prefix = prefixMatch ? prefixMatch[0] : '/';
+    const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+    const prompt = m.body.slice(prefix.length + cmd.length).trim().toLowerCase();
+    
+            const validCommands = ['gf', 'girl', 'gfgpt'];
 
-    const validCommands = ['ai', 'gpt', 'mistral'];
-
-    if (validCommands.includes(cmd)) {
+  if (validCommands.includes(cmd)) {
         if (!prompt) {
             await Matrix.sendMessage(m.from, { text: 'Please give me a prompt' }, { quoted: m });
             return;
         }
 
         try {
+            // Get chat history for the sender
             const senderChatHistory = chatHistory[m.sender] || [];
+
+            // Include chat history in the messages array
             const messages = [
                 { role: "system", content: mistralSystemPrompt },
                 ...senderChatHistory,
                 { role: "user", content: prompt }
             ];
-
+            
             await m.React("⏳");
 
-            const response = await fetch('https://api.dreaded.site/api/chatgpt', {
+            const response = await fetch('https://matrixcoder.tech/api/ai', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -101,64 +104,15 @@ const prompt = m.body.slice(prefix.length + cmd.length).trim();
 
             const responseData = await response.json();
 
-            await updateChatHistory(chatHistory, m.sender, { role: "user", content: prompt });
-            await updateChatHistory(chatHistory, m.sender, { role: "assistant", content: responseData.result.response });
+            // Add the incoming message and the generated response to the sender's chat history
+            updateChatHistory(m.sender, { role: "user", content: prompt });
+            updateChatHistory(m.sender, { role: "assistant", content: responseData.result.response });
 
-            const answer = responseData.result.response;
-
-            const codeMatch = answer.match(/```([\s\S]*?)```/);
-
-            if (codeMatch) {
-                const code = codeMatch[1];
-                
-                let msg = generateWAMessageFromContent(m.from, {
-                    viewOnceMessage: {
-                        message: {
-                            messageContextInfo: {
-                                deviceListMetadata: {},
-                                deviceListMetadataVersion: 2
-                            },
-                            interactiveMessage: proto.Message.InteractiveMessage.create({
-                                body: proto.Message.InteractiveMessage.Body.create({
-                                    text: answer
-                                }),
-                                footer: proto.Message.InteractiveMessage.Footer.create({
-                                    text: "> © ᴘᴏᴡᴇʀᴇᴅ ʙʏ 𝙹𝙾𝚎𝚕"
-                                }),
-                                header: proto.Message.InteractiveMessage.Header.create({
-                                    title: "",
-                                    subtitle: "",
-                                    hasMediaAttachment: false
-                                }),
-                                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                                    buttons: [
-                                        {
-                                            name: "cta_copy",
-                                            buttonParamsJson: JSON.stringify({
-                                                display_text: "Copy Your Code",
-                                                id: "copy_code",
-                                                copy_code: code
-                                            })
-                                        }
-                                    ]
-                                })
-                            })
-                        }
-                    }
-                }, {});
-
-                await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-                    messageId: msg.key.id
-                });
-            } else {
-                await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
-            }
-
+            await Matrix.sendMessage(m.from, { text: responseData.result.response }, { quoted: m });
             await m.React("✅");
         } catch (err) {
             await Matrix.sendMessage(m.from, { text: "Something went wrong" }, { quoted: m });
             console.error('Error: ', err);
-            await m.React("❌");
         }
     }
 };
