@@ -1,23 +1,3 @@
-/*
-      await Matrix.sendMessage(m.from, {
-        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
-        caption: status
-      }, { quoted: m });
-
-    } catch (e) {
-      console.error("Error in alive command:", e);
-      m.reply(`❌ *An error occurred:* ${e.message}`);
-    }
-  }
-};
-
-// POWERED BY BANDAHEALI
-export default AliveCmd;
-*/
-
-
-
-
 import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
@@ -34,7 +14,7 @@ const alive = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "m") {
+  if (cmd === "menu") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
@@ -260,7 +240,7 @@ if (time2 < "05:00:00") {
 - мσνιє
 ----
 *❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
-      
+
     await m.React('☄️'); // React with a success icon
 
     sock.sendMessage(
@@ -287,7 +267,12 @@ if (time2 < "05:00:00") {
       },
       { quoted: m }
     );
+     await Matrix.sendMessage(m.from, {
+        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
+        caption: status
+      }, { quoted: m });
   }
 };
-// mother fucker 
+
 export default alive;
+        
