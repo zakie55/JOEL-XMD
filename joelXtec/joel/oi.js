@@ -1,81 +1,77 @@
-import config from '../../config.cjs'; // Ensure this matches your project setup
+import axios from "axios";
+import { createRequire } from "module";
 
-const ping = async (m, sock) => {
+// Import config.cjs using createRequire
+const require = createRequire(import.meta.url);
+const config = require("../../config.cjs");
+
+const ytsCommand = async (m, gss) => {
   const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix)
-    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
-    : '';
-  const text = m.body.slice(prefix.length + cmd.length).trim();
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(" ")[0].toLowerCase() : "";
+  const validCommands = ["yts", "ytsearch"];
 
-  if (cmd === "p") {
-    const start = new Date().getTime();
-    await m.React('⏳'); // React with a loading icon
-    const end = new Date().getTime();
-    const responseTime = (end - start).toFixed(2);
+  if (validCommands.includes(cmd)) {
+    // Extract the search query from the command (e.g., "!yts <search_query>")
+    const searchQuery = m.body.split(" ").slice(1).join(" ");
 
-    // Updated text style with Sarkar-MD branding and response rate
-    const responseText = `*_Sarkar-MD Speed is_* ${responseTime} ms`;
+    if (!searchQuery) {
+      await gss.sendMessage(
+        m.from,
+        { text: "❌ Please provide a valid search query after the command." },
+        { quoted: m }
+      );
+      return;
+    }
 
-    await m.React('✅'); // React with a success icon
+    const apiUrl = `https://www.dark-yasiya-api.site/search/yt?text=${encodeURIComponent(searchQuery)}`;
 
-    sock.sendMessage(
-      m.from,
-      {
-        text: responseText,
-        contextInfo: {
-          isForwarded: false,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '@newsletter',
-            newsletterName: "Sarkar-MD",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "✨ Sarkar-MD ✨",
-            body: "Ping Speed Calculation",
-            thumbnailUrl: '', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029VajGHyh2phHOH5zJl73P', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: false,
-          },
-  //  updating pong cmd
-    if (cmd === "po") {
-    const start = new Date().getTime();
-    await m.React('⏳'); // React with a loading icon
-    const end = new Date().getTime();
-    const responseTime = (end - start).toFixed(2);
+    try {
+      // Fetch data from API
+      const response = await axios.get(apiUrl);
+      const apiData = response.data;
 
-    // Updated text style with Sarkar-MD branding and response rate
-    const responseText = `*_Sarkar-MD Speed is_* ${responseTime} ms`;
+      if (apiData.status && apiData.result) {
+        const videos = apiData.result.data;
 
-    await m.React('✅'); // React with a success icon
+        if (videos.length === 0) {
+          await gss.sendMessage(
+            m.from,
+            { text: "❌ No results found for your search." },
+            { quoted: m }
+          );
+          return;
+        }
 
-    sock.sendMessage(
-      m.from,
-      {
-        text: responseText,
-        contextInfo: {
-          isForwarded: false,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '@newsletter',
-            newsletterName: "Sarkar-MD",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "✨ Sarkar-MD ✨",
-            body: "Ping Speed Calculation",
-            thumbnailUrl: '', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029VajGHyh2phHOH5zJl73P', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: false,
-          },
-        },
-      },
-      { quoted: m }
-    );
+        let message = `*Top results for "${searchQuery}":*\n\n`;
+
+        videos.slice(0, 5).forEach((video, index) => {
+          message += `*${index + 1}. ${video.title}*\n`;
+          message += `⏳ Duration: ${video.duration.timestamp}\n`;
+          message += `👁 Views: ${video.views}\n`;
+          message += `📝 Author: ${video.author.name}\n`;
+          message += `🔗 [Watch here](https://youtube.com/watch?v=${video.videoId})\n\n`;
+        });
+
+        await gss.sendMessage(m.from, { text: message }, { quoted: m });
+      } else {
+        await gss.sendMessage(
+          m.from,
+          { text: "❌ Failed to fetch YouTube results. Please try again later." },
+          { quoted: m }
+        );
+      }
+    } catch (error) {
+      console.error("Error in YTS Command:", error);
+      await gss.sendMessage(
+        m.from,
+        { text: "❌ An error occurred while processing the search. Please try again later." },
+        { quoted: m }
+      );
+    }
   }
 };
 
-export default ping;
-      
+export default ytsCommand;
+
+// Sarkar-MD POWERED BY BANDAHEALI
+  
