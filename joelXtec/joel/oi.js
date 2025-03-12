@@ -46,7 +46,39 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-    const aliveMessage = `нєℓℓσ
+    const aliveMessage = `𝚒𝚝𝚑𝚞𝚋𝚂𝚝𝚊𝚕𝚔
+╰━━━━━━━━━━━━━━━⪼`;
+
+    await Matrix.sendMessage(m.from, {
+      image: fs.readFileSync('owner.jpg'),
+      caption: str,
+      contextInfo: {
+        mentionedJid: [m.sender],
+        forwardingScore: 999,
+        isForwarded: true,
+        forwardedNewsletterMessageInfo: {
+          newsletterJid: '120363299029326322@newsletter',
+          newsletterName: "ᴅᴇᴍᴏɴ sʟᴀʏᴇʀ",
+          serverMessageId: 143
+        }
+      }
+    }, {
+      quoted: m
+    });
+
+    // Send audio after sending the menu
+    await Matrix.sendMessage(m.from, {
+      audio: { url: 'https://github.com/JawadYTX/KHAN-DATA/raw/refs/heads/main/autovoice/menunew.m4a' },
+      mimetype: 'audio/mp4',
+      ptt: true
+    }, { quoted: m });
+  }
+};
+
+export default alive;
+        
+
+/*нєℓℓσ
  *${pushName}* ${pushwish}
 ╭───────────────━⊷
 ║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ  ᴍᴇɴᴜ
@@ -278,3 +310,4 @@ if (time2 < "05:00:00") {
 
 export default alive;
         
+*/
