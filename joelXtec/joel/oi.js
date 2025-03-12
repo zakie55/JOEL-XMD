@@ -38,10 +38,6 @@ const ping = async (m, sock) => {
             mediaType: 1,
             renderLargerThumbnail: false,
           },
-        },
-      },
-      { quoted: m }
-    );
   //  updating pong cmd
     if (cmd === "po") {
     const start = new Date().getTime();
