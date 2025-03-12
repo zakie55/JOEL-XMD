@@ -260,7 +260,10 @@ if (time2 < "05:00:00") {
 - мσνιє
 ----
 *❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
-        await Matrix.sendMessage(m.from, {
+        await m.React('☄️'); // React with a success icon
+        sock.sendMessage(
+      m.from,
+      {            
         image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
         caption: status
       }, { quoted: m });
