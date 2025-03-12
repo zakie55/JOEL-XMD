@@ -42,6 +42,42 @@ const ping = async (m, sock) => {
       },
       { quoted: m }
     );
+  //  updating pong cmd
+    if (cmd === "po") {
+    const start = new Date().getTime();
+    await m.React('⏳'); // React with a loading icon
+    const end = new Date().getTime();
+    const responseTime = (end - start).toFixed(2);
+
+    // Updated text style with Sarkar-MD branding and response rate
+    const responseText = `*_Sarkar-MD Speed is_* ${responseTime} ms`;
+
+    await m.React('✅'); // React with a success icon
+
+    sock.sendMessage(
+      m.from,
+      {
+        text: responseText,
+        contextInfo: {
+          isForwarded: false,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '@newsletter',
+            newsletterName: "Sarkar-MD",
+            serverMessageId: -1,
+          },
+          forwardingScore: 999, // Score to indicate it has been forwarded
+          externalAdReply: {
+            title: "✨ Sarkar-MD ✨",
+            body: "Ping Speed Calculation",
+            thumbnailUrl: '', // Add thumbnail URL if required
+            sourceUrl: 'https://whatsapp.com/channel/0029VajGHyh2phHOH5zJl73P', // Add source URL if necessary
+            mediaType: 1,
+            renderLargerThumbnail: false,
+          },
+        },
+      },
+      { quoted: m }
+    );
   }
 };
 
