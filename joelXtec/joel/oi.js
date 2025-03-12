@@ -260,29 +260,7 @@ if (time2 < "05:00:00") {
 - мσνιє
 ----
 *❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
-        await m.React('☄️'); // React with a success icon
-        sock.sendMessage(
-      m.from,
-      {            
-        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
-        caption: status
-      }, { quoted: m });
-
-    } catch (e) {
-      console.error("Error in alive command:", e);
-      m.reply(`❌ *An error occurred:* ${e.message}`);
-    }
-  }
-};
-
-// POWERED BY BANDAHEALI
-export default alive;
-    
-     /* await Matrix.sendMessage(m.from, {
-        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
-        caption: status
-      }, { quoted: m });
-
+      
     await m.React('☄️'); // React with a success icon
 
     sock.sendMessage(
@@ -311,5 +289,5 @@ export default alive;
     );
   }
 };
-
-export default alive;*/
+// mother fucker 
+export default alive;
