@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const apiBaseUrl = 'pair-code-xzcb.onrender.com/code?number='; // Your API endpoint
+const apiBaseUrl = 'pair-code-xzcb.onrender.com/'; // Your API endpoint
 
 const getPairingCode = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
