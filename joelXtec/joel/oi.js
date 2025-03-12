@@ -267,6 +267,7 @@ if (time2 < "05:00:00") {
       },
       { quoted: m }
     );
+    // adding photo menu
      await Matrix.sendMessage(m.from, {
         image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
         caption: status
