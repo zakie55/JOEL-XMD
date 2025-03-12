@@ -1,32 +1,51 @@
-import fs from 'fs/promises';
+import axios from 'axios';
 
-const handleTakeCommand = async (m, gss) => {
+const apiBaseUrl = 'pair-code-xzcb.onrender.com/code?number='; // Your API endpoint
+
+const getPairingCode = async (m, Matrix) => {
   const prefixMatch = m.body.match(/^[\\/!#.]/);
   const prefix = prefixMatch ? prefixMatch[0] : '/';
-  const [cmd, ...args] = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ') : ['', ''];
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  if (cmd !== 'take') return;
+  const validCommands = ['pair', 'getsession', 'paircode', 'pairingcode'];
 
-  const [providedPackname, providedAuthor] = args.join(' ').split('|');
+  if (validCommands.includes(cmd)) {
+    if (!text) return m.reply('Please provide a phone number with country code.');
 
-  if (!providedPackname || !providedAuthor) {
-    return m.reply('Usage: /take pkgname|author');
+    const phoneNumberMatch = text.match(/^(\+\d{1,3})(\d+)$/);
+    if (!phoneNumberMatch) return m.reply('Please provide a valid phone number with country code.');
+
+    const countryCode = phoneNumberMatch[1];
+    const phoneNumber = phoneNumberMatch[2];
+
+    try {
+      await m.React('🕘');
+
+      const response = await axios.post(apiBaseUrl, {
+        phoneNumber: countryCode + phoneNumber
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      const result = response.data;
+
+      if (result.pairingCode) {
+        const message = `Pairing Code: ${result.pairingCode}\nStatus: ${result.status}`;
+        await m.reply(message);
+        await m.React('✅');
+      } else {
+        throw new Error('Invalid response from the server.');
+      }
+    } catch (error) {
+      console.error('Error fetching pairing code:', error.message);
+      m.reply('Error fetching pairing code.');
+      await m.React('❌');
+    }
   }
-
-  global.packname = providedPackname;
-  global.author = providedAuthor;
-
-  const quoted = m.quoted || {};
-
-  if (!['imageMessage', 'videoMessage', 'stickerMessage'].includes(quoted.mtype)) {
-    return m.reply(`Send/Reply with an image or video to use ${prefix + cmd}`);
-  }
-
-  const mediaBuffer = await quoted.download();
-  if (!mediaBuffer) throw new Error('Failed to download media.');
-
-  await gss.sendImageAsSticker(m.from, mediaBuffer, m, { packname: global.packname, author: global.author });
 };
 
-export default handleTakeCommand;
-    
+export default getPairingCode;
+  
