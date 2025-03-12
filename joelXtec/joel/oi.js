@@ -1,183 +1,298 @@
-import config from "../../config.cjs";
-import axios from "axios";
-
-const surahCmd = async (m, gss) => {
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix)
-    ? m.body.slice(prefix.length).split(" ")[0].toLowerCase()
-    : "";
-  const query = m.body.slice(prefix.length + cmd.length).trim(); // Extract query
-
-  if (cmd === "surahaudio" || cmd === "surahurdu") {
-    if (!query || isNaN(query) || query < 1 || query > 114) {
-      return gss.sendMessage(
-        m.from,
-        { text: "⚠️ براہ کرم 1 سے 114 کے درمیان کوئی نمبر درج کریں۔\nمثال: `!surahaudio 1` یا `!surahurdu 1`" },
-        { quoted: m }
-      );
-    }
-  }
-
-  // ✅ --- SURAH AUDIO COMMAND --- ✅
-  if (cmd === "surahaudio") {
-    await m.React("⏳");
-    try {
-      const response = await axios.get(`https://api.nexoracle.com/islamic/quran-surah?q=${query}/ur`);
-      const data = response.data?.result;
-      if (!data || !data.surah_details) throw new Error("Invalid API response");
-
-      const { title_en, title_ar, verses, place, type } = data.surah_details;
-      const audioUrl = data.audio_ar;
-      const caption = `📖 *${title_en}* (${title_ar})\n🕌 *Place:* ${place}\n📜 *Type:* ${type}\n🔢 *Verses:* ${verses}\n\n🚀 *_Sarkar-MD Powered by BANDAHEALI_*`;
-
-      await gss.sendMessage(m.from, {
-        audio: { url: audioUrl },
-        mimetype: "audio/mp4",
-        caption: caption,
-        contextInfo: {
-          isForwarded: true,
-          forwardingScore: 999,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: "120363315182578784@newsletter",
-            newsletterName: "Sarkar-MD",
-            serverMessageId: -1,
-          },
-          externalAdReply: {
-            title: "✨ Sarkar-MD ✨",
-            body: "Listen to Surah Audio",
-            thumbnailUrl: "https://raw.githubusercontent.com/Sarkar-Bandaheali/BALOCH-MD_DATABASE/refs/heads/main/Pairing/1733805817658.webp",
-            sourceUrl: "https://github.com/Sarkar-Bandaheali/Sarkar-MD",
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
+/*
+      await Matrix.sendMessage(m.from, {
+        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
+        caption: status
       }, { quoted: m });
-      await m.React("✅");
-    } catch (error) {
-      console.error(error);
-      await m.React("❌");
-      gss.sendMessage(m.from, { text: "⚠️ معاف کیجیے، آڈیو حاصل کرنے میں مسئلہ ہوا۔ دوبارہ کوشش کریں۔" }, { quoted: m });
+
+    } catch (e) {
+      console.error("Error in alive command:", e);
+      m.reply(`❌ *An error occurred:* ${e.message}`);
     }
   }
-
-  // ✅ --- SURAH URDU MEANING COMMAND --- ✅
-  if (cmd === "surahurdu") {
-    await m.React("⏳");
-    try {
-      const response = await axios.get(`https://api.nexoracle.com/islamic/quran-surah?q=${query}/ur`);
-      const data = response.data?.result;
-      if (!data || !data.surah_details || !data.data?.chapter) throw new Error("Invalid API response");
-
-      const { title_en, title_ar, verses } = data.surah_details;
-      const chapterText = data.data.chapter.map(v => `📖 *آیت ${v.verse}:* ${v.text}`).join("\n\n");
-      const messageText = `📖 *${title_en}* (${title_ar})\n🔢 *Verses:* ${verses}\n\n${chapterText}\n\n🚀 *_Sarkar-MD Powered by BANDAHEALI_*`;
-
-      await gss.sendMessage(m.from, {
-        text: messageText,
-        contextInfo: {
-          isForwarded: true,
-          forwardingScore: 999,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: "120363315182578784@newsletter",
-            newsletterName: "Sarkar-MD",
-            serverMessageId: -1,
-          },
-          externalAdReply: {
-            title: "✨ Sarkar-MD ✨",
-            body: "Read Surah with Urdu Translation",
-            thumbnailUrl: "https://raw.githubusercontent.com/Sarkar-Bandaheali/BALOCH-MD_DATABASE/refs/heads/main/Pairing/1733805817658.webp",
-            sourceUrl: "https://github.com/Sarkar-Bandaheali/Sarkar-MD",
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
-      }, { quoted: m });
-      await m.React("✅");
-    } catch (error) {
-      console.error(error);
-      await m.React("❌");
-      gss.sendMessage(m.from, { text: "⚠️ معاف کیجیے، اردو ترجمہ حاصل کرنے میں مسئلہ ہوا۔ دوبارہ کوشش کریں۔" }, { quoted: m });
-    }
-  }
-
-  // ✅ --- ASMA UL HUSNA COMMAND --- ✅
-  if (cmd === "asmaulhusna") {
-    await m.React("⏳");
-    try {
-      const response = await axios.get("https://api.nexoracle.com/islamic/asma-ul-husna");
-      const data = response.data?.result;
-
-      if (!data || !data.name) throw new Error("Invalid API response");
-
-      const messageText = `💫 *Asma Ul Husna* 💫\n\n✨ *Allah's Name:* ${data.name}\n\n🚀 *_Sarkar-MD Powered by BANDAHEALI_*`;
-
-      await gss.sendMessage(m.from, {
-        text: messageText,
-        contextInfo: {
-          isForwarded: true,
-          forwardingScore: 999,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: "120363315182578784@newsletter",
-            newsletterName: "Sarkar-MD",
-            serverMessageId: -1,
-          },
-          externalAdReply: {
-            title: "✨ Sarkar-MD ✨",
-            body: "Get Random Asma Ul Husna",
-            thumbnailUrl: "https://raw.githubusercontent.com/Sarkar-Bandaheali/BALOCH-MD_DATABASE/refs/heads/main/Pairing/1733805817658.webp",
-            sourceUrl: "https://github.com/Sarkar-Bandaheali/Sarkar-MD",
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
-      }, { quoted: m });
-      await m.React("✅");
-    } catch (error) {
-      console.error(error);
-      await m.React("❌");
-      gss.sendMessage(m.from, { text: "⚠️ معاف کیجیے، نام حاصل کرنے میں مسئلہ ہوا۔ دوبارہ کوشش کریں۔" }, { quoted: m });
-    }
-  }
-  
-  // ✅ --- PROPHET NAME COMMAND --- ✅
-  if (cmd === "prophetname") {
-    await m.React("⏳");
-    try {
-      const response = await axios.get("https://api.nexoracle.com/islamic/prophet-names");
-      const data = response.data?.result;
-
-      if (!data || !data.name) throw new Error("Invalid API response");
-
-      const messageText = `🌟 *Prophet's Name* 🌟\n\n📜 *Name:* ${data.name}\n\n🚀 *_Sarkar-MD Powered by BANDAHEALI_*`;
-
-    await gss.sendMessage(m.from, {
-      text: messageText,
-      contextInfo: {
-        isForwarded: true,
-        forwardingScore: 999,
-        forwardedNewsletterMessageInfo: {
-          newsletterJid: "120363315182578784@newsletter",
-          newsletterName: "Sarkar-MD",
-          serverMessageId: -1,
-        },
-        externalAdReply: {
-          title: "✨ Sarkar-MD ✨",
-          body: "Get Surah Details",
-          thumbnailUrl: "https://raw.githubusercontent.com/Sarkar-Bandaheali/BALOCH-MD_DATABASE/refs/heads/main/Pairing/1733805817658.webp",
-          sourceUrl: "https://github.com/Sarkar-Bandaheali/Sarkar-MD",
-          mediaType: 1,
-          renderLargerThumbnail: true,
-        },
-      },
-    }, { quoted: m });
-
-    await m.React("✅");
-  } catch (error) {
-    console.error(error);
-    await m.React("❌");
-    gss.sendMessage(m.from, { text: "⚠️ معاف کیجیے، سورہ تفصیل حاصل کرنے میں مسئلہ ہوا۔ دوبارہ کوشش کریں۔" }, { quoted: m });
-  }
-}
 };
 
-export default surahCmd;
+// POWERED BY BANDAHEALI
+export default AliveCmd;
+*/
+
+
+
+
+import moment from 'moment-timezone';
+import fs from 'fs';
+import os from 'os';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+import config from '../../config.cjs';
+
+const alive = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const mode = config.MODE;
+  const pushName = m.pushName || 'User';
+
+  const cmd = m.body.startsWith(prefix)
+    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
+    : '';
+
+  if (cmd === "menu") {
+    await m.React('💮'); // React with a loading icon
+    // Calculate uptime
+
+    const uptimeSeconds = process.uptime();
+    const days = Math.floor(uptimeSeconds / (24 * 3600));
+    const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+    const seconds = Math.floor(uptimeSeconds % 60);
+
+    
+    // Get real time
+    const realTime = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xtime = moment.tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xdate = moment.tz("Tanzania/Dodoma").format("DD/MM/YYYY");
+    const time2 = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+let pushwish = "";
+
+if (time2 < "05:00:00") {
+  pushwish = `Good Morning 🌄`;
+} else if (time2 < "11:00:00") {
+  pushwish = `Good Morning 🌄`;
+} else if (time2 < "15:00:00") {
+  pushwish = `Good Afternoon 🌅`;
+} else if (time2 < "18:00:00") {
+  pushwish = `Good Evening 🌃`;
+} else if (time2 < "19:00:00") {
+  pushwish = `Good Evening 🌃`;
+} else {
+  pushwish = `Good Night 🌌`;
+}
+
+    const aliveMessage = `нєℓℓσ
+ *${pushName}* ${pushwish}
+╭───────────────━⊷
+║ ᴊᴏᴇʟ-xᴍᴅ ᴍᴀɪɴ  ᴍᴇɴᴜ
+╰───────────────━⊷
+╭───────────────━⊷
+║ *ηαмє:* *ʝσєℓ χ∂ v³ вσт*
+║ *ρяєƒιχ:*  *${prefix}*
+║ *мσ∂є:*  *${mode}*
+║ *тιмє:*  *${realTime}*
+║ *σωηєя:*  *ℓσя∂ ʝσєℓ*
+╰───────────────━⊷
+╭───────────────━⊷
+║   *ʝσєℓ χ∂ ν тняєє*
+╰───────────────━⊷
+*❑━❒ʝσєℓ χ∂ ν тняєє❑━❒*
+
+---
+
+*¢σηνєятєя*
+- αттρ
+- αттρ2
+- αттρ3
+- євιηαяу
+- ∂вιηαяу
+- ємσʝιмιχ
+- мρ3
+
+---
+
+*αι*
+- αι
+- вυg
+- яєρσят
+- gρт
+- ∂αℓℓє
+- яємιηι
+- gємιηι
+
+---
+
+*тσσℓ*
+- ¢αℓ¢υℓαтσя
+- тємρмαιℓ
+- ¢нє¢кмαιℓ
+- тят
+- ттѕ
+
+---
+
+*gяσυρ ¢σммαη∂ѕ*
+- ℓιηкgяσυρ
+- ѕєтρρg¢
+- ѕєтηαмє
+- ѕєт∂єѕ¢
+- gяσυρ
+- g¢ѕєттιηg
+- ωєℓ¢σмє
+- α∂∂
+- кι¢к
+- нι∂єтαg
+- тαgαℓℓ
+- αηтιℓιηк
+- αηтιтσχι¢
+- ρяσмσтє
+- ∂ємσтє
+- gєтвισ
+
+---
+
+*∂σωηℓσα∂*
+- αρк
+- ƒα¢євσσк
+- мє∂ιαƒιяє
+- ριηтєяєѕт∂ℓ
+- gιт¢ℓσηє
+- g∂яινє
+- ιηѕтα
+- утмρ3
+- утмρ4
+- ρℓαу
+- ѕσηg
+- νι∂єσ
+- утмρ3∂σ¢
+- утмρ4∂σ¢
+- тιктσк
+
+---
+
+*ρяєηιυм ¢σммαηgѕ*
+- вυgмєηυ
+- ∂σ¢вυg
+- ℓσ¢¢яαѕн
+- αмσυηтвυg <αмσυηт>
+- ρмвυg <ηυмвєя>
+- ∂єℓαувυg <ηυмвєя>
+- тяσℓℓувυg <ηυмвєя>
+- ∂σ¢υвυg <ηυмвєя>
+- υηℓιмιтє∂вυg <ηυмвєя>
+- вσмвυg <ηυмвєя>
+- ℓαgвυg <ηυмвєя>
+- g¢вυg <gяσυρℓιηк>
+- ∂єℓαуg¢вυg <gяσυρℓιηк>
+- тяσℓℓуg¢вυg <gяσυρℓιηк>
+- ℓαввυg <gяσυρℓιηк>
+- вσмg¢вυg <gяσυρℓιηк>
+- υηℓιмιтє∂g¢вυg <gяσυρℓιηк>
+- ∂σ¢υg¢вυg <gяσυρℓιηк>
+----
+
+*ѕєαя¢н*
+- ρℓαу
+- ут
+- ιм∂в
+- gσσgℓє
+- gιмαgє
+- ριηтєяєѕт
+- ωαℓℓραρєя
+- ωιкιмє∂ια
+- утѕєαя¢н
+- яιηgтσηє
+- ℓуяι¢ѕ
+
+---
+
+*мαιη ¢σммαη∂ѕ*
+- ριηg
+- αℓινє
+- σωηєя
+- мєηυ
+- ιηƒσвσт
+
+---
+
+*σωηєя ¢σммαη∂ѕ*
+- ʝσιη
+- ℓєανє
+- вℓσ¢к
+- υηвℓσ¢к
+- ѕєтρρвσт
+- αηтι¢αℓℓ
+- ѕєтѕтαтυѕ
+- ѕєтηαмєвσт
+- αυтσвισ
+- αυтσтуριηg
+- αℓωαуѕσηℓιηє
+- αυтσяєα∂
+- αυтσѕνιєω
+
+---
+
+*ѕтαℓкєя*
+- тяυє¢αℓℓєя
+- ιηѕтαѕтαℓк
+- gιтнυвѕтαℓк
+---
+
+*σтнєя ¢σммαη∂ѕ*
+- ѕαρк
+- αρρ
+- αρρѕєαя¢н
+- ρℓαуѕтσяє
+- qυяαηνι∂єσ
+- тσυяℓ
+- υяℓ
+- ¢нαηηєℓ
+- ѕυρρσят
+- ʝσєℓ
+- ¢нαт
+- qνι∂
+- qυяαηνι∂
+- ѕѕ
+
+---
+
+*ηєω ¢σммαη∂ѕ*
+- ѕ¢σяє
+- ¢ℓι¢к
+- яєѕυℓтѕ
+- gιт¢ℓσηє
+- υρ∂αтє
+- ѕηα¢кνι∂єσ
+- ѕηα¢к
+- ѕнσятєηυяℓ
+- кι¢кαℓℓ
+- ιρѕтαℓк
+- gινєтєχт
+- мє∂ιαƒιяє
+- ƒαη¢у
+- αηтι¢αℓℓ
+- ωα¢нαηηєℓ
+- мσνιє
+----
+*❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
+    
+      await Matrix.sendMessage(m.from, {
+        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
+        caption: status
+      }, { quoted: m });
+
+    await m.React('☄️'); // React with a success icon
+
+    sock.sendMessage(
+      m.from,
+      {
+        text: aliveMessage,
+        contextInfo: {
+          isForwarded: false,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363317462952356@newsletter',
+            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            serverMessageId: -1,
+          },
+          forwardingScore: 999, // Score to indicate it has been forwarded
+          externalAdReply: {
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4', // Add thumbnail URL if required
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+            mediaType: 1,
+            renderLargerThumbnail: true,
+          },
+        },
+      },
+      { quoted: m }
+    );
+  }
+};
+
+export default alive;
