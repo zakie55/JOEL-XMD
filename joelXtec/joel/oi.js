@@ -14,7 +14,7 @@ const alive = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "menu") {
+  if (cmd === "men") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
@@ -267,11 +267,12 @@ if (time2 < "05:00:00") {
       },
       { quoted: m }
     );
-    // adding photo menu
+    // preview menu image 
      await Matrix.sendMessage(m.from, {
         image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
         caption: status
-      }, { quoted: m });
+      }, { quoted: m }
+  );
   }
 };
 
