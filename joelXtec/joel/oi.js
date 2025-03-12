@@ -260,8 +260,22 @@ if (time2 < "05:00:00") {
 - мσνιє
 ----
 *❑━❒ℓσя∂ ʝσєℓтє¢н❑━❑*`;
+        await Matrix.sendMessage(m.from, {
+        image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
+        caption: status
+      }, { quoted: m });
+
+    } catch (e) {
+      console.error("Error in alive command:", e);
+      m.reply(`❌ *An error occurred:* ${e.message}`);
+    }
+  }
+};
+
+// POWERED BY BANDAHEALI
+export default alive;
     
-      await Matrix.sendMessage(m.from, {
+     /* await Matrix.sendMessage(m.from, {
         image: { url: `https://i.ibb.co/WcwzzY2/shaban-sobx-md.jpg` }, // 🔥 Image URL
         caption: status
       }, { quoted: m });
@@ -295,4 +309,4 @@ if (time2 < "05:00:00") {
   }
 };
 
-export default alive;
+export default alive;*/
