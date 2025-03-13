@@ -81,7 +81,7 @@ const mistral = async (m, Matrix) => {
 
             await m.React("⏳");
 
-            const response = await fetch('https://matrixcoder.tech/api/ai', {
+            const response = await fetch('https://xploader-api.vercel.app/doppleai?prompt=', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
