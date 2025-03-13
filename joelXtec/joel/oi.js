@@ -81,7 +81,7 @@ const mistral = async (m, Matrix) => {
 
             await m.React("⏳");
 
-            const response = await fetch('https://xploader-api.vercel.app/doppleai?prompt=', {
+            const response = await fetch('https://api.siputzx.my.id/api/ai/gpt3?prompt=you%20are%20an%20helpful%20assistant%20providing%20detailed%20and%20friendly%20responses&content', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
