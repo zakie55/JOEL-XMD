@@ -74,7 +74,7 @@ const deepseek = async (m, Matrix) => {
 
             await m.React("⏳");
 
-            const apiUrl = `https://api.siputzx.my.id/api/ai/deepseek-r1?content=${encodeURIComponent(prompt)}`;
+            const apiUrl = `https://api.siputzx.my.id/api/ai/gpt3?responses&content=${encodeURIComponent(text)}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
