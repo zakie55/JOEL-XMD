@@ -1,17 +1,14 @@
 import { promises as fs } from 'fs';
 import path from 'path';
-import fetch from 'node-fetch'; // Make sure to use node-fetch
-import pkg from '@whiskeysockets/baileys';
-const { generateWAMessageFromContent, proto } = pkg;
+import fetch from 'node-fetch';
+import config from '../../config.cjs';
 
-// Get the absolute path for the chat history file
 const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
-const chatHistoryFile = path.resolve(__dirname, '../mistral_history.json');
+const chatHistoryFile = path.resolve(__dirname, '../deepseek_history.json');
 
-const mistralSystemPrompt = "you are a good assistant.";
+const deepSeekSystemPrompt = "You are an intelligent AI assistant, and your name is joel bot.";
 
-// Utility function to read chat history from file
 async function readChatHistoryFromFile() {
     try {
         const data = await fs.readFile(chatHistoryFile, "utf-8");
@@ -21,7 +18,6 @@ async function readChatHistoryFromFile() {
     }
 }
 
-// Utility function to write chat history to file
 async function writeChatHistoryToFile(chatHistory) {
     try {
         await fs.writeFile(chatHistoryFile, JSON.stringify(chatHistory, null, 2));
@@ -30,7 +26,6 @@ async function writeChatHistoryToFile(chatHistory) {
     }
 }
 
-// Utility function to update chat history
 async function updateChatHistory(chatHistory, sender, message) {
     if (!chatHistory[sender]) {
         chatHistory[sender] = [];
@@ -42,13 +37,12 @@ async function updateChatHistory(chatHistory, sender, message) {
     await writeChatHistoryToFile(chatHistory);
 }
 
-// Utility function to delete user's chat history
 async function deleteChatHistory(chatHistory, userId) {
     delete chatHistory[userId];
     await writeChatHistoryToFile(chatHistory);
 }
 
-const mistral = async (m, Matrix) => {
+const deepseek = async (m, Matrix) => {
     const chatHistory = await readChatHistoryFromFile();
     const text = m.body.toLowerCase();
 
@@ -58,12 +52,11 @@ const mistral = async (m, Matrix) => {
         return;
     }
 
-    const prefixMatch = m.body.match(/^[\\/!#.]/);
-    const prefix = prefixMatch ? prefixMatch[0] : '/';
+    const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-    const prompt = m.body.slice(prefix.length + cmd.length).trim().toLowerCase();
+    const prompt = m.body.slice(prefix.length + cmd.length).trim();
 
-    const validCommands = ['ai', 'gpt', 'mistral'];
+    const validCommands = ['ai'];
 
     if (validCommands.includes(cmd)) {
         if (!prompt) {
@@ -74,91 +67,43 @@ const mistral = async (m, Matrix) => {
         try {
             const senderChatHistory = chatHistory[m.sender] || [];
             const messages = [
-                { role: "system", content: mistralSystemPrompt },
+                { role: "system", content: deepSeekSystemPrompt },
                 ...senderChatHistory,
                 { role: "user", content: prompt }
             ];
 
             await m.React("⏳");
 
-            const response = await fetch('https://api.siputzx.my.id/api/ai/gpt3?prompt=you%20are%20an%20helpful%20assistant%20providing%20detailed%20and%20friendly%20responses&content', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    type: "text-generation",
-                    model: "hf/meta-llama/meta-llama-3-8b-instruct",
-                    messages: messages
-                })
-            });
+            const apiUrl = `https://api.siputzx.my.id/api/ai/deepseek-r1?content=${encodeURIComponent(prompt)}`;
+            const response = await fetch(apiUrl);
 
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
 
             const responseData = await response.json();
+            const answer = responseData.data;
 
             await updateChatHistory(chatHistory, m.sender, { role: "user", content: prompt });
-            await updateChatHistory(chatHistory, m.sender, { role: "assistant", content: responseData.result.response });
-
-            const answer = responseData.result.response;
+            await updateChatHistory(chatHistory, m.sender, { role: "assistant", content: answer });
 
             const codeMatch = answer.match(/```([\s\S]*?)```/);
 
             if (codeMatch) {
                 const code = codeMatch[1];
-                
-                let msg = generateWAMessageFromContent(m.from, {
-                    viewOnceMessage: {
-                        message: {
-                            messageContextInfo: {
-                                deviceListMetadata: {},
-                                deviceListMetadataVersion: 2
-                            },
-                            interactiveMessage: proto.Message.InteractiveMessage.create({
-                                body: proto.Message.InteractiveMessage.Body.create({
-                                    text: answer
-                                }),
-                                footer: proto.Message.InteractiveMessage.Footer.create({
-                                    text: "> © FILE GENERATED BY WASI MD V3"
-                                }),
-                                header: proto.Message.InteractiveMessage.Header.create({
-                                    title: "",
-                                    subtitle: "",
-                                    hasMediaAttachment: false
-                                }),
-                                nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.create({
-                                    buttons: [
-                                        {
-                                            name: "cta_copy",
-                                            buttonParamsJson: JSON.stringify({
-                                                display_text: "Copy Your Code",
-                                                id: "copy_code",
-                                                copy_code: code
-                                            })
-                                        }
-                                    ]
-                                })
-                            })
-                        }
-                    }
-                }, {});
 
-                await Matrix.relayMessage(msg.key.remoteJid, msg.message, {
-                    messageId: msg.key.id
-                });
+                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }, { quoted: m });
             } else {
                 await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
             }
 
             await m.React("✅");
         } catch (err) {
-            await Matrix.sendMessage(m.from, { text: "Something went wrong" }, { quoted: m });
-            console.error('Error: ', err);
+            await Matrix.sendMessage(m.from, { text: "Something went wrong, please try again." }, { quoted: m });
+            console.error('Error fetching response from DeepSeek API:', err);
             await m.React("❌");
         }
     }
 };
 
-export default mistral;
+export default deepseek;
