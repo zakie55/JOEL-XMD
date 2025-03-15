@@ -7,7 +7,7 @@ const __filename = new URL(import.meta.url).pathname;
 const __dirname = path.dirname(__filename);
 const chatHistoryFile = path.resolve(__dirname, '../deepseek_history.json');
 
-const deepSeekSystemPrompt = "You are an intelligent AI assistant, and your name is joel bot.";
+const deepSeekSystemPrompt = "You are an intelligent AI assistant.";
 
 async function readChatHistoryFromFile() {
     try {
@@ -74,7 +74,7 @@ const deepseek = async (m, Matrix) => {
 
             await m.React("⏳");
 
-            const apiUrl = `https://api.siputzx.my.id/api/ai/gpt3?responses&content=${encodeURIComponent(text)}`;
+            const apiUrl = `https://api.siputzx.my.id/api/ai/deepseek-r1?content=${encodeURIComponent(prompt)}`;
             const response = await fetch(apiUrl);
 
             if (!response.ok) {
