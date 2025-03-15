@@ -16,7 +16,9 @@ const alive = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "bt") {
+  const validCommands = ['sticker', 's'];
+  if (validCommands.includes(cmd)) {
+    const quoted = m.quoted || {}; // Check if there's a quoted message
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
