@@ -46,7 +46,7 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-    const aliveMessage = `${monoSpace}*ᴊᴏᴇʟ xᴍᴅ ʙɪʙʟᴇ ᴍᴇɴᴜ* 
+    const aliveMessage = `${monospace}*ᴊᴏᴇʟ xᴍᴅ ʙɪʙʟᴇ ᴍᴇɴᴜ* 
 
 *Old Testament:*
 01. Genesis
