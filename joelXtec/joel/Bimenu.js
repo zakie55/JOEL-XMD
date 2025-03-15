@@ -14,7 +14,7 @@ const alive = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "biblemenu") {
+  if (cmd === "biblebooks") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
@@ -46,7 +46,7 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-    const aliveMessage = `*ᴊᴏᴇʟ xᴍᴅ ʙɪʙʟᴇ ᴍᴇɴᴜ* 
+    const aliveMessage = `${monoSpace}*ᴊᴏᴇʟ xᴍᴅ ʙɪʙʟᴇ ᴍᴇɴᴜ* 
 
 *Old Testament:*
 01. Genesis
