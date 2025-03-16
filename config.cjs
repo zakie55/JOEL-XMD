@@ -7,6 +7,7 @@ const config = {
   PREFIX: process.env.PREFIX || '.',
 //let's add menu captions by lord joel
    BOT_NAME: process.env.BOT_NAME || "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ᴠ¹⁰",
+   BOT: process.env.BOT || "hello 👋"
   CAPTION: process.env.CAPTION|| "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
 // don't use my codes without a permission 🙏
   AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN !== undefined ? process.env.AUTO_STATUS_SEEN === 'true' : true,
