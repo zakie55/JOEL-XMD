@@ -1,13 +1,13 @@
 {
-  "name": "ʝσєℓ-χ∂-ν-3",
+  "name": "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
   "version": "10.8.1",
   "description": "joel The Fastest Bot",
   "main": "joeltech.js",
   "type": "module",
   "scripts": {
     "start": "pm2 start index.js --deep-monitoring --attach --name ʝσєℓ-χ∂-ν3",
-    "stop": "pm2 stop ʝσєℓ χ∂ ν3",
-    "restart": "pm2 restart ʝσєℓ χ∂ ν3"
+    "stop": "pm2 stop ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+    "restart": "pm2 restart ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ"
   },
   "keywords": ["joel", "whatsapp-bot", "bot"],
   "author": "lord joel",
