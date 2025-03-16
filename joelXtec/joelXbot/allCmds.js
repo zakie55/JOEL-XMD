@@ -15,7 +15,7 @@ const allCmdsCommand = async (m, sock) => {
     : '';
   
   if (cmd === "allcmds") {
-    const folderPath = path.resolve(process.cwd(), '../joelXtec/joel');
+    const folderPath = path.resolve(process.cwd(), '../joelXtec/joelXbot');
 // 
     // Ensure the folder exists
   // Check if the sender is an owner
@@ -23,7 +23,7 @@ const allCmdsCommand = async (m, sock) => {
     await sock.sendMessage(
       m.from,
       {
-        text: '❌ You are not authorized to use this command.',
+        text: 'You are not authorized to use this command.',
       },
       { quoted: m }
     );
@@ -65,7 +65,7 @@ const allCmdsCommand = async (m, sock) => {
       sock.sendMessage(
         m.from,
         {
-          text: `📂 *Files in JOEL-XMD/joelXtec/joel/*:\n\n${fileList}`,
+          text: `*ʜᴇʀᴇ ᴀʀᴇ ᴊᴏᴇʟ xᴍᴅ ᴘʟᴜɢɪɴ ғᴏʟᴅᴇʀs*\n\n${fileList}`,
         },
         { quoted: m }
       );
