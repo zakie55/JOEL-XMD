@@ -147,7 +147,27 @@ const deepseek = async (m, Matrix) => {
             if (codeMatch) {
                 const code = codeMatch[1];
 
-                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }, { quoted: m });
+                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }`,
+
+          contextInfo: {
+
+            externalAdReply: {
+
+              title: "✨ Sarkar-MD ✨",
+
+              body: "WhatsApp Channel Stalker Service",
+
+              sourceUrl: "https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l",
+
+              mediaType: 1,
+
+            },
+
+          },
+
+        },
+
+        { quoted: m });
             } else {
                 await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
             }
