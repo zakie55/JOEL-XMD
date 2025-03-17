@@ -3,9 +3,8 @@
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
-<img alt="lord joel" height=250
-width=350
-src="https://files.catbox.moe/1jdkzf.jpg"/>
+<img alt="lord joel"
+src="https://files.catbox.moe/6l4jt5.jpg"/>
 
 
 
