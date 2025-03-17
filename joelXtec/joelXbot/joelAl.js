@@ -55,7 +55,7 @@ const deepseek = async (m, Matrix) => {
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const prompt = m.body.slice(prefix.length + cmd.length).trim();
-const sendMessage = async (messageContent) => {
+    const sendJoelMessage = async (messageContent) => {
     await sock.sendMessage(
       m.from,
       {
@@ -86,7 +86,7 @@ const sendMessage = async (messageContent) => {
 
     if (validCommands.includes(cmd)) {
         if (!prompt) {
-            await Matrix.sendMessage(m.from, { text: 'Please give me a prompt' }, { quoted: m });
+            await Matrix.sendJoelMessage(m.from, { text: 'Please give me a prompt' }, { quoted: m });
             return;
         }
 
@@ -118,14 +118,14 @@ const sendMessage = async (messageContent) => {
             if (codeMatch) {
                 const code = codeMatch[1];
 
-                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }, { quoted: m });
+                await Matrix.sendJoelMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }, { quoted: m });
             } else {
-                await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
+                await Matrix.sendJoelMessage(m.from, { text: answer }, { quoted: m });
             }
 
             await m.React("✅");
         } catch (err) {
-            await Matrix.sendMessage(m.from, { text: "Something went wrong, please try again." }, { quoted: m });
+            await Matrix.sendJoelMessage(m.from, { text: "Something went wrong, please try again." }, { quoted: m });
             console.error('Error fetching response from DeepSeek API:', err);
             await m.React("❌");
         }
