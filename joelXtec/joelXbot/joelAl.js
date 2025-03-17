@@ -55,11 +55,11 @@ const deepseek = async (m, Matrix) => {
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const prompt = m.body.slice(prefix.length + cmd.length).trim();
-    const sendCommandMessage = async (messageContent) => {
+    const sendMessage = async (messageContent) => {
     await sock.sendtext(
       m.from,
       {
-        text: messageContent,
+        text: textContent,
         contextInfo: {
           isForwarded: true,
           forwardingScore: 999,
