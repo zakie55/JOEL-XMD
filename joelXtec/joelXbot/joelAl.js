@@ -55,7 +55,7 @@ const deepseek = async (m, Matrix) => {
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const prompt = m.body.slice(prefix.length + cmd.length).trim();
-    const sendJoelMessage = async (messageContent) => {
+    const sendCommandMessage = async (messageContent) => {
     await sock.sendMessage(
       m.from,
       {
@@ -64,29 +64,58 @@ const deepseek = async (m, Matrix) => {
           isForwarded: true,
           forwardingScore: 999,
           forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter', // Preserved newsletter JID
-            newsletterName: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+            newsletterJid: '120363315182578784@newsletter',
+            newsletterName: "Sarkar-MD",
             serverMessageId: -1,
           },
           externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+            title: "✨ Sarkar-MD ✨",
             body: pushName,
-            thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/repo.jpg', // Thumbnail URL
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Source URL
+            thumbnailUrl: 'https://raw.githubusercontent.com/Sarkar-Bandaheali/BALOCH-MD_DATABASE/refs/heads/main/Pairing/1733805817658.webp',
+            sourceUrl: 'https://github.com/Sarkar-Bandaheali/Sarkar-MD',
             mediaType: 1,
-            renderLargerThumbnail: true,
+            renderLargerThumbnail: false,
           },
         },
       },
       { quoted: m }
     );
   };
+
+  const sendImageWithCaption = async (imageUrl, caption) => {
+    await sock.sendMessage(
+      m.from,
+      {
+        image: { url: imageUrl },
+        caption,
+        contextInfo: {
+          isForwarded: true,
+          forwardingScore: 999,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363315182578784@newsletter',
+            newsletterName: "Sarkar-MD",
+            serverMessageId: -1,
+          },
+          externalAdReply: {
+            title: "✨ Sarkar-MD ✨",
+            body: pushName,
+            thumbnailUrl: 'https://raw.githubusercontent.com/Sarkar-Bandaheali/BALOCH-MD_DATABASE/refs/heads/main/Pairing/1733805817658.webp', // Same thumbnail
+            sourceUrl: 'https://github.com/Sarkar-Bandaheali/Sarkar-MD', // Same GitHub repo
+            mediaType: 1,
+            renderLargerThumbnail: false,
+          },
+        },
+      },
+      { quoted: m }
+    );
+  };
+              
 // let add joel al command 
     const validCommands = ['joel'];
 
     if (validCommands.includes(cmd)) {
         if (!prompt) {
-            await Matrix.sendJoelMessage(m.from, { text: 'Please give me a prompt' }, { quoted: m });
+            await Matrix.sendMessage(m.from, { text: 'Please give me a prompt' }, { quoted: m });
             return;
         }
 
@@ -118,9 +147,9 @@ const deepseek = async (m, Matrix) => {
             if (codeMatch) {
                 const code = codeMatch[1];
 
-                await Matrix.sendJoelMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }, { quoted: m });
+                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }, { quoted: m });
             } else {
-                await Matrix.sendJoelMessage(m.from, { text: answer }, { quoted: m });
+                await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
             }
 
             await m.React("✅");
