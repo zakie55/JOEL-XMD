@@ -147,27 +147,55 @@ const deepseek = async (m, Matrix) => {
             if (codeMatch) {
                 const code = codeMatch[1];
 
-                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\`` }`,
+                await Matrix.sendMessage(m.from, { text: `🔹 *Here's your code snippet:* \n\n\`\`\`${code}\`\`\``;
 
-          contextInfo: {
+        await sock.sendMessage(
 
-            externalAdReply: {
+          m.from,
 
-              title: "✨ Sarkar-MD ✨",
+          {
 
-              body: "WhatsApp Channel Stalker Service",
+            text: responseText,
 
-              sourceUrl: "https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l",
+            contextInfo: {
 
-              mediaType: 1,
+              isForwarded: false,
+
+              forwardedNewsletterMessageInfo: {
+
+                newsletterJid: "@newsletter",
+
+                newsletterName: "Sarkar-MD",
+
+                serverMessageId: -1,
+
+              },
+
+              forwardingScore: 999, // Score to indicate it has been forwarded
+
+              externalAdReply: {
+
+                title: "✨ Sarkar-MD ✨",
+
+                body: "WhatsApp Channel Stalker Service",
+
+                thumbnailUrl: "", // Add thumbnail URL if required
+
+                sourceUrl: "https://whatsapp.com/channel/0029VaYauR9ISTkHTj4xvi1l", // Source URL
+
+                mediaType: 1,
+
+                renderLargerThumbnail: false,
+
+              },
 
             },
 
           },
 
-        },
+          { quoted: m }
 
-        { quoted: m });
+        );
             } else {
                 await Matrix.sendMessage(m.from, { text: answer }, { quoted: m });
             }
