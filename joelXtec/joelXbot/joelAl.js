@@ -55,7 +55,7 @@ const deepseek = async (m, Matrix) => {
     const prefix = config.PREFIX;
     const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
     const prompt = m.body.slice(prefix.length + cmd.length).trim();
-const sendCommandMessage = async (messageContent) => {
+const sendMessage = async (messageContent) => {
     await sock.sendMessage(
       m.from,
       {
@@ -82,7 +82,7 @@ const sendCommandMessage = async (messageContent) => {
     );
   };
 // let add joel al command 
-    const validCommands = ['ai'];
+    const validCommands = ['joel'];
 
     if (validCommands.includes(cmd)) {
         if (!prompt) {
