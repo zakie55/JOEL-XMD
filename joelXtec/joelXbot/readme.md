@@ -1,5 +1,4 @@
-
-*ʝσєℓ χ∂ ν тняєє*
+         best Whatsapp bot in the 🌎 
 
 
 
