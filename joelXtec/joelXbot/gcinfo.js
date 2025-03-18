@@ -94,4 +94,4 @@ const joelCmd = async (m, sock) => {
     }
 };
 // lord joel 
-export default groupInfo;
+export default joelCmd;
