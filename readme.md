@@ -210,7 +210,7 @@ jobs:
 ɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ʀᴇǫᴜᴇsᴛ ᴀ,ғʀᴇᴇ ʙᴏᴛ (ᴊᴏᴇʟ-ᴍᴅ ʙᴏᴛ)  sᴏ ғɪʀsᴛ ғᴏʀᴋ ᴛʜɪs ʀᴇᴘᴏ (ᴀ-ᴍᴜsᴛ)  ᴛʜᴇɴ ᴄʟɪᴄᴋ ᴛʜɪs ʙʟᴜᴇ ʙᴜᴛᴛᴏɴ ᴛᴏ ʀᴇǫᴜᴇsᴛ ᴀ ғʀᴇᴇ ʙᴏᴛ
 
 
-<a href='https://requesting-bot.vercel.app' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/FREE BOT-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
+<a href='https://joel-xmd-free-bot.vercel.app/' target="_blank"><img alt='DEPLOY' src='https://img.shields.io/badge/FREE BOT-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
 
 
 
