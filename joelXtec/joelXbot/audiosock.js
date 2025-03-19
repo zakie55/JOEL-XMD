@@ -54,7 +54,7 @@ if (time2 < "05:00:00") {
     sock.sendMessage(
       m.from,
       {
-            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD-DATABASE/raw/refs/heads/main/mydata/media/menu.mp3' },
+            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD/raw/refs/heads/main/mydata/media/menu.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
@@ -62,7 +62,7 @@ if (time2 < "05:00:00") {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '120363304325601080@newsletter',
+                    newsletterJid: '@newsletter',
                     newsletterName: 'joel xmd bot',
                     serverMessageId: 143
                 }
