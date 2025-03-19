@@ -14,7 +14,7 @@ const joel = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "menu") {
+  if (cmd === "t") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
@@ -64,7 +64,7 @@ if (time2 < "05:00:00") {
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363304325601080@newsletter',
                     newsletterName: 'joel xmd bot',
-                    serverMessageId: 2
+                    serverMessageId: 143
                 }
             }
         }, { quoted: m }
