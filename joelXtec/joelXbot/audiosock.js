@@ -14,7 +14,7 @@ const joel = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "t") {
+  if (cmd === "menu") {
     await m.React('💮'); // React with a loading icon
     // Calculate uptime
 
@@ -46,17 +46,15 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-    const aliveMessage = `*JOEL XMD BOT*
------------------------
-
-note: the periodic table contains 118 elements. There are no elements beyond element 118, though some scientists are researching potential elements beyond the current periodic table.`;
+    const aliveMessage = `*CODES BY JOEL XMD*
+    *---------------------`;
 
     await m.React('☄️'); // React with a success icon
     
     sock.sendMessage(
       m.from,
       {
-            audio: { url: 'https://github.com/mrfrank-ofc/SUBZERO-MD-DATABASE/raw/refs/heads/main/audios/subzero-menu.mp3' },
+            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD-DATABASE/raw/refs/heads/main/mydata/media/menu.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
@@ -65,8 +63,8 @@ note: the periodic table contains 118 elements. There are no elements beyond ele
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363304325601080@newsletter',
-                    newsletterName: 'ѕυϐzєяο м∂ ϐοτ',
-                    serverMessageId: 143
+                    newsletterName: 'joel xmd bot',
+                    serverMessageId: 2
                 }
             }
         }, { quoted: m }
