@@ -52,33 +52,10 @@ if (time2 < "05:00:00") {
 note: the periodic table contains 118 elements. There are no elements beyond element 118, though some scientists are researching potential elements beyond the current periodic table.`;
 
     await m.React('☄️'); // React with a success icon
-
+    
     sock.sendMessage(
       m.from,
       {
-        text: aliveMessage,
-        contextInfo: {
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/elements.jpg', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
-      },
-      { quoted: m }
-    );
-        // Send the audio file with context info
-        await conn.sendMessage(from, {
             audio: { url: 'https://github.com/mrfrank-ofc/SUBZERO-MD-DATABASE/raw/refs/heads/main/audios/subzero-menu.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
@@ -107,4 +84,14 @@ export default joel;
 
 
 
-  
+
+
+
+
+
+
+
+
+
+
+                              
