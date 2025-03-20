@@ -14,7 +14,7 @@ const joel = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-   if (cmd === "joelXmd" || cmd === "joelXbot" || cmd === "joelXtec") {
+   if (cmd === "joelxmd" || cmd === "lordjoel" || cmd === "joelbot") {
     await m.React('⏳'); // Loading reaction
      
     // Calculate uptime
@@ -55,7 +55,7 @@ if (time2 < "05:00:00") {
     sock.sendMessage(
       m.from,
       {
-            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD/raw/refs/heads/main/mydata/media/freebot.mp3' },
+            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD/raw/refs/heads/main/mydata/media/menu.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
@@ -64,13 +64,13 @@ if (time2 < "05:00:00") {
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
                     newsletterJid: '120363317462952356@newsletter',
-                    newsletterName: 'ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷',
+                    newsletterName: 'jᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷',
                     serverMessageId: 143
             },
             forwardingScore: 999, // Score to indicate it has been forwarded
             externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: ` your request has been sent`,
+            title: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            body: `UPTIME ${days}D ${hours}H ${minutes}M ${seconds}S`,
             thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
@@ -82,7 +82,7 @@ if (time2 < "05:00:00") {
     );
   }
 };
-// lord joel 
+
 export default joel;
 
 
