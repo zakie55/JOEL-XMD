@@ -62,12 +62,22 @@ if (time2 < "05:00:00") {
                 forwardingScore: 999,
                 isForwarded: true,
                 forwardedNewsletterMessageInfo: {
-                    newsletterJid: '@newsletter',
+                    newsletterJid: '120363317462952356@newsletter',
                     newsletterName: 'joel xmd bot',
                     serverMessageId: 143
-                }
-            }
-        }, { quoted: m }
+            },
+            forwardingScore: 999, // Score to indicate it has been forwarded
+            externalAdReply: {
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+            mediaType: 1,
+            renderLargerThumbnail: true,
+          },
+        },
+      },
+      { quoted: m }
     );
   }
 };
@@ -93,4 +103,5 @@ export default joel;
 
 
 
-                              
+
+      
