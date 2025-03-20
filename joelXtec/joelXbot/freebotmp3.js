@@ -55,7 +55,7 @@ if (time2 < "05:00:00") {
     sock.sendMessage(
       m.from,
       {
-            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD/raw/refs/heads/main/mydata/media/menu.mp3' },
+            audio: { url: 'https://github.com/joeljamestech2/JOEL-XMD/raw/refs/heads/main/mydata/media/freebot.mp3' },
             mimetype: 'audio/mp4',
             ptt: true,
             contextInfo: { 
