@@ -74,7 +74,7 @@ if (time2 < "05:00:00") {
             thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
-            renderLargerThumbnail: false,
+            renderLargerThumbnail: true,
           },
         },
       },
