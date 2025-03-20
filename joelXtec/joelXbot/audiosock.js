@@ -14,8 +14,9 @@ const joel = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  if (cmd === "t") {
-    await m.React('💮'); // React with a loading icon
+   if (cmd === "infobot" || cmd === "i" || cmd === "botinfo") {
+    await m.React('⏳'); // Loading reaction
+     
     // Calculate uptime
 
     const uptimeSeconds = process.uptime();
