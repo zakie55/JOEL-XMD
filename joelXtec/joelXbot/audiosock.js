@@ -69,7 +69,7 @@ if (time2 < "05:00:00") {
             forwardingScore: 999, // Score to indicate it has been forwarded
             externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            body: `${days}d|${hours} h| *${minutes} m *${seconds}s`,
             thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
