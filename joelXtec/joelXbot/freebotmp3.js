@@ -14,7 +14,7 @@ const joel = async (m, sock) => {
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-   if (cmd === "JOEL~XMD" || cmd === "XMD~" || cmd === "~XMD") {
+   if (cmd === "joelXmd" || cmd === "joelXbot" || cmd === "joelXtec") {
     await m.React('⏳'); // Loading reaction
      
     // Calculate uptime
@@ -70,7 +70,7 @@ if (time2 < "05:00:00") {
             forwardingScore: 999, // Score to indicate it has been forwarded
             externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: `${pushName} your request has been sent`,
+            body: ` your request has been sent`,
             thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
             mediaType: 1,
