@@ -242,9 +242,20 @@ jobs:
 <a href='https://my-users-livid.vercel.app/' target="_blank"><img alt='joel' src='https://img.shields.io/badge/MORE INFO-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
 
 
+**supporters i love y'all**
 
 
+<p align="center">
+  <a href="https://github.com/joeljamestech2/JOEL-XMD/stargazers">
+    <img src="http://reporoster.com/stars/dark/joeljamestech2/JOEL-XMD" alt="joel tech">
+  </a>
+</p>
 
+<p align="center">
+  <a href="https://github.com/joeljamestech2/JOEL-XMD/network/members">
+    <img src="http://reporoster.com/forks/dark/joeljamestech2/Joel-xMD" alt="lord joel ">
+  </a>
+</p>
 
 
 
