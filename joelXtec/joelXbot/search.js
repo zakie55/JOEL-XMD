@@ -9,10 +9,10 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 
 // Helper function to send messages with context
 const sendContact = async (m, sock, messageContent) => {
-  await sock.sendMessage(
+  await sock.sendContact(
     m.from,
     {
-      text: messageContent,
+      text: contactContent,
       contextInfo: {
         isForwarded: true,
         forwardingScore: 999,
