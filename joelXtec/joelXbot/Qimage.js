@@ -12,7 +12,7 @@ await m.React('⏳'); // React with a loading icon
     await gss.sendMessage(
       m.from,
       {
-        video: { url: joelUrl },
+        image: { url: joelUrl },
         caption: `*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ  ᴊᴏᴇʟ*`,
       },
       { quoted: m }
