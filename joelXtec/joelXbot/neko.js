@@ -13,7 +13,9 @@ await m.React('⏳'); // React with a loading icon
       m.from,
       {
         image: { url: imageUrl },
-        caption: `*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ  ᴊᴏᴇʟ*`,
+        caption: `
+*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ  ᴊᴏᴇʟ*
+xxxxxxxxxxxxxx xxxxxxx`,
       },
       { quoted: m }
     );
