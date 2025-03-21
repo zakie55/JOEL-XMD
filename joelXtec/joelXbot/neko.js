@@ -7,7 +7,7 @@ const nekoImage = async (m, gss) => {
   const validCommands = ['neko', 'n', 'nk'];
 
   if (validCommands.includes(cmd)) {
-    const imageUrl = `https://api.waifu.pics/sfw/neko`;
+    const imageUrl = `https://files.catbox.moe/6o2lv6.jpg`;
 await m.React('⏳'); // React with a loading icon
     await gss.sendMessage(
       m.from,
