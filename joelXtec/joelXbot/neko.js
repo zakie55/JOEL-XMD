@@ -14,8 +14,8 @@ await m.React('⏳'); // React with a loading icon
       {
         image: { url: imageUrl },
         caption: `╭──❍ 「 *ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ᴠ¹⁰*」❍
-├ ᴘʀᴇғɪx :  *${prefix}*
-├ ᴍᴏᴅᴇ :  *${mode}*
+├ 
+├
 ╰─┬────❍ 
 ╭─┴❍「 *ᴄᴏɴᴠᴇʀᴛᴏʀ* 」❍
 │ ᴀᴛᴛᴘ ʟ 
@@ -240,8 +240,7 @@ await m.React('⏳'); // React with a loading icon
 │ ᴀᴡᴏ  
 │ ᴡᴀᴠᴇ  
 │ sᴍɪʟᴇ  
-╰────────────❍
-*${config.CAPTION}*`;
+╰────────────❍`;
 
     await m.React('☄️'); // React with a success icon
 
