@@ -19,10 +19,10 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
     const botAdmin = participants.find(p => p.id === botNumber)?.admin;
     const senderAdmin = participants.find(p => p.id === m.sender)?.admin;
     
-        if (!m.isGroup) return m.reply("*ʝσєℓ χ∂ ν тняєє ѕαуѕ ιт ιѕ α gяσυρ ¢σммαη∂*");
+        if (!m.isGroup) return m.reply("*ιт ιѕ α gяσυρ ¢σммαη∂*");
 
-    if (!botAdmin) return m.reply("*ʝσєℓ χ∂ ν тняєє мυѕт вє α∂мιη тσ υѕє тнιѕ ¢σммαη∂*");
-    if (!senderAdmin) return m.reply("*уσυ αяє ησт α∂мιη вιт¢н {кєєρ υѕιηg ʝσєℓ χ∂ ν тняєє}*");
+    if (!botAdmin) return m.reply("*ʝσєℓ χm∂ bot мυѕт вє α∂мιη тσ υѕє тнιѕ ¢σммαη∂*");
+    if (!senderAdmin) return m.reply("*уσυ αяє ησт α∂мιη вιт¢н*");
     // Extract the message to be sent
     let message = `乂 *Attention Everyone* 乂\n\n*Message:* ${m.body.slice(prefix.length + cmd.length).trim() || 'no message'}\n\n`;
         
