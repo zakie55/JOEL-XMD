@@ -29,7 +29,7 @@ const vcfCompiler = async (m, gss) => {
       vcfContent += `
 BEGIN:VCARD
 VERSION:3.0
-FN:${userName}
+FN:${username}
 TEL;TYPE=CELL:+${number}
 END:VCARD`;
     });
