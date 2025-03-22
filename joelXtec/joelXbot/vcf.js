@@ -24,7 +24,7 @@ const vcfCompiler = async (m, gss) => {
     
     participants.forEach((member) => {
       const number = member.id.split("@")[0];
-      const name = member.notify || member.pushname || `Unknown ${number}`;
+      const name = member.notify || member.pushName || `Unknown ${number}`;
       
       vcfContent += `
 BEGIN:VCARD
