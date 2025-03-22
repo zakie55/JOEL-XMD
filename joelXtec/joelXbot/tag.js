@@ -29,7 +29,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
 
 
     for (let participant of participants) {
-      message += `> ❏∂єαя @${participant.id.split('@')[0]}\n`;
+      message += `❏@${participant.id.split('@')[0]}\n`;
     }
 
     await gss.sendMessage(m.from, { text: message, mentions: participants.map(a => a.id) }, { quoted: m });
