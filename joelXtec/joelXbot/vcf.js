@@ -8,7 +8,7 @@ const vcfCompiler = async (m, gss) => {
     if (!["vcf"].includes(cmd)) return;
 
     if (!m.isGroup) {
-      return m.reply("* THIS COMMAND CAN ONLY BE USED IN GROUPS!*\n\n*Regards, Bruce Bera.*");
+      return m.reply("*THIS COMMAND CAN ONLY BE USED IN GROUPS!*");
     }
 
     m.reply("*JOEL XMD IS COMPUTING YOUR CONTACTS*");
