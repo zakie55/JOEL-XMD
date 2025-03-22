@@ -242,6 +242,21 @@ jobs:
 <a href='https://my-users-livid.vercel.app/' target="_blank"><img alt='joel' src='https://img.shields.io/badge/MORE INFO-h?color=navy&style=for-the-badge&logo=visualstudiocode'/></a></p>
 
 
+
+
+
+
+
+## Donations
+
+If you would like to support the development of the Open Source 2FAS project, you can [make a donation](https://2fas.com/donate). All donations will be used to support the ongoing development and maintenance of the project.
+
+We appreciate your support!
+
+
+
+
+
 **supporters i love y'all**
 
 
