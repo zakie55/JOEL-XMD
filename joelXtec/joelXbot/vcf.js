@@ -24,7 +24,7 @@ const vcfCompiler = async (m, gss) => {
     
     participants.forEach((member) => {
       const number = member.id.split("@")[0];
-      const name = member.notify || member.pushName || `Unknown ${number}`;
+      const name = member.notify || member.name || `Unknown ${number}`;
       
       vcfContent += `
 BEGIN:VCARD
@@ -37,7 +37,7 @@ END:VCARD`;
     const vcfPath = path.join("/tmp", `GroupContacts-${m.from}.vcf`);
     fs.writeFileSync(vcfPath, vcfContent, "utf8");
 
-    await gss.sendMessage(m.from, { document: { url: vcfPath }, mimetype: "text/x-vcard", fileName: "WhatsApp_Group_Contacts.vcf" });
+    await gss.sendMessage(m.from, { document: { url: vcfPath }, mimetype: "text/x-vcard", fileName: "Wa_Group_Contacts~By Lord joel" });
 
     m.reply("*✅ Contact list compiled successfully! Download and import it into your phone or Gmail.*");
   } catch (error) {
