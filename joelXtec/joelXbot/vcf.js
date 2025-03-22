@@ -24,12 +24,12 @@ const vcfCompiler = async (m, gss) => {
     
     participants.forEach((member) => {
       const number = member.id.split("@")[0];
-      const name = member.notify || member.pushname || `Unknown ${number}`;
+      const name = member.notify || member.pushname || `Unknown @${participant.id.split}`;
       
       vcfContent += `
 BEGIN:VCARD
 VERSION:3.0
-FN:@${participant.id.split}
+FN:${name}
 TEL;TYPE=CELL:+${number}
 END:VCARD`;
     });
