@@ -35,7 +35,7 @@ const text = m.body.slice(prefix.length + cmd.length).trim();
     await gss.sendMessage(m.from, { text: message, mentions: participants.map(a => a.id) }, { quoted: m });
   } catch (error) {
     console.error('Error:', error);
-    await m.reply('An error occurred while processing the command.');
+    await m.reply('*🔐this is group command*');
   }
 };
 
