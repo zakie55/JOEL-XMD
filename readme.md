@@ -247,11 +247,6 @@ jobs:
 
 
 
-## Donations
-
-If you would like to support the development of the Open Source 2FAS project, you can [make a donation](https://2fas.com/donate). All donations will be used to support the ongoing development and maintenance of the project.
-
-We appreciate your support!
 
 
 
