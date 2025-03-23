@@ -50,8 +50,8 @@ const chatbotCommand = async (m, Matrix) => {
         const userMessage = text;
 
         // Make the API call to the chatbot service
-        const response = await fetch(`https://www.dark-yasiya-api.site/ai/chatgpt?q=${encodeURIComponent(userMessage)}`);
-
+        const response = await fetch(`https://api.siputzx.my.id/api/ai/deepseek-r1?content=${encodeURIComponent(userMessage}`);
+    
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
