@@ -30,6 +30,12 @@ const config = {
   AUTO_BLOCK: process.env.AUTO_BLOCK !== undefined ? process.env.AUTO_BLOCK === 'true' : true,
   /*joel james tech added anti delete cmd*/
   ANTI_DELETE: process.env.ANTI_DELETE !== undefined ? process.env.ANTI_DELETE === 'true' : true,
+  /*lets add auto bot respond*/
+  CHAT_BOT: process.env.CHAT_BOT !== undefined ? process.env.CHAT_BOT === 'true' : true,
+  /*lets add chat bot mode*/
+  CHAT_BOT_MODE: process.env.CHAT_BOT_MODE || "public",
+  /*how about Lydia chat bot*/
+  LYDEA: process.env.LYDEA !== undefined ? process.env.LYDEA === 'true' : true,
   REJECT_CALL: process.env.REJECT_CALL !== undefined ? process.env.REJECT_CALL === 'true' : false, 
   NOT_ALLOW: process.env.NOT_ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : true,
   MODE: process.env.MODE || "public",
