@@ -20,7 +20,7 @@ const antiLink = async (m, gss) => {
       }
 
       antilinkDB.set(m.from, true);
-      return m.reply("*✅ Anti-Link is now ACTIVATED for this group.*\n\n*Regards, Bruce Bera.*");
+      return m.reply("*✅ Anti-Link is now ACTIVATED for this group.*");
     }
 
     if (cmd === "antilink off") {
@@ -48,7 +48,7 @@ const antiLink = async (m, gss) => {
     }
   } catch (error) {
     console.error("Error in Anti-Link:", error);
-    m.reply("*⚠️ An error occurred while processing Anti-Link.*\n\n*Regards, Bruce Bera.*");
+    m.reply("*⚠️ An error occurred while processing Anti-Link*");
   }
 };
 
