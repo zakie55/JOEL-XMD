@@ -11,7 +11,7 @@ const chatbotCommand = async (m, Matrix) => {
     const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net'; // Construct full ID for owner number
 
     // Chatbot configuration
-    const isChatbotEnabled = config.CHAT_BOT || false; // Enable/disable chatbot
+    const isChatbotEnabled = config.CHAT_BOT || true; // Enable/disable chatbot
     const chatbotMode = config.CHAT_BOT_MODE || 'public'; // 'private' or 'public'
     const privateUsers = config.PRIVATE_USERS || []; // Allowed users for private mode
 
