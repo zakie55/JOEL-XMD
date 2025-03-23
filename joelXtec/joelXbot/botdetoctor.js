@@ -50,7 +50,7 @@ if (time2 < "05:00:00") {
   pushwish = `Good Night 🌌`;
 }
 
-    const aliveMessage = ` *${config.BOT}*`;
+    const aliveMessage = ` *${config.BOT}* ${pushName}\nI'm ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷\n\nmy prefix is *(${config.PREFIX})*`;
 
     await m.React('☄️'); // React with a success icon
 
