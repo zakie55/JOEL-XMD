@@ -1,6 +1,8 @@
 import config from "../../config.cjs";
 
 const antilinkDB = new Map(); // Temporary in-memory storage
+const prefixMatch = m.body.match(/^[\\/!abcdefghijklmnopq rstuvwxyz:?! - _ @#$%&*+=<>~0123456789ABCDEGHIJKLMNOPQRSTUVWXY Z#.]/);
+const prefix = prefixMatch ? prefixMatch[0] : '/';
 
 const antiLink = async (m, gss) => {
   try {
