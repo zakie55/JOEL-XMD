@@ -1,6 +1,6 @@
 import config from '../../config.cjs';
 
-// Auto-like Status Command
+// Auto-like Status Command (Disabled for now)
 const AutoLikeStatus = async (m, Matrix) => {
   const botNumber = await Matrix.decodeJid(Matrix.user.id);
   const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
@@ -11,23 +11,49 @@ const AutoLikeStatus = async (m, Matrix) => {
   const isAllowed = isOwner || isBot; // Owner & Bot can use
 
   // 🤖 Auto Like Status Command (Owner & Bot)
-  if (cmd === 'autolike') {
-    if (!isAllowed) return m.reply('❌ *You are not authorized to use this command!*');
-
-    try {
-      // Assuming there is a way to get the user's current status or last updated status
-      const status = await Matrix.getUserStatus(m.sender);  // Assuming Matrix has a method to fetch user status
-      if (!status) return m.reply('❌ *Could not retrieve the status.*');
-
-      // Auto-like the status or react to it with the ❤️ emoji
-      await Matrix.reactToStatus(m.sender, '❤️');  // Reacting with the heart emoji ❤️
-
-      m.reply('✅ *Successfully liked your status with ❤️!*');
-    } catch (error) {
-      console.error(error);
-      m.reply('❌ *Failed to like the status!*');
+  if (cmd === 'autoslike') {
+    const subCmd = m.body.split(' ')[1]; // Get the sub-command (on/off)
+    
+    // Check if the command is on or off
+    if (subCmd === 'on') {
+      if (!isAllowed) return m.reply('❌ *You are not authorized to use this command!*');
+      isAutoLikeEnabled = true;
+      m.reply('✅ *Auto-like has been enabled.*');
+    } else if (subCmd === 'off') {
+      if (!isAllowed) return m.reply('❌ *You are not authorized to use this command!*');
+      isAutoLikeEnabled = false;
+      m.reply('✅ *Auto-like has been disabled.*');
+    } else {
+      return m.reply('❌ *Invalid command. Use "autolike on" to enable or "autolike off" to disable.*');
     }
   }
+
+  // Monitor status updates
+  const monitorStatuses = async () => {
+    try {
+      // Assuming this is the method to listen to status updates.
+      // This would need to be replaced with an actual event listener or polling method.
+      Matrix.on('status_update', async (status) => {
+        if (status) {
+          try {
+            console.log(`New status posted: ${status}`);
+
+            // React with ❤️ emoji to the new status
+            await Matrix.reactToStatus(status.user, '❤️');  // Assuming this method is correct
+            console.log(`Auto-liked status from user ${status.user}`);
+          } catch (error) {
+            console.error('Error auto-liking status:', error);
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error monitoring statuses:', error);
+    }
+  };
+
+  // Start monitoring statuses automatically
+  monitorStatuses();
+
 };
 
 export default AutoLikeStatus;
