@@ -1,6 +1,3 @@
-
-
-
 import axios from 'axios';
 import config from '../../config.cjs';
 
@@ -10,27 +7,32 @@ const nudeCommands = async (m, gss) => {
   const validCommands = ['nude', 'nudeimage', 'nudeimg'];
 
   if (validCommands.includes(cmd)) {
-     // URL de l'API pour obtenir l'image de la catégorie "kissing_while_penetrated"
-        const apiUrl = 'https://pikabotzapi.vercel.app/anime-nsfw/hentai-images/?apikey=anya-md&category=kissing_while_penetrated';
+    // API URL for the image request
+    const nudeUrl = `https://pikabotzapi.vercel.app/anime-nsfw/hentai-images/?apikey=anya-md&category=nude`;
 
-        // Faire une requête à l'API
-        const response = await fetch(apiUrl);
-        const data = await response.json();
+    try {
+      await m.React('⏳'); // React with a loading icon
+      const response = await axios.get(nudeUrl);
 
-        // Vérification des données reçues
-        if (data && data.image) {
-            const nudeUrl = data.image; // URL de l'image reçue depuis l'API
-    await m.React('⏳'); // React with a loading icon
-    await gss.sendMessage(
-      m.from,
-      {
-        image: { url: nudeUrl },
-        caption: `*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ  ᴊᴏᴇʟ*`,
-      },
-      { quoted: m }
-    );
+      if (response.data && response.data.url) {
+        // Check if the response contains the image URL
+        await gss.sendMessage(
+          m.from,
+          {
+            image: { url: response.data.url },
+            caption: `*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`,
+          },
+          { quoted: m }
+        );
+      } else {
+        // Handle case where the API doesn't return a valid URL
+        await gss.sendMessage(m.from, 'Sorry, no image found at the moment.');
+      }
+    } catch (error) {
+      console.error('Error fetching image:', error);
+      await gss.sendMessage(m.from, 'Something went wrong while fetching the image.');
+    }
   }
 };
 
 export default nudeCommands;
-  
