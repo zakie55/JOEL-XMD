@@ -1,107 +1,61 @@
-import config from '../../config.cjs';
-import fetch from 'node-fetch';
+import config from "../../config.cjs";
 
-let awayMessageEnabled = false;  // Initially, away message is off
-let awayMessageText = 'Hello, I\'m unavailable.'; // Default away message text
+const antibotDB = new Set(); // Temporary in-memory storage for tracking groups where Anti-Bot is enabled
 
-// Array of constant greetings with cute emojis
-const greetings = [
-    'Hi there! 😊',
-    'Hello! 🌸',
-    'Hey, how can I assist you today? 🐾',
-    'Greetings! ✨',
-    'Hello, I\'m currently unavailable. 💤',
-    'Good day! ☀️',
-    'Hi, I\'m away at the moment. 🌙',
-    'Hey, I\'ll get back to you shortly! 🕒',
-    'Hi! 🌷 I\'m not available right now, but I\'ll reply soon! 💖',
-    'Hey there! 💫 I’m away, but I’ll respond as soon as I can! 🐝',
-    'Hello! 🦄 I’m temporarily away, but I’ll be back soon! 🐾',
-    'Hey! 💌 I’m offline right now, but I’ll get back to you ASAP! 🌟'
-];
+const antiBot = async (m, gss) => {
+  try {
+    const cmd = m.body?.toLowerCase().trim();
 
-// Function to get a random greeting with emojis
-const getRandomGreeting = () => {
-    const randomIndex = Math.floor(Math.random() * greetings.length);
-    return greetings[randomIndex];
-};
+    if (!cmd) return; // Exit if the message body is empty
 
-const awayMessageCommand = async (m, Matrix) => {
-    // Retrieve the prefix from the config
-    const prefix = config.PREFIX;
+    // **Enable Anti-Bot**
+    if (cmd === "antibot on") {
+      if (!m.isGroup) return m.reply("*THIS COMMAND CAN ONLY BE USED IN GROUPS!*");
+      
+      const groupMetadata = await gss.groupMetadata(m.from);
+      const participants = groupMetadata.participants;
+      const senderAdmin = participants.some(p => p.id === m.sender && p.admin);
 
-    // Extract the command from the message
-    const cmd = m.body.startsWith(prefix)
-        ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()  // Get the command
-        : '';
+      if (!senderAdmin) {
+        return m.reply("*🚫 YOU MUST BE AN ADMIN TO ENABLE ANTIBOT!*");
+      }
 
-    const text = m.message?.conversation || m.message?.extendedTextMessage?.text || null; // Extract text
-    const senderId = m.key.remoteJid; // This gives the full sender ID (including @s.whatsapp.net)
-    const senderName = m.pushName || `User ${senderId}`; // Default to 'User <senderId>' if pushName is not available
-
-    // Get the owner's phone number from config
-    const ownerNumber = `${config.OWNER_NUMBER}@s.whatsapp.net`; // Construct full ID for owner number
-
-    // Ignore all messages from non-owner users
-    if (senderId !== ownerNumber) {
-        console.log('Command ignored: Not from the owner.');
-        return;
+      antibotDB.add(m.from);
+      return m.reply("*✅ Anti-Bot is now ACTIVATED for this group.*\n\n*Regards, Bruce Bera.*");
     }
 
-    // Only process if the command is related to away message (e.g., "amessage on", "amessage off", etc.)
-    if (cmd === 'amessage') {
-        // If message is "amessage on" - Enable Away message
-        if (text && text.toLowerCase() === `${prefix}amessage on`) {
-            awayMessageEnabled = true;
-            console.log('Away message is now ENABLED.');
-            await Matrix.sendMessage(senderId, { text: '✔️ Away message is now enabled.' }, { quoted: m });
-            return;
-        }
+    // **Disable Anti-Bot**
+    if (cmd === "antibot off") {
+      if (!m.isGroup) return m.reply("*📛 THIS COMMAND CAN ONLY BE USED IN GROUPS!*");
 
-        // If message is "amessage off" - Disable Away message
-        if (text && text.toLowerCase() === `${prefix}amessage off`) {
-            awayMessageEnabled = false;
-            console.log('Away message is now DISABLED.');
-            await Matrix.sendMessage(senderId, { text: '❌ Away message is now disabled.' }, { quoted: m });
-            return;
-        }
+      const groupMetadata = await gss.groupMetadata(m.from);
+      const participants = groupMetadata.participants;
+      const senderAdmin = participants.some(p => p.id === m.sender && p.admin);
 
-        // If message is "enable away message" - Enable Away message
-        if (text && text.toLowerCase() === `${prefix}enable away message`) {
-            awayMessageEnabled = true;
-            console.log('Away message is now ENABLED.');
-            await Matrix.sendMessage(senderId, { text: '✔️ Away message is now enabled.' }, { quoted: m });
-            return;
-        }
+      if (!senderAdmin) {
+        return m.reply("*🚫 YOU MUST BE AN ADMIN TO DISABLE ANTIBOT!*");
+      }
 
-        // If message is "disable away message" - Disable Away message
-        if (text && text.toLowerCase() === `${prefix}disable away message`) {
-            awayMessageEnabled = false;
-            console.log('Away message is now DISABLED.');
-            await Matrix.sendMessage(senderId, { text: '❌ Away message is now disabled.' }, { quoted: m });
-            return;
-        }
-
-        // If message is "set away message <new message>" - Update Away message text
-        if (text && text.toLowerCase().startsWith(`${prefix}set away message`)) {
-            const newMessage = text.slice(`${prefix}set away message`.length).trim(); // Get the message after the command
-            if (newMessage) {
-                awayMessageText = newMessage;
-                console.log(`Away message updated to: "${awayMessageText}"`);
-                await Matrix.sendMessage(senderId, { text: `✔️ Away message updated to: "${awayMessageText}"` }, { quoted: m });
-            } else {
-                await Matrix.sendMessage(senderId, { text: '❌ Please provide a new away message.' }, { quoted: m });
-            }
-            return;
-        }
-
-        // If away message is enabled and the user sends a message, send the away message
-        if (awayMessageEnabled) {
-            const greeting = getRandomGreeting(); // Get a random greeting
-            const messageToSend = `${greeting} ${awayMessageText}`; // Combine greeting with the away message
-            await Matrix.sendMessage(senderId, { text: messageToSend }, { quoted: m });
-        }
+      antibotDB.delete(m.from);
+      return m.reply("*❌ Anti-Bot is now DISABLED for this group.*");
     }
+
+    // **Detect and Delete All Bot Messages**
+    if (antibotDB.has(m.from)) {
+      // A simple bot detection based on 'bot' in the username, or you can add more checks.
+      const isBot = m.sender === 'bot' || m.body.includes('bot'); // Example check, you can enhance this
+
+      // If the message sender is detected as a bot
+      if (isBot) {
+        await gss.sendMessage(m.from, { delete: m.key });
+        return m.reply("*🚫 Bots are not allowed in this group!*");
+      }
+    }
+
+  } catch (error) {
+    console.error("Error in Anti-Bot:", error);
+    m.reply("*⚠️ An error occurred while processing Anti-Bot.");
+  }
 };
 
-export default awayMessageCommand;
+export default antiBot;
