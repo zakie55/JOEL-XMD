@@ -1,4 +1,72 @@
-import { Low, JSONFile } from 'lowdb';  // Lowdb is a small local JSON database
+import config from '../../config.cjs'; // Import config to get PREFIX
+
+const economyData = {}; // In-memory storage for economy data (userId -> balance)
+
+const checkUserAccount = (userId) => {
+  if (!economyData[userId]) {
+    economyData[userId] = { balance: 0 };
+  }
+};
+
+// Command to check balance
+const checkBalance = (m) => {
+  const userId = m.sender;
+  checkUserAccount(userId); // Ensure the user has an account
+  
+  const balance = economyData[userId].balance;
+  m.reply(`Your current balance is $${balance}.`);
+};
+
+// Command to earn money (e.g., daily reward, work)
+const earnMoney = (m, amount) => {
+  const userId = m.sender;
+  checkUserAccount(userId); // Ensure the user has an account
+
+  economyData[userId].balance += amount;
+  m.reply(`You earned $${amount}. Your new balance is $${economyData[userId].balance}.`);
+};
+
+// Command to spend money
+const spendMoney = (m, amount) => {
+  const userId = m.sender;
+  checkUserAccount(userId); // Ensure the user has an account
+
+  if (economyData[userId].balance < amount) {
+    return m.reply(`You do not have enough money. Your balance is $${economyData[userId].balance}.`);
+  }
+
+  economyData[userId].balance -= amount;
+  m.reply(`You spent $${amount}. Your new balance is $${economyData[userId].balance}.`);
+};
+
+// Command handler
+const economy = async (m, gss) => {
+  const prefix = config.PREFIX;  // Get prefix from config
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const text = m.body.slice(prefix.length + cmd.length).trim();
+
+  if (cmd === 'balance') {
+    checkBalance(m);
+  } else if (cmd === 'earn' && text) {
+    const amount = parseInt(text);
+    if (isNaN(amount) || amount <= 0) {
+      return m.reply("Please provide a valid amount.");
+    }
+    earnMoney(m, amount);
+  } else if (cmd === 'spend' && text) {
+    const amount = parseInt(text);
+    if (isNaN(amount) || amount <= 0) {
+      return m.reply("Please provide a valid amount.");
+    }
+    spendMoney(m, amount);
+  } else {
+    m.reply(`Usage:\n${prefix}balance - Check your balance\n${prefix}earn <amount> - Earn money\n${prefix}spend <amount> - Spend money`);
+  }
+};
+
+export default economy;
+
+/*import { Low, JSONFile } from 'lowdb';  // Lowdb is a small local JSON database
 import { nanoid } from 'nanoid';
 
 // Set up Lowdb
@@ -111,4 +179,5 @@ const handleCommand = async (command, args, userId) => {
 };
 
 // Export functions for use in bot commands
-export { handleCommand, checkBalance, giveMoney, subtractMoney, createUser, bet };
+export { handleCommand, checkBalance, giveMoney, subtra
+*/
