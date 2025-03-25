@@ -1,4 +1,4 @@
-import moment from 'moment-timezone';
+/*import moment from 'moment-timezone';
 import fs from 'fs';
 import os from 'os';
 import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
@@ -108,7 +108,62 @@ sock.sendMessage(
 
 export default alive;
 
+*/
+import config from '../../config.cjs';
 
+const quranVideo = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+  const validCommands = ['quranvid', 'qvid', 'quranvideo'];
+
+  if (validCommands.includes(cmd)) {
+    const videoUrl = 'https://bk9.fun/Islam/quranvid';  // You can change this URL if needed
+    await m.React('⏳');  // React with a loading icon
+
+    // Define the alive message (or video message in this case)
+    const aliveMessage = "📖 *ᴊᴏᴇʟ xᴅ v⁷ ǫᴜʀᴀɴ ᴠɪᴅᴇᴏs* 📖\n\n*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*";
+
+    try {
+      // Sending the video message with additional metadata
+      await sock.sendMessage(
+        m.from,
+        {
+          video: { url: videoUrl },
+          caption: aliveMessage,  // You can customize the caption message here
+          contextInfo: {
+            isForwarded: true,
+            forwardedNewsletterMessageInfo: {
+              newsletterJid: '120363317462952356@newsletter',
+              newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ",
+              serverMessageId: -1,
+            },
+            forwardingScore: 999,
+            externalAdReply: {
+              title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+              body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+              thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg',
+              sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
+              mediaType: 1,
+              renderLargerThumbnail: false,
+            },
+          },
+        },
+        { quoted: m }  // Quoting the original message
+      );
+      
+      // Optionally react with a success emoji
+      await m.React('✅');
+    } catch (error) {
+      console.error("Error sending video:", error);
+      // Send an error message to the user
+      await sock.sendMessage(m.from, { text: "Sorry, there was an error fetching the Quran video." });
+      // Optionally react with a failure emoji
+      await m.React('❌');
+    }
+  }
+};
+
+export default quranVideo;
 
 
 
