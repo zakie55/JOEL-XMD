@@ -1,100 +1,106 @@
-let rpsGames = {}; // To keep track of active Rock, Paper, Scissors games
+import moment from 'moment-timezone';
+import fs from 'fs';
+import os from 'os';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+import config from '../../config.cjs';
 
-const rps = async (m, sock) => {
+const alive = async (m, sock) => {
   const prefix = config.PREFIX;
+  const mode = config.MODE;
   const pushName = m.pushName || 'User';
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
-  // Command to start a new game
-  if (cmd === "rps") {
-    if (rpsGames[m.from]) {
-      await sock.sendMessage(m.from, { text: 'A Rock, Paper, Scissors game is already in progress! Type *end* to stop it.' });
-      return;
-    }
-    rpsGames[m.from] = {
-      players: [m.sender], // Store the first player who started the game
-      status: 'waiting', // Waiting for the second player
-      choices: {} // Store the players' choices
-    };
-    await sock.sendMessage(m.from, { text: `Hello *${pushName}*, you've started a Rock, Paper, Scissors game! Please wait for another player to join...` });
-  }
+  const cmd = m.body.startsWith(prefix)
+    ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
+    : '';
 
-  // If the user wants to join an existing game
-  if (cmd === "join" && rpsGames[m.from] && rpsGames[m.from].status === 'waiting') {
-    rpsGames[m.from].players.push(m.sender);
-    rpsGames[m.from].status = 'started';
-    await sock.sendMessage(m.from, { text: `Game started! *${pushName}* has joined the game. It's time to make your move: type *rock*, *paper*, or *scissors*.` });
-  }
+  if (cmd === "mx") {
+    await m.React('💮'); // React with a loading icon
+    // Calculate uptime
+    const uptimeSeconds = process.uptime();
+    const days = Math.floor(uptimeSeconds / (24 * 3600));
+    const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+    const seconds = Math.floor(uptimeSeconds % 60);
 
-  // Player makes their move
-  if (cmd === "rock" || cmd === "paper" || cmd === "scissors") {
-    if (!rpsGames[m.from]) {
-      await sock.sendMessage(m.from, { text: 'No game found. Start a new game by typing *rps*' });
-      return;
-    }
+    // Get real time
+    const realTime = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xtime = moment.tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xdate = moment.tz("Tanzania/Dodoma").format("DD/MM/YYYY");
+    const time2 = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    let pushwish = "";
 
-    const game = rpsGames[m.from];
-    if (game.status === 'waiting') {
-      await sock.sendMessage(m.from, { text: 'Wait for another player to join before making a move!' });
-      return;
-    }
-
-    if (game.choices[m.sender]) {
-      await sock.sendMessage(m.from, { text: 'You have already made your move! Wait for the other player to make theirs.' });
-      return;
-    }
-
-    game.choices[m.sender] = cmd;
-
-    // Check if both players have made their moves
-    if (Object.keys(game.choices).length === 2) {
-      const [player1, player2] = game.players;
-      const player1Choice = game.choices[player1];
-      const player2Choice = game.choices[player2];
-
-      const result = getRPSResult(player1Choice, player2Choice);
-      let resultMessage = '';
-
-      if (result === 0) {
-        resultMessage = `It's a draw! Both players chose ${player1Choice}.`;
-      } else if (result === 1) {
-        resultMessage = `*${player1}* wins! ${player1Choice} beats ${player2Choice}.`;
-      } else {
-        resultMessage = `*${player2}* wins! ${player2Choice} beats ${player1Choice}.`;
-      }
-
-      await sock.sendMessage(m.from, { text: `Game Over!\n\n${resultMessage}` });
-      delete rpsGames[m.from]; // End the game
+    if (time2 < "05:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 🌄`;
+    } else if (time2 < "11:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 🌄`;
+    } else if (time2 < "15:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ 🌅`;
+    } else if (time2 < "18:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌃`;
+    } else if (time2 < "19:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌃`;
     } else {
-      await sock.sendMessage(m.from, { text: `*${pushName}*, you've made your move! Wait for the other player to make theirs.` });
+      pushwish = `ɢᴏᴏᴅ ɴɪɢʜᴛ 🌌`;
     }
-  }
 
-  // End the game
-  if (cmd === "end") {
-    if (rpsGames[m.from]) {
-      delete rpsGames[m.from]; // Remove the game
-      await sock.sendMessage(m.from, { text: 'Game ended.' });
-    } else {
-      await sock.sendMessage(m.from, { text: 'No game in progress to end.' });
-    }
+    const aliveMessage = `ʜᴇʟʟᴏ *${pushName}* ${pushwish}
+
+╭──❍ 「 *${config.BOT_NAME}*」❍
+├ ᴘʀᴇғɪx :  *${prefix}*
+├ ᴍᴏᴅᴇ :  *${mode}*
+├ ᴛɪᴍᴇ : *${realTime}*
+╰─┬────❍ 
+╭─┴❍「 *ᴘʀᴇ ɪɴғᴏ* 」
+├ ᴛʜᴇᴍᴇ= *ᴊᴏᴇʟ xᴍᴅ*
+├ ᴛ ᴜsᴇʀs=  *¹⁸¹⁹*
+├ ᴄʀᴇᴀᴛᴏʀ= *ᴊᴏᴇʟ ᴛᴇᴄʜ*
+╰─┬────❍
+╭─┴❍「 *ᴄᴏɴᴠᴇʀᴛᴏʀ* 」❍
+│   
+╰────────────❍
+*${config.CAPTION}*`;
+
+    await m.React('☄️'); // React with a success icon
+
+    // Prepare the first image (this will be sent with text as the main image)
+    const media1 = await prepareWAMessageMedia({ url: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg' }, { upload: sock.upload });
+
+    // Send the message with the first image (text + external ad)
+    sock.sendMessage(
+      m.from,
+      {
+        text: aliveMessage,
+        contextInfo: {
+          isForwarded: true,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363317462952356@newsletter',
+            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ",
+            serverMessageId: -1,
+          },
+          forwardingScore: 999, // Score to indicate it has been forwarded
+          externalAdReply: {
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg',
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
+            mediaType: 1,
+            renderLargerThumbnail: true,
+          },
+        },
+      },
+      { quoted: m }
+    );
+
+    // Send the second image as a photo (no caption)
+    sock.sendMessage(
+      m.from,
+      {
+        image: { url: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg' }, // Second image URL
+      },
+      { quoted: m }
+    );
   }
 };
 
-// Function to determine the result of the game
-// 0 = draw, 1 = player1 wins, -1 = player2 wins
-function getRPSResult(player1Choice, player2Choice) {
-  if (player1Choice === player2Choice) return 0; // Draw
-
-  if (
-    (player1Choice === 'rock' && player2Choice === 'scissors') ||
-    (player1Choice === 'scissors' && player2Choice === 'paper') ||
-    (player1Choice === 'paper' && player2Choice === 'rock')
-  ) {
-    return 1; // Player 1 wins
-  }
-
-  return -1; // Player 2 wins
-}
-
-export default rps;
+export default alive;
