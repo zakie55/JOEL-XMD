@@ -187,9 +187,8 @@ const economy = async (m, gss) => {
     claimDaily(m);
   } else if (cmd === 'leaderboard') {
     showLeaderboard(m);
-  } else {
-    // Handle unrecognized or invalid commands only when necessary
   }
+  // Do nothing if the command is invalid or not recognized
 };
 
 export default economy; 
