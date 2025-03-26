@@ -45,7 +45,7 @@ const spendMoney = (m, amount) => {
   checkUserAccount(userId); // Ensure the user has an account
 
   if (economyData[userId].balance < amount) {
-    return sendReply(m, `${pushName} You do not have enough money. Your balance is $${economyData[userId].balance}.`);
+    return sendReply(m, `You do not have enough money. Your balance is $${economyData[userId].balance}.`);
   }
 
   if (amount <= 0) {
