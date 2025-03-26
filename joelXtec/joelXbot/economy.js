@@ -23,7 +23,7 @@ const sendReply = (m, message) => {
 const checkBalance = (m) => {
   const userId = m.sender;
   checkUserAccount(userId); // Ensure the user has an account
-  sendReply(m, `Your current balance is $${economyData[userId].balance}.`);
+  sendReply(m, `╔════◇\n║ *YOEL XMD ECONOMY*\n║ *your balance is*\n║ *$${economyData[userId].balance}*\n║ *Enjoy🥳*\n╚════════════╝`);
 };
 
 // Command to earn money (e.g., daily reward, work)
@@ -36,7 +36,7 @@ const earnMoney = (m, amount) => {
   }
 
   economyData[userId].balance += amount;
-  sendReply(m, `You earned $${amount}. Your new balance is $${economyData[userId].balance}.`);
+  sendReply(m, `╔════◇\n║ *YOEL XMD ECONOMY*\n║ *you earned*\n║ *$${amount}*: \n║ *new balance*\n║ *$${economyData[userId].balance}*\n╚════════════╝`);
 };
 
 // Command to spend money
@@ -45,7 +45,7 @@ const spendMoney = (m, amount) => {
   checkUserAccount(userId); // Ensure the user has an account
 
   if (economyData[userId].balance < amount) {
-    return sendReply(m, `You do not have enough money. Your balance is $${economyData[userId].balance}.`);
+    return sendReply(m, `${pushName} You do not have enough money. Your balance is $${economyData[userId].balance}.`);
   }
 
   if (amount <= 0) {
