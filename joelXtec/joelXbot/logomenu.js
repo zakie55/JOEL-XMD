@@ -65,8 +65,11 @@ const LogoMenu = async (m, sock) => {
     },
   };
 
-  // Send the menu to the user
-  await sock.sendMessage(m.from, messagePayload, { quoted: m });
+  // Check if the message is a valid command
+  if (m.text.toLowerCase() === `${prefix}logomenu` || m.text.toLowerCase() === `${prefix}logom`) {
+    // Send the menu to the user
+    await sock.sendMessage(m.from, messagePayload, { quoted: m });
+  }
 };
 
 export default LogoMenu;
