@@ -2,7 +2,7 @@
   "name": "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
   "version": "10.8.1",
   "description": "joel The Fastest Bot",
-  "main": "joeltech.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "pm2 start index.js --deep-monitoring --attach --name ʝσєℓ-χ∂-ν3",
