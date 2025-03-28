@@ -208,7 +208,7 @@ async function init() {
 
 init();
 
-app.get('/', (req, res) => {
+app.get('/index.html', (req, res) => {
     res.send('Hello World!');
 });
 
