@@ -41,6 +41,7 @@ import { Handler, Callupdate, GroupUpdate } from './joelXtec/event/index.js';
 import express from 'express';
 import pino from 'pino';
 import fs from 'fs';
+import { File } from 'megajs';
 import NodeCache from 'node-cache';
 import path from 'path';
 import chalk from 'chalk';
@@ -49,7 +50,7 @@ import axios from 'axios';
 import config from './config.cjs';
 import pkg from './lib/autoreact.cjs';
 const { emojis, doReact } = pkg;
-
+const prefix = process.env.PREFIX || config.PREFIX;
 const sessionName = "session";
 const app = express();
 const orange = chalk.bold.hex("#FFA500");
@@ -77,20 +78,38 @@ if (!fs.existsSync(sessionDir)) {
 }
 
 async function downloadSessionData() {
+    console.log("Debugging SESSION_ID:", config.SESSION_ID);
+
     if (!config.SESSION_ID) {
-        console.error('Please add your session to SESSION_ID env !!');
+        console.error('❌ Please add your session to SESSION_ID env !!');
         return false;
     }
-    const sessdata = config.SESSION_ID.split("JOEL-XMD~")[1];
-    const url = `https://pastebin.com/raw/${sessdata}`;
+
+    const sessdata = config.SESSION_ID.split("JOEL-MD~")[1];
+
+    if (!sessdata || !sessdata.includes("#")) {
+        console.error('❌ Invalid SESSION_ID format! It must contain both file ID and decryption key.');
+        return false;
+    }
+
+    const [fileID, decryptKey] = sessdata.split("#");
+
     try {
-        const response = await axios.get(url);
-        const data = typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
+        console.log("🔄 Downloading Session...");
+        const file = File.fromURL(`https://mega.nz/file/${fileID}#${decryptKey}`);
+
+        const data = await new Promise((resolve, reject) => {
+            file.download((err, data) => {
+                if (err) reject(err);
+                else resolve(data);
+            });
+        });
+
         await fs.promises.writeFile(credsPath, data);
         console.log("🔒 Session Successfully Loaded !!");
         return true;
     } catch (error) {
-       // console.error('Failed to download session data:', error);
+        console.error('❌ Failed to download session data:', error);
         return false;
     }
 }
@@ -99,52 +118,57 @@ async function start() {
     try {
         const { state, saveCreds } = await useMultiFileAuthState(sessionDir);
         const { version, isLatest } = await fetchLatestBaileysVersion();
-        console.log(`joel md using WA v${version.join('.')}, isLatest: ${isLatest}`);
+        console.log(`🤖 JAWAD-MD using WA v${version.join('.')}, isLatest: ${isLatest}`);
         
         const Matrix = makeWASocket({
             version,
             logger: pino({ level: 'silent' }),
             printQRInTerminal: useQR,
-            browser: ["ʝσєℓ χ∂", "safari", "3.3"],
+            browser: ["JAWAD-MD", "safari", "3.3"],
             auth: state,
             getMessage: async (key) => {
                 if (store) {
                     const msg = await store.loadMessage(key.remoteJid, key.id);
                     return msg.message || undefined;
                 }
-                return { conversation: "joel md  whatsapp user bot" };
+                return { conversation: "JAWAD-MD whatsapp user bot" };
             }
         });
 
-        Matrix.ev.on('connection.update', (update) => {
-            const { connection, lastDisconnect } = update;
-            if (connection === 'close') {
-                if (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut) {
-                    start();
-                }
-            } else if (connection === 'open') {
-                if (initialConnection) {
-                    console.log(chalk.green("JOEL-XMD IS CONNECTED SUCCESSFULLY "));
+Matrix.ev.on('connection.update', (update) => {
+    const { connection, lastDisconnect } = update;
+    if (connection === 'close') {
+        if (lastDisconnect.error?.output?.statusCode !== DisconnectReason.loggedOut) {
+            start();
+        }
+    } else if (connection === 'open') {
+        if (initialConnection) {
+            console.log(chalk.green("Connected Successfully KHAN-MD 🤍"));
             Matrix.sendMessage(Matrix.user.id, { 
-                image: { url: "https://files.catbox.moe/lqxlmj.jpg" }, 
-                caption: `╭─────────────━┈⊷
-│ *ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴs*
-╰─────────────━┈⊷
+                image: { url: "https://files.catbox.moe/pf270b.jpg" }, 
+                caption: `*Hello there JAWAD-MD User! 👋🏻* 
 
-╭─────────────━┈⊷
-│ᴊᴏᴇʟ xᴍᴅ ɪs ᴏɴʟɪɴᴇ
-│ᴏᴡɴᴇʀ: ʟᴏʀᴅ ᴊᴏᴇʟ
-╰─────────────━┈⊷
+> Simple, Straightforward, But Loaded With Features 🎊. Meet JAWAD-MD WhatsApp Bot.
 
-*ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴇʀʀᴏʀ ᴛᴏ ᴍʏ ᴏᴡɴᴇʀ*`
+*Thanks for using JAWAD-MD 🚩* 
+
+> Join WhatsApp Channel: ⤵️  
+https://whatsapp.com/channel/0029Vb6I1eaB4hdSaSu02A2X
+
+- *YOUR PREFIX:* = ${prefix}
+
+Don't forget to give a star to the repo ⬇️  
+https://github.com/XdTechPro/JAWAD-MD
+
+> © Powered BY JawadTechX 🖤`
             });
-                    initialConnection = false;
-                } else {
-                    console.log(chalk.blue("♻️ Connection reestablished after restart."));
-                }
-            }
-        });
-
+            initialConnection = false;
+        } else {
+            console.log(chalk.blue("♻️ Connection reestablished after restart."));
+        }
+    }
+});
+        
         Matrix.ev.on('creds.update', saveCreds);
 
         Matrix.ev.on("messages.upsert", async chatUpdate => await Handler(chatUpdate, Matrix, logger));
@@ -160,6 +184,7 @@ async function start() {
         Matrix.ev.on('messages.upsert', async (chatUpdate) => {
             try {
                 const mek = chatUpdate.messages[0];
+                console.log(mek);
                 if (!mek.key.fromMe && config.AUTO_REACT) {
                     console.log(mek);
                     if (mek.message) {
@@ -171,6 +196,27 @@ async function start() {
                 console.error('Error during auto reaction:', err);
             }
         });
+        
+        Matrix.ev.on('messages.upsert', async (chatUpdate) => {
+    try {
+        const mek = chatUpdate.messages[0];
+        const fromJid = mek.key.participant || mek.key.remoteJid;
+        if (!mek || !mek.message) return;
+        if (mek.key.fromMe) return;
+        if (mek.message?.protocolMessage || mek.message?.ephemeralMessage || mek.message?.reactionMessage) return; 
+        if (mek.key && mek.key.remoteJid === 'status@broadcast' && config.AUTO_STATUS_SEEN) {
+            await Matrix.readMessages([mek.key]);
+            
+            if (config.AUTO_STATUS_REPLY) {
+                const customMessage = config.STATUS_READ_MSG || '✅ Auto Status Seen Bot By JAWAD-MD';
+                await Matrix.sendMessage(fromJid, { text: customMessage }, { quoted: mek });
+            }
+        }
+    } catch (err) {
+        console.error('Error handling messages.upsert event:', err);
+    }
+});
+
     } catch (error) {
         console.error('Critical Error:', error);
         process.exit(1);
@@ -197,13 +243,10 @@ async function init() {
 init();
 
 app.get('/', (req, res) => {
-    res.send('am joel bot');
+    res.send('Hello World!');
 });
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
-});
-
-
-// updated by lord joel 
+}); 
 
