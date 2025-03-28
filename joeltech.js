@@ -116,7 +116,7 @@ Matrix.ev.on('connection.update', (update) => {
         if (initialConnection) {
             console.log(chalk.green("Connected Successfully KHAN-MD 🤍"));
             Matrix.sendMessage(Matrix.user.id, { 
-                image: { url: "https://files.catbox.moe/pf270b.jpg" }, 
+                image: { url: "https://files.catbox.moe/wwl2my.jpg" }, 
                 caption: `*Hello There User Thanks fir choosing Demon-Slayer* 
 
 > *The Only Bot that serves you to your limit*
