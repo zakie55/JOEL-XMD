@@ -95,7 +95,7 @@ async function start() {
             version,
             logger: pino({ level: 'silent' }),
             printQRInTerminal: useQR,
-            browser: ["JAWAD-MD", "safari", "3.3"],
+            browser: ["JOEL-MD", "safari", "3.3"],
             auth: state,
             getMessage: async (key) => {
                 if (store) {
@@ -114,19 +114,19 @@ Matrix.ev.on('connection.update', (update) => {
         }
     } else if (connection === 'open') {
         if (initialConnection) {
-            console.log(chalk.green("Connected Successfully KHAN-MD 🤍"));
+            console.log(chalk.green("Connected Successfull"));
             Matrix.sendMessage(Matrix.user.id, { 
-                image: { url: "https://files.catbox.moe/wwl2my.jpg" }, 
-                caption: `*Hello There User Thanks fir choosing Demon-Slayer* 
+                image: { url: "https://files.catbox.moe/ytb8lg.jpg" }, 
+                caption: `╭─────────────━┈⊷
+│ *ᴊᴏᴇʟ-xᴍᴅ-ᴠ¹⁰ ɴᴏᴛɪғɪᴄᴀᴛɪᴏɴs*
+╰─────────────━┈⊷
 
-> *The Only Bot that serves you to your limit*
-*Enjoy Using the Bot* 
-> Join WhatsApp Channel: ⤵️  
-https://whatsapp.com/channel/0029Vajvy2kEwEjwAKP4SI0x
-> *YOUR PREFIX:* = ${prefix}
-*Don't forget to give a star to the repo* 
-https://github.com/Demon-Slayer2/DEMON-SLAYER-XMD
-> *Made By Marisel`
+╭─────────────━┈⊷
+│ᴊᴏᴇʟ xᴍᴅ ɪs ᴏɴʟɪɴᴇ
+│ᴏᴡɴᴇʀ: ʟᴏʀᴅ ᴊᴏᴇʟ
+╰─────────────━┈⊷
+
+*ʀᴇᴘᴏʀᴛ ᴀɴʏ ᴇʀʀᴏʀ ᴛᴏ ᴍʏ ᴏᴡɴᴇʀ*`
             });
             initialConnection = false;
         } else {
