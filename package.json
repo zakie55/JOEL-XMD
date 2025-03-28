@@ -1,16 +1,16 @@
 {
-  "name": "Demon-slayer",
+  "name": " ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
   "version": "10.8.1",
-  "description": "ok 3 devs made it",
+  "description": "Joel James tech inc",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name Demon-Slayer",
-    "stop": "pm2 stop Demon-Slayer",
-    "restart": "pm2 restart Demon-Slayer"
+    "start": "pm2 start index.js --deep-monitoring --attach --name  ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+    "stop": "pm2 stop  ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+    "restart": "pm2 restart  ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ"
   },
-  "keywords": ["demom-slayer", "whatsapp-bot", "whatsapp md bot"],
-  "author": "Marisel",
+  "keywords": ["lord-joel", "whatsapp-bot", "whatsapp md bot"],
+  "author": " ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
   "license": "ISC",
   "dependencies": {
     "@whiskeysockets/baileys": "npm:@fizzxydev/baileys-pro@8.5.12",
