@@ -1,51 +1,56 @@
-import { prepareWAMessageMedia } from '@whiskeysockets/baileys';
-import config from '../../config.cjs';
+import axios from "axios";
+import yts from "yt-search";
+import config from '../config.cjs';
 
-// This function sends a menu message with available commands and a video URL
-const menuCmd = async (m, sock) => {
+const play = async (m, gss) => {
   const prefix = config.PREFIX;
-  const pushName = m.pushName || 'User';
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(" ")[0].toLowerCase() : "";
+  const args = m.body.slice(prefix.length + cmd.length).trim().split(" ");
 
-  // Message for the available commands
-  const menuMessage = `*Hello ${pushName}, here are the available commands:*
-  \n1. *${prefix}uptime* - Shows bot uptime
-  \n2. *${prefix}alive* - Check if the bot is alive
-  \n3. *${prefix}runtime* - Shows runtime of the bot
-  \n4. *${prefix}help* - Displays this menu
-  \n5. *${prefix}othercommand* - Another available feature (you can add more)
+  if (cmd === "play2") {
+    if (args.length === 0 || !args.join(" ")) {
+      return m.reply("*Please provide a song name or keywords to search for.*");
+    }
 
-  *Powered by JOEL XMD Bot*
+    const searchQuery = args.join(" ");
+    m.reply("*🎧 Searching for the song...*");
 
-  *Watch this video for more info:*
-  https://bk9.fun/Islam/quranvid`;
+    try {
+      const searchResults = await yts(searchQuery);
+      if (!searchResults.videos || searchResults.videos.length === 0) {
+        return m.reply(`❌ No results found for "${searchQuery}".`);
+      }
 
-  // Prepare the video message
-  const videoMessage = {
-    video: { url: 'https://bk9.fun/Islam/quranvid' },
-    mimetype: 'video/mp4',  // Assuming the video is in mp4 format
-    caption: "Watch this video for more details."
-  };
+      const firstResult = searchResults.videos[0];
+      const videoUrl = firstResult.url;
 
-  // Send the video followed by the menu text message
-  await sock.sendMessage(m.from, videoMessage, { quoted: m });
-  await sock.sendMessage(m.from, { text: menuMessage }, { quoted: m });
-};
+      // First API endpoint
+      const apiUrl = `https://api.davidcyriltech.my.id/download/ytmp3?url=${videoUrl}`;
+      const response = await axios.get(apiUrl);
 
-const helpCmd = async (m, sock) => {
-  // Display the same menu for 'help' command
-  await menuCmd(m, sock);
-};
+      if (!response.data.success) {
+        return m.reply(`❌ Failed to fetch audio for "${searchQuery}".`);
+      }
 
-const handleCommands = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
+      const { title, download_url } = response.data.result;
 
-  if (cmd === 'menu' || cmd === 'help') {
-    // Call the appropriate function for 'menu' and 'help' commands
-    await menuCmd(m, sock); // You can also use helpCmd(m, sock) if you want a separate handler
+      // Send the audio file
+      await gss.sendMessage(
+        m.from,
+        {
+          audio: { url: download_url },
+          mimetype: "audio/mp4",
+          ptt: false,
+        },
+        { quoted: m }
+      );
+
+      m.reply(`✅ *${title}* has been downloaded successfully!`);
+    } catch (error) {
+      console.error(error);
+      m.reply("❌ An error occurred while processing your request.");
+    }
   }
-
-  // Add more command handlers here if needed
 };
 
-export default handleCommands;
+export default play;
