@@ -9,7 +9,7 @@ const stickerCommandHandler = async (m, gss) => {
   const gifCommands = ['cry', 'kiss', 'kill', 'kick', 'hug', 'pat', 'lick', 'bite', 'yeet', 'bully', 'bonk', 'wink', 'poke', 'nom', 'slap', 'smile', 'wave', 'awoo', 'blush', 'smug', 'dance', 'happy', 'sad', 'cringe', 'cuddle', 'shinobu', 'handhold', 'glomp', 'highfive'];
 
   if (gifCommands.includes(cmd)) {
-    const apiKey = 'YOUR_GIPHY_API_KEY'; // Replace with your Giphy API key
+    const apiKey = 'yMUybMwzG6HLQMfjuhKhGdWb9uHPKsiB'; // joelXtec api key 
     const packname = `jᴏᴇʟ xᴍᴅ`;
     const author = 'ʙᴏᴛ';
 
