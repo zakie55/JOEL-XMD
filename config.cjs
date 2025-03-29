@@ -35,7 +35,7 @@ const config = {
   /*lets add chat bot mode*/
   CHAT_BOT_MODE: process.env.CHAT_BOT_MODE || "public",
   /*how about Lydia chat bot*/
-  LYDEA: process.env.LYDEA !== undefined ? process.env.LYDEA === 'true' : true,
+  SLIKE: process.env.SLIKE !== undefined ? process.env.SLIKE === 'true' : true,
   REJECT_CALL: process.env.REJECT_CALL !== undefined ? process.env.REJECT_CALL === 'true' : false, 
   NOT_ALLOW: process.env.NOT_ALLOW !== undefined ? process.env.NOT_ALLOW === 'true' : true,
   MODE: process.env.MODE || "public",
