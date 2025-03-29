@@ -1,76 +1,51 @@
-import axios from 'axios';
+import { prepareWAMessageMedia } from '@whiskeysockets/baileys';
 import config from '../../config.cjs';
 
-const quranVideo = async (m, gss) => {
+// This function sends a menu message with available commands and a video URL
+const menuCmd = async (m, sock) => {
   const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-  const validCommands = ['quranvid', 'qvid', 'quranvideo'];
+  const pushName = m.pushName || 'User';
 
-  if (validCommands.includes(cmd)) {
-    const videoUrl = `https://bk9.fun/Islam/quranvid`;
-await m.React('⏳'); // React with a loading icon
-    await gss.sendMessage(
-      m.from,
-      {
-        video: { url: videoUrl },
-        caption: `📖 *ᴊᴏᴇʟ xᴅ v⁷ ǫᴜʀᴀɴ ᴠɪᴅᴇᴏs* 📖\n\n*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ  ᴊᴏᴇʟ*`,
-      sock.sendMessage(
-      m.from,
-      {
-        text: sendMessage,
-        contextInfo: {
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ",
-            serverMessageId: 143,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
-      },
-      { quoted: m }
-    );
-  }
+  // Message for the available commands
+  const menuMessage = `*Hello ${pushName}, here are the available commands:*
+  \n1. *${prefix}uptime* - Shows bot uptime
+  \n2. *${prefix}alive* - Check if the bot is alive
+  \n3. *${prefix}runtime* - Shows runtime of the bot
+  \n4. *${prefix}help* - Displays this menu
+  \n5. *${prefix}othercommand* - Another available feature (you can add more)
+
+  *Powered by JOEL XMD Bot*
+
+  *Watch this video for more info:*
+  https://bk9.fun/Islam/quranvid`;
+
+  // Prepare the video message
+  const videoMessage = {
+    video: { url: 'https://bk9.fun/Islam/quranvid' },
+    mimetype: 'video/mp4',  // Assuming the video is in mp4 format
+    caption: "Watch this video for more details."
+  };
+
+  // Send the video followed by the menu text message
+  await sock.sendMessage(m.from, videoMessage, { quoted: m });
+  await sock.sendMessage(m.from, { text: menuMessage }, { quoted: m });
 };
 
-export default quranVideo;
+const helpCmd = async (m, sock) => {
+  // Display the same menu for 'help' command
+  await menuCmd(m, sock);
+};
 
+const handleCommands = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
 
+  if (cmd === 'menu' || cmd === 'help') {
+    // Call the appropriate function for 'menu' and 'help' commands
+    await menuCmd(m, sock); // You can also use helpCmd(m, sock) if you want a separate handler
+  }
 
+  // Add more command handlers here if needed
+};
 
-/*
-
-
-sock.sendMessage(
-      m.from,
-      {
-        text: aliveMessage,
-        contextInfo: {
-          isForwarded: true,
-          forwardedNewsletterMessageInfo: {
-            newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ",
-            serverMessageId: -1,
-          },
-          forwardingScore: 999, // Score to indicate it has been forwarded
-          externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
-            body: "ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
-            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
-            mediaType: 1,
-            renderLargerThumbnail: true,
-          },
-        },
-      },
-      { quoted: m }
-    );
-*/
+export default handleCommands;
