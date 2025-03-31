@@ -120,6 +120,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .theme-button {
@@ -141,6 +142,32 @@
             transform: translateY(-10px);
             transition: transform 0.3s ease;
         }
+
+        /* Media Queries for Tablet View */
+        @media (max-width: 900px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p, .usage-info p {
+                font-size: 0.9rem;
+            }
+
+            .usage-info h2 {
+                font-size: 1.3rem;
+            }
+
+            .usage-info ul {
+                columns: 1;
+                -webkit-columns: 1;
+                -moz-columns: 1;
+            }
+
+            .theme-button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -148,6 +175,7 @@
         <h1>🎉 success! joel xmd deployed 🎉</h1>
         <p>the bot is now online and fully operational. 😊</p>
         <img src="https://github.com/joeljamestech2/JOEL-XMD/raw/main/mydata/media/alive.jpg" alt="joel xmd bot image">
+        <button class="theme-button" onclick="chatOwner()">Chat Owner</button> <!-- New button added here -->
         
         <div class="usage-info">
             <h2>🤖 how to use joel xmd bot 🤖</h2>
@@ -212,10 +240,10 @@
 
         <div class="theme-selector">
             <button class="theme-button" onclick="setTheme('default')">Default</button>
-            <button class="theme-button" onclick="setTheme('pastel')">Pastel</button>
-            <button class="theme-button" onclick="setTheme('sunset')">Sunset</button>
-            <button class="theme-button" onclick="setTheme('ocean')">Ocean</button>
-        </div>
+            <button class="theme-button" onclick="setTheme('red')">Red</button> <!-- New theme buttons -->
+            <button class="theme-button" onclick="setTheme('yellow')">Yellow</button>
+            <button class="theme-button" onclick="setTheme('blue')">Blue</button>
+            <button class="theme-button" onclick="setTheme('black')">Black</button>        </div>
     </div>
 
     <script>
@@ -249,6 +277,42 @@
                     root.style.setProperty('--button-bg-color', '#2980b9');
                     root.style.setProperty('--button-text-color', '#fff');
                     break;
+                case 'red':
+                    root.style.setProperty('--bg-color-start', '#ff0000');
+                    root.style.setProperty('--bg-color-end', '#ff4d4d');
+                    root.style.setProperty('--container-bg-color', '#ffe6e6');
+                    root.style.setProperty('--text-color', '#800000');
+                    root.style.setProperty('--title-color', '#b30000');
+                    root.style.setProperty('--button-bg-color', '#b30000');
+                    root.style.setProperty('--button-text-color', '#fff');
+                    break;
+                case 'yellow':
+                    root.style.setProperty('--bg-color-start', '#ffff00');
+                    root.style.setProperty('--bg-color-end', '#ffff99');
+                    root.style.setProperty('--container-bg-color', '#ffffe6');
+                    root.style.setProperty('--text-color', '#808000');
+                    root.style.setProperty('--title-color', '#b3b300');
+                    root.style.setProperty('--button-bg-color', '#b3b300');
+                    root.style.setProperty('--button-text-color', '#fff');
+                    break;
+                case 'blue':
+                    root.style.setProperty('--bg-color-start', '#0000ff');
+                    root.style.setProperty('--bg-color-end', '#4d4dff');
+                    root.style.setProperty('--container-bg-color', '#e6e6ff');
+                    root.style.setProperty('--text-color', '#000080');
+                    root.style.setProperty('--title-color', '#0000b3');
+                    root.style.setProperty('--button-bg-color', '#0000b3');
+                    root.style.setProperty('--button-text-color', '#fff');
+                    break;
+                case 'black':
+                    root.style.setProperty('--bg-color-start', '#000000');
+                    root.style.setProperty('--bg-color-end', '#333333');
+                    root.style.setProperty('--container-bg-color', '#e6e6e6');
+                    root.style.setProperty('--text-color', '#ffffff');
+                    root.style.setProperty('--title-color', '#999999');
+                    root.style.setProperty('--button-bg-color', '#666666');
+                    root.style.setProperty('--button-text-color', '#fff');
+                    break;
                 default:
                     root.style.setProperty('--bg-color-start', '#ff9a9e');
                     root.style.setProperty('--bg-color-end', '#fad0c4');
@@ -259,6 +323,11 @@
                     root.style.setProperty('--button-text-color', '#fff');
                     break;
             }
+        }
+
+        // New function added here
+        function chatOwner() {
+            window.location.href = "https://wa.me/255781144539";
         }
     </script>
 </body>
