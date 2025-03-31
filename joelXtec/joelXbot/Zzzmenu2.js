@@ -1,54 +1,90 @@
-import config from '../../config.cjs'; // Import the config to use the prefix from the config file
+import moment from 'moment-timezone';
+import fs from 'fs';
+import os from 'os';
+import pkg, { prepareWAMessageMedia } from '@whiskeysockets/baileys';
+const { generateWAMessageFromContent, proto } = pkg;
+import config from '../../config.cjs';
 
-const menuCommand = async (m, sock) => {
-  const prefix = config.PREFIX; // Get the prefix from the config file
+const alive = async (m, sock) => {
+  const prefix = config.PREFIX;
+  const mode = config.MODE;
+  const pushName = m.pushName || 'User';
+
   const cmd = m.body.startsWith(prefix)
     ? m.body.slice(prefix.length).split(' ')[0].toLowerCase()
     : '';
 
-  // Menu Command
   if (cmd === "menu2") {
-    // Define the menu image URL
-    const menuImageUrl = 'https://avatars.githubusercontent.com/u/162905644?v=4';
+    await m.React('💮'); // React with a loading icon
+    // Calculate uptime
 
-    // Construct the menu text
-    const menuText = `
-*Welcome to the Bot Menu!*
-Here are the commands you can use:
+    const uptimeSeconds = process.uptime();
+    const days = Math.floor(uptimeSeconds / (24 * 3600));
+    const hours = Math.floor((uptimeSeconds % (24 * 3600)) / 3600);
+    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+    const seconds = Math.floor(uptimeSeconds % 60);
 
-1. *!ping* - Check the bot's response time
-2. *!joke* - Get a random joke
-3. *!meme* - Receive a random meme
-4. *!ringtone <text>* - Get a custom ringtone from text
-5. *!help* - Show this menu again
+    
+    // Get real time
+    const realTime = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xtime = moment.tz("Tanzania/Dodoma").format("HH:mm:ss");
+    const xdate = moment.tz("Tanzania/Dodoma").format("DD/MM/YYYY");
+    const time2 = moment().tz("Tanzania/Dodoma").format("HH:mm:ss");
+    let pushwish = "";
 
-Have fun using the bot! 😊`;
+    if (time2 < "05:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 🌄`;
+    } else if (time2 < "11:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴍᴏʀɴɪɴɢ 🌄`;
+    } else if (time2 < "15:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴀғᴛᴇʀɴᴏᴏɴ 🌅`;
+    } else if (time2 < "18:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌃`;
+    } else if (time2 < "19:00:00") {
+      pushwish = `ɢᴏᴏᴅ ᴇᴠᴇɴɪɴɢ 🌃`;
+    } else {
+      pushwish = `ɢᴏᴏᴅ ɴɪɢʜᴛ 🌌`;
+    }
 
-    // Send the menu message with the image and options
-    await m.React('📜'); // React with a scroll emoji to indicate the menu
+    const aliveMessage = `ʜᴇʟʟᴏ *${pushName}* ${pushwish}
 
-    sock.sendMessage(m.from, {
-      image: { url: menuImageUrl }, // Menu image URL
-      caption: menuText, // Text for the menu
+help
+menu 
+ping`;
+
+    // Prepare the image media
+    const imageMessage = await prepareWAMessageMedia(
+      { url: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/alive.jpg' },
+      { upload: sock.uploadMedia }
+    );
+
+    const aliveMessageWithImage = generateWAMessageFromContent(m.from, {
+      text: aliveMessage,
       contextInfo: {
-        isForwarded: true, // Mark as forwarded
+        isForwarded: true,
         forwardedNewsletterMessageInfo: {
-          newsletterJid: '120363317462952356@newsletter', // Replace with actual newsletter JID
-          newsletterName: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ", // Name of your bot
+          newsletterJid: '120363317462952356@newsletter',
+          newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ",
           serverMessageId: -1,
         },
-        forwardingScore: 999,
+        forwardingScore: 999, // Score to indicate it has been forwarded
         externalAdReply: {
-          title: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ᴠ¹⁰",
-          body: "Explore the commands to interact with the bot!",
-          thumbnailUrl: menuImageUrl, // Use the same image URL for the thumbnail
-          sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Channel or bot URL
-          mediaType: 1, // Set to 1 for an image
-          renderLargerThumbnail: false,
+          title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ ᴠ ⁷",
+          body: "ᴘᴏᴡᴇʀᴇʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+          thumbnailUrl: 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg', // Add thumbnail URL if required
+          sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+          mediaType: 1,
+          renderLargerThumbnail: true,
         },
       },
-    }, { quoted: m }); // Send the menu message with the quoted message if needed
+      ...imageMessage,
+    });
+
+    await m.React('☄️'); // React with a success icon
+
+    // Send the message with the image
+    await sock.sendMessage(m.from, aliveMessageWithImage, { quoted: m });
   }
 };
 
-export default menuCommand;
+export default alive;
