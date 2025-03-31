@@ -4,7 +4,7 @@
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
 <img alt="lord joel"
-src="https://files.catbox.moe/6l4jt5.jpg"/>
+src="mydata/media/joelXbot.jpg"/>
 
 
 
