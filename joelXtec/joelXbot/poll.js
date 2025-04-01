@@ -1,4 +1,3 @@
-
 import config from '../../config.cjs';
 
 const pollCommand = async (m, Matrix) => {
@@ -8,9 +7,9 @@ const pollCommand = async (m, Matrix) => {
   const parts = text.split(" ");
   const cmd = parts[0].toLowerCase();
 
-  if (cmd === 'poll') {
+  if (cmd === `${config.PREFIX}poll`) {
     // Remove the command word to get the poll content
-    const rest = text.slice(cmd.length).trim();
+    const rest = text.slice(cmd.length + config.PREFIX.length).trim();
 
     if (!rest.includes('|')) {
       return m.reply("⚠️ Usage: *poll Question | Option1 | Option2 | Option3*");
