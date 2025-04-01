@@ -4,7 +4,7 @@ import config from "../../config.cjs";
 
 const vcfCompiler = async (m, gss) => {
   try {
-    const cmd = m.body.toLowerCase().trim();
+    const cmd = m.body.startsWith(config.PREFIX) ? m.body.slice(config.PREFIX.length).toLowerCase().trim() : m.body.toLowerCase().trim();
     if (!["vcf"].includes(cmd)) return;
 
     if (!m.isGroup) {
@@ -45,5 +45,5 @@ END:VCARD`;
     m.reply("*⚠️ An error occurred while compiling contacts.*");
   }
 };
-
+//joel James tech
 export default vcfCompiler;
