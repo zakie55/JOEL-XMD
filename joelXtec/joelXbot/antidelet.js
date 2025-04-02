@@ -7,10 +7,6 @@ let antiDeleteEnabled = config.ANTI_DELETE || false;  // Read the setting from c
 const messageCache = new Map();
 const sentMessages = new Set();  // Track sent deleted message IDs
 
-// Define allowed groups and senders for forwarding messages
-const allowedGroups = ['groupID1', 'groupID2'];  // Add allowed group IDs here
-const allowedSenders = ['allowedSenderID1', 'allowedSenderID2'];  // Add allowed sender IDs here
-
 const AntiDelete = async (m, Matrix) => {
     const prefix = config.PREFIX;
     const text = m.body.slice(prefix.length).trim().split(' ');
@@ -20,7 +16,7 @@ const AntiDelete = async (m, Matrix) => {
     // Cache all messages (for content recovery)
     Matrix.ev.on('messages.upsert', ({ messages }) => {
         if (!antiDeleteEnabled) return;
-
+        
         messages.forEach(msg => {
             if (msg.key.fromMe || !msg.message) return;
             messageCache.set(msg.key.id, {
@@ -96,20 +92,12 @@ Current Status: ${antiDeleteEnabled ? '✅ ACTIVE' : '❌ INACTIVE'}
         try {
             for (const item of update) {
                 const { key, update: { message: deletedMessage } } = item;
-
-                // Skip messages from the bot itself (to avoid echoing its own deletions)
                 if (key.fromMe) continue;
 
-                // Check if the message comes from an allowed group or sender
-                if (!allowedGroups.includes(key.remoteJid) && !allowedSenders.includes(key.participant)) {
-                    console.log(`Skipped forwarding message from ${key.remoteJid} or ${key.participant}`);
-                    continue;
-                }
-
-                // Cache and forward only non-redundant messages
                 const cachedMsg = messageCache.get(key.id);
-                if (!cachedMsg || sentMessages.has(key.id)) continue;  // Avoid sending duplicate forwarded messages
+                if (!cachedMsg || sentMessages.has(key.id)) continue;  // Check if already sent
 
+                // Only send the content of the deleted message
                 const deletedMsgContent = cachedMsg.content;
 
                 // Prepare the forwarded newsletter message details
@@ -126,9 +114,9 @@ Current Status: ${antiDeleteEnabled ? '✅ ACTIVE' : '❌ INACTIVE'}
                         externalAdReply: {
                             title: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ᴠ¹⁰",
                             body: "ᴘɪɴɢ sᴘᴇᴇᴅ ᴄᴀʟᴄᴜʟᴀᴛɪᴏɴs",
-                            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4',
-                            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
-                            mediaType: 1,
+                            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4', // Add thumbnail URL if required
+                            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+                            mediaType: 1, // Image media type
                             renderLargerThumbnail: false,
                         },
                     },
@@ -158,5 +146,5 @@ Current Status: ${antiDeleteEnabled ? '✅ ACTIVE' : '❌ INACTIVE'}
         });
     }, 60000);
 };
-//lord joel amaxmai
+
 export default AntiDelete;
