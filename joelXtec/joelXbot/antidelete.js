@@ -99,11 +99,30 @@ Current Status: ${antiDeleteEnabled ? '✅ ACTIVE' : '❌ INACTIVE'}
                 // Only send the content of the deleted message
                 const deletedMsgContent = cachedMsg.content;
 
-                // Send the deleted message content in the chat
-                await Matrix.sendMessage(key.remoteJid, { 
-                    text: `*DELETED MESSAGE*:
-                    \n\n${deletedMsgContent}`,
-                });
+                // Prepare the forwarded newsletter message details
+                const forwardedMessage = {
+                    text: `*DELETED MESSAGE*:\n\n${deletedMsgContent}`,
+                    contextInfo: {
+                        isForwarded: true,
+                        forwardedNewsletterMessageInfo: {
+                            newsletterJid: '120363317462952356@newsletter',
+                            newsletterName: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ",
+                            serverMessageId: -1,
+                        },
+                        forwardingScore: 999, // Score to indicate it has been forwarded
+                        externalAdReply: {
+                            title: "ᴊᴏᴇʟ xᴍᴅ ʙᴏᴛ ᴠ¹⁰",
+                            body: "ᴘɪɴɢ sᴘᴇᴇᴅ ᴄᴀʟᴄᴜʟᴀᴛɪᴏɴs",
+                            thumbnailUrl: 'https://avatars.githubusercontent.com/u/162905644?v=4', // Add thumbnail URL if required
+                            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K', // Add source URL if necessary
+                            mediaType: 1, // Image media type
+                            renderLargerThumbnail: false,
+                        },
+                    },
+                };
+
+                // Send the deleted message content as a forwarded message
+                await Matrix.sendMessage(key.remoteJid, forwardedMessage, { quoted: m });
 
                 // Remove the deleted message from cache
                 messageCache.delete(key.id);
