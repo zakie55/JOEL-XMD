@@ -4,7 +4,7 @@
   "keywords": [
     "whatsapp bot"
   ],
-  "logo":"https://files.catbox.moe/5a2euh.jpg",
+  "logo":"https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg",
   "repository": "https://github.com/Ethix-Xsid/Ethix-MD",
   "stack": "container",
   "env": { 
@@ -31,7 +31,7 @@
     "ANTI_DELETE": {
       "description": "make it true if you wanna enable antidelete mode",
       "required": false,
-      "value": "false"
+      "value": "true"
       },
     "AUTOLIKE_EMOJI": {
       "description": "Input your custom status like emoji else leave blank to use default => 💚",
