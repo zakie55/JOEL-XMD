@@ -4,7 +4,7 @@
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 
 <img alt="lord joel"
-src="mydata/media/joelXbot.jpg"/>
+src="https://i.ibb.co/8DcCtqXM/shaban-md.webp"/>
 
 
 
