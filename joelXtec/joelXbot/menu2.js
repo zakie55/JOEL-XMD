@@ -29,7 +29,7 @@ const LogoCmd = async (m, sock) => {
             'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg',
           sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
           mediaType: 1,
-          renderLargerThumbnail: false,
+          renderLargerThumbnail: true,
         },
       },
     };
@@ -328,7 +328,7 @@ const LogoCmd = async (m, sock) => {
               'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg',
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
             mediaType: 1,
-            renderLargerThumbnail: false,
+            renderLargerThumbnail: true,
           },
         },
       };
