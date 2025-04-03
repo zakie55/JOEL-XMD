@@ -48,265 +48,264 @@ const LogoCmd = async (m, sock) => {
 
       // The logo URL is static
       const logoUrl = 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg';
-      const caption = `
-╭─❍「 ᴄᴏɴᴠᴇʀᴛᴏʀ 」❍
-│▸ attp l
-│▸ attp2
-│▸ attp3
-│▸ binary
-│▸ ebinary
-│▸ emotemix
-│▸ mp3
+      const caption = `╭─❍「 ᴄᴏɴᴠᴇʀᴛᴏʀ 」❍
+│▸ ᴀᴛᴛᴘ ʟ
+│▸ ᴀᴛᴛᴘ2
+│▸ ᴀᴛᴛᴘ3
+│▸ ʙɪɴᴀʀʏ
+│▸ ᴇʙɪɴᴀʀʏ
+│▸ ᴇᴍᴏᴛᴇᴍɪx
+│▸ ᴍᴘ3
 ╰─┬────❍
 ╭─┴❍「  ʀᴇʟɪɢɪᴏɴ」 ❍
-│▸ Biblebooks
-│▸ Bible
-│▸ Surah Menu
-│▸ Quranvid
-│▸ qvid
-│▸ qimg
-│▸ quranimage
-│▸ SurahAudio
-│▸ SurahUrdu
-│▸ AsmaulHusna
-│▸ Prophetname
+│▸ ʙɪʙʟᴇʙᴏᴏᴋs
+│▸ ʙɪʙʟᴇ
+│▸ sᴜʀᴀʜ ᴍᴇɴᴜ
+│▸ ᴏ̨ᴜʀᴀɴᴠɪᴅ
+│▸ ᴏ̨ᴠɪᴅ
+│▸ ᴏ̨ɪᴍɢ
+│▸ ᴏ̨ᴜʀᴀɴɪᴍᴀɢᴇ
+│▸ sᴜʀᴀʜᴀᴜᴅɪᴏ
+│▸ sᴜʀᴀʜᴜʀᴅᴜ
+│▸ ᴀsᴍᴀᴜʟʜᴜsɴᴀ
+│▸ ᴘʀᴏᴘʜᴇᴛɴᴀᴍᴇ
 ╰─┬────❍
 ╭─┴❍「ᴇᴄᴏɴᴏᴍʏ 」❍
-│▸ economy
-│▸ balance
-│▸ daily
-│▸ leaderboard
-│▸ transfer
-│▸ earn <amount>
-│▸ spend <amount>
-│▸ deposit <amount>
-│▸ withdraw <amount>
-│▸ transfer <recipient> <amnt>
+│▸ ᴇᴄᴏɴᴏᴍʏ
+│▸ ʙᴀʟᴀɴᴄᴇ
+│▸ ᴅᴀɪʟʏ
+│▸ ʟᴇᴀᴅᴇʀʙᴏᴀʀᴅ
+│▸ ᴛʀᴀɴsғᴇʀ
+│▸ ᴇᴀʀɴ <ᴀᴍᴏᴜɴᴛ>
+│▸ sᴘᴇɴᴅ <ᴀᴍᴏᴜɴᴛ>
+│▸ ᴅᴇᴘᴏsɪᴛ <ᴀᴍᴏᴜɴᴛ>
+│▸ ᴡɪᴛʜᴅʀᴀᴡ <ᴀᴍᴏᴜɴᴛ>
+│▸ ᴛʀᴀɴsғᴇʀ <ʀᴇᴄɪᴘɪᴇɴᴛ> <ᴀᴍɴᴛ>
 ╰─┬────❍
 ╭─┴❍「 ᴀɪ ᴄᴍᴅs ❍
-│▸ AI
-│▸ bug
-│▸ report
-│▸ GPT
-│▸ remini
+│▸ ᴀɪ
+│▸ ʙᴜɢ
+│▸ ʀᴇᴘᴏʀᴛ
+│▸ ɢᴘᴛ
+│▸ ʀᴇᴍɪɴɪ
 ╰─┬────❍
 ╭─┴❍「 ᴛᴏᴏʟ」 ❍
-│▸ calculator
-│▸ tempfile
-│▸ checkmail
-│▸ trt
-│▸ tts
+│▸ ᴄᴀʟᴄᴜʟᴀᴛᴏʀ
+│▸ ᴛᴇᴍᴘғɪʟᴇ
+│▸ ᴄʜᴇᴄᴋᴍᴀɪʟ
+│▸ ᴛʀᴛ
+│▸ ᴛᴛs
 ╰─┬────❍
 ╭─┴❍「 ᴊᴏᴋᴇ 」 ❍
-│▸ joke
-│▸ advice
-│▸ meme
-│▸ rank
-│▸ quote
+│▸ ᴊᴏᴋᴇ
+│▸ ᴀᴅᴠɪᴄᴇ
+│▸ ᴍᴇᴍᴇ
+│▸ ʀᴀɴᴋ
+│▸ ᴏ̨ᴜᴏᴛᴇ
 ╰─┬────❍
 ╭─┴❍「ɢʀᴏᴜᴘ ❍
-│▸ qcc
-│▸ linkgroup
-│▸ setppg
-│▸ setname
-│▸ setdesc
-│▸ antibot
-│▸ antileft
-│▸ group
-│▸ groupinfo
-│▸ gcsetting
-│▸ welcome
-│▸ add
-│▸ kickall
-│▸ kick
-│▸ hidetag
-│▸ tagadmin
-│▸ tagnotadmin
-│▸ tagall
-│▸ antilink
-│▸ promote
-│▸ demote
-│▸ Vcf
-│▸ poll
-│▸ getbio
+│▸ ᴏ̨ᴄᴄ
+│▸ ʟɪɴᴋɢʀᴏᴜᴘ
+│▸ sᴇᴛᴘᴘɢ
+│▸ sᴇᴛɴᴀᴍᴇ
+│▸ sᴇᴛᴅᴇsᴄ
+│▸ ᴀɴᴛɪʙᴏᴛ
+│▸ ᴀɴᴛɪʟᴇғᴛ
+│▸ ɢʀᴏᴜᴘ
+│▸ ɢʀᴏᴜᴘɪɴғᴏ
+│▸ ɢᴄsᴇᴛᴛɪɴɢ
+│▸ ᴡᴇʟᴄᴏᴍᴇ
+│▸ ᴀᴅᴅ
+│▸ ᴋɪᴄᴋᴀʟʟ
+│▸ ᴋɪᴄᴋ
+│▸ ʜɪᴅᴇᴛᴀɢ
+│▸ ᴛᴀɢᴀᴅᴍɪɴ
+│▸ ᴛᴀɢɴᴏᴛᴀᴅᴍɪɴ
+│▸ ᴛᴀɢᴀʟʟ
+│▸ ᴀɴᴛɪʟɪɴᴋ
+│▸ ᴘʀᴏᴍᴏᴛᴇ
+│▸ ᴅᴇᴍᴏᴛᴇ
+│▸ ᴠᴄғ
+│▸ ᴘᴏʟʟ
+│▸ ɢᴇᴛʙɪᴏ
 ╰─┬────❍
 ╭─┴❍「 ᴅᴏᴡɴʟᴏᴀᴅ」❍
-│▸ apk
-│▸ facebook
-│▸ mediafire
-│▸ pinterestdl
-│▸ gdrive
-│▸ insta
-│▸ tiktok
+│▸ ᴀᴘᴋ
+│▸ ғᴀᴄᴇʙᴏᴏᴋ
+│▸ ᴍᴇᴅɪᴀғɪʀᴇ
+│▸ ᴘɪɴᴛᴇʀᴇsᴛᴅʟ
+│▸ ɢᴅʀɪᴠᴇ
+│▸ ɪɴsᴛᴀ
+│▸ ᴛɪᴋᴛᴏᴋ
 ╰─┬────❍
 ╭─┴❍「ᴘʀᴇᴍɪᴜᴍ」 ❍
-│▸ bugmenu
-│▸ docbug
-│▸ lockcrash
-│▸ amountbug <amount>
-│▸ pmbug <number>
-│▸ delbug <number>
-│▸ trollbug <number>
-│▸ docubug <number>
-│▸ unlimitedbug <number>
-│▸ bombbug <number>
-│▸ lagbug <number>
-│▸ gcbug <grouplink>
-│▸ delgcbug <grouplink>
-│▸ trollgcbug <grouplink>
-│▸ labug <grouplink>
-│▸ bombgcbug <grouplink>
-│▸ unlimitedgcbug <grouplink>
-│▸ docugcbug <grouplink>
+│▸ ʙᴜɢᴍᴇɴᴜ
+│▸ ᴅᴏᴄʙᴜɢ
+│▸ ʟᴏᴄᴋᴄʀᴀsʜ
+│▸ ᴀᴍᴏᴜɴᴛʙᴜɢ <ᴀᴍᴏᴜɴᴛ>
+│▸ ᴘᴍʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ᴅᴇʟʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ᴛʀᴏʟʟʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ᴅᴏᴄᴜʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ᴜɴʟɪᴍɪᴛᴇᴅʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ʙᴏᴍʙʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ʟᴀɢʙᴜɢ <ɴᴜᴍʙᴇʀ>
+│▸ ɢᴄʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
+│▸ ᴅᴇʟɢᴄʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
+│▸ ᴛʀᴏʟʟɢᴄʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
+│▸ ʟᴀʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
+│▸ ʙᴏᴍʙɢᴄʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
+│▸ ᴜɴʟɪᴍɪᴛᴇᴅɢᴄʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
+│▸ ᴅᴏᴄᴜɢᴄʙᴜɢ <ɢʀᴏᴜᴘʟɪɴᴋ>
 ╰─┬────❍
 ╭─┴❍「 ᴅᴏᴡɴʟᴏᴀᴅ」❍ 
-│▸ play
-│▸ song
-│▸ video
-│▸ smedia
-│▸ movie
-│▸ image
-│▸ pinterest
-│▸ yts
-│▸ lyrics
+│▸ ᴘʟᴀʏ
+│▸ sᴏɴɢ
+│▸ ᴠɪᴅᴇᴏ
+│▸ sᴍᴇᴅɪᴀ
+│▸ ᴍᴏᴠɪᴇ
+│▸ ɪᴍᴀɢᴇ
+│▸ ᴘɪɴᴛᴇʀᴇsᴛ
+│▸ ʏᴛs
+│▸ ʟʏʀɪᴄs
 ╰─┬────❍
 ╭─┴❍「 ᴍᴀɪɴ 」❍
-│▸ ping
-│▸ alive
-│▸ owner
-│▸ sudo
-│▸ menu
-│▸ infobot
+│▸ ᴘɪɴɢ
+│▸ ᴀʟɪᴠᴇ
+│▸ ᴏᴡɴᴇʀ
+│▸ sᴜᴅᴏ
+│▸ ᴍᴇɴᴜ
+│▸ ɪɴғᴏʙᴏᴛ
 ╰─┬────❍
 ╭─┴❍「 ᴏᴡɴᴇʀ 」❍
-│▸ vv
-│▸ vv1
-│▸ vv2
-│▸ vv3
-│▸ update
-│▸ updatenow
-│▸ pair
-│▸ forward
-│▸ getall
-│▸ jid
-│▸ join
-│▸ leave
-│▸ block
-│▸ unblock
-│▸ allcmds
-│▸ antiall
-│▸ setstatus
-│▸ autobio
-│▸ autotyping
-│▸ alwaysonline
-│▸ autoread
-│▸ autosview
+│▸ ᴠᴠ
+│▸ ᴠᴠ1
+│▸ ᴠᴠ2
+│▸ ᴠᴠ3
+│▸ ᴜᴘᴅᴀᴛᴇ
+│▸ ᴜᴘᴅᴀᴛᴇɴᴏᴡ
+│▸ ᴘᴀɪʀ
+│▸ ғᴏʀᴡᴀʀᴅ
+│▸ ɢᴇᴛᴀʟʟ
+│▸ ᴊɪᴅ
+│▸ ᴊᴏɪɴ
+│▸ ʟᴇᴀᴠᴇ
+│▸ ʙʟᴏᴄᴋ
+│▸ ᴜɴʙʟᴏᴄᴋ
+│▸ ᴀʟʟᴄᴍᴅs
+│▸ ᴀɴᴛɪᴀʟʟ
+│▸ sᴇᴛsᴛᴀᴛᴜs
+│▸ ᴀᴜᴛᴏʙɪᴏ
+│▸ ᴀᴜᴛᴏᴛʏᴘɪɴɢ
+│▸ ᴀʟᴡᴀʏsᴏɴʟɪɴᴇ
+│▸ ᴀᴜᴛᴏʀᴇᴀᴅ
+│▸ ᴀᴜᴛᴏsᴠɪᴇᴡ
 ╰─┬────❍
 ╭─┴❍「 sᴛᴀʟᴋ 」
-│▸ truecaller
-│▸ instastalk
-│▸ tiktokstalk
-│▸ npmstalk
-│▸ githubstalk
+│▸ ᴛʀᴜᴇᴄᴀʟʟᴇʀ
+│▸ ɪɴsᴛᴀsᴛᴀʟᴋ
+│▸ ᴛɪᴋᴛᴏᴋsᴛᴀʟᴋ
+│▸ ɴᴘᴍsᴛᴀʟᴋ
+│▸ ɢɪᴛʜᴜʙsᴛᴀʟᴋ
 ╰─┬────❍
 ╭─┴❍「 ᴏᴛʜᴇʀ ❍ 
-│▸ sapk
-│▸ url
-│▸ url2
-│▸ tourl
-│▸ support
-│▸ follow
-│▸ channel
-│▸ inc
-│▸ i
-│▸ app
-│▸ appsearch
-│▸ playstore
-│▸ channel
-│▸ support
-│▸ joel
-│▸ chat
+│▸ sᴀᴘᴋ
+│▸ ᴜʀʟ
+│▸ ᴜʀʟ2
+│▸ ᴛᴏᴜʀʟ
+│▸ sᴜᴘᴘᴏʀᴛ
+│▸ ғᴏʟʟᴏᴡ
+│▸ ᴄʜᴀɴɴᴇʟ
+│▸ ɪɴᴄ
+│▸ ɪ
+│▸ ᴀᴘᴘ
+│▸ ᴀᴘᴘsᴇᴀʀᴄʜ
+│▸ ᴘʟᴀʏsᴛᴏʀᴇ
+│▸ ᴄʜᴀɴɴᴇʟ
+│▸ sᴜᴘᴘᴏʀᴛ
+│▸ ᴊᴏᴇʟ
+│▸ ᴄʜᴀᴛ
 │▸ ss
 ╰─┬────❍
 ╭─┴❍「 ɴᴇᴡ ❍
-│▸ score
-│▸ snakvid
-│▸ weather
-│▸ qr
-│▸ readqr
-│▸ profile
-│▸ shortenurl
-│▸ givetext
-│▸ fancy
+│▸ sᴄᴏʀᴇ
+│▸ sɴᴀᴋᴠɪᴅ
+│▸ ᴡᴇᴀᴛʜᴇʀ
+│▸ ᴏ̨ʀ
+│▸ ʀᴇᴀᴅᴏ̨ʀ
+│▸ ᴘʀᴏғɪʟᴇ
+│▸ sʜᴏʀᴛᴇɴᴜʀʟ
+│▸ ɢɪᴠᴇᴛᴇxᴛ
+│▸ ғᴀɴᴄʏ
 ╰─┬────❍
 ╭─┴❍「 sᴀʏ ❍
-│▸ say
-│▸ tts
-│▸ bass
-│▸ blowin
-│▸ deep
-│▸ earrape
-│▸ fast
-│▸ fat
-│▸ nighttime
-│▸ reverse
-│▸ robot
-│▸ slow
-│▸ smooth
-│▸ typai
+│▸ sᴀʏ
+│▸ ᴛᴛs
+│▸ ʙᴀss
+│▸ ʙʟᴏᴡɪɴ
+│▸ ᴅᴇᴇᴘ
+│▸ ᴇᴀʀʀᴀᴘᴇ
+│▸ ғᴀsᴛ
+│▸ ғᴀᴛ
+│▸ ɴɪɢʜᴛᴛɪᴍᴇ
+│▸ ʀᴇᴠᴇʀsᴇ
+│▸ ʀᴏʙᴏᴛ
+│▸ sʟᴏᴡ
+│▸ sᴍᴏᴏᴛʜ
+│▸ ᴛʏᴘᴀɪ
 ╰─┬────❍
 ╭─┴❍「 ʟᴏɢᴏ ❍
-│▸ logo
-│▸ logo1
-│▸ logo2
-│▸ logo3
-│▸ logo4
-│▸ logo5
-│▸ logo6
-│▸ logo7
-│▸ logo8
-│▸ logo9
-│▸ logo10
-│▸ logo11
-│▸ logo12
-│▸ logo13
-│▸ logo14
-│▸ logo15
-│▸ logo16
-│▸ logo17
-│▸ logo18
-│▸ logo19
+│▸ ʟᴏɢᴏ
+│▸ ʟᴏɢᴏ1
+│▸ ʟᴏɢᴏ2
+│▸ ʟᴏɢᴏ3
+│▸ ʟᴏɢᴏ4
+│▸ ʟᴏɢᴏ5
+│▸ ʟᴏɢᴏ6
+│▸ ʟᴏɢᴏ7
+│▸ ʟᴏɢᴏ8
+│▸ ʟᴏɢᴏ9
+│▸ ʟᴏɢᴏ10
+│▸ ʟᴏɢᴏ11
+│▸ ʟᴏɢᴏ12
+│▸ ʟᴏɢᴏ13
+│▸ ʟᴏɢᴏ14
+│▸ ʟᴏɢᴏ15
+│▸ ʟᴏɢᴏ16
+│▸ ʟᴏɢᴏ17
+│▸ ʟᴏɢᴏ18
+│▸ ʟᴏɢᴏ19
 ╰─┬────❍
 ╭─┴❍「 ʜᴇɴᴛᴀɪ」 ❍
-│▸  hwaifu  
-│▸  trap  
-│▸  blowjob
-│▸  neko
-│▸  hneko
-│▸ couplepp
+│▸  ʜᴡᴀɪғᴜ  
+│▸  ᴛʀᴀᴘ  
+│▸  ʙʟᴏᴡᴊᴏʙ
+│▸  ɴᴇᴋᴏ
+│▸  ʜɴᴇᴋᴏ
+│▸ ᴄᴏᴜᴘʟᴇᴘᴘ
 ╰─┬────❍
 ╭─┴❍「 ᴡᴀɪғᴜ」 ❍
-│▸ neko
-│▸ couplepp
-│▸ cosplay
-│▸ megumin
-│▸ shinobu
+│▸ ɴᴇᴋᴏ
+│▸ ᴄᴏᴜᴘʟᴇᴘᴘ
+│▸ ᴄᴏsᴘʟᴀʏ
+│▸ ᴍᴇɢᴜᴍɪɴ
+│▸ sʜɪɴᴏʙᴜ
 ╰─┬────❍
 ╭─┴❍「 ʀᴇᴀᴄᴛɪᴏɴs」 ❍
-│▸ highfive
-│▸ glomp
-│▸ handhold
-│▸ shinobu
-│▸ cuddle
-│▸ cringe
-│▸ sad
-│▸ happy
-│▸ dance
-│▸ smug
-│▸ blush
-│▸ awo
-│▸ wave
-│▸ smile
+│▸ ʜɪɢʜғɪᴠᴇ
+│▸ ɢʟᴏᴍᴘ
+│▸ ʜᴀɴᴅʜᴏʟᴅ
+│▸ sʜɪɴᴏʙᴜ
+│▸ ᴄᴜᴅᴅʟᴇ
+│▸ ᴄʀɪɴɢᴇ
+│▸ sᴀᴅ
+│▸ ʜᴀᴘᴘʏ
+│▸ ᴅᴀɴᴄᴇ
+│▸ sᴍᴜɢ
+│▸ ʙʟᴜsʜ
+│▸ ᴀᴡᴏ
+│▸ ᴡᴀᴠᴇ
+│▸ sᴍɪʟᴇ
 ╰─────────────❍
 *ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`;
 
