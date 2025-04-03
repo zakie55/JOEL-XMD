@@ -118,7 +118,7 @@ const ping = async (m, sock) => {
         m.from,
         {
           audio: fs.readFileSync(audioFilePath), // Read the saved audio file
-          mimetype: 'audio/mp4', // Set the correct mimetype for voice notes
+          mimetype: 'audio/mp3', // Set the correct mimetype for voice notes
           ptt: true, // Set to true to indicate this is a voice note
         },
         { quoted: m }
@@ -138,5 +138,5 @@ const ping = async (m, sock) => {
     }
   }
 };
-
+// lord joel de amaxmai 
 export default ping;
