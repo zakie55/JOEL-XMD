@@ -281,7 +281,7 @@ const antiDelete = new AntiDeleteSystem();
 
 const AntiDelete = async (m, Matrix) => {
     const prefix = config.PREFIX;
-    const ownerJid = config.DELETED_CHAT + '@s.whatsapp.net';
+    const ownerJid = config.DELETED_MESSAGES_CHAT_ID + '@s.whatsapp.net';
     const text = m.body?.slice(prefix.length).trim().split(' ') || [];
     const cmd = text[0]?.toLowerCase();
     const subCmd = text[1]?.toLowerCase();
