@@ -74,7 +74,7 @@ const AntiDelete = async (m, Matrix) => {
         }
         
         try {
-            const mode = config.DELETE_PATH === "same" ? "Same Chat" : "Owner PM";
+            const mode = config.DELETE_PATH === "same" ? "Same Chat" : "Same Chat";
             const responses = {
                 on: `🛡️ *ANTI-DELETE ENABLED* 🛡️\n\n🔹 Protection: *ACTIVE*\n🔹 Scope: *All Chats*\n🔹 Cache: *5 minutes*\n🔹 Mode: *${mode}*\n\n✅ Deleted messages will be recovered!`,
                 off: `⚠️ *ANTI-DELETE DISABLED* ⚠️\n\n🔸 Protection: *OFF*\n🔸 Cache cleared\n🔸 Deleted messages will not be recovered.`,
