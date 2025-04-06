@@ -48,7 +48,7 @@ const generateReactionCommand = async (reactionName, reactionEmoji, m, sock) => 
       // React to indicate processing
       await sock.sendMessage(m.from, { react: { text: "⏳", key: m.key } });
 
-      const reactionUrl = `https://api.waifu.pics/sfw/${cmd}`;
+      const reactionUrl = `https://api.nexoracle.com/reactions-pack/${cmd}?apikey=33241c3a8402295fdc`;
       const reactionEmojiForCmd = reactionEmoji || '👋'; // Default emoji if not provided
 
       // Get the reply author (auteurMsgRepondu is expected to be set somewhere)
