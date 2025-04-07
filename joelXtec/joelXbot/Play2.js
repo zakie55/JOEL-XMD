@@ -1,51 +1,72 @@
 import axios from 'axios';
+import config from '../../config.cjs';
 
-const play = async (m, sock) => {
-  const prefix = config.PREFIX;
-  const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
-
-  if (cmd === "play2") {
-    const query = m.body.slice(prefix.length + cmd.length).trim(); // Extract song name from the message
-
-    if (!query) {
-      await sock.sendMessage(m.from, { text: '🎧 Please provide the song you want me to play! 🎶' });
+const playHandler = async (m, sock) => {
+  try {
+    // Basic validation
+    if (!m?.from || !m?.body || !sock) {
+      console.error('Invalid message or socket object');
       return;
     }
 
-    await m.React('⏳'); // Loading reaction
+    const prefix = config.PREFIX || '!';
+    const body = m.body || '';
+    
+    // Check if message starts with prefix
+    if (!body.startsWith(prefix)) return;
 
-    try {
-      // Use the API to get the song details
-      const apiUrl = `https://apis.davidcyriltech.my.id/play?query=${encodeURIComponent(query)}`;
-      const response = await axios.get(apiUrl);
+    const cmd = body.slice(prefix.length).split(' ')[0].toLowerCase();
+    const text = body.slice(prefix.length + cmd.length).trim();
 
-      if (!response.data || !response.data.audio_url) {
-        await sock.sendMessage(m.from, { text: 'Sorry 😔, I couldn\'t find that song. Try a different query!' });
+    if (cmd === "video2") {
+      if (!text) {
+        await sock.sendMessage(m.from, { text: "🔎 Please provide a song name or artist!" }, { quoted: m });
+        await m.React('❌');
         return;
       }
 
-      const downloadUrl = response.data.audio_url;
+      await m.React('⏳');
 
-      // Send the audio file
-      await sock.sendMessage(
-        m.from,
-        {
-          audio: { url: downloadUrl },
-          mimetype: 'audio/mp4',
-          ptt: true, // Push-to-talk audio
-        },
-        { quoted: m }
-      );
+      try {
+        const apiUrl = `https://apis.davidcyriltech.my.id/play?query=${encodeURIComponent(text)}`;
+        const response = await axios.get(apiUrl);
+        const data = response.data;
 
-      // Success reaction and message
-      await sock.sendMessage(m.from, { text: `🎶 Here you go, ${m.pushName}! Enjoy your song! 🎧💖` });
-      await m.React('💃'); // Success dance emoji
-    } catch (error) {
-      console.error(error);
-      await sock.sendMessage(m.from, { text: 'Oops! 😣 Something went wrong while fetching the song.' });
-      await m.React('💔'); // Sad face reaction
+        if (!data?.status || !data?.result) {
+          await sock.sendMessage(m.from, { text: "❌ No results found!" }, { quoted: m });
+          await m.React('❌');
+          return;
+        }
+
+        const { title = 'Unknown', download_url, thumbnail, duration = '0:00' } = data.result;
+
+        // Send video only
+        try {
+          await sock.sendMessage(
+            m.from,
+            {
+              video: { url: download_url },
+              mimetype: "video/mp4",
+              caption: `🎬 *${title}*\n⏱ ${duration}`,
+              thumbnail: thumbnail
+            },
+            { quoted: m }
+          );
+          await m.React('🎬');
+        } catch (videoError) {
+          console.error("Error sending video:", videoError);
+          await sock.sendMessage(m.from, { text: "❌ Failed to send video!" }, { quoted: m });
+        }
+
+      } catch (error) {
+        console.error("Error in play command:", error);
+        await sock.sendMessage(m.from, { text: "❌ Failed to process your request!" }, { quoted: m });
+        await m.React('❌');
+      }
     }
+  } catch (error) {
+    console.error('Critical error in playHandler:', error);
   }
 };
-
-export default play;
+// video by joel md
+export default playHandler;
