@@ -1,3 +1,4 @@
+/*
 import axios from 'axios';
 
 const song = async (m, sock) => {
@@ -74,3 +75,65 @@ const song = async (m, sock) => {
 };
 
 export default song;
+*/
+
+import axios from 'axios';
+import { makeWASocket, useSingleFileAuthState } from '@whiskeysockets/baileys';
+import config from '../../config.cjs'; // Adjust the import based on your actual file structure
+
+// Authentication and socket setup
+const { state, saveState } = useSingleFileAuthState('./auth_info.json'); // Path for the auth file
+const sock = makeWASocket({
+  auth: state,
+  printQRInTerminal: true,
+});
+
+// Save the authentication state after each update
+sock.ev.on('creds.update', saveState);
+
+const play = async (m) => {
+  const cmd = m.body.toLowerCase(); // Command received from the user
+  const prefix = config.PREFIX || '!'; // Get the prefix from config, default to '!' if not defined
+
+  // Handle the "play" command only if it starts with the prefix
+  if (cmd.startsWith(prefix + "play2")) {
+    const query = cmd.slice(prefix.length + 5); // Extract the search query after the "play" command
+    await m.React('⏳'); // Loading reaction
+
+    try {
+      // Send request to the external play API
+      const response = await axios.get(`https://apis.davidcyriltech.my.id/play?query=${query}`);
+      
+      // Check if the response contains the download_url
+      if (response.data && response.data.download_url) {
+        const audioUrl = response.data.download_url;
+
+        // Send the audio file to the user
+        sock.sendMessage(
+          m.from,
+          {
+            audio: { url: audioUrl },
+            mimetype: 'audio/mp4',
+            ptt: true,
+            contextInfo: {
+              mentionedJid: [m.sender],
+              forwardingScore: 999,
+              isForwarded: true,
+            },
+          },
+          { quoted: m }
+        );
+        
+        // Send a cute confirmation message
+        sock.sendMessage(m.from, { text: `🎶 Aww, I'm playing your song, ${m.pushName}! 🎧 Enjoy!` }, { quoted: m });
+      } else {
+        sock.sendMessage(m.from, { text: 'Oopsie! 😅 I couldn\'t find that song, try something else! 🎶' }, { quoted: m });
+      }
+    } catch (error) {
+      console.error("Error fetching audio:", error);
+      sock.sendMessage(m.from, { text: 'Oh no! 😿 Something went wrong while fetching the music. Please try again later!' }, { quoted: m });
+    }
+  }
+};
+
+export default play;
