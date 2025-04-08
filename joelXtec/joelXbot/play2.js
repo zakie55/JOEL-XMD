@@ -64,8 +64,8 @@ const play2 = async (m, gss) => {
           },
           externalAdReply: {
             title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ  ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
-            body: "enjoy",
-            thumbnailUrl: `hehe`,
+            body: "listen your requested audio",
+            thumbnailUrl: thumbnail,
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
             mediaType: 1,
             renderLargerThumbnail: true,
