@@ -11,7 +11,7 @@
 
 import axios from "axios";
 import yts from "yt-search";
-import config from '../config.cjs';
+import config from '../../config.cjs';
 
 const play2 = async (m, gss) => {
   const prefix = config.PREFIX;
