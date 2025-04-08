@@ -1,6 +1,17 @@
+/*
+................................
+
+  ɴᴇᴡ ᴘʟᴀʏ ᴄᴍᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ
+................................
+          ᴇɴᴊᴏʏ
+
+
+°l||l°l||l°l||l°l||l°l||l°l||l
+*/
+
 import axios from "axios";
 import yts from "yt-search";
-import config from '../../config.cjs';
+import config from '../config.cjs';
 
 const play2 = async (m, gss) => {
   const prefix = config.PREFIX;
@@ -25,23 +36,54 @@ const play2 = async (m, gss) => {
         videoUrl = searchResults.videos[0].url;
       }
 
-      const apiUrl = `https://home.lazacktech.biz.id/api/ytdl?url=${encodeURIComponent(videoUrl)}`;
+      const apiUrl = `https://api.davidcyriltech.my.id/youtube/mp3?url=${encodeURIComponent(videoUrl)}`;
+      
+      // Make a request to fetch the download URL
       const { data } = await axios.get(apiUrl);
-
+      
       if (!data.success) return m.reply("❌ Failed to download audio");
 
+      // Extract details from the search result or API response (assuming they are available)
+      const title = data.result.title || "Untitled";  // You may need to fetch the title from the response
+      const duration = data.result.duration || "Unknown";  // Assuming duration is available
+      const thumbnail = data.result.thumbnail || "https://default_thumbnail_url.com"; // Default or dynamic thumbnail URL
+
+      // Create the newsletter message payload
+      const messagePayload = {
+        audio: { url: data.result.downloadUrl },
+        mimetype: "audio/mpeg",
+        caption: `*ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`,
+        thumbnail: thumbnail,
+        contextInfo: {
+          isForwarded: true,
+          forwardingScore: 999,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363317462952356@newsletter',
+            newsletterName: "ᴊᴏᴇʟ xᴍᴅ ᴡᴀ ᴄʜᴀɴɴᴇʟ",
+            serverMessageId: -1,
+          },
+          externalAdReply: {
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ  ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ",
+            body: "ᴘʟᴀʏɪɴɢ ɴᴏᴡ ↻ ◁ II ▷ ↺
+",
+            thumbnailUrl: thumbnail,
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
+            mediaType: 1,
+            renderLargerThumbnail: true,
+          },
+        },
+      };
+
+      // Send the audio with the newsletter context
       await gss.sendMessage(
         m.from,
-        { 
-          audio: { url: data.result.download_link },
-          mimetype: 'audio/mpeg'
-        },
+        messagePayload,
         { quoted: m }
       );
 
     } catch (error) {
       console.error(error);
-      m.reply("❌ An error occurred: " + error.message);
+      m.reply("❌ An error occurred. Please try  play2");
     }
   }
 };
