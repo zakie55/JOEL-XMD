@@ -17,6 +17,11 @@
       "description": "mode public or self",
       "required": true,
       "value": "public"
+        },
+    "CHAT_BOT": {
+      "description": "Make it true to enable auto chat bot",
+      "required": false,
+      "value": "false"
     },
     "AUTO_STATUS_SEEN": {
       "description": "make it true if you want bot to view status",
