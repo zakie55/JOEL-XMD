@@ -28,6 +28,11 @@
       "required": false,
       "value": "true"
     },
+    "CHAT_BOT": {
+      "description": "Make it true if you want to enable chatbot",
+      "required": false,
+      "value": "false"
+    },
     "ANTI_DELETE": {
       "description": "make it true if you wanna enable antidelete mode",
       "required": false,
