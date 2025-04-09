@@ -45,20 +45,24 @@ const autotypingCommand = async (m, Matrix) => {
   const cmd = m.body.startsWith(prefix) ? m.body.slice(prefix.length).split(' ')[0].toLowerCase() : '';
   const text = m.body.slice(prefix.length + cmd.length).trim();
 
-  // Command processing
-  if (cmd === 'chatbot') {
+  // List of all commands that should toggle the chatbot state
+  const validCommands = ['chatbot', 'lydea', 'lydia', 'bot', 'automreply'];
+
+  // Check if the command is in the list of valid commands
+  if (validCommands.includes(cmd)) {
     if (!isCreator) return m.reply("*ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴍᴀᴅᴀғᴀᴋᴇʀ*");
-    
+
     let responseMessage;
 
+    // Toggle chatbot state based on the passed argument ('on' or 'off')
     if (text === 'on') {
       config.CHAT_BOT = true;
-      responseMessage = "Chatbot has been enabled.";
+      responseMessage = `${cmd.charAt(0).toUpperCase() + cmd.slice(1)}: Chatbot has been enabled.`;
     } else if (text === 'off') {
       config.CHAT_BOT = false;
-      responseMessage = "Chatbot has been disabled.";
+      responseMessage = `${cmd.charAt(0).toUpperCase() + cmd.slice(1)}: Chatbot has been disabled.`;
     } else {
-      responseMessage = "Usage:\n- `chatbot on`: Enable Auto-chatbot\n- `chatbot off`: Disable Auto-chatbot";
+      responseMessage = "Usage:\n- `command on`: Enable Chatbot\n- `command off`: Disable Chatbot";
     }
 
     try {
@@ -67,57 +71,20 @@ const autotypingCommand = async (m, Matrix) => {
       console.error("Error processing your request:", error);
       await Matrix.sendMessage(m.from, { text: 'Error processing your request.' }, { quoted: m });
     }
-  }
-
-  // Handle 'lydea' command
-  else if (cmd === 'lydea') {
-    if (!isCreator) return m.reply("*ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴍᴀᴅᴀғᴀᴋᴇʀ*");
-    // Custom handling for 'lydea'
-    await Matrix.sendMessage(m.from, { text: "Lydea command activated!" }, { quoted: m });
-  }
-
-  // Handle 'lydia' command
-  else if (cmd === 'lydia') {
-    if (!isCreator) return m.reply("*ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴍᴀᴅᴀғᴀᴋᴇʀ*");
-    // Custom handling for 'lydia'
-    await Matrix.sendMessage(m.from, { text: "Lydia command activated!" }, { quoted: m });
-  }
-
-  // Handle 'bot' command
-  else if (cmd === 'bot') {
-    if (!isCreator) return m.reply("*ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴍᴀᴅᴀғᴀᴋᴇʀ*");
-    // Custom handling for 'bot'
-    await Matrix.sendMessage(m.from, { text: "Bot command activated!" }, { quoted: m });
-  }
-
-  // Handle 'automreply' command (first occurrence)
-  else if (cmd === 'automreply') {
-    if (!isCreator) return m.reply("*ᴏᴡɴᴇʀ ᴄᴏᴍᴍᴀɴᴅ ᴍᴀᴅᴀғᴀᴋᴇʀ*");
-    
-    let responseMessage;
-    
-    if (text === 'on') {
-      config.AUTO_REPLY = true;
-      responseMessage = "Auto-reply has been enabled.";
-    } else if (text === 'off') {
-      config.AUTO_REPLY = false;
-      responseMessage = "Auto-reply has been disabled.";
-    } else {
-      responseMessage = "Usage:\n- `automreply on`: Enable Auto-reply\n- `automreply off`: Disable Auto-reply";
-    }
-
-    try {
-      await Matrix.sendMessage(m.from, { text: responseMessage }, { quoted: m });
-    } catch (error) {
-      console.error("Error processing your request:", error);
-      await Matrix.sendMessage(m.from, { text: 'Error processing your request.' }, { quoted: m });
-    }
-  }
-
-  // Handle 'automreply' command (second occurrence, if needed)
-  else if (cmd === 'automreply') {
-    // If you need to handle another action for automreply, you can add another block here
   }
 };
 
 export default autotypingCommand;
+
+
+/*
+
+1. chatbot on
+2. chatbot off
+3. lydea
+4. lydia
+5. bot
+6. automreply on
+7. automreply off
+
+                               */
