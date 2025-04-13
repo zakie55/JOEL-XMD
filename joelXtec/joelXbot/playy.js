@@ -43,7 +43,7 @@ const playHandler = async (m, sock) => {
         // Create a cute newsletter message payload
         const messagePayload = {
           audio: { url: download_url },
-          minetype: "audio/mpeg",
+          minetype: "audio/mp3",
           caption: `🎵 *${title}* 🎶\n⏱ *Duration*: ${duration} ⏳\nHope you love it! 💖`,
           thumbnail: thumbnail,
           contextInfo: {
