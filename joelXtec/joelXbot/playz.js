@@ -40,7 +40,7 @@ const play2 = async (m, gss) => {
 
       if (!data.success || !data.result?.download_url) {
         console.error("API response error:", data);
-        return m.reply("❌ Failed to download the song. Please try again later.");
+        return m.reply("❌ Failed to download the video. Please try again later.");
       }
 
       const download_url = data.result.download_url;
@@ -50,22 +50,23 @@ const play2 = async (m, gss) => {
       const messagePayload = {
         video: { url: download_url },
         mimetype: "video/mp4",
-        caption: `*${title}*`,
+        thumbnail: image,
+        caption: `*ᴊᴏᴇʟ xmᴅ ᴘᴏᴡᴇʀᴇᴅ ʙʏ ʟᴏʀᴅ ᴊᴏᴇʟ*`,
         contextInfo: {
           isForwarded: true,
           forwardingScore: 999,
           forwardedNewsletterMessageInfo: {
             newsletterJid: '120363317462952356@newsletter',
-            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ 💫",
-            serverMessageId: -1,
+            newsletterName: "ᴊᴏᴇʟ xmᴅ ʙᴏᴛ",
+            serverMessageId: 143,
           },
           externalAdReply: {
-            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ 💖",
+            title: "ᴊᴏᴇʟ xmᴅ ʙᴏᴛ",
             body: "Powered by Lord Joel 🌟",
             thumbnailUrl:
               'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg',
             sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
-            mediaType: 1,
+            mediaType: 2,
             renderLargerThumbnail: true,
           },
         },
@@ -74,13 +75,19 @@ const play2 = async (m, gss) => {
       // Send the video with newsletter context
       await gss.sendMessage(m.from, messagePayload, { quoted: m });
 
-      m.reply(`✅ Sent: *${title}*`);
+      m.reply("```keep using joel xmd  wa bot```");
 
     } catch (error) {
       console.error("play2 error:", error.message);
-      m.reply("❌ An unexpected error occurred. Please try again.\n\n" + error.message);
+      m.reply("An unexpected error occurred. Please try again.\n\n" + error.message);
     }
   }
 };
 
 export default play2;
+
+
+
+
+
+
