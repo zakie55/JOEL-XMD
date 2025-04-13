@@ -51,7 +51,6 @@ const play2 = async (m, gss) => {
         video: { url: download_url },
         mimetype: "video/mp4",
         caption: `*${title}*`,
-        thumbnail: image,
         contextInfo: {
           isForwarded: true,
           forwardingScore: 999,
