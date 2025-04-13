@@ -9,13 +9,13 @@ const play2 = async (m, gss) => {
 
   if (cmd === "play4") {
     if (!args) {
-      return m.reply("❌ Please provide a song name or YouTube link.\n\nExample:\n.play2 Moye Moye\n.play2 https://youtu.be/xyz");
+      return m.reply("❌ Please provide a song name or YouTube link.\n\nExample:\n.play4 Moye Moye\n.play4 https://youtu.be/xyz");
     }
 
     try {
       m.reply("🔍 Searching and processing your song request...");
 
-      let videoUrl, title;
+      let videoUrl, title, thumbnail;
 
       // If it's a YouTube link
       if (args.match(/(youtube\.com|youtu\.be)/)) {
@@ -31,6 +31,7 @@ const play2 = async (m, gss) => {
         const video = searchResults.videos[0];
         videoUrl = video.url;
         title = video.title;
+        thumbnail = video.thumbnail;
       }
 
       // Request video from the API
@@ -38,20 +39,41 @@ const play2 = async (m, gss) => {
       const { data } = await axios.get(apiUrl, { timeout: 20000 });
 
       if (!data.success || !data.result?.download_url) {
+        console.error("API response error:", data);
         return m.reply("❌ Failed to download the song. Please try again later.");
       }
 
-      // Send back the video 
-      await gss.sendMessage(
-        m.from,
-        { 
-          video: { url: data.result.download_url },
-          mimetype: 'video/mp4',
-          fileName: `${title}.mp4`,
-          ptt: false
+      const download_url = data.result.download_url;
+      const image = data.result.image || data.image || 'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg';
+
+      // Create a cute newsletter message payload
+      const messagePayload = {
+        video: { url: download_url },
+        mimetype: "video/mp4",
+        caption: `*${title}*`,
+        thumbnail: image,
+        contextInfo: {
+          isForwarded: true,
+          forwardingScore: 999,
+          forwardedNewsletterMessageInfo: {
+            newsletterJid: '120363317462952356@newsletter',
+            newsletterName: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ 💫",
+            serverMessageId: -1,
+          },
+          externalAdReply: {
+            title: "ᴊᴏᴇʟ xᴅ ʙᴏᴛ 💖",
+            body: "Powered by Lord Joel 🌟",
+            thumbnailUrl:
+              'https://raw.githubusercontent.com/joeljamestech2/JOEL-XMD/refs/heads/main/mydata/media/joelXbot.jpg',
+            sourceUrl: 'https://whatsapp.com/channel/0029Vak2PevK0IBh2pKJPp2K',
+            mediaType: 1,
+            renderLargerThumbnail: true,
+          },
         },
-        { quoted: m }
-      );
+      };
+
+      // Send the video with newsletter context
+      await gss.sendMessage(m.from, messagePayload, { quoted: m });
 
       m.reply(`✅ Sent: *${title}*`);
 
@@ -63,4 +85,3 @@ const play2 = async (m, gss) => {
 };
 
 export default play2;
-    
