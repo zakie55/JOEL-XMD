@@ -33,27 +33,27 @@ const play2 = async (m, gss) => {
         title = video.title;
       }
 
-      // Request audio from the API
-      const apiUrl = `https://home.lazacktech.biz.id/api/ytdl?url=${encodeURIComponent(videoUrl)}&format=audio/mp3`;
+      // Request video from the API
+      const apiUrl = `https://apis.davidcyriltech.my.id/download/ytmp4?url=${encodeURIComponent(videoUrl)}`;
       const { data } = await axios.get(apiUrl, { timeout: 20000 });
 
-      if (!data.success || !data.result?.download_link) {
+      if (!data.success || !data.result?.download_url) {
         return m.reply("❌ Failed to download the song. Please try again later.");
       }
 
-      // Send back the audio
+      // Send back the video 
       await gss.sendMessage(
         m.from,
         { 
-          audio: { url: data.result.download_link },
-          mimetype: 'audio/mpeg',
-          fileName: `hello`,
+          video: { url: data.result.download_url },
+          mimetype: 'video/mp4',
+          fileName: `${title}.mp4`,
           ptt: false
         },
         { quoted: m }
       );
 
-      m.reply(`✅ Sent: *hello*`);
+      m.reply(`✅ Sent: *${title}*`);
 
     } catch (error) {
       console.error("play2 error:", error.message);
@@ -63,3 +63,4 @@ const play2 = async (m, gss) => {
 };
 
 export default play2;
+    
