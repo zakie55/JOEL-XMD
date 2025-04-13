@@ -1,66 +1,59 @@
 import config from '../../config.cjs';
 import fetch from 'node-fetch';
 
+// In-memory store for user conversations
+const userConversations = {}; // { userId: [ { role: 'user'|'assistant', content: string } ] }
+
 const chatbotCommand = async (m, Matrix) => {
+    const text = m.message?.conversation || m.message?.extendedTextMessage?.text || null;
+    const senderId = m.key.remoteJid;
+    const senderName = m.pushName || `User ${senderId}`;
 
-    const text = m.message?.conversation || m.message?.extendedTextMessage?.text || null; // Extract text
-    const senderId = m.key.remoteJid; // This gives the full sender ID (including @s.whatsapp.net)
-    const senderName = m.pushName || `User ${senderId}`; // Default to 'User <senderId>' if pushName is not available
+    const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net';
+    const isChatbotEnabled = config.CHAT_BOT !== undefined ? config.CHAT_BOT : true;
+    const chatbotMode = config.CHAT_BOT_MODE || 'public';
+    const privateUsers = config.PRIVATE_USERS || [];
 
-    // Get the owner's phone number from config
-    const ownerNumber = config.OWNER_NUMBER + '@s.whatsapp.net'; // Construct full ID for owner number
+    if (!isChatbotEnabled) return;
+    if (senderId === ownerNumber) return;
+    if (senderId.endsWith('@g.us') || senderId === 'status@broadcast' || senderId.includes('@newsletter')) return;
+    if (chatbotMode === 'private' && !privateUsers.includes(senderId)) return;
+    if (!text) return;
 
-    // Chatbot configuration
-    const isChatbotEnabled = config.CHAT_BOT || true; // Enable/disable chatbot
-    const chatbotMode = config.CHAT_BOT_MODE || 'public'; // 'private' or 'public'
-    const privateUsers = config.PRIVATE_USERS || []; // Allowed users for private mode
-
-    // Ignore all messages if chatbot is disabled
-    if (!isChatbotEnabled) {
-        console.log('Chatbot is disabled via config. Ignoring message.');
-        return;
-    }
-
-    // Ignore all owner messages globally, regardless of chat type (group, private, etc.)
-    if (senderId === ownerNumber) {
-        console.log('Owner message ignored.');
-        return;
-    }
-
-    // Ignore group, broadcast, and newsletter messages
-    if (senderId.endsWith('@g.us') || senderId === 'status@broadcast' || senderId.includes('@newsletter')) {
-        console.log('Group, broadcast, or newsletter message ignored.');
-        return;
-    }
-
-    // Private mode: Process only specific users
-    if (chatbotMode === 'private' && !privateUsers.includes(senderId)) {
-        console.log(`Message from unauthorized user ignored in private mode: ${senderId}`);
-        return;
-    }
-
-    // If there is no message text, return
-    if (!text) {
-        console.log('No valid message found to process.');
-        return;
-    }
-
-    // Process user messages and fetch response from the API
     try {
-        const userMessage = text;
+        // Initialize conversation history if not exists
+        if (!userConversations[senderId]) {
+            userConversations[senderId] = [];
+        }
 
-        // Make the API call to the chatbot service
-        const response = await fetch(`https://api.siputzx.my.id/api/ai/deepseek-r1?content=${encodeURIComponent(userMessage}`);
-    
+        // Add user message to history
+        userConversations[senderId].push({ role: 'user', content: text });
+
+        // Keep history short (last 20 messages)
+        if (userConversations[senderId].length > 20) {
+            userConversations[senderId] = userConversations[senderId].slice(-20);
+        }
+
+        // Send full context to the API
+        const response = await fetch('https://api.siputzx.my.id/api/ai/deepseek-r1', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ messages: userConversations[senderId] })
+        });
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const responseData = await response.json();
         const botReply = responseData.result || 'No response received';
-        const formattedReply = `*JOEL-MD AI ASSISTANT *\n\nHello ${senderName},\n\n${botReply}`;
 
-        // Send the AI response to the user
+        // Add bot response to history
+        userConversations[senderId].push({ role: 'assistant', content: botReply });
+
+        const formattedReply = `${botReply}`;
         await Matrix.sendMessage(senderId, { text: formattedReply }, { quoted: m });
 
     } catch (err) {
