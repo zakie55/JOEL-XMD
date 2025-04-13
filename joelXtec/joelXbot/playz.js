@@ -34,7 +34,7 @@ const play2 = async (m, gss) => {
       }
 
       // Request audio from the API
-      const apiUrl = `https://home.lazacktech.biz.id/api/ytdl?url=${encodeURIComponent(videoUrl)}`;
+      const apiUrl = `https://home.lazacktech.biz.id/api/ytdl?url=${encodeURIComponent(videoUrl)}&format=audio/mp3`;
       const { data } = await axios.get(apiUrl, { timeout: 20000 });
 
       if (!data.success || !data.result?.download_link) {
