@@ -47,13 +47,13 @@ const play2 = async (m, gss) => {
         { 
           audio: { url: data.result.download_link },
           mimetype: 'audio/mpeg',
-          fileName: `${title}.mp3`,
+          fileName: `hello`,
           ptt: false
         },
         { quoted: m }
       );
 
-      m.reply(`✅ Sent: *${title}*`);
+      m.reply(`✅ Sent: *hello*`);
 
     } catch (error) {
       console.error("play2 error:", error.message);
